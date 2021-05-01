@@ -1,0 +1,19 @@
+.cvnav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+h6 {
+    font-size: 18px;
+    letter-spacing: 2px;
+}
+.cvnav a {
+    padding: 0 16px;
+    color: black;
+    font-family: overpass thin;
+    letter-spacing: 2px;
+    padding: 5px;
+}
+a:visited {
+    color: black;
+}

@@ -1,0 +1,6 @@
+//components like initials in circle will depend on state (logged in or not), rewrite header 
+    to be able to do this
+//will need to clean up components folder (for example, nav sections 
+    in create page should go in own?)
+//make logo + faq icons nicer
+//see if jimena can make new logo (or find a local artist that will do it for cheap)

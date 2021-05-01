@@ -1,0 +1,7 @@
+Saturday May 1
+goals: 
+1. reorganize component folders
+2. make 'create' page sidebar navigation and route it
+to do:
+did: 
+first commit to github with main navigation routed, styling mostly done for web

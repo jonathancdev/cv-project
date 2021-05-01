@@ -1,7 +1,8 @@
 import './App.css';
 import React, { useRef, useState } from "react";
-import { Route, BrowserRouter as Router, Switch, Link } from 'react-router-dom';
-import { Header, Footer, HomeMain, Create, Pricing, Login, Signup, Help} from './components/common';
+import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
+import { Header, Footer } from './components/common';
+import { HomeMain, Create, Pricing, Login, Signup, Help } from './components/pages'
 
 function App() {
   

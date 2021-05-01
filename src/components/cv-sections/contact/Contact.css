@@ -1,0 +1,26 @@
+* {
+    padding: 5px;
+}
+.contact {
+    min-width: 500px;
+    min-height: 500px;
+    max-height: 600px;
+    display: flex;
+  }
+.section-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-style: dotted;
+    min-width: 500px;
+    max-width: 1200px;
+    height: 500px;
+}
+h1 {
+    font-family: overpass black;
+    font-size: 48px;
+}
+p {
+    font-family: overpass thin;
+    font-size: 18px;
+}
