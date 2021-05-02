@@ -1,17 +1,7 @@
-* {
-    padding: 5px;
-}
+
 .cover img {
     height: 280px;
     padding: 0;
-}
-h1 {
-    font-family: overpass black;
-    font-size: 48px;
-}
-p {
-    font-family: overpass thin;
-    font-size: 18px;
 }
 .smallp {
     font-size: 12px;

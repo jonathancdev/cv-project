@@ -4,3 +4,5 @@
     in create page should go in own?)
 //make logo + faq icons nicer
 //see if jimena can make new logo (or find a local artist that will do it for cheap)
+//max width on body?orfooter, logo flex getting out of whack with main content on pages when very wide
+//put dividing line thingy in like you have in figma

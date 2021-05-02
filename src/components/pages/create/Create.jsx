@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
-import { Cvnav, Profile, Photo, WorkExperience, Education, Skills, Contact } from '../../cv-sections'
+import { Default, Cvnav, Profile, Photo, WorkExperience, Education, Skills, Contact } from '../../cv-sections'
 import './Create.css';
 
 function Create () {
@@ -12,6 +12,9 @@ function Create () {
                 </section>
                 <section className="section-wrap">
                 <Switch>
+                        <Route path="/create" exact>
+                            <Default />
+                        </Route>
                         <Route path="/create/photo">
                             <Photo />
                         </Route>

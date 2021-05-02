@@ -1,7 +1,15 @@
+Sunday May 2
+to do: finish styling in figma and build out in code
+did: 
+    1. style create page, remove borders, standardized navigation titles and h1 placement/style
+    2. reorganize css
+    3. started to style individual cv sections in figma
+
+
+
 Saturday May 1
-goals: 
-1. reorganize component folders
-2. make 'create' page sidebar navigation and route it
 to do:
 did: 
 first commit to github with main navigation routed, styling mostly done for web
+1. reorganize component folders
+2. make 'create' page sidebar navigation and route it

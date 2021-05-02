@@ -3,8 +3,13 @@ import './Skills.css';
 
 function Skills () {
     return (
-        <section className="skills">
-                skills
+        <section className="cv-sec-wrap">
+            <section className="skills cv-section">
+                <h1>Add your skills</h1>
+                <button className="help-btn">
+                    <i class="far fa-question-circle"></i>
+                </button>
+            </section>
         </section>
     )
 }

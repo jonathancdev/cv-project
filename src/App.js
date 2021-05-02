@@ -21,7 +21,7 @@ function App() {
             <Route path="/" exact>
               <HomeMain />
             </Route>
-            <Route path="/create">
+            <Route path="/create" exact>
               <Create />
             </Route>
             <Route path="/pricing">

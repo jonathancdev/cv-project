@@ -1,12 +1,15 @@
+.navbar * {
+    text-decoration: none;
+}
 .navbar {
     display: flex;
     align-items: center;
 }
-a {
+.navbar a {
     padding: 0 16px;
 }
-a:visited {
-    color: inherit;
+.navbar a:visited {
+    color: black;
 }
 #bluenav {
     display: flex;
