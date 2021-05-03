@@ -5,10 +5,12 @@ function Skills () {
     return (
         <section className="cv-sec-wrap">
             <section className="skills cv-section">
-                <h1>Add your skills</h1>
-                <button className="help-btn">
-                    <i class="far fa-question-circle"></i>
-                </button>
+            <section className="cv-header">
+                    <h1>Add your skills</h1>
+                    <button className="help-btn">
+                        <i class="far fa-question-circle"></i>
+                    </button>
+                </section>
             </section>
         </section>
     )

@@ -36,16 +36,34 @@ p {
 }
 .cv-section {
     max-height: 40px;
-    margin-top: 25px;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+}
+.cv-header {
     display: flex;
     align-items: center;
 }
 .cv-section h1 {
     font-size: 36px;
 }
-.cv-section i {
+.cv-section i.fa-question-circle {
     font-size: 18px;
     color: rgba(0, 0, 0, 0.253);
+}
+.sec-form-wrap {
+    display: flex;
+    align-items: center;
+}
+.sec-form-wrap button {
+    border-style: none;
+    border-radius: 3px;
+    background-color: black;
+    color: white;
+    padding: 8px;
+    margin: 0 10px;
+    height: 35px;
+    width: 80px;
 }
 .help-btn {
     border-style: solid;
@@ -56,4 +74,11 @@ p {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.rect-std {
+    border-style: none;
+    width: 288px;
+    height: 25px;
+    background: #FFFFFF;
+    box-shadow: 2px 3px 6px 0.5px rgba(0, 0, 0, 0.25);
 }

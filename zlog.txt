@@ -1,11 +1,13 @@
+Monday May 3
+to do: continue building cv section styles
+did: styles cv sections in figma, 
+
 Sunday May 2
 to do: finish styling in figma and build out in code
 did: 
     1. style create page, remove borders, standardized navigation titles and h1 placement/style
     2. reorganize css
     3. started to style individual cv sections in figma
-
-
 
 Saturday May 1
 to do:
