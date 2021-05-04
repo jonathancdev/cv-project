@@ -36,7 +36,7 @@ p {
 }
 .cv-section {
     max-height: 40px;
-    margin-top: 50px;
+    margin-top: 25px;
     display: flex;
     flex-direction: column;
 }
@@ -55,7 +55,7 @@ p {
     display: flex;
     align-items: center;
 }
-.sec-form-wrap button {
+.sec-form-wrap .upload-btn {
     border-style: none;
     border-radius: 3px;
     background-color: black;
@@ -76,9 +76,37 @@ p {
     align-items: center;
 }
 .rect-std {
-    border-style: none;
     width: 288px;
     height: 25px;
-    background: #FFFFFF;
-    box-shadow: 2px 3px 6px 0.5px rgba(0, 0, 0, 0.25);
+    margin: 0 0 5px 0;
+}
+.rect-long {
+    min-width: 288px;
+    max-width: 288px;
+    height: 75px;
+    max-height: 125px;
+    text-justify: start;
+    margin: 0 0 5px 0;
+}
+.rect-date {
+    text-align: center;
+    margin: 0 0 5px 0;
+}
+.rect-date.month{
+    width: 60px;
+}
+.rect-date.year{
+    width: 40px;
+}
+.edit-btn, .add-btn {
+    background-color: transparent;
+    border-style: none;
+}
+.multi-form {
+    display: flex;
+    flex-direction: column;
+}
+.multi-form div {
+    display: flex;
+    flex-direction: row;
 }

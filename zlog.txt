@@ -1,3 +1,9 @@
+Tuesday May 4
+goals: 
+    1. identify necessary tweaks for cvsection pages and put in scratch.txt
+to do:
+did: built all basic cv section styles
+
 Monday May 3
 to do: continue building cv section styles
 did: styles cv sections in figma, 

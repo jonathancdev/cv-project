@@ -15,7 +15,7 @@ function Photo () {
                     <input className="rect-std" placeholder="click + to add photo" disabled></input>
                     <input id="browse-btn" type="file" hidden></input>
                     <label for="browse-btn" id="btn-lbl"><i class="fas fa-plus"></i></label>
-                    <button>submit</button>
+                    <button className="upload-btn">upload</button>
                     <div>
                         <img></img>
                         <i class="far fa-user-circle"></i>

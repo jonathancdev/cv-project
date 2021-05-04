@@ -1,3 +1,32 @@
+cvsections to do:
+    photo
+        change + button to just be able to click in box
+        when file is chosen, show path in box
+        look up react component to resize img???
+        chanage position of user icon or use absolute to reduce top margin
+    profile
+        change + to small edit text
+    workesxperience
+        hide forms until + cicked
+        indent job duty form
+        create month dropdown component
+    education
+        hide forms until clicked
+    skills
+        hide forms until clicked
+    contact
+        add small edit text like in profile
+        add some text p
+        add social media options?
+
+    overall
+        reduce margin between section headers and forms
+        build and write help boxes for ? buttons
+        restyle inputs
+
+
+
+
 //components like initials in circle will depend on state (logged in or not), rewrite header 
     to be able to do this
 //will need to clean up components folder (for example, nav sections 
