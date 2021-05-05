@@ -1,7 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Photo.css';
+import PhotoInput from '../photo-input'
 
 function Photo () {
+    const [fileName, setFileName] = useState('');
+    function update(name) {
+        setFileName(name)
+    }
     return (
         <section className="cv-sec-wrap">
             <section className="photo cv-section">
@@ -12,10 +17,7 @@ function Photo () {
                     </button>
                 </section>
                 <section className="sec-form-wrap">
-                    <input className="rect-std" placeholder="click + to add photo" disabled></input>
-                    <input id="browse-btn" type="file" hidden></input>
-                    <label for="browse-btn" id="btn-lbl"><i class="fas fa-plus"></i></label>
-                    <button className="upload-btn">upload</button>
+                    <PhotoInput fileName={fileName} update={update}/>
                     <div>
                         <img></img>
                         <i class="far fa-user-circle"></i>

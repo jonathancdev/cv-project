@@ -1,8 +1,14 @@
+Wednesday May 5
+goals: start working on features for cvsection in scratch.txt
+to do: finish photo page getImage from local storage and display
+did: started photo page features
+
 Tuesday May 4
 goals: 
     1. identify necessary tweaks for cvsection pages and put in scratch.txt
 to do:
 did: built all basic cv section styles
+    listed out necessary tweaks
 
 Monday May 3
 to do: continue building cv section styles

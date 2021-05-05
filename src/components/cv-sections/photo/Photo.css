@@ -1,8 +1,16 @@
 #btn-lbl {
     position: absolute;
-    margin-left: 265px;
+    margin-left: -5px;
+    margin-top: -5px;
 }
 .fa-user-circle {
     font-size: 100px;
     position: relative;
+}
+#btn-layer {
+    position: absolute;
+    margin-left: -300px;
+    margin-top: -2px;
+    width: 285px;
+    height: 23px;
 }

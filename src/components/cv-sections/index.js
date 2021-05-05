@@ -5,6 +5,7 @@ import WorkExperience from './work-experience';
 import Education from './education';
 import Skills from './skills';
 import Contact from './contact';
+import PhotoInput from './photo-input';
 import Cvnav from './cvnav';
 
 export { 
@@ -15,5 +16,6 @@ export {
     Education,
     Skills,
     Contact,
+    PhotoInput,
     Cvnav
 }

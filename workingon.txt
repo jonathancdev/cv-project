@@ -1,0 +1,15 @@
+//photo upload component
+
+input field
+
+createRef to input (already done)
+
+onChange (already have it)
+
+const reader = new FileReader();
+
+reader.addEventListener("load", () => {
+    localStorage.setItem("image", reader.result);
+})
+
+reader.readAsDataURL(this.something.files[0]);
