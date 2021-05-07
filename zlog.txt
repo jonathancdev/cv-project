@@ -1,6 +1,6 @@
 Friday May 7:
-goals: finish profile page with editable input
 did: got photo upload basics working
+    started profile page/editable component tweaks
 
 Thursday May 6
 todo: finish photo page getImage from storage and display

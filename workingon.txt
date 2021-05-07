@@ -1,5 +1,8 @@
-//photo upload component
+//profile section
 
-retrieve image from local storage?
-
-start by displaying localstorage in div
+change display style after edited
+add edit button or just leave it and change placeholder text?
+focus/highlight text when clicked
+make it fit text and not cutoff (resize on input change)
+https://stackoverflow.com/questions/8100770/auto-scaling-inputtype-text-to-width-of-value
+add css on focus to show it's being edited(slightly change color?)

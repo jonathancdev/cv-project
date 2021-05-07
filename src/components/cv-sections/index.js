@@ -6,6 +6,7 @@ import Education from './education';
 import Skills from './skills';
 import Contact from './contact';
 import PhotoInput from './photo-input';
+import ProfileForm from './editable-forms/profile'
 import Cvnav from './cvnav';
 
 export { 
@@ -17,5 +18,6 @@ export {
     Skills,
     Contact,
     PhotoInput,
+    ProfileForm,
     Cvnav
 }

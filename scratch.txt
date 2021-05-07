@@ -1,9 +1,8 @@
 cvsections to do:
-    photo
-        change + button to just be able to click in box
-        when file is chosen, show path in box
-        look up react component to resize img???
-        chanage position of user icon or use absolute to reduce top margin
+    photo OK
+        //maybe change layout of form
+        //see if easy way to implement photo resizing
+        //validate? (only one file for example) maybe can do with html
     profile
         change + to small edit text
     workesxperience

@@ -1,7 +1,12 @@
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import './Profile.css';
+import ProfileForm from '../editable-forms/profile'
 
 function Profile () {
+
+    const [userText, setUserText] = useState("click to edit personal profile");
+    const inputRef = useRef();
+
     return (
         <section className="cv-sec-wrap">
             <section className="profile cv-section">
@@ -14,10 +19,34 @@ function Profile () {
                 <section className="sec-form-wrap">
                     <section className="mult-form">
                     <p>Enter your profile here</p>
-                    <input className="rect-std" placeholder="add your personal profile"></input>
-                    <button className="edit-btn">
-                        <i class="fas fa-plus"></i>
-                    </button>
+                    <ProfileForm
+          text={userText}
+          placeholder="click to edit personal profile"
+          childRef={inputRef}
+          type="textarea"
+          // type="input"
+        >
+
+          {/* <textarea
+            ref={inputRef}
+            name="description"
+            placeholder={description}
+            rows="5"
+            value={description}
+            onChange={e => setDescription(e.target.value)}
+            /> */}
+
+          {<textarea
+            className="rect-long editable"
+            type="text"
+            placeholder="click to edit personal profile"
+            value={userText}
+            onChange={e => setUserText(e.target.value)}
+            />}
+
+
+          
+        </ProfileForm>
                     </section>
                 </section>
             </section>

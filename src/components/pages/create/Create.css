@@ -110,3 +110,14 @@ p {
     display: flex;
     flex-direction: row;
 }
+.textarea-std {
+    min-width: 288px;
+    max-width: 288px;
+    height: 75px;
+    max-height: 125px;
+    text-justify: start;
+    margin: 0 0 5px 0;
+}
+.mult-form div, .mult-form section {
+    padding: 0px;
+}
