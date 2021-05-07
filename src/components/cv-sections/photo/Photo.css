@@ -14,3 +14,18 @@
     width: 285px;
     height: 23px;
 }
+#avatar-display {
+    border: solid;
+    background-color: black;
+    border-color: black;
+    position: relative;
+    height: 100px;
+    width: 100px;
+    border-radius: 100%;
+}
+
+#test {
+    width: 200px;
+    min-height: 200px;
+    border-style: dotted;
+}

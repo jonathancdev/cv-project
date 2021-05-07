@@ -1,11 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import './Photo.css';
 import PhotoInput from '../photo-input'
 
 function Photo () {
     const [fileName, setFileName] = useState('');
+    const [userAvatar, setUserAvatar] = useState('');
+    const avatarDisplay = useRef(null);
+    const testDiv = useRef(null);
     function update(name) {
-        setFileName(name)
+        setFileName(name);
+    }
+    function updateAvatar(file) {
+        setUserAvatar(file);
     }
     return (
         <section className="cv-sec-wrap">
@@ -17,11 +23,14 @@ function Photo () {
                     </button>
                 </section>
                 <section className="sec-form-wrap">
-                    <PhotoInput fileName={fileName} update={update}/>
+                    <PhotoInput fileName={fileName} update={update} updateAvatar={updateAvatar}/>
                     <div>
-                        <img></img>
-                        <i class="far fa-user-circle"></i>
+                        {userAvatar === '' ?
+                        <i class="far fa-user-circle"></i> :
+                        <img id="avatar-display" ref={avatarDisplay} src={userAvatar}></img>
+                        }
                     </div>
+
                 </section>
             </section>
         </section>

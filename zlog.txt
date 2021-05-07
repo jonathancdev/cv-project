@@ -1,5 +1,11 @@
+Friday May 7:
+goals: finish profile page with editable input
+did: got photo upload basics working
+
+Thursday May 6
+todo: finish photo page getImage from storage and display
+
 Wednesday May 5
-goals: start working on features for cvsection in scratch.txt
 to do: finish photo page getImage from local storage and display
 did: started photo page features
 

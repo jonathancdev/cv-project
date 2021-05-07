@@ -1,15 +1,5 @@
 //photo upload component
 
-input field
+retrieve image from local storage?
 
-createRef to input (already done)
-
-onChange (already have it)
-
-const reader = new FileReader();
-
-reader.addEventListener("load", () => {
-    localStorage.setItem("image", reader.result);
-})
-
-reader.readAsDataURL(this.something.files[0]);
+start by displaying localstorage in div
