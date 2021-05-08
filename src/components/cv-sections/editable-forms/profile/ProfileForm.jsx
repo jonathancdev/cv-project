@@ -3,7 +3,7 @@ import './ProfileForm.css'
 
 const ProfileForm = ({
     childRef,
-    text,
+    value,
     type,
     placeholder,
     children,
@@ -33,7 +33,7 @@ const ProfileForm = ({
                   onClick={() => setEditing(true)}
                 >
                   <div>
-                      <input className="rect-std editable" placeholder={text || placeholder} />
+                      <input className="rect-std editable" placeholder={value || placeholder} />
                   </div>
                 </div>
             )}

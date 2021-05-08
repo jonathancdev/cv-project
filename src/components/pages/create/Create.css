@@ -81,13 +81,16 @@ p {
     margin: 0 0 5px 0;
 }
 .rect-long {
-    min-width: 288px;
-    max-width: 288px;
-    height: 75px;
+    min-width: 400px;
+    max-width: 400px;
+    line-height: 24px;
+    overflow: auto;
+    height: auto;
     max-height: 125px;
     text-justify: start;
     margin: 0 0 5px 0;
 }
+
 .rect-date {
     text-align: center;
     margin: 0 0 5px 0;

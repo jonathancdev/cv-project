@@ -1,3 +1,7 @@
+Saturday May 8:
+did: got autosize more or less working, made component template
+
+
 Friday May 7:
 did: got photo upload basics working
     started profile page/editable component tweaks

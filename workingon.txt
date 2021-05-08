@@ -1,8 +1,9 @@
 //profile section
 
+rewrote Profile as class
 change display style after edited
 add edit button or just leave it and change placeholder text?
 focus/highlight text when clicked
-make it fit text and not cutoff (resize on input change)
-https://stackoverflow.com/questions/8100770/auto-scaling-inputtype-text-to-width-of-value
+made it auto resize
 add css on focus to show it's being edited(slightly change color?)
+save to local storage on input as well

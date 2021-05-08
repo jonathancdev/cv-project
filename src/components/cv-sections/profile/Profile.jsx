@@ -1,12 +1,28 @@
-import React, { useState, useRef } from 'react';
+import React, { Component, createRef } from 'react';
 import './Profile.css';
 import ProfileForm from '../editable-forms/profile'
+import { TextAreaAuto } from '../../common'
 
-function Profile () {
+class Profile extends Component {
+    constructor() {
+        super();
+        this.inputRef = createRef();
+        this.state = {
+            value: "click to edit profile",
+            rows: 5,
+			minRows: 5,
+			maxRows: 5
+        };
+        this.setValue = this.setValue.bind(this)
+    }
 
-    const [userText, setUserText] = useState("click to edit personal profile");
-    const inputRef = useRef();
-
+setValue (e) {
+      const value = e.target.value;
+      this.setState({
+         value: value
+      })
+ }
+render() {
     return (
         <section className="cv-sec-wrap">
             <section className="profile cv-section">
@@ -20,38 +36,31 @@ function Profile () {
                     <section className="mult-form">
                     <p>Enter your profile here</p>
                     <ProfileForm
-          text={userText}
-          placeholder="click to edit personal profile"
-          childRef={inputRef}
-          type="textarea"
-          // type="input"
-        >
+                        value={this.state.value}
+                        placeholder="click to edit personal profile"
+                        childRef={this.inputRef}
+                        type="textarea"
+                        >
+                        {
+                            <TextAreaAuto
+                                value={this.state.value}
+                                rows='1'
+                                minRows='1'
+                                maxRows='20'
+                                placeHolder='enter personal profile'
+                                className="rect-long"
+                                id='ta-auto-profile'
+                                setValue={this.setValue}
+                            />
+                        }
 
-          {/* <textarea
-            ref={inputRef}
-            name="description"
-            placeholder={description}
-            rows="5"
-            value={description}
-            onChange={e => setDescription(e.target.value)}
-            /> */}
-
-          {<textarea
-            className="rect-long editable"
-            type="text"
-            placeholder="click to edit personal profile"
-            value={userText}
-            onChange={e => setUserText(e.target.value)}
-            />}
-
-
-          
-        </ProfileForm>
+                    </ProfileForm>
                     </section>
                 </section>
             </section>
         </section>
     )
+}
 }
 
 export default Profile;

@@ -49,3 +49,12 @@ input {
   background-color: transparent;
   color: black;
 }
+textarea {
+  border-radius: 3px;
+  border-width: 0.5px;
+  background-color: transparent;
+  color: black;
+}
+textarea:focus {
+  outline: none;
+}
