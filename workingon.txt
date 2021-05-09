@@ -1,9 +1,5 @@
-//profile section
+//work experience
 
-rewrote Profile as class
-change display style after edited
-add edit button or just leave it and change placeholder text?
-focus/highlight text when clicked
-made it auto resize
-add css on focus to show it's being edited(slightly change color?)
-save to local storage on input as well
+        hide forms until + cicked
+        indent job duty form
+        create month dropdown component

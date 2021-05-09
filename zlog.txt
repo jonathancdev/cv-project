@@ -1,6 +1,9 @@
+Sunday May 9:
+to do: continue working on workexperience, add more detail to do workingon
+did: finished profile page for now, started work experience page
+
 Saturday May 8:
 did: got autosize more or less working, made component template
-
 
 Friday May 7:
 did: got photo upload basics working

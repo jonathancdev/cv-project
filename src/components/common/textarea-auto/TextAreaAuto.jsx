@@ -36,8 +36,9 @@ class TextAreaAuto extends Component {
 	render() {
 		return (
 			<textarea
+				ref={this.props.refA}
 				rows={this.state.rows}
-				value={this.state.value}
+				value={this.props.value}
 				placeholder={this.props.placeholder}
 				className={this.props.className}
 				onChange={this.handleChange.bind(this)}

@@ -37,19 +37,19 @@ render() {
                     <p>Enter your profile here</p>
                     <ProfileForm
                         value={this.state.value}
-                        placeholder="click to edit personal profile"
                         childRef={this.inputRef}
                         type="textarea"
                         >
                         {
                             <TextAreaAuto
-                                value={this.state.value}
+                                refA={this.inputRef}
                                 rows='1'
                                 minRows='1'
                                 maxRows='20'
-                                placeHolder='enter personal profile'
+                                placeholder='enter personal profile'
                                 className="rect-long"
                                 id='ta-auto-profile'
+                                value={this.state.value}
                                 setValue={this.setValue}
                             />
                         }

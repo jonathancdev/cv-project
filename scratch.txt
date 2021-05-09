@@ -3,8 +3,8 @@ cvsections to do:
         //maybe change layout of form
         //see if easy way to implement photo resizing
         //validate? (only one file for example) maybe can do with html
-    profile
-        change + to small edit text
+    profile OK
+        //change + to small edit text
     workesxperience
         hide forms until + cicked
         indent job duty form
