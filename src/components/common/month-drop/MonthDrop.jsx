@@ -1,11 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import './MonthDrop.css';
 
 function MonthDrop () {
     return (
         <section>
-            <input className="rect-date">month</input>
                 <ul className="monthDrop">
                     <li name="January" value="Jan">January</li>
                     <li name="February" value="Feb">February</li>

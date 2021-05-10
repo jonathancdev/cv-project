@@ -4,10 +4,10 @@ import './TitleForm.css'
 const TitleForm = ({
     childRef,
     children,
+    value,
     ...props
 }) => {
     const [isEditing, setEditing] = useState(false);
-    const [value, setValue ] = useState('enter title')
      useEffect(() => {
          if (childRef && childRef.current && isEditing === true) {
              childRef.current.select();
@@ -28,7 +28,7 @@ const TitleForm = ({
                   onClick={() => setEditing(true)}
                 >
                   <div>
-                      <input className="rect-std editable" placeholder={value} />
+                      <input className="rect-std" placeholder={value} />
                   </div>
                 </div>
             )}

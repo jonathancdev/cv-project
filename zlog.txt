@@ -1,3 +1,9 @@
+Monday May 10: 
+to do: continue working on workexperience, create month/year dropdown/inputs 
+did: got editable text inputs working
+need to: later rewrite component for inputs because you made too many different ones
+          maybe can refactor setValue functions to only have one and pass in name?
+
 Sunday May 9:
 to do: continue working on workexperience, add more detail to do workingon
 did: finished profile page for now, started work experience page

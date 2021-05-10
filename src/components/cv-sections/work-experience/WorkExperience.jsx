@@ -1,12 +1,41 @@
 import React, { Component, createRef } from 'react';
 import './WorkExperience.css';
 import TitleForm from '../editable-forms/workexperience'
+import { MonthDrop } from '../../common'
 
 class WorkExperience extends Component {
     constructor() {
         super();
-        this.inputRef = createRef();
+        this.titleRef = createRef();
+        this.companyRef = createRef();
+        this.dutyRef = createRef();
+        this.state = {
+            title: "click to edit title", 
+            company: "click to edit company name",
+            duty: "what did you do in this position?"
+        };
+        this.setTitle = this.setTitle.bind(this)
+        this.setCompany = this.setCompany.bind(this)
+        this.setDuty = this.setDuty.bind(this)
  }
+setTitle (e) {
+    const value = e.target.value;
+    this.setState({
+       title: value
+    })
+}
+setCompany (e) {
+    const value = e.target.value;
+    this.setState({
+       company: value
+    })
+}
+setDuty(e) {
+    const value = e.target.value;
+    this.setState({
+       duty: value
+    })
+}
 render() {
     return (
         <section className="cv-sec-wrap">
@@ -27,17 +56,39 @@ render() {
                             </button>
                         </div>
             {/* form starts here */}
+
                         <TitleForm
-                        childRef={this.inputRef}
+                        childRef={this.titleRef}
+                        value={this.state.title}
                         >
                             {/* isEditing input */}
                             <input
-                                refA={this.inputRef}
+                                ref={this.titleRef}
                                 className="rect-std"
+                                placeholder='enter title' //placeholder only applicable w/o text
+                                value={this.state.title} //passes value to editable as it updates
+                                onChange={this.setTitle} //passes function to update value here
 
                             />
                         </TitleForm>
-                        <input className="rect-std" placeholder="company name"></input>
+
+                        <TitleForm
+                        childRef={this.companyRef}
+                        value={this.state.company}
+                        >
+                            {/* isEditing input */}
+                            <input
+                                ref={this.companyRef}
+                                className="rect-std"
+                                placeholder='enter company' //placeholder only applicable w/o text
+                                value={this.state.company} //passes value to editable as it updates
+                                onChange={this.setCompany} //passes function to update value here
+
+                            />
+                        </TitleForm>
+                        <MonthDrop />
+
+                        {/* <input className="rect-std" placeholder="company name"></input> */}
 
                         <div>
                             <p>from</p>
@@ -55,7 +106,20 @@ render() {
                             </button>
                         </div>
 
-                        <input className="rect-std" placeholder="what did you do in this position?"></input>
+                        <TitleForm
+                        childRef={this.dutyRef}
+                        value={this.state.duty}
+                        >
+                            {/* isEditing input */}
+                            <input
+                                ref={this.dutyRef}
+                                className="rect-std"
+                                placeholder='enter duty' //placeholder only applicable w/o text
+                                value={this.state.duty} //passes value to editable as it updates
+                                onChange={this.setDuty} //passes function to update value here
+
+                            />
+                        </TitleForm>
             {/* form ends here */}
 
                     </section>

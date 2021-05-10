@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from "react";
-import './WorkForm.css'
+import './CompanyForm.css'
 
-const WorkForm = ({
+const CompanyForm = ({
     childRef,
-    value,
-    type,
-    placeholder,
     children,
+    value,
     ...props
 }) => {
     const [isEditing, setEditing] = useState(false);
@@ -15,18 +13,13 @@ const WorkForm = ({
              childRef.current.select();
          }
      }, [isEditing, childRef]);
-
     
-    const handleKeyDown = (event, type) => {
-
-    };
     console.log(childRef)
     return (
         <section {...props}>
             {isEditing ? (
                 <div
                   onBlur={() => setEditing(false)}
-                  onKeyDown={e => handleKeyDown(e, type)}
                 >
                 {children}
                   </div>
@@ -35,7 +28,7 @@ const WorkForm = ({
                   onClick={() => setEditing(true)}
                 >
                   <div>
-                      <input className="rect-std editable" placeholder={value} />
+                      <input className="rect-std" placeholder={value} />
                   </div>
                 </div>
             )}
@@ -43,4 +36,4 @@ const WorkForm = ({
     )
 };
 
-export default WorkForm;
+export default CompanyForm;

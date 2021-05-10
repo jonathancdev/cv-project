@@ -1,5 +1,4 @@
 //work experience
 
         hide forms until + cicked
-        indent job duty form
         create month dropdown component
