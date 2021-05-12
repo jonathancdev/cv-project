@@ -1,6 +1,6 @@
 import React, { Component, createRef } from 'react';
 import './WorkExperience.css';
-import TitleForm from '../editable-forms/workexperience'
+import InputStd from '../editable-forms/input-std'
 import { MonthDrop } from '../../common'
 
 class WorkExperience extends Component {
@@ -12,11 +12,20 @@ class WorkExperience extends Component {
         this.state = {
             title: "click to edit title", 
             company: "click to edit company name",
-            duty: "what did you do in this position?"
+            duty: "what did you do in this position?",
+            monthOne: 'month',
+            monthTwo: 'month',
+            yearOne: 'year',
+            yearTwo: 'year'
         };
         this.setTitle = this.setTitle.bind(this)
         this.setCompany = this.setCompany.bind(this)
         this.setDuty = this.setDuty.bind(this)
+        this.setMonthOne = this.setMonthOne.bind(this)
+        this.setMonthTwo = this.setMonthTwo.bind(this)
+        this.setYearOne = this.setYearOne.bind(this)
+        this.setYearTwo = this.setYearTwo.bind(this)
+
  }
 setTitle (e) {
     const value = e.target.value;
@@ -34,6 +43,31 @@ setDuty(e) {
     const value = e.target.value;
     this.setState({
        duty: value
+    })
+}
+setMonthOne(e) {
+    const value = e.target.innerHTML;
+    this.setState({
+        monthOne: value
+    })
+}
+setMonthTwo(e) {
+    const value = e.target.innerHTML;
+    this.setState({
+        monthTwo: value
+    })
+}
+setYearOne(e) {
+    const value = e.target.value;
+    this.setState({
+        yearOne: value
+    })
+    console.log(this.state.yearOne)
+}
+setYearTwo(e) {
+    const value = e.target.value;
+    this.setState({
+        yearTwo: value
     })
 }
 render() {
@@ -57,7 +91,7 @@ render() {
                         </div>
             {/* form starts here */}
 
-                        <TitleForm
+                        <InputStd
                         childRef={this.titleRef}
                         value={this.state.title}
                         >
@@ -70,9 +104,9 @@ render() {
                                 onChange={this.setTitle} //passes function to update value here
 
                             />
-                        </TitleForm>
+                        </InputStd>
 
-                        <TitleForm
+                        <InputStd
                         childRef={this.companyRef}
                         value={this.state.company}
                         >
@@ -85,18 +119,40 @@ render() {
                                 onChange={this.setCompany} //passes function to update value here
 
                             />
-                        </TitleForm>
-                        <MonthDrop />
+                        </InputStd>
+
 
                         {/* <input className="rect-std" placeholder="company name"></input> */}
 
                         <div>
                             <p>from</p>
-                            <input type="month" className="rect-date month" placeholder="month"></input>
-                            <input type="year" className="rect-date year" placeholder="year"></input>
+                            <MonthDrop 
+                        id="month-one"
+                        value={this.state.monthOne}
+                        setMonth={this.setMonthOne}
+                        />
+                            <input 
+                                type="year" 
+                                className="rect-date year" 
+                                placeholder="year"
+                                onChange={this.setYearOne}
+                                maxLength='4'
+                            >
+                            </input>
                             <p>to</p>
-                            <input type="month" className="rect-date month" placeholder="month"></input>
-                            <input type="year" className="rect-date year" placeholder="year"></input>
+                            <MonthDrop 
+                        id="month-two"
+                        value={this.state.monthTwo}
+                        setMonth={this.setMonthTwo}
+                        />
+                            <input 
+                            type="year" 
+                            className="rect-date year" 
+                            placeholder="year"
+                            onChange={this.setYearTwo}
+                            maxLength='4'
+                            >
+                            </input>
                         </div>
 
                         <div>
@@ -106,7 +162,7 @@ render() {
                             </button>
                         </div>
 
-                        <TitleForm
+                        <InputStd
                         childRef={this.dutyRef}
                         value={this.state.duty}
                         >
@@ -119,7 +175,7 @@ render() {
                                 onChange={this.setDuty} //passes function to update value here
 
                             />
-                        </TitleForm>
+                        </InputStd>
             {/* form ends here */}
 
                     </section>

@@ -1,3 +1,12 @@
+Wednesday, May 12
+did: got month dropdowns working and got year ot update starte
+to do :  continue working on work exp functions (add/delete jobs duties)
+
+Tuesday May 11:
+did: create month drop down components
+        rewrote 'titleform' jsx file to be generic editable input std
+to do: continue working on work exp: add/delete jobs/duties
+
 Monday May 10: 
 to do: continue working on workexperience, create month/year dropdown/inputs 
 did: got editable text inputs working

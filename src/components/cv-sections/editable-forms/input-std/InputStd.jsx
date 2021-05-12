@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import './TitleForm.css'
+import './InputStd.css'
 
-const TitleForm = ({
+const InputStd = ({
     childRef,
     children,
     value,
@@ -36,4 +36,4 @@ const TitleForm = ({
     )
 };
 
-export default TitleForm;
+export default InputStd;
