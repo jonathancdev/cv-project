@@ -14,7 +14,6 @@ const InputStd = ({
          }
      }, [isEditing, childRef]);
     
-    console.log(childRef)
     return (
         <section {...props}>
             {isEditing ? (

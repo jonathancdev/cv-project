@@ -1,39 +1,27 @@
-import React, { createRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import './MonthDrop.css';
-import { MonthLi } from '../../common'
+import { MonthUl } from '../../common'
+import { useOutsideClick } from '../../common'
 
 function MonthDrop (props) {
-    const monthDisplay = createRef();
-    const monthList = createRef();
+    const monthDisplay = useRef();
+    const area = useRef();
     const [ hideList, setHideList ] = useState(true)
+    const outsideClick = useOutsideClick(area, hideUl)
 
     function hideUl () {
         setHideList(true);
     }
 
     return (
-        <section>
-            <input ref={monthDisplay} id={props.id} className="rect-date month" placeholder='month' value={props.value} disable></input>
+        <div ref={area}>
+            <input id={props.id} ref={monthDisplay} className="rect-date month" placeholder='month' value={props.value} disable></input>
             <button onClick={() => setHideList(prevHide => !prevHide)} className="false-month"></button>
-                {hideList ? (
+                {hideList ? 
                     null
-                ) : (
-                <ul ref={monthList} className="monthDropDown">
-                    <MonthLi set={props.setMonth} hide={hideUl} input={monthDisplay} month="January"></MonthLi>
-                    <MonthLi set={props.setMonth} hide={hideUl} input={monthDisplay} month="February"></MonthLi>
-                    <MonthLi set={props.setMonth} hide={hideUl} input={monthDisplay} month="March"></MonthLi>
-                    <MonthLi set={props.setMonth} hide={hideUl} input={monthDisplay} month="April"></MonthLi>
-                    <MonthLi set={props.setMonth} hide={hideUl} input={monthDisplay} month="May"></MonthLi>
-                    <MonthLi set={props.setMonth} hide={hideUl} input={monthDisplay} month="June"></MonthLi>
-                    <MonthLi set={props.setMonth} hide={hideUl} input={monthDisplay} month="July"></MonthLi>
-                    <MonthLi set={props.setMonth} hide={hideUl} input={monthDisplay} month="August"></MonthLi>
-                    <MonthLi set={props.setMonth} hide={hideUl} input={monthDisplay} month="September"></MonthLi>
-                    <MonthLi set={props.setMonth} hide={hideUl} input={monthDisplay} month="October"></MonthLi>
-                    <MonthLi set={props.setMonth} hide={hideUl} input={monthDisplay} month="November"></MonthLi>
-                    <MonthLi set={props.setMonth} hide={hideUl} input={monthDisplay} month="December"></MonthLi>
-                </ul>
-                ) } 
-        </section>
+                 : <MonthUl set={props.setMonth} input={monthDisplay} hide={hideUl}/>
+                 } 
+        </div>
     )
 }
 

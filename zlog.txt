@@ -1,3 +1,10 @@
+Sunday, May 16
+did: fixed gosh darn month click out thingy very easily
+to do: 
+Saturday, May 15
+goals: fix month/year css, understand what needs to be done to add + sections in work exp
+did: not much, fixed line style of dates
+
 Wednesday, May 12
 did: got month dropdowns working and got year ot update starte
 to do :  continue working on work exp functions (add/delete jobs duties)

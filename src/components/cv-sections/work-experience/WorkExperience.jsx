@@ -62,7 +62,6 @@ setYearOne(e) {
     this.setState({
         yearOne: value
     })
-    console.log(this.state.yearOne)
 }
 setYearTwo(e) {
     const value = e.target.value;
@@ -131,28 +130,32 @@ render() {
                         value={this.state.monthOne}
                         setMonth={this.setMonthOne}
                         />
-                            <input 
-                                type="year" 
-                                className="rect-date year" 
-                                placeholder="year"
-                                onChange={this.setYearOne}
-                                maxLength='4'
-                            >
-                            </input>
+                            <div>
+                                <input 
+                                    type="year" 
+                                    className="rect-date year" 
+                                    placeholder="year"
+                                    onChange={this.setYearOne}
+                                    maxLength='4'
+                                >
+                                </input>
+                            </div>
                             <p>to</p>
                             <MonthDrop 
                         id="month-two"
                         value={this.state.monthTwo}
                         setMonth={this.setMonthTwo}
                         />
-                            <input 
-                            type="year" 
-                            className="rect-date year" 
-                            placeholder="year"
-                            onChange={this.setYearTwo}
-                            maxLength='4'
-                            >
-                            </input>
+                            <div>
+                                <input 
+                                type="year" 
+                                className="rect-date year" 
+                                placeholder="year"
+                                onChange={this.setYearTwo}
+                                maxLength='4'
+                                >
+                                </input>
+                            </div>
                         </div>
 
                         <div>
