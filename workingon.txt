@@ -1,4 +1,8 @@
 //work experience
 
         hide forms until + cicked
-        create month dropdown component
+
+
+when + clicked, shows input forms
+when form submitted, saves data as object in array, hides form and displays array info in abbrev form
+for duties, have 'duty counter' in object and conditionally render

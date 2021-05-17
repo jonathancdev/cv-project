@@ -111,7 +111,7 @@ p {
 }
 .edit-btn, .add-btn {
     background-color: transparent;
-    border-style: none;
+    border-style: dotted;
 }
 .multi-form {
     display: flex;
@@ -121,6 +121,10 @@ p {
     display: flex;
     flex-direction: row;
     align-items: center;
+}
+#form-wrapper {
+    display: flex;
+    flex-direction: column;
 }
 .textarea-std {
     min-width: 288px;

@@ -1,6 +1,13 @@
+Monday May 17
+goals: work on logic for adding multiple jobs and mulitple duties for each job
+to do: move duties to separate jsx
+did: created array of workexpobjects
+
 Sunday, May 16
 did: fixed gosh darn month click out thingy very easily
-to do: 
+to do: work on work exp add/delete
+did: fixed month click out
+
 Saturday, May 15
 goals: fix month/year css, understand what needs to be done to add + sections in work exp
 did: not much, fixed line style of dates

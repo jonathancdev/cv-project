@@ -2,6 +2,7 @@ import React, { Component, createRef } from 'react';
 import './WorkExperience.css';
 import InputStd from '../editable-forms/input-std'
 import { MonthDrop } from '../../common'
+import Duties from '../duties';
 
 class WorkExperience extends Component {
     constructor() {
@@ -10,14 +11,22 @@ class WorkExperience extends Component {
         this.companyRef = createRef();
         this.dutyRef = createRef();
         this.state = {
+            hideNewItem: true,
             title: "click to edit title", 
             company: "click to edit company name",
-            duty: "what did you do in this position?",
+            duties: [
+                "what did you do in this position?",
+                "what did you do in this position?",
+                "what did you do in this position?"
+            ],
             monthOne: 'month',
             monthTwo: 'month',
             yearOne: 'year',
-            yearTwo: 'year'
+            yearTwo: 'year',
         };
+        this.createObject = this.createObject.bind(this)
+        this.toggleNewItem = this.toggleNewItem.bind(this)
+        this.addDuty = this.addDuty.bind(this)
         this.setTitle = this.setTitle.bind(this)
         this.setCompany = this.setCompany.bind(this)
         this.setDuty = this.setDuty.bind(this)
@@ -25,8 +34,41 @@ class WorkExperience extends Component {
         this.setMonthTwo = this.setMonthTwo.bind(this)
         this.setYearOne = this.setYearOne.bind(this)
         this.setYearTwo = this.setYearTwo.bind(this)
+        this.exp = {
+            title: this.state.title,
+            company: this.state.company,
+            monthOne: this.state.monthOne,
+            monthTwo: this.state.monthTwo,
+            yearOne: this.state.yearOne,
+            yearTwo: this.state.yearTwo,
+            dutyCount: 0,
+            duties: this.state.duties
+        }
+        this.expSum = []
 
  }
+createObject () {
+    const newExp = this.exp;
+    newExp.title = this.state.title
+    newExp.company = this.state.company
+    newExp.monthOne = this.state.monthOne
+    newExp.monthTwo = this.state.monthTwo
+    newExp.yearOne = this.state.yearOne
+    newExp.yearTwo = this.state.yearTwo
+    newExp.duties = this.state.duties
+    this.expSum.push(newExp)
+    // function to clear and hide form, show preview of saved jobs
+    console.log(this.expSum)
+}
+toggleNewItem () {
+    this.setState(prevState => ({
+        hideNewItem: !prevState.hideNewItem
+      }));
+      console.log(this.state.hideNewItem)
+}
+addDuty() {
+
+}
 setTitle (e) {
     const value = e.target.value;
     this.setState({
@@ -39,10 +81,13 @@ setCompany (e) {
        company: value
     })
 }
-setDuty(e) {
-    const value = e.target.value;
+setDuty(event, index) {
+    const value = event.target.value;
+    const duties = [...this.state.duties]
+    duties[index] = value
+    
     this.setState({
-       duty: value
+       duties: duties
     })
 }
 setMonthOne(e) {
@@ -69,10 +114,12 @@ setYearTwo(e) {
         yearTwo: value
     })
 }
+
 render() {
     return (
         <section className="cv-sec-wrap">
             <section className="work-experience cv-section">
+                <button onClick={this.createObject}>save</button>
                 <section className="cv-header">
                         <h1>Add your work experience</h1>
                         <button className="help-btn">
@@ -84,101 +131,89 @@ render() {
 
                         <div>
                             <p>add new item</p>
-                            <button className="add-btn">
+                            <button onClick={this.toggleNewItem} className="add-btn">
                                 <i className="fas fa-plus"></i>
                             </button>
                         </div>
             {/* form starts here */}
+                        {!this.state.hideNewItem
+                        ? <div id="form-wrapper">
+                            <InputStd
+                            childRef={this.titleRef}
+                            value={this.state.title}
+                            >
+                                {/* isEditing input */}
+                                <input
+                                    ref={this.titleRef}
+                                    className="rect-std"
+                                    placeholder='enter title' //placeholder only applicable w/o text
+                                    value={this.state.title} //passes value to editable as it updates
+                                    onChange={this.setTitle} //passes function to update value here
 
-                        <InputStd
-                        childRef={this.titleRef}
-                        value={this.state.title}
-                        >
-                            {/* isEditing input */}
-                            <input
-                                ref={this.titleRef}
-                                className="rect-std"
-                                placeholder='enter title' //placeholder only applicable w/o text
-                                value={this.state.title} //passes value to editable as it updates
-                                onChange={this.setTitle} //passes function to update value here
+                                />
+                            </InputStd>
 
-                            />
-                        </InputStd>
+                            <InputStd
+                            childRef={this.companyRef}
+                            value={this.state.company}
+                            >
+                                {/* isEditing input */}
+                                <input
+                                    ref={this.companyRef}
+                                    className="rect-std"
+                                    placeholder='enter company' //placeholder only applicable w/o text
+                                    value={this.state.company} //passes value to editable as it updates
+                                    onChange={this.setCompany} //passes function to update value here
 
-                        <InputStd
-                        childRef={this.companyRef}
-                        value={this.state.company}
-                        >
-                            {/* isEditing input */}
-                            <input
-                                ref={this.companyRef}
-                                className="rect-std"
-                                placeholder='enter company' //placeholder only applicable w/o text
-                                value={this.state.company} //passes value to editable as it updates
-                                onChange={this.setCompany} //passes function to update value here
-
-                            />
-                        </InputStd>
+                                />
+                            </InputStd>
 
 
-                        {/* <input className="rect-std" placeholder="company name"></input> */}
+                            {/* <input className="rect-std" placeholder="company name"></input> */}
 
-                        <div>
-                            <p>from</p>
-                            <MonthDrop 
-                        id="month-one"
-                        value={this.state.monthOne}
-                        setMonth={this.setMonthOne}
-                        />
                             <div>
-                                <input 
+                                <p>from</p>
+                                <MonthDrop 
+                            id="month-one"
+                            value={this.state.monthOne}
+                            setMonth={this.setMonthOne}
+                            />
+                                <div>
+                                    <input 
+                                        type="year" 
+                                        className="rect-date year" 
+                                        placeholder="year"
+                                        onChange={this.setYearOne}
+                                        maxLength='4'
+                                    >
+                                    </input>
+                                </div>
+                                <p>to</p>
+                                <MonthDrop 
+                            id="month-two"
+                            value={this.state.monthTwo}
+                            setMonth={this.setMonthTwo}
+                            />
+                                <div>
+                                    <input 
                                     type="year" 
                                     className="rect-date year" 
                                     placeholder="year"
-                                    onChange={this.setYearOne}
+                                    onChange={this.setYearTwo}
                                     maxLength='4'
-                                >
-                                </input>
+                                    >
+                                    </input>
+                                </div>
                             </div>
-                            <p>to</p>
-                            <MonthDrop 
-                        id="month-two"
-                        value={this.state.monthTwo}
-                        setMonth={this.setMonthTwo}
-                        />
-                            <div>
-                                <input 
-                                type="year" 
-                                className="rect-date year" 
-                                placeholder="year"
-                                onChange={this.setYearTwo}
-                                maxLength='4'
-                                >
-                                </input>
-                            </div>
+
+                            <Duties
+                                value={this.state.duties}
+                                setDuty={this.setDuty}
+                            >
+                            </Duties>
+
                         </div>
-
-                        <div>
-                            <p>add job duty</p>
-                            <button className="add-btn">
-                                <i className="fas fa-plus"></i>
-                            </button>
-                        </div>
-
-                        <InputStd
-                        childRef={this.dutyRef}
-                        value={this.state.duty}
-                        >
-                            {/* isEditing input */}
-                            <input
-                                ref={this.dutyRef}
-                                className="rect-std"
-                                placeholder='enter duty' //placeholder only applicable w/o text
-                                value={this.state.duty} //passes value to editable as it updates
-                                onChange={this.setDuty} //passes function to update value here
-
-                            />
-                        </InputStd>
+                        : null}
             {/* form ends here */}
 
                     </section>

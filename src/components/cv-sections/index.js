@@ -2,6 +2,7 @@ import Default from './default';
 import Photo from './photo';
 import Profile from './profile';
 import WorkExperience from './work-experience';
+import Duties from './duties'
 import Education from './education';
 import Skills from './skills';
 import Contact from './contact';
@@ -15,6 +16,7 @@ export {
     Photo,
     Profile,
     WorkExperience,
+    Duties,
     Education,
     Skills,
     Contact,
