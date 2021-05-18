@@ -1,7 +1,12 @@
+Tuesday May 18
+did: fixed duties values to display on change, + buttons now working more or less for job and duty
+to do: think about how to save, update, change, and add new work exp object before continuing too much
+
 Monday May 17
 goals: work on logic for adding multiple jobs and mulitple duties for each job
-to do: move duties to separate jsx
-did: created array of workexpobjects
+to do: fix duties inputs to update value correctly
+did: created array of workexpobjects, made new component for duties, progressed on working with
+mulitple duties with array and state
 
 Sunday, May 16
 did: fixed gosh darn month click out thingy very easily

@@ -23,13 +23,15 @@ class WorkExperience extends Component {
             monthTwo: 'month',
             yearOne: 'year',
             yearTwo: 'year',
+            dutyCount: 0
         };
         this.createObject = this.createObject.bind(this)
         this.toggleNewItem = this.toggleNewItem.bind(this)
-        this.addDuty = this.addDuty.bind(this)
         this.setTitle = this.setTitle.bind(this)
         this.setCompany = this.setCompany.bind(this)
         this.setDuty = this.setDuty.bind(this)
+        this.setDutyCount = this.setDutyCount.bind(this)
+        this.renderNew = this.renderNew.bind(this)
         this.setMonthOne = this.setMonthOne.bind(this)
         this.setMonthTwo = this.setMonthTwo.bind(this)
         this.setYearOne = this.setYearOne.bind(this)
@@ -41,7 +43,7 @@ class WorkExperience extends Component {
             monthTwo: this.state.monthTwo,
             yearOne: this.state.yearOne,
             yearTwo: this.state.yearTwo,
-            dutyCount: 0,
+            dutyCount: this.state.dutyCount,
             duties: this.state.duties
         }
         this.expSum = []
@@ -66,8 +68,18 @@ toggleNewItem () {
       }));
       console.log(this.state.hideNewItem)
 }
-addDuty() {
-
+setDutyCount() {
+    this.setState({
+        dutyCount: this.state.dutyCount += 1
+    })
+}
+renderNew () {
+    if (this.state.dutyCount >= 3) {
+        alert('limit 3 duties per thing')
+    } else {
+        this.setDutyCount();
+    }
+    console.log(this.state.dutyCount)
 }
 setTitle (e) {
     const value = e.target.value;
@@ -82,6 +94,7 @@ setCompany (e) {
     })
 }
 setDuty(event, index) {
+    console.log(event)
     const value = event.target.value;
     const duties = [...this.state.duties]
     duties[index] = value
@@ -206,12 +219,22 @@ render() {
                                 </div>
                             </div>
 
+                            <section className="duties-wrap">
+                                <div>
+                                    <p>add job duty</p>
+                                    <button className="add-btn" onClick={this.renderNew}>
+                                        <i className="fas fa-plus"></i>
+                                    </button>
+                                </div>
+
                             <Duties
                                 value={this.state.duties}
                                 setDuty={this.setDuty}
+                                setDutyCount={this.setDutyCount}
+                                dutyCount={this.state.dutyCount}
                             >
                             </Duties>
-
+                            </section>
                         </div>
                         : null}
             {/* form ends here */}
