@@ -1,5 +1,5 @@
 Sunday May 30
-did: fix exp preview
+did: fix exp preview, started education page functionality
 to do: education. and a lot. make new to-do list for example
 
 Tuesday May 25

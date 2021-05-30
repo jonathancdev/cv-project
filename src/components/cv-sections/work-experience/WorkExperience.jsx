@@ -75,9 +75,6 @@ createObject () {
     this.setPreviewCount();
     this.setPreviewArray();
     this.resetExp();
-    //this.toggleNewItem();
-    // function to clear and hide form, show preview of saved jobs
-
 }
 toggleNewItem () {
     this.setState(prevState => ({
