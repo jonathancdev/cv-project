@@ -1,3 +1,14 @@
+Sunday May 30
+did: fix exp preview
+to do: education. and a lot. make new to-do list for example
+
+Tuesday May 25
+goals: create component to show work exp/education exp preview before submitting, should be generic
+to do: change expSum to live in state so that it updates previewdata component
+
+Wednesday May 19
+goals: clean up code, think about next steps
+
 Tuesday May 18
 did: fixed duties values to display on change, + buttons now working more or less for job and duty
 to do: think about how to save, update, change, and add new work exp object before continuing too much

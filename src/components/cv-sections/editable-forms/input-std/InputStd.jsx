@@ -8,7 +8,7 @@ const InputStd = ({
     ...props
 }) => {
     const [isEditing, setEditing] = useState(false);
-     useEffect(() => {
+    useEffect(() => {
          if (childRef && childRef.current && isEditing === true) {
              childRef.current.select();
          }

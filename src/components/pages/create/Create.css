@@ -1,7 +1,10 @@
 * {
     padding: 5px;
 }
-
+section, div {
+    padding-top: 0;
+    padding-bottom: 0;
+}
 .home-build {
     min-width: 750px;
     min-height: 500px;

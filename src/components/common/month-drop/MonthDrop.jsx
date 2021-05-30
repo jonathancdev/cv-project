@@ -1,7 +1,6 @@
 import React, { useRef, useState } from 'react';
 import './MonthDrop.css';
-import { MonthUl } from '../../common'
-import { useOutsideClick } from '../../common'
+import { useOutsideClick, MonthUl } from '../../common'
 
 function MonthDrop (props) {
     const monthDisplay = useRef();

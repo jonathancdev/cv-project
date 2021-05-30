@@ -4,9 +4,6 @@ import InputStd from '../editable-forms/input-std'
 function Duties (props) {
 
     const dutyRef = useRef();
-    // function update(name) {
-    //     setFileName(name);
-    // }
     const count = props.dutyCount
 
     function inputStd (index) {
@@ -15,12 +12,11 @@ function Duties (props) {
             childRef={dutyRef}
             value={props.value[index]}
             >
-                {/* isEditing input */}
                 <input
                     ref={dutyRef}
                     className="rect-std"
-                    placeholder='enter duty' //placeholder only applicable w/o text
-                    value={props.value[index]} //passes value to editable as it updates
+                    placeholder='enter duty'
+                    value={props.value[index]}
                     onChange={(e) => {
                         props.setDuty(e, index);
                     }}
@@ -48,6 +44,5 @@ function Duties (props) {
     }
     
 }
-
 
 export default Duties;

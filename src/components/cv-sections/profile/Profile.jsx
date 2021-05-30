@@ -9,13 +9,13 @@ class Profile extends Component {
         this.inputRef = createRef();
 
         this.state = {
-            value: "click to edit profile", // value to display/save, passed to ProfileForm and TextAreaAuto child
+            value: "click to edit profile",
         };
-        this.setValue = this.setValue.bind(this) //binds SetValue to the state in Profile Class
+        this.setValue = this.setValue.bind(this)
     }
 
 setValue (e) {
-      const value = e.target.value; //takes value of listener target, in this case TextAreaAuto onChange listener
+      const value = e.target.value;
       this.setState({
          value: value
       })
@@ -34,20 +34,20 @@ render() {
                     <section className="mult-form">
                     <p>Enter your profile here</p>
                     <ProfileForm
-                        value={this.state.value} //pass state down for display
-                        childRef={this.inputRef} //normal prop passing reference to this component
+                        value={this.state.value}
+                        childRef={this.inputRef}
                         type="textarea"
                         >
                         {
                             <TextAreaAuto
-                                refA={this.inputRef} //reference to the editable textarea itself
+                                refA={this.inputRef}
                                 rows='1'
                                 minRows='1'
                                 maxRows='20'
-                                placeholder='enter personal profile' //placeholder only applicable w/o text
+                                placeholder='enter personal profile'
                                 className="rect-long"
-                                value={this.state.value} //passes value to editable as it updates
-                                setValue={this.setValue} //passes function to update value here
+                                value={this.state.value}
+                                setValue={this.setValue}
                             />
                         }
 

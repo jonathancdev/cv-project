@@ -25,7 +25,7 @@ class PhotoInput extends Component {
          this.props.update(path)
      }
      onChange(e) {
-        this.storeFile(e); //stores file on first change now
+        this.storeFile(e);
         this.getFileName();
      }
      uploadPhoto() {

@@ -2,7 +2,6 @@ import React, { createRef } from 'react';
 import './MonthUl.css';
 import { MonthLi } from '../../common';
 
-
 function MonthUl (props) {
     
     return (

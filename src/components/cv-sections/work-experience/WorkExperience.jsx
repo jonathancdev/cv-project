@@ -1,7 +1,7 @@
 import React, { Component, createRef } from 'react';
 import './WorkExperience.css';
 import InputStd from '../editable-forms/input-std'
-import { MonthDrop } from '../../common'
+import { MonthDrop, PreviewData } from '../../common'
 import Duties from '../duties';
 
 class WorkExperience extends Component {
@@ -23,7 +23,9 @@ class WorkExperience extends Component {
             monthTwo: 'month',
             yearOne: 'year',
             yearTwo: 'year',
-            dutyCount: 0
+            dutyCount: 0,
+            previewCount: 0,
+            previewArray: []
         };
         this.createObject = this.createObject.bind(this)
         this.toggleNewItem = this.toggleNewItem.bind(this)
@@ -36,21 +38,32 @@ class WorkExperience extends Component {
         this.setMonthTwo = this.setMonthTwo.bind(this)
         this.setYearOne = this.setYearOne.bind(this)
         this.setYearTwo = this.setYearTwo.bind(this)
-        this.exp = {
-            title: this.state.title,
-            company: this.state.company,
-            monthOne: this.state.monthOne,
-            monthTwo: this.state.monthTwo,
-            yearOne: this.state.yearOne,
-            yearTwo: this.state.yearTwo,
-            dutyCount: this.state.dutyCount,
-            duties: this.state.duties
-        }
+        this.setPreviewCount = this.setPreviewCount.bind(this)
+        this.setPreviewArray = this.setPreviewArray.bind(this)
+        this.resetExp = this.resetExp.bind(this)
         this.expSum = []
 
  }
+
+resetExp() {
+    this.setState({
+        hideNewItem: true,
+        title: "click to edit title", 
+        company: "click to edit company name",
+        duties: [
+            "what did you do in this position?",
+            "what did you do in this position?",
+            "what did you do in this position?"
+        ],
+        monthOne: 'month',
+        monthTwo: 'month',
+        yearOne: 'year',
+        yearTwo: 'year',
+        dutyCount: 0
+    })
+}
 createObject () {
-    const newExp = this.exp;
+    let newExp = {};
     newExp.title = this.state.title
     newExp.company = this.state.company
     newExp.monthOne = this.state.monthOne
@@ -59,18 +72,21 @@ createObject () {
     newExp.yearTwo = this.state.yearTwo
     newExp.duties = this.state.duties
     this.expSum.push(newExp)
+    this.setPreviewCount();
+    this.setPreviewArray();
+    this.resetExp();
+    //this.toggleNewItem();
     // function to clear and hide form, show preview of saved jobs
-    console.log(this.expSum)
+
 }
 toggleNewItem () {
     this.setState(prevState => ({
         hideNewItem: !prevState.hideNewItem
       }));
-      console.log(this.state.hideNewItem)
 }
 setDutyCount() {
     this.setState({
-        dutyCount: this.state.dutyCount += 1
+        dutyCount: this.state.dutyCount + 1
     })
 }
 renderNew () {
@@ -80,6 +96,17 @@ renderNew () {
         this.setDutyCount();
     }
     console.log(this.state.dutyCount)
+}
+setPreviewCount () {
+    this.setState({
+        previewCount: this.expSum.length
+    })
+}
+setPreviewArray () {
+    console.log('set prev ar')
+    this.setState({
+        previewArray: this.expSum
+    })
 }
 setTitle (e) {
     const value = e.target.value;
@@ -132,7 +159,6 @@ render() {
     return (
         <section className="cv-sec-wrap">
             <section className="work-experience cv-section">
-                <button onClick={this.createObject}>save</button>
                 <section className="cv-header">
                         <h1>Add your work experience</h1>
                         <button className="help-btn">
@@ -155,13 +181,12 @@ render() {
                             childRef={this.titleRef}
                             value={this.state.title}
                             >
-                                {/* isEditing input */}
                                 <input
                                     ref={this.titleRef}
                                     className="rect-std"
-                                    placeholder='enter title' //placeholder only applicable w/o text
-                                    value={this.state.title} //passes value to editable as it updates
-                                    onChange={this.setTitle} //passes function to update value here
+                                    placeholder='enter title'
+                                    value={this.state.title} 
+                                    onChange={this.setTitle} 
 
                                 />
                             </InputStd>
@@ -174,15 +199,12 @@ render() {
                                 <input
                                     ref={this.companyRef}
                                     className="rect-std"
-                                    placeholder='enter company' //placeholder only applicable w/o text
-                                    value={this.state.company} //passes value to editable as it updates
-                                    onChange={this.setCompany} //passes function to update value here
+                                    placeholder='enter company'
+                                    value={this.state.company} 
+                                    onChange={this.setCompany} 
 
                                 />
                             </InputStd>
-
-
-                            {/* <input className="rect-std" placeholder="company name"></input> */}
 
                             <div>
                                 <p>from</p>
@@ -234,11 +256,15 @@ render() {
                                 dutyCount={this.state.dutyCount}
                             >
                             </Duties>
+                            
                             </section>
+                            <button onClick={this.createObject}>save</button>
                         </div>
                         : null}
             {/* form ends here */}
-
+            { this.state.previewCount > 0
+                ? <PreviewData data={this.state.previewArray}/>
+                : <div>null render</div> }
                     </section>
                 </section>
             </section>

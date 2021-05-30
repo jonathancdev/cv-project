@@ -30,13 +30,13 @@ class TextAreaAuto extends Component {
 			value: event.target.value,
 		rows: currRows < maxRows ? currRows : maxRows,
 		});
-		this.props.setValue(event) //passed from Profile
+		this.props.setValue(event)
 	};
 	
 	render() {
 		return (
 			<textarea
-				ref={this.props.refA} //reference to itself
+				ref={this.props.refA}
 				rows={this.state.rows}
 				value={this.props.value}
 				placeholder={this.props.placeholder}
