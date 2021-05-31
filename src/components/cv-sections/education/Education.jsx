@@ -1,7 +1,7 @@
 import React, { Component, createRef } from 'react';
 import './Education.css';
 import InputStd from '../editable-forms/input-std'
-import { MonthDrop, PreviewData } from '../../common'
+import { MonthDrop, PreviewDataEdu } from '../../common'
 
 class Education extends Component {
     constructor() {
@@ -12,7 +12,7 @@ class Education extends Component {
         this.state = {
             hideNewItem: true,
             loc: "institution", 
-            degree: "click to edit company name",
+            degree: "type of degree or certificate",
             desc: "description",
             monthOne: 'month',
             yearOne: 'year',
@@ -37,8 +37,8 @@ class Education extends Component {
 resetExp() {
     this.setState({
         hideNewItem: true,
-        loc: "click to edit title", 
-        degree: "click to edit company name",
+        loc: "institution", 
+        degree: "type of degree or certificate",
         desc: "description",
         monthOne: 'month',
         yearOne: 'year',
@@ -47,8 +47,8 @@ resetExp() {
 }
 createObject () {
     let newExp = {};
-    newExp.loc = this.state.title
-    newExp.degree = this.state.company
+    newExp.loc = this.state.loc
+    newExp.degree = this.state.degree
     newExp.desc = this.state.desc
     newExp.monthOne = this.state.monthOne
     newExp.yearOne = this.state.yearOne
@@ -180,8 +180,12 @@ render () {
                                     >
                                     </input>
                                 </div>
+                                <button onClick={this.createObject}>save</button>
                             </div>
                                 : null}
+                            { this.state.previewCount > 0
+                            ? <PreviewDataEdu data={this.state.previewArray}/>
+                            : <div>null render</div> }
 
                     </section>
                 </section>

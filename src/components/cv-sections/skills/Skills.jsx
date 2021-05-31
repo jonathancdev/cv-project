@@ -13,13 +13,23 @@ function Skills () {
                 </section>
                 <section className="sec-form-wrap">
                     <section className="multi-form">
-                        <div>
-                            <p>add new item</p>
-                            <button className="add-btn">
-                                <i className="fas fa-plus"></i>
-                            </button>
-                        </div>
-                        <input className="rect-std" placeholder="skill"></input>
+                            <section className="duties-wrap">
+                                {/* <div>
+                                    <p>add skill</p>
+                                    <button className="add-btn" onClick={this.renderNew}>
+                                        <i className="fas fa-plus"></i>
+                                    </button>
+                                </div>
+
+                            <Skills
+                                value={this.state.duties}
+                                setDuty={this.setDuty}
+                                setDutyCount={this.setDutyCount}
+                                dutyCount={this.state.dutyCount}
+                            >
+                            </Skills> */}
+                            
+                            </section>
                     </section>
                 </section>
             </section>

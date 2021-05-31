@@ -6,7 +6,9 @@ import TextAreaAuto from './textarea-auto'
 import MonthLi from './month-li';
 import MonthUl from './month-ul';
 import useOutsideClick from './use-outside-click';
-import PreviewData from './preview-data';
+import PreviewDataWork from './preview-data-work';
+import PreviewDataEdu from './preview-data-edu';
+
 
 
 
@@ -20,5 +22,6 @@ export {
     MonthLi,
     MonthUl,
     useOutsideClick,
-    PreviewData
+    PreviewDataWork,
+    PreviewDataEdu
 }

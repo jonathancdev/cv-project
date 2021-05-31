@@ -1,14 +1,15 @@
-import React, { useState } from 'react';
-import './PreviewData.css';
+import React from 'react';
+import './PreviewDataEdu.css';
 
-function PreviewData (props) {
+function PreviewDataEdu (props) {
+    console.log(props.data)
 	const count = props.data.length;
 
 	function previewItem (index) {
 		const item = props.data[index];
 		if (item) {
         	return (<div>
-				{item.title + ' at ' + item.company}
+				{item.degree + ' from ' + item.loc}
             	</div>)
 		} else {
 			return null
@@ -39,4 +40,4 @@ function PreviewData (props) {
 
 }
 
-export default PreviewData;
+export default PreviewDataEdu;

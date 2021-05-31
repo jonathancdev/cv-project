@@ -1,7 +1,7 @@
 import React, { Component, createRef } from 'react';
 import './WorkExperience.css';
 import InputStd from '../editable-forms/input-std'
-import { MonthDrop, PreviewData } from '../../common'
+import { MonthDrop, PreviewDataWork } from '../../common'
 import Duties from '../duties';
 
 class WorkExperience extends Component {
@@ -260,7 +260,7 @@ render() {
                         : null}
             {/* form ends here */}
             { this.state.previewCount > 0
-                ? <PreviewData data={this.state.previewArray}/>
+                ? <PreviewDataWork data={this.state.previewArray}/>
                 : <div>null render</div> }
                     </section>
                 </section>
