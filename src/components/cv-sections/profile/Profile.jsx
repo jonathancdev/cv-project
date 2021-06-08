@@ -27,7 +27,7 @@ render() {
                 <section className="cv-header">
                     <h1>Add your personal profile</h1>
                     <button className="help-btn">
-                        <i class="far fa-question-circle"></i>
+                        <i className="far fa-question-circle"></i>
                     </button>
                 </section>
                 <section className="sec-form-wrap">

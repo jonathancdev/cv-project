@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useRef } from 'react';
 import InputStd from '../editable-forms/input-std'
 
 function Duties (props) {

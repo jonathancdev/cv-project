@@ -9,7 +9,7 @@ function Header () {
         <section className="header">
             <section className="logo">
                     <Link to="/">
-                        <img src={logo}></img>
+                        <img src={logo} alt="cvbreeze logo"></img>
                     </Link>
                 </section>
             <Navbar />

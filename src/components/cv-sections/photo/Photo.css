@@ -3,7 +3,7 @@
     margin-left: -5px;
     margin-top: -5px;
 }
-.fa-user-circle {
+.fa-grin {
     font-size: 100px;
     position: relative;
 }
@@ -15,8 +15,8 @@
     height: 23px;
 }
 #avatar-display {
-    border: solid;
-    background-color: black;
+    border: none;
+    background-color: transparent;
     border-color: black;
     position: relative;
     height: 100px;

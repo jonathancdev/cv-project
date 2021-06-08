@@ -1,14 +1,10 @@
 import './App.css';
-import React, { useRef, useState } from "react";
+import React from "react";
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 import { Header, Footer } from './components/common';
 import { HomeMain, Create, Pricing, Login, Signup, Help } from './components/pages'
 
 function App() {
-  
-  // const [task, setTask] = useState(""); //task for input, description for textarea
-  const [description, setDescription] = useState("Lorem impsum fatsum suckum dry");
-  const inputRef = useRef();
 
   return (
     <div className="App">

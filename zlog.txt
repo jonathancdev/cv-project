@@ -1,3 +1,11 @@
+Sunday, June 6
+to do: finish photo page layout and functionality
+        create 'save' section component that works for all pages
+        finish styling on all sections
+
+Tuesday, June 1st
+to do: work on skills
+
 Monday May 31
 did: worked on education, started skills
 

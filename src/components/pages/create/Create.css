@@ -58,7 +58,7 @@ p {
     display: flex;
     align-items: center;
 }
-.sec-form-wrap .upload-btn {
+.upload-btn {
     border-style: none;
     border-radius: 3px;
     background-color: black;
@@ -67,6 +67,10 @@ p {
     margin: 0 10px;
     height: 35px;
     width: 80px;
+}
+.upload-btn:disabled {
+    background-color: rgba(128, 128, 128, 0.24);
+    color: rgba(128, 128, 128, 0.411);
 }
 .help-btn {
     border-style: solid;
@@ -123,7 +127,6 @@ p {
 .multi-form div {
     display: flex;
     flex-direction: row;
-    align-items: center;
 }
 #form-wrapper {
     display: flex;
@@ -139,4 +142,32 @@ p {
 }
 .mult-form div, .mult-form section {
     padding: 0px;
+}
+.save-section-wrap {
+    display: flex;
+    justify-content: center;
+    border-style: dotted;
+    min-height: 35px;
+    max-height: 35px;
+    min-width: 500px;
+    max-width: 500px;
+}
+.save-section {
+    max-width: 500px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.save-button {
+    border-style: none;
+    border-radius: 3px;
+    background-color: black;
+    color: white;
+    padding: 8px;
+    height: 35px;
+    width: 80px;
+}
+.save-message {
+    font-size: 12px;
+    padding: 0 15px 0 15px;
 }

@@ -1,8 +1,9 @@
-//work experience
-
-        hide forms until + cicked
-
-
-when + clicked, shows input forms
-when form submitted, saves data as object in array, hides form and displays array info in abbrev form
-for duties, have 'duty counter' in object and conditionally render
+//photo
+order
+OK 1. empty input field + submit button
+OK 2. click input field to browse
+OK 3. user selects file
+OK 4. file saved as variable, path displayed in input, upload button enabled
+OK 5. save button appears
+OK 6. user clicks save, file saved to local stroage, 
+7. display 'save successful'

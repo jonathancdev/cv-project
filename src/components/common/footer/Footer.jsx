@@ -8,7 +8,7 @@ function Footer () {
         <section className="footer">
             <section className="qicon">
                     <Link to="/help">
-                        <img src={qicon}></img>
+                        <img src={qicon} alt="FAQ page"></img>
                     </Link>
                 </section>
         </section>

@@ -42,7 +42,7 @@ setSkill(event, index) {
     skills[index] = value
     
     this.setState({
-       skills: skills
+       duties: duties
     })
 }
 
@@ -61,16 +61,16 @@ render() {
                             <section className="duties-wrap">
                                 <div>
                                     <p>add skill</p>
-                                    <button className="add-btn" onClick={this.renderNew}>
+                                    <button className="add-btn" onClick={}>
                                         <i className="fas fa-plus"></i>
                                     </button>
                                 </div>
 
                             <SkillItems
-                                value={this.state.skills}
-                                setSkill={this.setSkill}
-                                setSkillCount={this.setSkillCount}
-                                skillCount={this.state.skillCount}
+                                value={this.state.duties}
+                                setDuty={this.setDuty}
+                                setDutyCount={this.setDutyCount}
+                                dutyCount={this.state.dutyCount}
                             >
                             </SkillItems>
                             

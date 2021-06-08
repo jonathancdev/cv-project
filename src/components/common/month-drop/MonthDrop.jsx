@@ -6,7 +6,7 @@ function MonthDrop (props) {
     const monthDisplay = useRef();
     const area = useRef();
     const [ hideList, setHideList ] = useState(true)
-    const outsideClick = useOutsideClick(area, hideUl)
+    useOutsideClick(area, hideUl)
 
     function hideUl () {
         setHideList(true);

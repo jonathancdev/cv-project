@@ -1,12 +1,13 @@
 import React, { useState, useRef } from 'react';
 import './Photo.css';
 import PhotoInput from '../photo-input'
+import {SaveSection} from '../../common'
 
 function Photo () {
     const [fileName, setFileName] = useState('');
     const [userAvatar, setUserAvatar] = useState('');
     const avatarDisplay = useRef(null);
-    const testDiv = useRef(null);
+
     function update(name) {
         setFileName(name);
     }
@@ -19,18 +20,26 @@ function Photo () {
                 <section className="cv-header">
                     <h1>Add a photo</h1>
                     <button className="help-btn">
-                        <i class="far fa-question-circle"></i>
+                        <i className="far fa-question-circle"></i>
                     </button>
+                </section>
+                <section className="save-section-wrap">
+                    {userAvatar !== ''
+                    ?<SaveSection
+                    display={'you must save the changes on this page'}
+                    required={userAvatar} //object or info required before saving
+                    storageName="avatar"
+                    />
+                    : null}
                 </section>
                 <section className="sec-form-wrap">
                     <PhotoInput fileName={fileName} update={update} updateAvatar={updateAvatar}/>
                     <div>
                         {userAvatar === '' ?
-                        <i class="far fa-user-circle"></i> :
-                        <img id="avatar-display" ref={avatarDisplay} src={userAvatar}></img>
+                        <i className="far fa-grin"></i> :
+                        <img id="avatar-display" fileName={fileName} ref={avatarDisplay} src={userAvatar} alt="user"></img>
                         }
                     </div>
-
                 </section>
             </section>
         </section>
