@@ -11,7 +11,11 @@ class SaveSection extends Component {
 
     }
     handleClick = () => {
-        localStorage.setItem(this.props.storageName, this.props.required)
+        if (Array.isArray(this.props.required)) {
+            localStorage.setItem(this.props.storageName, JSON.stringify(this.props.required))
+        } else {
+            localStorage.setItem(this.props.storageName, this.props.required)
+        }
         this.setState({
             display: "changes saved successfully"
         })
@@ -27,3 +31,14 @@ class SaveSection extends Component {
 }
 
 export default SaveSection;
+//conditionally render based on required data
+
+// <section className="save-section-wrap">
+    // {requiredStateItem !== ''
+    // ?<SaveSection
+    // display={'you must save the changes on this page'}
+    // required={requiredStateItem} 
+    // storageName="avatar"
+    // />
+    // : null}
+// </section>

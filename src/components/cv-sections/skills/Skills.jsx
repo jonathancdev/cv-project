@@ -1,6 +1,7 @@
 import React, { Component, createRef } from 'react';
 import './Skills.css';
 import SkillItems from '../skill-items';
+import {SaveSection} from '../../common'
 
 class Skills extends Component {
     constructor() {
@@ -17,13 +18,19 @@ class Skills extends Component {
                 "enter skill",
                 "enter skill"
             ],
-            skillCount: 0
+            skillCount: 0,
+            skillArray: []
         };
         this.setSkill = this.setSkill.bind(this)
         this.setSkillCount = this.setSkillCount.bind(this)
         this.renderNew = this.renderNew.bind(this)
     }
-
+setSkillArray() {
+    const filtered = this.state.skills.filter(skill => skill !== "enter skill");
+    this.setState({
+        skillArray: filtered
+    })
+}
 setSkillCount() {
     this.setState({
         skillCount: this.state.skillCount + 1
@@ -44,9 +51,11 @@ setSkill(event, index) {
     this.setState({
        skills: skills
     })
+    this.setSkillArray()
 }
 
 render() {
+    console.log(this.state.skillArray)
     return (
         <section className="cv-sec-wrap">
             <section className="skills cv-section">
@@ -55,6 +64,15 @@ render() {
                     <button className="help-btn">
                         <i className="far fa-question-circle"></i>
                     </button>
+                </section>
+                <section className="save-section-wrap">
+                    {this.state.skillArray.length > 0
+                    ?<SaveSection
+                    display={'you must save the changes on this page'}
+                    required={this.state.skillArray} //object or info required before saving
+                    storageName="skills"
+                    />
+                    : null}
                 </section>
                 <section className="sec-form-wrap">
                     <section className="multi-form">

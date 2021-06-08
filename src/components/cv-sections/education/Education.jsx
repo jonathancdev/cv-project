@@ -1,7 +1,7 @@
 import React, { Component, createRef } from 'react';
 import './Education.css';
 import InputStd from '../editable-forms/input-std'
-import { MonthDrop, PreviewDataEdu } from '../../common'
+import { MonthDrop, PreviewDataEdu, SaveSection } from '../../common'
 
 class Education extends Component {
     constructor() {
@@ -112,6 +112,15 @@ render () {
                     <button className="help-btn">
                         <i className="far fa-question-circle"></i>
                     </button>
+                </section>
+                <section className="save-section-wrap">
+                    {this.expSum.length > 0
+                    ?<SaveSection
+                    display={'you must save the changes on this page'}
+                    required={this.expSum} //object or info required before saving
+                    storageName="eduExp"
+                    />
+                    : null}
                 </section>
                 <section className="sec-form-wrap">
                     <section className="multi-form">

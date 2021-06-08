@@ -1,7 +1,7 @@
 import React, { Component, createRef } from 'react';
 import './WorkExperience.css';
 import InputStd from '../editable-forms/input-std'
-import { MonthDrop, PreviewDataWork } from '../../common'
+import { MonthDrop, PreviewDataWork, SaveSection } from '../../common'
 import Duties from '../duties';
 
 class WorkExperience extends Component {
@@ -161,6 +161,15 @@ render() {
                         <button className="help-btn">
                             <i className="far fa-question-circle"></i>
                         </button>
+                </section>
+                <section className="save-section-wrap">
+                    {this.expSum.length > 0
+                    ?<SaveSection
+                    display={'you must save the changes on this page'}
+                    required={this.expSum} //object or info required before saving
+                    storageName="workExp"
+                    />
+                    : null}
                 </section>
                 <section className="sec-form-wrap">
                     <section className="multi-form">

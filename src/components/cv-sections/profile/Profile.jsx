@@ -1,7 +1,7 @@
 import React, { Component, createRef } from 'react';
 import './Profile.css';
 import ProfileForm from '../editable-forms/profile'
-import { TextAreaAuto } from '../../common'
+import { TextAreaAuto, SaveSection } from '../../common'
 
 class Profile extends Component {
     constructor() {
@@ -29,6 +29,15 @@ render() {
                     <button className="help-btn">
                         <i className="far fa-question-circle"></i>
                     </button>
+                </section>
+                <section className="save-section-wrap">
+                    {this.state.value !== 'click to edit profile'
+                    ?<SaveSection
+                    display={'you must save the changes on this page'}
+                    required={this.state.value} //object or info required before saving
+                    storageName="profile"
+                    />
+                    : null}
                 </section>
                 <section className="sec-form-wrap">
                     <section className="mult-form">

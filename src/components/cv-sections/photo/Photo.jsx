@@ -5,7 +5,7 @@ import {SaveSection} from '../../common'
 
 function Photo () {
     const [fileName, setFileName] = useState('');
-    const [userAvatar, setUserAvatar] = useState('');
+    const [userAvatar, setUserAvatar] = useState(localStorage.getItem("avatar") || '');
     const avatarDisplay = useRef(null);
 
     function update(name) {

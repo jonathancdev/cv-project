@@ -8,7 +8,7 @@ import MonthUl from './month-ul';
 import useOutsideClick from './use-outside-click';
 import PreviewDataWork from './preview-data-work';
 import PreviewDataEdu from './preview-data-edu';
-import SaveSection from './save-section'
+import SaveSection from './save-section';
 
 
 

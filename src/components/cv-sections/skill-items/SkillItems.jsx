@@ -34,20 +34,6 @@ function SkillItems (props) {
         inputStd(7),
         inputStd(8)
     ]
-
-    // if (count === 1) {
-    //     const pick = [array[0]]
-    //     return pick;
-    // } else if (count === 2){
-    //     const pick = [array[0], array[1]]
-    //     return pick;
-    // } else if (count === 3) {
-    //     const pick = [array[0], array[1], array[2]]
-    //     return pick;
-    // } else {
-    //     return null;
-    // }
-
     //if count is greater tahn one, return array with number of items equal to count
 
     if (count >= 1) {

@@ -5,13 +5,17 @@ import './Header.css';
 import logo from '../../../img/logo.png'
 
 function Header () {
+    function handleClick() {
+        localStorage.clear();
+    }
     return (
         <section className="header">
             <section className="logo">
                     <Link to="/">
                         <img src={logo} alt="cvbreeze logo"></img>
                     </Link>
-                </section>
+            </section>
+            <button onClick={handleClick}>clear storage</button>
             <Navbar />
         </section>
     )
