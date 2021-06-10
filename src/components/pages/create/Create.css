@@ -167,6 +167,9 @@ p {
     height: 35px;
     width: 80px;
 }
+.save-button:disabled {
+    display: none;
+}
 .save-message {
     font-size: 12px;
     padding: 0 15px 0 15px;

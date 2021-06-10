@@ -5,16 +5,15 @@ class PhotoInput extends Component {
     constructor(props) {
         super(props)
 
-        this.getFileName = this.getFileName.bind(this);
-        //this.storeFile = this.storeFile.bind(this);
+        this.getPath = this.getPath.bind(this);
         this.onChange = this.onChange.bind(this);
-        this.uploadPhoto = this.uploadPhoto.bind(this);
+        //this.uploadPhoto = this.uploadPhoto.bind(this);
 
         this.fileDisplay = createRef();
         this.fileInput = createRef();
     }
 
-     storeFile(e) {
+     getFile(e) {
          const file = e.target.files[0];
          const reader = new FileReader();
          reader.onload = r => {
@@ -23,26 +22,20 @@ class PhotoInput extends Component {
          reader.readAsDataURL(file);
      }
     
-    getFileName() {
+    getPath() {
          const path = this.fileInput.current.files[0].name;
          this.fileDisplay.current.value = path;
-         this.props.update(path)
+         this.props.updatePath(path)
     }
     onChange(e) {
-        // move this to happen on save
-        this.getFileName();
-        this.storeFile(e);
-
-    }
-    uploadPhoto() {
-        //console.log(this.props.fileName === '')
-        //this.props.updateAvatar(this.props.fileName)
+        this.getPath();
+        this.getFile(e);
     }
 
     render() {
         return(
             <section>
-                <input className="rect-std" placeholder="click here to browse files" disabled ref={this.fileDisplay}></input>
+                <input className="rect-std" placeholder={this.props.path === '' ? "click here to browse files" : this.props.path} disabled ref={this.fileDisplay}></input>
                 <input onChange={this.onChange} id="browse-btn" type="file" hidden ref={this.fileInput}></input>
                 <label htmlFor="browse-btn" id="btn-lbl"><div id="btn-layer"></div></label>
             </section>

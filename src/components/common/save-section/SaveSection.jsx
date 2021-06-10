@@ -5,26 +5,51 @@ class SaveSection extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            display: this.props.display
+            display: this.props.display,
+            saveBtn: false
         }
         this.handleClick = this.handleClick.bind(this);
+        this.propsExist = this.propsExist.bind(this);
+        this.btnToggle = this.btnToggle.bind(this);
 
     }
-    handleClick = () => {
-        if (Array.isArray(this.props.required)) {
-            localStorage.setItem(this.props.storageName, JSON.stringify(this.props.required))
-        } else {
-            localStorage.setItem(this.props.storageName, this.props.required)
+    
+    propsExist() {
+        if (this.props.required !== undefined ) {
+            if (Array.isArray(this.props.required)) {
+                localStorage.setItem(this.props.storageName, JSON.stringify(this.props.required))
+            } else {
+                localStorage.setItem(this.props.storageName, this.props.required)
+            }
         }
+        if (this.props.requiredB !== undefined ) {
+            if (Array.isArray(this.props.required)) {
+                localStorage.setItem(this.props.storageNameB, JSON.stringify(this.props.requiredB))
+            } else {
+                localStorage.setItem(this.props.storageNameB, this.props.requiredB)
+            }
+        }
+
+    }
+    btnToggle () {
+        this.setState({
+            saveBtn: true
+        })
+    }
+    handleClick = () => {
+        this.propsExist()
+
         this.setState({
             display: "changes saved successfully"
         })
+
+        this.btnToggle();
       };
     render() {
         return(
             <section className="save-section">
                 <p className="save-message">{this.state.display}</p>
-                <button className="save-button" onClick={this.handleClick}>save</button>
+                <button className="save-button" onClick={this.handleClick} disabled={this.state.saveBtn}>save</button>
             </section>
         )
     }

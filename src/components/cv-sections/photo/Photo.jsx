@@ -1,15 +1,31 @@
 import React, { useState, useRef } from 'react';
 import './Photo.css';
 import PhotoInput from '../photo-input'
-import {SaveSection} from '../../common'
+import {SaveSection, checkStorage} from '../../common'
 
 function Photo () {
-    const [fileName, setFileName] = useState('');
-    const [userAvatar, setUserAvatar] = useState(localStorage.getItem("avatar") || '');
+
+    //checks if items are already in localstorage for init
+    const [userAvatar, setUserAvatar] = useState(() => {
+        if (checkStorage('avatar')) {
+            return localStorage.getItem('avatar');
+        } else {
+            return ''
+        }
+    });
+
+    const [filePath, setFilePath] = useState(() => {
+        if (checkStorage('path')) {
+            return localStorage.getItem('path');
+        } else {
+            return ''
+        }
+    });
+
     const avatarDisplay = useRef(null);
 
-    function update(name) {
-        setFileName(name);
+    function updatePath(path) {
+        setFilePath(path)
     }
     function updateAvatar(file) {
         setUserAvatar(file);
@@ -24,20 +40,22 @@ function Photo () {
                     </button>
                 </section>
                 <section className="save-section-wrap">
-                    {userAvatar !== ''
+                    {userAvatar !== '' && userAvatar !== localStorage.getItem('avatar')
                     ?<SaveSection
                     display={'you must save the changes on this page'}
                     required={userAvatar} //object or info required before saving
+                    requiredB={filePath}
                     storageName="avatar"
+                    storageNameB="path"
                     />
                     : null}
                 </section>
                 <section className="sec-form-wrap">
-                    <PhotoInput fileName={fileName} update={update} updateAvatar={updateAvatar}/>
+                    <PhotoInput path={filePath} updatePath={updatePath} updateAvatar={updateAvatar}/>
                     <div>
                         {userAvatar === '' ?
                         <i className="far fa-grin"></i> :
-                        <img id="avatar-display" fileName={fileName} ref={avatarDisplay} src={userAvatar} alt="user"></img>
+                        <img id="avatar-display" ref={avatarDisplay} src={userAvatar} alt="user"></img>
                         }
                     </div>
                 </section>

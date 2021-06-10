@@ -1,7 +1,7 @@
 import React, { Component, createRef } from 'react';
 import './Profile.css';
 import ProfileForm from '../editable-forms/profile'
-import { TextAreaAuto, SaveSection } from '../../common'
+import { TextAreaAuto, SaveSection, checkStorage } from '../../common'
 
 class Profile extends Component {
     constructor() {
@@ -9,7 +9,7 @@ class Profile extends Component {
         this.inputRef = createRef();
 
         this.state = {
-            value: "click to edit profile",
+            value: checkStorage('profile') ? localStorage.getItem('profile') : 'click to edit profile',
         };
         this.setValue = this.setValue.bind(this)
     }
@@ -31,7 +31,7 @@ render() {
                     </button>
                 </section>
                 <section className="save-section-wrap">
-                    {this.state.value !== 'click to edit profile'
+                    {this.state.value !== 'click to edit profile' && this.state.value !== localStorage.getItem('profile')
                     ?<SaveSection
                     display={'you must save the changes on this page'}
                     required={this.state.value} //object or info required before saving
