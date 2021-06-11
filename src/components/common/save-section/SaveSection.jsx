@@ -11,13 +11,27 @@ class SaveSection extends Component {
         this.handleClick = this.handleClick.bind(this);
         this.propsExist = this.propsExist.bind(this);
         this.btnToggle = this.btnToggle.bind(this);
-
+        Storage.prototype.setObject = function(key, value) {
+            this.setItem(key, JSON.stringify(value));
+        }
+        
+        Storage.prototype.getObject = function(key) {
+            var value = this.getItem(key);
+            return value && JSON.parse(value);
+        }
+        console.log(localStorage.getObject('workExp'))
     }
     
     propsExist() {
         if (this.props.required !== undefined ) {
             if (Array.isArray(this.props.required)) {
-                localStorage.setItem(this.props.storageName, JSON.stringify(this.props.required))
+                const array = this.props.required
+                const count = 1
+                array.forEach((obj) => {
+                    localStorage.setObject(('workExp' + count), obj)
+                })
+                return array
+
             } else {
                 localStorage.setItem(this.props.storageName, this.props.required)
             }
@@ -31,6 +45,12 @@ class SaveSection extends Component {
         }
 
     }
+    set() {
+        if (this.props.set) {
+            this.props.set()
+        }
+    }
+    
     btnToggle () {
         this.setState({
             saveBtn: true
@@ -44,7 +64,9 @@ class SaveSection extends Component {
         })
 
         this.btnToggle();
+        this.set()
       };
+
     render() {
         return(
             <section className="save-section">
@@ -54,7 +76,6 @@ class SaveSection extends Component {
         )
     }
 }
-
 export default SaveSection;
 //conditionally render based on required data
 

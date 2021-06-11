@@ -7,9 +7,11 @@ import Duties from '../duties';
 class WorkExperience extends Component {
     constructor() {
         super();
+
         this.titleRef = createRef();
         this.companyRef = createRef();
         this.dutyRef = createRef();
+
         this.state = {
             hideNewItem: true,
             title: "click to edit title", 
@@ -25,23 +27,41 @@ class WorkExperience extends Component {
             yearTwo: 'year',
             dutyCount: 0,
             previewCount: 0,
-            previewArray: []
+            previewArray: this.checkKeys(),
+            canSave: false
         };
+
         this.createObject = this.createObject.bind(this)
         this.toggleNewItem = this.toggleNewItem.bind(this)
+
         this.setTitle = this.setTitle.bind(this)
         this.setCompany = this.setCompany.bind(this)
         this.setDuty = this.setDuty.bind(this)
         this.setDutyCount = this.setDutyCount.bind(this)
+
         this.renderNew = this.renderNew.bind(this)
+
         this.setMonthOne = this.setMonthOne.bind(this)
         this.setMonthTwo = this.setMonthTwo.bind(this)
         this.setYearOne = this.setYearOne.bind(this)
         this.setYearTwo = this.setYearTwo.bind(this)
         this.setPreviewCount = this.setPreviewCount.bind(this)
         this.setPreviewArray = this.setPreviewArray.bind(this)
+
+        this.setCanSave = this.setCanSave.bind(this)
         this.resetExp = this.resetExp.bind(this)
-        this.expSum = []
+        this.checkKeys = this.checkKeys.bind(this)
+
+        this.expSum = this.checkKeys();
+
+        Storage.prototype.setObject = function(key, value) {
+            this.setItem(key, JSON.stringify(value));
+        }
+        
+        Storage.prototype.getObject = function(key) {
+            var value = this.getItem(key);
+            return value && JSON.parse(value);
+        }
 
  }
 
@@ -80,6 +100,7 @@ toggleNewItem () {
     this.setState(prevState => ({
         hideNewItem: !prevState.hideNewItem
       }));
+    this.setCanSave();
 }
 setDutyCount() {
     this.setState({
@@ -151,11 +172,44 @@ setYearTwo(e) {
         yearTwo: value
     })
 }
+setCanSave() {
+    this.setState(prevState => ({
+        canSave: !prevState.canSave
+      }));
+}
+checkKeys() {
+    const keys = Object.keys(localStorage)
+    const workKeys = keys.filter(element => element.includes('workExp'))
+    if (workKeys.length > 0) {
+        console.log('hello')
+        let i = 0;
+        let pairs = [];
+        for (i = 0; i < workKeys.length; i++) {
+            pairs.push(localStorage.getObject(workKeys[i]))
+        }
+        return pairs;
+        // workKeys.map((item) => {
+        //     return localStorage.getObject(item)
+        // })
+    } else {
+        const empty = []
+        return empty;
+    }
+}
 
 render() {
+    console.log(this.checkKeys())
+    console.log(this.state.previewArray)
+    console.log(this.expSum)
+
     return (
         <section className="cv-sec-wrap">
             <section className="work-experience cv-section">
+                <div>
+                    {this.expSum.length > 0
+                    ? <p>checkKeys {JSON.stringify(this.checkKeys())}</p>
+                    : null }
+                </div>
                 <section className="cv-header">
                         <h1>Add your work experience</h1>
                         <button className="help-btn">
@@ -163,11 +217,12 @@ render() {
                         </button>
                 </section>
                 <section className="save-section-wrap">
-                    {this.expSum.length > 0
+                    {this.expSum.length > 0 && this.state.canSave === true
                     ?<SaveSection
                     display={'you must save the changes on this page'}
                     required={this.expSum} //object or info required before saving
                     storageName="workExp"
+                    set={this.setCanSave}
                     />
                     : null}
                 </section>
@@ -268,7 +323,7 @@ render() {
                         </div>
                         : null}
             {/* form ends here */}
-            { this.state.previewCount > 0
+            { this.state.previewArray.length > 0
                 ? <PreviewDataWork data={this.state.previewArray}/>
                 : <div>null render</div> }
                     </section>

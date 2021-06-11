@@ -1,9 +1,45 @@
-//photo
-order
-OK 1. empty input field + submit button
-OK 2. click input field to browse
-OK 3. user selects file
-OK 4. file saved as variable, path displayed in input, upload button enabled
-OK 5. save button appears
-OK 6. user clicks save, file saved to local stroage, 
-7. display 'save successful'
+work experience section initializes
+if there is work experience in local storage, show it in the preview
+when user types info in form, updates state
+when user saves form, updates array of objects
+
+
+
+in workexp, if one item is saved, save disappears...
+//get local storage keys
+//const x = Object.keys(localStorage)
+//filter array to only include workexp
+// x.filter(element => element.includes('workExp'))
+initalize expSum with local storage
+function checkKeys() {
+    const keys = Object.keys(localStorage)
+    const workKeys = keys.filter(element => element.includes('workExp'))
+    if (workKeys.lenght > 0) {
+        return workKeys
+    } else {
+        return []
+    }
+}
+
+
+//work exp local storage 
+//user enters and saves work exp section
+//that gets sent to expSum array as object
+//user clicks save changes
+//for each object in array, that object should be setObjected with 
+    key (workExp1) and value (array item)
+//
+
+if (this.props.required !== undefined ) {
+            if (Array.isArray(this.props.required)) {
+                const array = this.props.required
+                const count = 1
+                array.forEach((obj) => {
+                    localStorage.setObject((workExp + count), obj)
+                })
+                return array
+
+            } else {
+                localStorage.setItem(this.props.storageName, this.props.required)
+            }
+        }
