@@ -6,6 +6,7 @@ import TextAreaAuto from './textarea-auto'
 import MonthLi from './month-li';
 import MonthUl from './month-ul';
 import useOutsideClick from './use-outside-click';
+import storeObjects from './store-objects'
 import checkStorage from './check-storage';
 import PreviewDataWork from './preview-data-work';
 import PreviewDataEdu from './preview-data-edu';
@@ -24,6 +25,7 @@ export {
     MonthLi,
     MonthUl,
     useOutsideClick,
+    storeObjects,
     checkStorage,
     PreviewDataWork,
     PreviewDataEdu,

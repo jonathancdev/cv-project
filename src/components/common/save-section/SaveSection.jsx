@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { storeObjects } from '../../common'
 import './SaveSection.css';
 
 class SaveSection extends Component {
@@ -11,24 +12,18 @@ class SaveSection extends Component {
         this.handleClick = this.handleClick.bind(this);
         this.propsExist = this.propsExist.bind(this);
         this.btnToggle = this.btnToggle.bind(this);
-        Storage.prototype.setObject = function(key, value) {
-            this.setItem(key, JSON.stringify(value));
-        }
-        
-        Storage.prototype.getObject = function(key) {
-            var value = this.getItem(key);
-            return value && JSON.parse(value);
-        }
-        console.log(localStorage.getObject('workExp'))
+        storeObjects()
     }
     
     propsExist() {
         if (this.props.required !== undefined ) {
             if (Array.isArray(this.props.required)) {
+                alert(JSON.stringify(this.props.required))
                 const array = this.props.required
-                const count = 1
+                let count = 1
                 array.forEach((obj) => {
-                    localStorage.setObject(('workExp' + count), obj)
+                    localStorage.setObject((this.props.storageName + count), obj)
+                    count += 1
                 })
                 return array
 

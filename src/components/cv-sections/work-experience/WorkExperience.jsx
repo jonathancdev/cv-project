@@ -7,13 +7,13 @@ import Duties from '../duties';
 class WorkExperience extends Component {
     constructor() {
         super();
-
+        //refs
         this.titleRef = createRef();
         this.companyRef = createRef();
         this.dutyRef = createRef();
-
+        //state
         this.state = {
-            hideNewItem: true,
+            //input defaults
             title: "click to edit title", 
             company: "click to edit company name",
             duties: [
@@ -25,49 +25,37 @@ class WorkExperience extends Component {
             monthTwo: 'month',
             yearOne: 'year',
             yearTwo: 'year',
+            //work experience array
+            expArray: this.checkKeys(),
+            //counters
             dutyCount: 0,
-            previewCount: 0,
-            previewArray: this.checkKeys(),
-            canSave: false
+            //booleans
+            canSave: false,
+            hideNewItem: true
         };
-
+        //bind methods
         this.createObject = this.createObject.bind(this)
         this.toggleNewItem = this.toggleNewItem.bind(this)
-
         this.setTitle = this.setTitle.bind(this)
         this.setCompany = this.setCompany.bind(this)
         this.setDuty = this.setDuty.bind(this)
         this.setDutyCount = this.setDutyCount.bind(this)
-
-        this.renderNew = this.renderNew.bind(this)
-
+        this.newDuty = this.newDuty.bind(this)
         this.setMonthOne = this.setMonthOne.bind(this)
         this.setMonthTwo = this.setMonthTwo.bind(this)
         this.setYearOne = this.setYearOne.bind(this)
         this.setYearTwo = this.setYearTwo.bind(this)
-        this.setPreviewCount = this.setPreviewCount.bind(this)
-        this.setPreviewArray = this.setPreviewArray.bind(this)
-
+        this.setExpArray = this.setExpArray.bind(this)
         this.setCanSave = this.setCanSave.bind(this)
         this.resetExp = this.resetExp.bind(this)
         this.checkKeys = this.checkKeys.bind(this)
-
+        //set expSum
         this.expSum = this.checkKeys();
-
-        Storage.prototype.setObject = function(key, value) {
-            this.setItem(key, JSON.stringify(value));
-        }
-        
-        Storage.prototype.getObject = function(key) {
-            var value = this.getItem(key);
-            return value && JSON.parse(value);
-        }
 
  }
 
-resetExp() {
+resetExp() { //when new work exp item added, resets values to set up new object
     this.setState({
-        hideNewItem: true,
         title: "click to edit title", 
         company: "click to edit company name",
         duties: [
@@ -79,10 +67,11 @@ resetExp() {
         monthTwo: 'month',
         yearOne: 'year',
         yearTwo: 'year',
-        dutyCount: 0
+        dutyCount: 0,
+        hideNewItem: true
     })
 }
-createObject () {
+createObject () { //save button creates new object with current form inputs, pushes to expSum
     let newExp = {};
     newExp.title = this.state.title
     newExp.company = this.state.company
@@ -92,40 +81,54 @@ createObject () {
     newExp.yearTwo = this.state.yearTwo
     newExp.duties = this.state.duties
     this.expSum.push(newExp)
-    this.setPreviewCount();
-    this.setPreviewArray();
+    this.setExpArray();
     this.resetExp();
 }
-toggleNewItem () {
+toggleNewItem () { //toggles form to allow new experience input
     this.setState(prevState => ({
         hideNewItem: !prevState.hideNewItem
       }));
     this.setCanSave();
 }
-setDutyCount() {
+setDutyCount() { //counts # duties within exp object (limit 3)
     this.setState({
         dutyCount: this.state.dutyCount + 1
     })
 }
-renderNew () {
+newDuty () { //when button clicked to add new duty, checks if over limit
     if (this.state.dutyCount >= 3) {
         alert('limit 3 duties per thing')
     } else {
         this.setDutyCount();
     }
-    console.log(this.state.dutyCount)
 }
-setPreviewCount () {
+setExpArray () { //when new work exp obj saved, sets state array to include all in expSum array
     this.setState({
-        previewCount: this.expSum.length
+        expArray: this.expSum
     })
 }
-setPreviewArray () {
-    console.log('set prev ar')
-    this.setState({
-        previewArray: this.expSum
-    })
+setCanSave() { //toggle save section
+    this.setState(prevState => ({
+        canSave: !prevState.canSave
+      }));
 }
+checkKeys() { //checks local storage for any key/data pairs for workexp, returns them in array or []
+    const keys = Object.keys(localStorage)
+    const workKeys = keys.filter(element => element.includes('workExp'))
+    if (workKeys.length > 0) {
+        console.log('hello')
+        let i = 0;
+        let pairs = [];
+        for (i = 0; i < workKeys.length; i++) {
+            pairs.push(localStorage.getObject(workKeys[i]))
+        }
+        return pairs;
+    } else {
+        const empty = []
+        return empty;
+    }
+}
+//methods to save inputs as they are being entered in form
 setTitle (e) {
     const value = e.target.value;
     this.setState({
@@ -138,8 +141,7 @@ setCompany (e) {
        company: value
     })
 }
-setDuty(event, index) {
-    console.log(event)
+setDuty(event, index) { 
     const value = event.target.value;
     const duties = [...this.state.duties]
     duties[index] = value
@@ -172,44 +174,11 @@ setYearTwo(e) {
         yearTwo: value
     })
 }
-setCanSave() {
-    this.setState(prevState => ({
-        canSave: !prevState.canSave
-      }));
-}
-checkKeys() {
-    const keys = Object.keys(localStorage)
-    const workKeys = keys.filter(element => element.includes('workExp'))
-    if (workKeys.length > 0) {
-        console.log('hello')
-        let i = 0;
-        let pairs = [];
-        for (i = 0; i < workKeys.length; i++) {
-            pairs.push(localStorage.getObject(workKeys[i]))
-        }
-        return pairs;
-        // workKeys.map((item) => {
-        //     return localStorage.getObject(item)
-        // })
-    } else {
-        const empty = []
-        return empty;
-    }
-}
 
 render() {
-    console.log(this.checkKeys())
-    console.log(this.state.previewArray)
-    console.log(this.expSum)
-
     return (
         <section className="cv-sec-wrap">
             <section className="work-experience cv-section">
-                <div>
-                    {this.expSum.length > 0
-                    ? <p>checkKeys {JSON.stringify(this.checkKeys())}</p>
-                    : null }
-                </div>
                 <section className="cv-header">
                         <h1>Add your work experience</h1>
                         <button className="help-btn">
@@ -220,7 +189,7 @@ render() {
                     {this.expSum.length > 0 && this.state.canSave === true
                     ?<SaveSection
                     display={'you must save the changes on this page'}
-                    required={this.expSum} //object or info required before saving
+                    required={this.state.expArray} //object or info required before saving
                     storageName="workExp"
                     set={this.setCanSave}
                     />
@@ -305,7 +274,7 @@ render() {
                             <section className="duties-wrap">
                                 <div>
                                     <p>add job duty</p>
-                                    <button className="add-btn" onClick={this.renderNew}>
+                                    <button className="add-btn" onClick={this.newDuty}>
                                         <i className="fas fa-plus"></i>
                                     </button>
                                 </div>
@@ -323,8 +292,8 @@ render() {
                         </div>
                         : null}
             {/* form ends here */}
-            { this.state.previewArray.length > 0
-                ? <PreviewDataWork data={this.state.previewArray}/>
+            { this.state.expArray.length > 0
+                ? <PreviewDataWork data={this.state.expArray}/>
                 : <div>null render</div> }
                     </section>
                 </section>

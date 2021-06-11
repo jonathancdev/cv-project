@@ -6,29 +6,32 @@ import { MonthDrop, PreviewDataEdu, SaveSection } from '../../common'
 class Education extends Component {
     constructor() {
         super();
+
         this.locRef = createRef();
         this.degreeRef = createRef();
         this.descRef = createRef();
+
         this.state = {
-            hideNewItem: true,
             loc: "institution", 
             degree: "type of degree or certificate",
             desc: "description",
             monthOne: 'month',
             yearOne: 'year',
-            previewCount: 0,
-            previewArray: []
+            eduArray: [],
+            canSave: false,
+            hideNewItem: true
         };
+
         this.createObject = this.createObject.bind(this)
         this.toggleNewItem = this.toggleNewItem.bind(this)
         this.setLoc = this.setLoc.bind(this)
         this.setDegree = this.setDegree.bind(this)
         this.setDesc = this.setDesc.bind(this)
-        //this.renderNew = this.renderNew.bind(this)
         this.setMonthOne = this.setMonthOne.bind(this)
         this.setYearOne = this.setYearOne.bind(this)
-        this.setPreviewCount = this.setPreviewCount.bind(this)
-        this.setPreviewArray = this.setPreviewArray.bind(this)
+        this.setEduArray = this.setEduArray.bind(this)
+        this.setCanSave = this.setCanSave.bind(this)
+        this.checkKeys = this.checkKeys.bind(this)
         this.resetExp = this.resetExp.bind(this)
         this.expSum = []
 
@@ -53,24 +56,40 @@ createObject () {
     newExp.monthOne = this.state.monthOne
     newExp.yearOne = this.state.yearOne
     this.expSum.push(newExp)
-    this.setPreviewCount();
-    this.setPreviewArray();
+    this.setEduArray();
     this.resetExp();
 }
 toggleNewItem () {
     this.setState(prevState => ({
         hideNewItem: !prevState.hideNewItem
       }));
+      this.setCanSave();
 }
-setPreviewCount () {
+setEduArray () {
     this.setState({
-        previewCount: this.expSum.length
+        eduArray: this.expSum
     })
 }
-setPreviewArray () {
-    this.setState({
-        previewArray: this.expSum
-    })
+setCanSave() { //toggle save section
+    this.setState(prevState => ({
+        canSave: !prevState.canSave
+      }));
+}
+checkKeys() { //checks local storage for any key/data pairs for workexp, returns them in array or []
+    const keys = Object.keys(localStorage)
+    const eduKeys = keys.filter(element => element.includes('eduExp'))
+    if (eduKeys.length > 0) {
+        console.log('hello')
+        let i = 0;
+        let pairs = [];
+        for (i = 0; i < eduKeys.length; i++) {
+            pairs.push(localStorage.getObject(eduKeys[i]))
+        }
+        return pairs;
+    } else {
+        const empty = []
+        return empty;
+    }
 }
 setLoc (e) {
     const value = e.target.value;
@@ -114,11 +133,12 @@ render () {
                     </button>
                 </section>
                 <section className="save-section-wrap">
-                    {this.expSum.length > 0
+                    {this.expSum.length > 0 && this.state.canSave === true
                     ?<SaveSection
                     display={'you must save the changes on this page'}
                     required={this.expSum} //object or info required before saving
                     storageName="eduExp"
+                    set={this.setCanSave}
                     />
                     : null}
                 </section>
@@ -192,8 +212,8 @@ render () {
                                 <button onClick={this.createObject}>save</button>
                             </div>
                                 : null}
-                            { this.state.previewCount > 0
-                            ? <PreviewDataEdu data={this.state.previewArray}/>
+                            { this.state.eduArray.length > 0
+                            ? <PreviewDataEdu data={this.state.eduArray}/>
                             : <div>null render</div> }
 
                     </section>
