@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { storeObjects } from '../../common'
 import './SaveSection.css';
 
 class SaveSection extends Component {
@@ -12,7 +11,6 @@ class SaveSection extends Component {
         this.handleClick = this.handleClick.bind(this);
         this.propsExist = this.propsExist.bind(this);
         this.btnToggle = this.btnToggle.bind(this);
-        storeObjects()
     }
     
     propsExist() {

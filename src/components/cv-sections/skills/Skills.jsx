@@ -1,61 +1,88 @@
 import React, { Component, createRef } from 'react';
 import './Skills.css';
-import SkillItems from '../skill-items';
-import {SaveSection} from '../../common'
+import InputStd from '../editable-forms/input-std'
+import {SaveSection, PreviewDataSkills} from '../../common'
 
 class Skills extends Component {
     constructor() {
         super();
+
         this.skillRef = createRef();
         this.state = {
-            skills: [
-                "enter skill",
-                "enter skill",
-                "enter skill",
-                "enter skill",
-                "enter skill",
-                "enter skill",
-                "enter skill",
-                "enter skill"
-            ],
+            skill: 'enter skill',
             skillCount: 0,
-            skillArray: []
+            skillArray: this.checkKeys(),
+            canSave: false,
+            hideNewSkill: true
         };
+        //method to push to array?
+        //method to reset array (can probably put in other method)
         this.setSkill = this.setSkill.bind(this)
         this.setSkillCount = this.setSkillCount.bind(this)
-        this.renderNew = this.renderNew.bind(this)
+        this.newSkill = this.newSkill.bind(this)
+        this.setCanSave = this.setCanSave.bind(this)
+        this.checkKeys = this.checkKeys.bind(this)
+        this.saveSkill = this.saveSkill.bind(this)
+        this.toggleNewItem = this.toggleNewItem.bind(this)
+        this.skillSum = this.checkKeys()
     }
-setSkillArray() {
-    const filtered = this.state.skills.filter(skill => skill !== "enter skill");
-    this.setState({
-        skillArray: filtered
-    })
+toggleNewItem () { //toggles form to allow new experience input
+    this.setState(prevState => ({
+        hideNewSkill: !prevState.hideNewSkill
+        }));
 }
 setSkillCount() {
     this.setState({
         skillCount: this.state.skillCount + 1
     })
 }
-renderNew () {
+newSkill () {
     if (this.state.skillCount >= 8) {
         alert('limit 8 skills per thang')
     } else {
         this.setSkillCount();
     }
+    this.setState({
+        canSave: true
+    })
 }
-setSkill(event, index) {
+setCanSave() {
+    this.setState(prevState => ({
+        canSave: !prevState.canSave
+      }));
+}
+saveSkill() {
+    this.skillSum.push(this.state.skill)
+    this.setState({
+        skill: 'enter skill',
+        skillArray: this.skillSum
+    })
+    this.state.hideNewSkill = true;
+    this.setCanSave();
+}
+checkKeys() { //checks local storage for any key/data pairs for workexp, returns them in array or []
+    const keys = Object.keys(localStorage)
+    const skillKeys = keys.filter(element => element.includes('skill'))
+    if (skillKeys.length > 0) {
+        let i = 0;
+        let pairs = [];
+        for (i = 0; i < skillKeys.length; i++) {
+            pairs.push(localStorage.getObject(skillKeys[i]))
+        }
+        return pairs;
+    } else {
+        const empty = []
+        return empty;
+    }
+}
+setSkill(event, index) { //probably don't need array here
     const value = event.target.value;
-    const skills = [...this.state.skills]
-    skills[index] = value
     
     this.setState({
-       skills: skills
+       skill: value
     })
-    this.setSkillArray()
 }
-
 render() {
-    console.log(this.state.skillArray)
     return (
         <section className="cv-sec-wrap">
             <section className="skills cv-section">
@@ -66,11 +93,12 @@ render() {
                     </button>
                 </section>
                 <section className="save-section-wrap">
-                    {this.state.skillArray.length > 0
+                    {this.state.skillArray.length > 0 && this.state.canSave === true
                     ?<SaveSection
                     display={'you must save the changes on this page'}
-                    required={this.state.skillArray} //object or info required before saving
-                    storageName="skills"
+                    required={this.state.skillArray} //what goes here?
+                    storageName="skill"
+                    set={this.setCanSave}
                     />
                     : null}
                 </section>
@@ -79,20 +107,34 @@ render() {
                             <section className="duties-wrap">
                                 <div>
                                     <p>add skill</p>
-                                    <button className="add-btn" onClick={this.renderNew}>
+                                    <button className="add-btn" onClick={this.toggleNewItem}>
                                         <i className="fas fa-plus"></i>
                                     </button>
                                 </div>
 
-                            <SkillItems
-                                value={this.state.skills}
-                                setSkill={this.setSkill}
-                                setSkillCount={this.setSkillCount}
-                                skillCount={this.state.skillCount}
-                            >
-                            </SkillItems>
-                            
+                                {!this.state.hideNewSkill
+                                ? <div className="form-wrapper">
+                                    <InputStd
+                                childRef={this.skillRef}
+                                value={this.state.skill}
+                                >
+                                    <input
+                                        ref={this.skillRef}
+                                        className="rect-std"
+                                        placeholder='enter skill'
+                                        value={this.state.skill}
+                                        onChange={(e) => {
+                                            this.setSkill(e);
+                                        }}
+                                    />
+                                </InputStd>
+                                <button onClick={this.saveSkill}>save</button>
+                                </div>
+                                : null}
                             </section>
+                { this.state.skillArray.length > 0
+                ? <PreviewDataSkills data={this.state.skillArray}/>
+                : <div>null render</div> }
                     </section>
                 </section>
             </section>

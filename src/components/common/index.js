@@ -10,6 +10,7 @@ import storeObjects from './store-objects'
 import checkStorage from './check-storage';
 import PreviewDataWork from './preview-data-work';
 import PreviewDataEdu from './preview-data-edu';
+import PreviewDataSkills from './preview-data-skills';
 import SaveSection from './save-section';
 
 
@@ -29,5 +30,6 @@ export {
     checkStorage,
     PreviewDataWork,
     PreviewDataEdu,
+    PreviewDataSkills,
     SaveSection
 }

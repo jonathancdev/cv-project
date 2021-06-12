@@ -1,11 +1,11 @@
 import './App.css';
 import React from "react";
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
-import { Header, Footer } from './components/common';
+import { Header, Footer, storeObjects } from './components/common';
 import { HomeMain, Create, Pricing, Login, Signup, Help } from './components/pages'
 
 function App() {
-
+  storeObjects()
   return (
     <div className="App">
       <Router>

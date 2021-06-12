@@ -3,6 +3,7 @@ import InputStd from '../editable-forms/input-std'
 
 function SkillItems (props) {
     const skillRef = useRef();
+    const filtered = props.value.filter(item => item !== 'enter skill')
     const count = props.skillCount
 
     function inputStd (index) {

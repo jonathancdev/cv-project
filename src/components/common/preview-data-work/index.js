@@ -1,3 +1,3 @@
-import PreviewData  from './PreviewDataWork';
+import PreviewDataWork  from './PreviewDataWork';
 
-export default PreviewData;
+export default PreviewDataWork;

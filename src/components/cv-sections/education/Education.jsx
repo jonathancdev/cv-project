@@ -17,7 +17,7 @@ class Education extends Component {
             desc: "description",
             monthOne: 'month',
             yearOne: 'year',
-            eduArray: [],
+            eduArray: this.checkKeys(),
             canSave: false,
             hideNewItem: true
         };
@@ -33,7 +33,7 @@ class Education extends Component {
         this.setCanSave = this.setCanSave.bind(this)
         this.checkKeys = this.checkKeys.bind(this)
         this.resetExp = this.resetExp.bind(this)
-        this.expSum = []
+        this.expSum = this.checkKeys()
 
  }
 
