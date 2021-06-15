@@ -54,6 +54,10 @@ p {
     font-size: 18px;
     color: rgba(0, 0, 0, 0.253);
 }
+.fa-window-minimize {
+    margin-top: -10px;
+    font-size: 10px;
+}
 .sec-form-wrap {
     display: flex;
     align-items: center;
@@ -103,6 +107,7 @@ p {
     text-justify: start;
     margin: 0 0 5px 0;
     font-size: 16px;
+    text-overflow: ellipsis;
 }
 .rect-date {
     text-align: center;
@@ -120,6 +125,7 @@ p {
     background-color: transparent;
     border-style: dotted;
 }
+
 .multi-form {
     display: flex;
     flex-direction: column;
@@ -146,7 +152,6 @@ p {
 .save-section-wrap {
     display: flex;
     justify-content: center;
-    border-style: dotted;
     min-height: 35px;
     max-height: 35px;
     min-width: 500px;
@@ -166,6 +171,7 @@ p {
     padding: 8px;
     height: 35px;
     width: 80px;
+    cursor: pointer;
 }
 .save-button:disabled {
     display: none;
@@ -173,4 +179,15 @@ p {
 .save-message {
     font-size: 12px;
     padding: 0 15px 0 15px;
+}
+.delete-storage {
+    display: flex;
+    justify-content: flex-end;
+    background-color: transparent;
+}
+.delete-storage button {
+    text-decoration: underline;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
 }

@@ -2,13 +2,20 @@ import React, { useRef } from 'react';
 import InputStd from '../editable-forms/input-std'
 
 function Duties (props) {
-
+    console.log(props.value)
     const dutyRef = useRef();
     const count = props.dutyCount
+    function handleDelete(e) {
+        const array = props.value
+        const index = e.target.parentElement.parentElement.id
+        props.update(count - 1)
+        array[index] = 'what did you do in this position?'
 
+    }
     function inputStd (index) {
 
-        return (<InputStd
+        return (<div id={index}>
+            <InputStd
             childRef={dutyRef}
             value={props.value[index]}
             >
@@ -21,7 +28,11 @@ function Duties (props) {
                         props.setDuty(e, index);
                     }}
                 />
-            </InputStd>)
+            </InputStd>
+            <div className="delete-storage">
+                <button onClick={handleDelete}>delete</button>
+            </div>
+        </div>)
     }
 
     const array = [

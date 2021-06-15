@@ -1,13 +1,14 @@
 import React, { useState, useRef } from 'react';
 import './Photo.css';
 import PhotoInput from '../photo-input'
-import {SaveSection, checkStorage} from '../../common'
+import {SaveSection, checkStorage, removeStorage} from '../../common'
 
 function Photo () {
 
     //checks if items are already in localstorage for init
     const [userAvatar, setUserAvatar] = useState(() => {
         if (checkStorage('avatar')) {
+            console.log(typeof localStorage.getItem('avatar'))
             return localStorage.getItem('avatar');
         } else {
             return ''
@@ -30,6 +31,12 @@ function Photo () {
     function updateAvatar(file) {
         setUserAvatar(file);
     }
+    function handleDelete () {
+        removeStorage('path')
+        removeStorage('avatar')
+        updateAvatar('')
+        updatePath('')
+    }
     return (
         <section className="cv-sec-wrap">
             <section className="photo cv-section">
@@ -51,7 +58,7 @@ function Photo () {
                     : null}
                 </section>
                 <section className="sec-form-wrap">
-                    <PhotoInput path={filePath} updatePath={updatePath} updateAvatar={updateAvatar}/>
+                    <PhotoInput path={filePath === '' ? 'click to browse files' : filePath} updatePath={updatePath} updateAvatar={updateAvatar}/>
                     <div>
                         {userAvatar === '' ?
                         <i className="far fa-grin"></i> :
@@ -59,6 +66,11 @@ function Photo () {
                         }
                     </div>
                 </section>
+                <div className='delete-storage'>
+                    {filePath !== ''
+                    ?<button onClick={handleDelete}>delete</button>
+                    : null}
+                </div>
             </section>
         </section>
     )

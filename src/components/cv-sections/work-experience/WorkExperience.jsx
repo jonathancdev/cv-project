@@ -49,6 +49,8 @@ class WorkExperience extends Component {
         this.setCanSave = this.setCanSave.bind(this)
         this.resetExp = this.resetExp.bind(this)
         this.checkKeys = this.checkKeys.bind(this)
+        this.updateFromPreview = this.updateFromPreview.bind(this)
+        this.updateDutiesChild = this.updateDutiesChild.bind(this)
         //set expSum
         this.expSum = this.checkKeys();
 
@@ -83,16 +85,24 @@ createObject () { //save button creates new object with current form inputs, pus
     this.expSum.push(newExp)
     this.setExpArray();
     this.resetExp();
+    this.setState({
+        canSave: true
+    })
 }
 toggleNewItem () { //toggles form to allow new experience input
     this.setState(prevState => ({
         hideNewItem: !prevState.hideNewItem
       }));
-    this.setCanSave();
 }
 setDutyCount() { //counts # duties within exp object (limit 3)
     this.setState({
         dutyCount: this.state.dutyCount + 1
+    })
+}
+updateDutiesChild(newCount) {
+    this.setState({
+        //duties: array,
+        dutyCount: newCount
     })
 }
 newDuty () { //when button clicked to add new duty, checks if over limit
@@ -103,6 +113,7 @@ newDuty () { //when button clicked to add new duty, checks if over limit
     }
 }
 setExpArray () { //when new work exp obj saved, sets state array to include all in expSum array
+    console.log('setExpArray being called')
     this.setState({
         expArray: this.expSum
     })
@@ -127,6 +138,10 @@ checkKeys() { //checks local storage for any key/data pairs for workexp, returns
         const empty = []
         return empty;
     }
+}
+updateFromPreview() {
+    this.expSum = this.checkKeys()
+    this.setState({expArray: this.expSum})
 }
 //methods to save inputs as they are being entered in form
 setTitle (e) {
@@ -176,6 +191,7 @@ setYearTwo(e) {
 }
 
 render() {
+    console.log(this.state.canSave)
     return (
         <section className="cv-sec-wrap">
             <section className="work-experience cv-section">
@@ -201,7 +217,9 @@ render() {
                         <div>
                             <p>add new item</p>
                             <button onClick={this.toggleNewItem} className="add-btn">
-                                <i className="fas fa-plus"></i>
+                                {this.state.hideNewItem
+                                ? <i className="fas fa-plus"></i>
+                                : <i class="fas fa-window-minimize"></i> }
                             </button>
                         </div>
             {/* form starts here */}
@@ -284,6 +302,7 @@ render() {
                                 setDuty={this.setDuty}
                                 setDutyCount={this.setDutyCount}
                                 dutyCount={this.state.dutyCount}
+                                update={this.updateDutiesChild}
                             >
                             </Duties>
                             
@@ -293,8 +312,8 @@ render() {
                         : null}
             {/* form ends here */}
             { this.state.expArray.length > 0
-                ? <PreviewDataWork data={this.state.expArray}/>
-                : <div>null render</div> }
+                ? <PreviewDataWork updateParent={this.updateFromPreview} data={this.state.expArray}/>
+                : null }
                     </section>
                 </section>
             </section>

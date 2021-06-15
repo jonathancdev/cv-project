@@ -2,7 +2,7 @@ import React, { Component, createRef } from 'react';
 import './Contact.css';
 import InputStd from '../editable-forms/input-std'
 import ProfileForm from '../editable-forms/profile'
-import { TextAreaAuto, SaveSection } from '../../common'
+import { TextAreaAuto, SaveSection, checkStorage } from '../../common'
 
 class Contact extends Component {
     constructor() {
@@ -11,47 +11,63 @@ class Contact extends Component {
         this.emailRef = createRef();
         this.addressRef = createRef();
         this.webRef = createRef();
+
         this.state = {
-            tel: 'telephone',
-            email: 'email',
-            address: 'address',
-            web: 'website'
+            tel: checkStorage('contact1') ? localStorage.getObject('contact1').tel : 'telephone',
+            email: checkStorage('contact1') ? localStorage.getObject('contact1').email : 'email',
+            address: checkStorage('contact1') ? localStorage.getObject('contact1').address : 'address',
+            web: checkStorage('contact1') ? localStorage.getObject('contact1').web : 'website',
+            canSave: false,
         }
+
         this.setTel = this.setTel.bind(this)
         this.setEmail = this.setEmail.bind(this)
         this.setAddress = this.setAddress.bind(this)
         this.setWeb = this.setWeb.bind(this)
-        this.createArray = this.createArray.bind(this)
-        this.contactSum = [];
+        this.setCanSave = this.setCanSave.bind(this)
+    }
+
+    setCanSave() { //toggle save section
+        this.setState(prevState => ({
+            canSave: !prevState.canSave
+          }));
     }
     setTel(e) {
         const value = e.target.value;
         this.setState({
-            tel: value
+            tel: value,
+            canSave: true
         })
     }
     setEmail(e) {
         const value = e.target.value;
         this.setState({
-            email: value
+            email: value,
+            canSave: true
         })
     }
     setAddress(e) {
         const value = e.target.value;
         this.setState({
-            address: value
+            address: value,
+            canSave: true
         })
     }
     setWeb(e) {
         const value = e.target.value;
         this.setState({
-            web: value
+            web: value,
+            canSave: true
         })
     }
-    createArray() {
-        const obj = this.state;
-        const array = [obj.tel, obj.email, obj.address, obj.web]
-        return array;
+    createObject() {
+        const obj = [{
+            tel: this.state.tel,
+            email: this.state.email,
+            address: this.state.address,
+            web: this.state.web
+        }];
+        return obj;
     }
 
 render () {
@@ -65,11 +81,12 @@ render () {
                     </button>
                 </section>
                 <section className="save-section-wrap">
-                    {this.state.tel !== 'telephone'
+                    {this.state.canSave
                     ?<SaveSection
                     display={'you must save the changes on this page'}
-                    required={this.createArray()} //object or info required before saving
+                    required={this.createObject()} //object or info required before saving
                     storageName="contact"
+                    set={this.setCanSave}
                     />
                     : null}
                 </section>

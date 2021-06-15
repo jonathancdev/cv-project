@@ -2,6 +2,7 @@
     position: absolute;
     margin-left: -5px;
     margin-top: -5px;
+    cursor: pointer;
 }
 .fa-grin {
     font-size: 100px;
@@ -9,10 +10,10 @@
 }
 #btn-layer {
     position: absolute;
-    margin-left: -300px;
+    margin-left: -412px;
     margin-top: -2px;
-    width: 285px;
-    height: 23px;
+    width: 400px;
+    height: 35px;
 }
 #avatar-display {
     border: none;

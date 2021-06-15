@@ -32,6 +32,7 @@ class Education extends Component {
         this.setEduArray = this.setEduArray.bind(this)
         this.setCanSave = this.setCanSave.bind(this)
         this.checkKeys = this.checkKeys.bind(this)
+        this.updateFromPreview = this.updateFromPreview.bind(this)
         this.resetExp = this.resetExp.bind(this)
         this.expSum = this.checkKeys()
 
@@ -58,12 +59,14 @@ createObject () {
     this.expSum.push(newExp)
     this.setEduArray();
     this.resetExp();
+    this.setState({
+        canSave: true
+    })
 }
 toggleNewItem () {
     this.setState(prevState => ({
         hideNewItem: !prevState.hideNewItem
       }));
-      this.setCanSave();
 }
 setEduArray () {
     this.setState({
@@ -121,6 +124,10 @@ setYearOne(e) {
         yearOne: value
     })
 }
+updateFromPreview() {
+    this.expSum = this.checkKeys()
+    this.setState({eduArray: this.expSum})
+}
 
 render () {
     return (
@@ -147,7 +154,9 @@ render () {
                         <div>
                             <p>add new item</p>
                             <button onClick={this.toggleNewItem} className="add-btn">
-                                <i className="fas fa-plus"></i>
+                                {this.state.hideNewItem
+                                ? <i className="fas fa-plus"></i>
+                                : <i class="fas fa-window-minimize"></i> }
                             </button>
                         </div>
                         {!this.state.hideNewItem
@@ -213,8 +222,8 @@ render () {
                             </div>
                                 : null}
                             { this.state.eduArray.length > 0
-                            ? <PreviewDataEdu data={this.state.eduArray}/>
-                            : <div>null render</div> }
+                            ? <PreviewDataEdu updateParent={this.updateFromPreview} data={this.state.eduArray}/>
+                            : null }
 
                     </section>
                 </section>

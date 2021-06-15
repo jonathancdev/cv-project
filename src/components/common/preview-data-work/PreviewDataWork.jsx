@@ -1,21 +1,42 @@
 import React from 'react';
 import './PreviewDataWork.css';
+import { removeStorage } from '../../common'
 
 function PreviewDataWork (props) {
-    console.log(props.data)
 	const count = props.data.length;
 
 	function previewItem (index) {
+        const keys = Object.keys(localStorage).filter(item => item.includes('workExp'))
 		const item = props.data[index];
+        const storeCompare = localStorage.getObject(keys[index])
 		if (item) {
-        	return (<div>
+        	return (<div className="work-preview-item" id={index}>
 				{item.title + ' at ' + item.company}
+                <div className="delete-storage">
+                    {JSON.stringify(item) === JSON.stringify(storeCompare)
+                    ? <button onClick={handleDelete}>delete</button>
+                    : null}
+                </div>
             	</div>)
 		} else {
 			return null
 		}
     }
-
+    function handleDelete (e) {
+        const index = e.target.parentElement.parentElement.id
+        const keys = Object.keys(localStorage).filter(item => item.includes('workExp'))
+        removeStorage(keys[index])
+        props.updateParent()
+    }
+    function render () {
+        if (count >= 1) {
+            let items = []
+            items = array.slice(0, count)
+            return items
+        } else {
+            return null;
+        }
+    }
     const array = [
         previewItem(0),
         previewItem(1),
@@ -23,20 +44,9 @@ function PreviewDataWork (props) {
         previewItem(3),
         previewItem(4)
     ]
-
-    if (count === 1) {
-        return [array[0]]
-    } else if (count === 2){
-        return [array[0], array[1]]
-    } else if (count === 3){
-        return [array[0], array[1], array[2]]
-    } else if (count === 4){
-        return [array[0], array[1], array[2], array[3]]
-    }else if (count >= 5) {
-        return [array[0], array[1], array[2], array[3], array[4]]
-    } else {
-        return null;
-    }
+    return (
+        <ul key={props.data}>{render()}</ul>
+    )
 
 }
 

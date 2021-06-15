@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import './ProfileForm.css'
+import { TextAreaAuto } from '../../../common/'
+
 
 const ProfileForm = ({
     childRef,
@@ -35,7 +37,13 @@ const ProfileForm = ({
                   onClick={() => setEditing(true)}
                 >
                   <div>
-                      <input className="rect-std editable" placeholder={value}/>
+                  <TextAreaAuto
+                                rows='4'
+                                minRows='4'
+                                maxRows='20'
+                                placeholder={value}
+                                className="rect-long"
+                            />
                   </div>
                 </div>
             )}

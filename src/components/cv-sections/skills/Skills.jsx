@@ -58,7 +58,9 @@ saveSkill() {
         skillArray: this.skillSum
     })
     this.state.hideNewSkill = true;
-    this.setCanSave();
+    this.setState({
+        canSave: true
+    })
 }
 checkKeys() { //checks local storage for any key/data pairs for workexp, returns them in array or []
     const keys = Object.keys(localStorage)
@@ -107,9 +109,11 @@ render() {
                             <section className="duties-wrap">
                                 <div>
                                     <p>add skill</p>
-                                    <button className="add-btn" onClick={this.toggleNewItem}>
-                                        <i className="fas fa-plus"></i>
-                                    </button>
+                                    <button onClick={this.toggleNewItem} className="add-btn">
+                                {this.state.hideNewSkill
+                                ? <i className="fas fa-plus"></i>
+                                : <i class="fas fa-window-minimize"></i> }
+                            </button>
                                 </div>
 
                                 {!this.state.hideNewSkill
@@ -134,7 +138,7 @@ render() {
                             </section>
                 { this.state.skillArray.length > 0
                 ? <PreviewDataSkills data={this.state.skillArray}/>
-                : <div>null render</div> }
+                : null }
                     </section>
                 </section>
             </section>

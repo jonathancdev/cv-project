@@ -16,7 +16,6 @@ class SaveSection extends Component {
     propsExist() {
         if (this.props.required !== undefined ) {
             if (Array.isArray(this.props.required)) {
-                alert(JSON.stringify(this.props.required))
                 const array = this.props.required
                 let count = 1
                 array.forEach((obj) => {

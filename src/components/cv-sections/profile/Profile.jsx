@@ -1,7 +1,7 @@
 import React, { Component, createRef } from 'react';
 import './Profile.css';
 import ProfileForm from '../editable-forms/profile'
-import { TextAreaAuto, SaveSection, checkStorage } from '../../common'
+import { TextAreaAuto, SaveSection, checkStorage, removeStorage } from '../../common'
 
 class Profile extends Component {
     constructor() {
@@ -12,6 +12,7 @@ class Profile extends Component {
             value: checkStorage('profile') ? localStorage.getItem('profile') : 'click to edit profile',
         };
         this.setValue = this.setValue.bind(this)
+        this.handleDelete = this.handleDelete.bind(this)
     }
 
 setValue (e) {
@@ -20,6 +21,10 @@ setValue (e) {
          value: value
       })
  }
+handleDelete() {
+    removeStorage('profile')
+    this.setState({value: 'click to edit profile'})
+}
 render() {
     return (
         <section className="cv-sec-wrap">
@@ -50,8 +55,8 @@ render() {
                         {
                             <TextAreaAuto
                                 refA={this.inputRef}
-                                rows='1'
-                                minRows='1'
+                                rows='4'
+                                minRows='4'
                                 maxRows='20'
                                 placeholder='enter personal profile'
                                 className="rect-long"
@@ -63,6 +68,11 @@ render() {
                     </ProfileForm>
                     </section>
                 </section>
+                <div className="delete-storage">
+                {this.state.value !== 'click to edit profile'
+                    ?<button onClick={this.handleDelete}>delete</button>
+                    : null}
+                </div>
             </section>
         </section>
     )

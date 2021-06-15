@@ -8,6 +8,7 @@ import MonthUl from './month-ul';
 import useOutsideClick from './use-outside-click';
 import storeObjects from './store-objects'
 import checkStorage from './check-storage';
+import removeStorage from'./remove-storage'
 import PreviewDataWork from './preview-data-work';
 import PreviewDataEdu from './preview-data-edu';
 import PreviewDataSkills from './preview-data-skills';
@@ -28,6 +29,7 @@ export {
     useOutsideClick,
     storeObjects,
     checkStorage,
+    removeStorage,
     PreviewDataWork,
     PreviewDataEdu,
     PreviewDataSkills,
