@@ -185,7 +185,7 @@ p {
     justify-content: flex-end;
     background-color: transparent;
 }
-.delete-storage button {
+.delete-storage button, .expand-preview button {
     text-decoration: underline;
     border: none;
     background-color: transparent;

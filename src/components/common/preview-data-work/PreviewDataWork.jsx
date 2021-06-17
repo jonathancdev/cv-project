@@ -12,6 +12,12 @@ function PreviewDataWork (props) {
 		if (item) {
         	return (<div className="work-preview-item" id={index}>
 				{item.title + ' at ' + item.company}
+                <ul className="expandable" hidden>
+                    {item.monthOne}
+                </ul>
+                <div className="expand-preview">
+                    <button onClick={handleExpand}>expand</button>
+                </div>
                 <div className="delete-storage">
                     {JSON.stringify(item) === JSON.stringify(storeCompare)
                     ? <button onClick={handleDelete}>delete</button>
@@ -27,6 +33,16 @@ function PreviewDataWork (props) {
         const keys = Object.keys(localStorage).filter(item => item.includes('workExp'))
         removeStorage(keys[index])
         props.updateParent()
+    }
+    function handleExpand(e) {
+        const expandable = e.target.parentElement.parentElement.firstElementChild
+        if (e.target.innerHTML === 'expand') {
+        expandable.hidden = false
+        e.target.innerHTML = 'hide'
+        } else if (e.target.innerHTML === 'hide') {
+            expandable.hidden = true
+            e.target.innerHTML = 'expand' 
+        }
     }
     function render () {
         if (count >= 1) {

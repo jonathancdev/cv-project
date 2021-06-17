@@ -219,7 +219,7 @@ render() {
                             <button onClick={this.toggleNewItem} className="add-btn">
                                 {this.state.hideNewItem
                                 ? <i className="fas fa-plus"></i>
-                                : <i class="fas fa-window-minimize"></i> }
+                                : <i className="fas fa-window-minimize"></i> }
                             </button>
                         </div>
             {/* form starts here */}

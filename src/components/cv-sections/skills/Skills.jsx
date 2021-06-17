@@ -22,6 +22,7 @@ class Skills extends Component {
         this.newSkill = this.newSkill.bind(this)
         this.setCanSave = this.setCanSave.bind(this)
         this.checkKeys = this.checkKeys.bind(this)
+        this.updateFromPreview = this.updateFromPreview.bind(this)
         this.saveSkill = this.saveSkill.bind(this)
         this.toggleNewItem = this.toggleNewItem.bind(this)
         this.skillSum = this.checkKeys()
@@ -48,18 +49,18 @@ newSkill () {
 }
 setCanSave() {
     this.setState(prevState => ({
-        canSave: !prevState.canSave
+        canSave: !prevState.canSave,
       }));
+
 }
 saveSkill() {
-    this.skillSum.push(this.state.skill)
+    let newSkill = this.state.skill
+    this.skillSum.push(newSkill)
     this.setState({
         skill: 'enter skill',
-        skillArray: this.skillSum
-    })
-    this.state.hideNewSkill = true;
-    this.setState({
-        canSave: true
+        skillArray: this.skillSum,
+        canSave: true,
+        hideNewSkill: true
     })
 }
 checkKeys() { //checks local storage for any key/data pairs for workexp, returns them in array or []
@@ -71,11 +72,19 @@ checkKeys() { //checks local storage for any key/data pairs for workexp, returns
         for (i = 0; i < skillKeys.length; i++) {
             pairs.push(localStorage.getObject(skillKeys[i]))
         }
+        pairs.sort()
         return pairs;
     } else {
         const empty = []
         return empty;
     }
+}
+updateFromPreview() {
+    this.skillSum = this.checkKeys()
+    this.setState({
+        skillArray: this.skillSum,
+        skillCount: this.state.skillArray.length
+    })
 }
 setSkill(event, index) { //probably don't need array here
     const value = event.target.value;
@@ -112,7 +121,7 @@ render() {
                                     <button onClick={this.toggleNewItem} className="add-btn">
                                 {this.state.hideNewSkill
                                 ? <i className="fas fa-plus"></i>
-                                : <i class="fas fa-window-minimize"></i> }
+                                : <i className="fas fa-window-minimize"></i> }
                             </button>
                                 </div>
 
@@ -137,7 +146,7 @@ render() {
                                 : null}
                             </section>
                 { this.state.skillArray.length > 0
-                ? <PreviewDataSkills data={this.state.skillArray}/>
+                ? <PreviewDataSkills updateParent={this.updateFromPreview} data={this.state.skillArray}/>
                 : null }
                     </section>
                 </section>

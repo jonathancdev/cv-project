@@ -38,9 +38,9 @@ const ProfileForm = ({
                 >
                   <div>
                   <TextAreaAuto
-                                rows='4'
-                                minRows='4'
-                                maxRows='20'
+                                rows='3.5'
+                                minRows='3.5'
+                                maxRows='30'
                                 placeholder={value}
                                 className="rect-long"
                             />

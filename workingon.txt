@@ -1,0 +1,2 @@
+skills delete button renders still breaking after deleting sometimes
+contact delete button

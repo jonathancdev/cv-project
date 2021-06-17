@@ -2,7 +2,7 @@ import React, { Component, createRef } from 'react';
 import './Contact.css';
 import InputStd from '../editable-forms/input-std'
 import ProfileForm from '../editable-forms/profile'
-import { TextAreaAuto, SaveSection, checkStorage } from '../../common'
+import { TextAreaAuto, SaveSection, checkStorage, removeStorage } from '../../common'
 
 class Contact extends Component {
     constructor() {
@@ -25,6 +25,8 @@ class Contact extends Component {
         this.setAddress = this.setAddress.bind(this)
         this.setWeb = this.setWeb.bind(this)
         this.setCanSave = this.setCanSave.bind(this)
+        this.inputsExist = this.inputsExist.bind(this)
+        this.handleDelete = this.handleDelete.bind(this)
     }
 
     setCanSave() { //toggle save section
@@ -69,6 +71,22 @@ class Contact extends Component {
         }];
         return obj;
     }
+    inputsExist () {
+        if(this.state.tel !== 'telephone' || this.state.address !== 'address' || this.state.email !== 'email' || this.state.web !== 'website') {
+            return true
+        } else {
+            return false
+        }
+    }
+    handleDelete () {
+        removeStorage('contact1')
+        this.setState({
+            tel: 'telephone',
+            email: 'email',
+            address: 'address',
+            web: 'website',
+        })
+    }
 
 render () {
     return (
@@ -80,7 +98,7 @@ render () {
                         <i className="far fa-question-circle"></i>
                     </button>
                 </section>
-                <section className="save-section-wrap">
+                <section key={this.state.setCanSave} className="save-section-wrap">
                     {this.state.canSave
                     ?<SaveSection
                     display={'you must save the changes on this page'}
@@ -154,6 +172,11 @@ render () {
                         </InputStd>  
                     </section>
                 </section>
+                <div className="delete-storage">
+                {this.inputsExist()
+                    ?<button onClick={this.handleDelete}>delete</button>
+                    : null}
+                </div>
             </section>
         </section>
     )

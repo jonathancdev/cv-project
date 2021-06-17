@@ -10,6 +10,7 @@ class Profile extends Component {
 
         this.state = {
             value: checkStorage('profile') ? localStorage.getItem('profile') : 'click to edit profile',
+            canSave: false
         };
         this.setValue = this.setValue.bind(this)
         this.handleDelete = this.handleDelete.bind(this)
@@ -18,14 +19,22 @@ class Profile extends Component {
 setValue (e) {
       const value = e.target.value;
       this.setState({
-         value: value
+         value: value,
+         canSave: this.state.value !== 'click to edit profile' && this.state.value !== localStorage.getItem('profile')
       })
  }
+setCanSave() {
+    this.setState({
+        canSave: this.state.value !== 'click to edit profile' && this.state.value !== localStorage.getItem('profile')
+    })
+}
 handleDelete() {
     removeStorage('profile')
     this.setState({value: 'click to edit profile'})
 }
 render() {
+    console.log(this.state.value)
+    console.log(localStorage.getItem('profile'))
     return (
         <section className="cv-sec-wrap">
             <section className="profile cv-section">
@@ -36,7 +45,7 @@ render() {
                     </button>
                 </section>
                 <section className="save-section-wrap">
-                    {this.state.value !== 'click to edit profile' && this.state.value !== localStorage.getItem('profile')
+                    {this.state.canSave
                     ?<SaveSection
                     display={'you must save the changes on this page'}
                     required={this.state.value} //object or info required before saving
@@ -55,9 +64,9 @@ render() {
                         {
                             <TextAreaAuto
                                 refA={this.inputRef}
-                                rows='4'
-                                minRows='4'
-                                maxRows='20'
+                                rows='3.5'
+                                minRows='3.5'
+                                maxRows='30'
                                 placeholder='enter personal profile'
                                 className="rect-long"
                                 value={this.state.value}
