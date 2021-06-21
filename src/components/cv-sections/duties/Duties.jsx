@@ -7,14 +7,25 @@ function Duties (props) {
     const count = props.dutyCount
     function handleDelete(e) {
         const array = props.value
-        const index = e.target.parentElement.parentElement.id
-        props.update(count - 1)
+        const target = e.target.parentElement.parentElement.id
+        const index = array.indexOf(target)
         array[index] = 'what did you do in this position?'
+        //console.log(target)
+        //console.log(index)
+        props.update(count - 1)
+        orderArray(array, index, 2)
 
     }
+    function orderArray(array, fromIndex, toIndex) {
+        const element = array[fromIndex]
+        array.splice(fromIndex, 1)
+        array.splice(toIndex, 0, element)
+        return array
+    }
+
     function inputStd (index) {
 
-        return (<div id={index}>
+        return (<div key={index} id={props.value[index]}>
             <InputStd
             childRef={dutyRef}
             value={props.value[index]}

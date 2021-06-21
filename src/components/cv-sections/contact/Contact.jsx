@@ -13,11 +13,12 @@ class Contact extends Component {
         this.webRef = createRef();
 
         this.state = {
-            tel: checkStorage('contact1') ? localStorage.getObject('contact1').tel : 'telephone',
-            email: checkStorage('contact1') ? localStorage.getObject('contact1').email : 'email',
-            address: checkStorage('contact1') ? localStorage.getObject('contact1').address : 'address',
-            web: checkStorage('contact1') ? localStorage.getObject('contact1').web : 'website',
+            tel: checkStorage('contact') ? localStorage.getObject('contact')[0].tel : 'telephone',
+            email: checkStorage('contact') ? localStorage.getObject('contact')[0].email : 'email',
+            address: checkStorage('contact') ? localStorage.getObject('contact')[0].address : 'address',
+            web: checkStorage('contact') ? localStorage.getObject('contact')[0].web : 'website',
             canSave: false,
+            saveAfterDelete: false
         }
 
         this.setTel = this.setTel.bind(this)
@@ -25,6 +26,7 @@ class Contact extends Component {
         this.setAddress = this.setAddress.bind(this)
         this.setWeb = this.setWeb.bind(this)
         this.setCanSave = this.setCanSave.bind(this)
+        this.setDeleteSave = this.setDeleteSave.bind(this)
         this.inputsExist = this.inputsExist.bind(this)
         this.handleDelete = this.handleDelete.bind(this)
     }
@@ -32,6 +34,12 @@ class Contact extends Component {
     setCanSave() { //toggle save section
         this.setState(prevState => ({
             canSave: !prevState.canSave
+          }));
+    }
+    setDeleteSave() {
+        this.setState({saveAfterDelete: true})
+        this.setState(prevState => ({
+            canSave: !prevState.canSave,
           }));
     }
     setTel(e) {
@@ -79,13 +87,14 @@ class Contact extends Component {
         }
     }
     handleDelete () {
-        removeStorage('contact1')
+        removeStorage('contact')
         this.setState({
             tel: 'telephone',
             email: 'email',
             address: 'address',
             web: 'website',
         })
+        this.setDeleteSave()
     }
 
 render () {
@@ -99,7 +108,7 @@ render () {
                     </button>
                 </section>
                 <section key={this.state.setCanSave} className="save-section-wrap">
-                    {this.state.canSave
+                    {this.state.canSave || this.state.saveAfterDelete
                     ?<SaveSection
                     display={'you must save the changes on this page'}
                     required={this.createObject()} //object or info required before saving

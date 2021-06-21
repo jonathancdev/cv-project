@@ -33,8 +33,6 @@ handleDelete() {
     this.setState({value: 'click to edit profile'})
 }
 render() {
-    console.log(this.state.value)
-    console.log(localStorage.getItem('profile'))
     return (
         <section className="cv-sec-wrap">
             <section className="profile cv-section">

@@ -22,7 +22,6 @@ const ProfileForm = ({
     const handleKeyDown = (event, type) => {
         //come back to this portion of tutorial
     };
-    console.log(childRef)
     return (
         <section {...props}>
             {isEditing ? (

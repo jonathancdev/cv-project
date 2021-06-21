@@ -19,6 +19,7 @@ class Education extends Component {
             yearOne: 'year',
             eduArray: this.checkKeys(),
             canSave: false,
+            saveAfterDelete: false,
             hideNewItem: true
         };
 
@@ -31,6 +32,7 @@ class Education extends Component {
         this.setYearOne = this.setYearOne.bind(this)
         this.setEduArray = this.setEduArray.bind(this)
         this.setCanSave = this.setCanSave.bind(this)
+        this.setDeleteSave = this.setDeleteSave.bind(this)
         this.checkKeys = this.checkKeys.bind(this)
         this.updateFromPreview = this.updateFromPreview.bind(this)
         this.resetExp = this.resetExp.bind(this)
@@ -77,23 +79,39 @@ setCanSave() { //toggle save section
     this.setState(prevState => ({
         canSave: !prevState.canSave
       }));
+      this.setState({saveAfterDelete: false})
 }
-checkKeys() { //checks local storage for any key/data pairs for workexp, returns them in array or []
-    const keys = Object.keys(localStorage)
-    const eduKeys = keys.filter(element => element.includes('eduExp'))
-    if (eduKeys.length > 0) {
-        console.log('hello')
-        let i = 0;
-        let pairs = [];
-        for (i = 0; i < eduKeys.length; i++) {
-            pairs.push(localStorage.getObject(eduKeys[i]))
-        }
-        return pairs;
+setDeleteSave() {
+    this.setState({saveAfterDelete: true})
+    this.setState(prevState => ({
+        canSave: !prevState.canSave,
+      }));
+}
+
+checkKeys() { //new check keys
+    if (Object.keys(localStorage).includes('education')) {
+        const storage = localStorage.getObject('education')
+        return storage;
     } else {
         const empty = []
         return empty;
     }
 }
+// checkKeys() { //checks local storage for any key/data pairs for workexp, returns them in array or []
+//     const keys = Object.keys(localStorage)
+//     const eduKeys = keys.filter(element => element.includes('eduExp'))
+//     if (eduKeys.length > 0) {
+//         let i = 0;
+//         let pairs = [];
+//         for (i = 0; i < eduKeys.length; i++) {
+//             pairs.push(localStorage.getObject(eduKeys[i]))
+//         }
+//         return pairs;
+//     } else {
+//         const empty = []
+//         return empty;
+//     }
+// }
 setLoc (e) {
     const value = e.target.value;
     this.setState({
@@ -124,9 +142,8 @@ setYearOne(e) {
         yearOne: value
     })
 }
-updateFromPreview() {
-    this.expSum = this.checkKeys()
-    this.setState({eduArray: this.expSum})
+updateFromPreview(array) {
+    this.setState({eduArray: array})
 }
 
 render () {
@@ -140,11 +157,11 @@ render () {
                     </button>
                 </section>
                 <section className="save-section-wrap">
-                    {this.expSum.length > 0 && this.state.canSave === true
+                    {(this.state.eduArray.length > 0 && this.state.canSave === true) || this.state.saveAfterDelete === true
                     ?<SaveSection
                     display={'you must save the changes on this page'}
-                    required={this.expSum} //object or info required before saving
-                    storageName="eduExp"
+                    required={this.state.eduArray} //object or info required before saving
+                    storageName="education"
                     set={this.setCanSave}
                     />
                     : null}
@@ -222,7 +239,7 @@ render () {
                             </div>
                                 : null}
                             { this.state.eduArray.length > 0
-                            ? <PreviewDataEdu updateParent={this.updateFromPreview} data={this.state.eduArray}/>
+                            ? <PreviewDataEdu save={this.setDeleteSave} updateParent={this.updateFromPreview} data={this.state.eduArray}/>
                             : null }
 
                     </section>

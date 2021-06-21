@@ -11,7 +11,10 @@ import checkStorage from './check-storage';
 import removeStorage from'./remove-storage'
 import PreviewDataWork from './preview-data-work';
 import PreviewDataEdu from './preview-data-edu';
-import PreviewDataSkills from './preview-data-skills';
+import PreviewDataSkills2 from './preview-data-skills2';
+import SkillItem from './skill-item'
+import WorkItem from './work-item'
+import EduItem from './edu-item'
 import SaveSection from './save-section';
 
 
@@ -32,6 +35,9 @@ export {
     removeStorage,
     PreviewDataWork,
     PreviewDataEdu,
-    PreviewDataSkills,
+    PreviewDataSkills2,
+    SkillItem,
+    WorkItem,
+    EduItem,
     SaveSection
 }

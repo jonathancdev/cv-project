@@ -1,7 +1,7 @@
 import React, { Component, createRef } from 'react';
 import './WorkExperience.css';
 import InputStd from '../editable-forms/input-std'
-import { MonthDrop, PreviewDataWork, SaveSection } from '../../common'
+import { MonthDrop, PreviewDataWork, SaveSection, removeStorage} from '../../common'
 import Duties from '../duties';
 
 class WorkExperience extends Component {
@@ -31,6 +31,7 @@ class WorkExperience extends Component {
             dutyCount: 0,
             //booleans
             canSave: false,
+            saveAfterDelete: false,
             hideNewItem: true
         };
         //bind methods
@@ -47,6 +48,7 @@ class WorkExperience extends Component {
         this.setYearTwo = this.setYearTwo.bind(this)
         this.setExpArray = this.setExpArray.bind(this)
         this.setCanSave = this.setCanSave.bind(this)
+        this.setDeleteSave = this.setDeleteSave.bind(this)
         this.resetExp = this.resetExp.bind(this)
         this.checkKeys = this.checkKeys.bind(this)
         this.updateFromPreview = this.updateFromPreview.bind(this)
@@ -113,7 +115,6 @@ newDuty () { //when button clicked to add new duty, checks if over limit
     }
 }
 setExpArray () { //when new work exp obj saved, sets state array to include all in expSum array
-    console.log('setExpArray being called')
     this.setState({
         expArray: this.expSum
     })
@@ -122,26 +123,26 @@ setCanSave() { //toggle save section
     this.setState(prevState => ({
         canSave: !prevState.canSave
       }));
+      this.setState({saveAfterDelete: false})
 }
-checkKeys() { //checks local storage for any key/data pairs for workexp, returns them in array or []
-    const keys = Object.keys(localStorage)
-    const workKeys = keys.filter(element => element.includes('workExp'))
-    if (workKeys.length > 0) {
-        console.log('hello')
-        let i = 0;
-        let pairs = [];
-        for (i = 0; i < workKeys.length; i++) {
-            pairs.push(localStorage.getObject(workKeys[i]))
-        }
-        return pairs;
+setDeleteSave() {
+    this.setState({saveAfterDelete: true})
+    this.setState(prevState => ({
+        canSave: !prevState.canSave,
+      }));
+}
+checkKeys() { //new check keys
+    if (Object.keys(localStorage).includes('work')) {
+        const storage = localStorage.getObject('work')
+        return storage;
     } else {
         const empty = []
         return empty;
     }
 }
-updateFromPreview() {
-    this.expSum = this.checkKeys()
-    this.setState({expArray: this.expSum})
+
+updateFromPreview(array) {
+    this.setState({expArray: array})
 }
 //methods to save inputs as they are being entered in form
 setTitle (e) {
@@ -191,7 +192,7 @@ setYearTwo(e) {
 }
 
 render() {
-    console.log(this.state.canSave)
+    console.log(this.state.expArray.length > 0)
     return (
         <section className="cv-sec-wrap">
             <section className="work-experience cv-section">
@@ -202,11 +203,11 @@ render() {
                         </button>
                 </section>
                 <section className="save-section-wrap">
-                    {this.expSum.length > 0 && this.state.canSave === true
+                    {(this.state.expArray.length > 0 && this.state.canSave === true) || this.state.saveAfterDelete === true
                     ?<SaveSection
                     display={'you must save the changes on this page'}
                     required={this.state.expArray} //object or info required before saving
-                    storageName="workExp"
+                    storageName="work"
                     set={this.setCanSave}
                     />
                     : null}
@@ -312,7 +313,7 @@ render() {
                         : null}
             {/* form ends here */}
             { this.state.expArray.length > 0
-                ? <PreviewDataWork updateParent={this.updateFromPreview} data={this.state.expArray}/>
+                ? <PreviewDataWork save={this.setDeleteSave} updateParent={this.updateFromPreview} data={this.state.expArray}/>
                 : null }
                     </section>
                 </section>

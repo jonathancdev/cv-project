@@ -8,7 +8,6 @@ function Photo () {
     //checks if items are already in localstorage for init
     const [userAvatar, setUserAvatar] = useState(() => {
         if (checkStorage('avatar')) {
-            console.log(typeof localStorage.getItem('avatar'))
             return localStorage.getItem('avatar');
         } else {
             return ''

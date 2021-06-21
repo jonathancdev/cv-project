@@ -1,7 +1,7 @@
 import React, { Component, createRef } from 'react';
 import './Skills.css';
 import InputStd from '../editable-forms/input-std'
-import {SaveSection, PreviewDataSkills} from '../../common'
+import {SaveSection, PreviewDataSkills2} from '../../common'
 
 class Skills extends Component {
     constructor() {
@@ -13,14 +13,15 @@ class Skills extends Component {
             skillCount: 0,
             skillArray: this.checkKeys(),
             canSave: false,
+            saveAfterDelete: false,
             hideNewSkill: true
         };
-        //method to push to array?
-        //method to reset array (can probably put in other method)
+
         this.setSkill = this.setSkill.bind(this)
         this.setSkillCount = this.setSkillCount.bind(this)
         this.newSkill = this.newSkill.bind(this)
         this.setCanSave = this.setCanSave.bind(this)
+        this.setDeleteSave = this.setDeleteSave.bind(this)
         this.checkKeys = this.checkKeys.bind(this)
         this.updateFromPreview = this.updateFromPreview.bind(this)
         this.saveSkill = this.saveSkill.bind(this)
@@ -51,7 +52,14 @@ setCanSave() {
     this.setState(prevState => ({
         canSave: !prevState.canSave,
       }));
-
+      this.setState({saveAfterDelete: false})
+}
+setDeleteSave() {
+    this.setState({saveAfterDelete: true})
+    this.setState(prevState => ({
+        canSave: !prevState.canSave,
+      }));
+      this.setState({expArray: this.checkKeys()})
 }
 saveSkill() {
     let newSkill = this.state.skill
@@ -63,27 +71,33 @@ saveSkill() {
         hideNewSkill: true
     })
 }
-checkKeys() { //checks local storage for any key/data pairs for workexp, returns them in array or []
-    const keys = Object.keys(localStorage)
-    const skillKeys = keys.filter(element => element.includes('skill'))
-    if (skillKeys.length > 0) {
-        let i = 0;
-        let pairs = [];
-        for (i = 0; i < skillKeys.length; i++) {
-            pairs.push(localStorage.getObject(skillKeys[i]))
-        }
-        pairs.sort()
-        return pairs;
+checkKeys() { //new check keys
+    if (Object.keys(localStorage).includes('skill')) {
+        const storage = localStorage.getObject('skill')
+        return storage;
     } else {
         const empty = []
         return empty;
     }
 }
-updateFromPreview() {
-    this.skillSum = this.checkKeys()
+// checkKeys() { //checks local storage for any key/data pairs for workexp, returns them in array or []
+//     const skillKeys = Object.keys(localStorage).filter(item => item.includes('skill')).sort()
+//     if (skillKeys.length > 0) {
+//         let i = 0;
+//         let pairs = [];
+//         for (i = 0; i < skillKeys.length; i++) {
+//             pairs.push(localStorage.getObject(skillKeys[i]))
+//         }
+//         pairs.sort()
+//         return pairs;
+//     } else {
+//         const empty = []
+//         return empty;
+//     }
+// }
+updateFromPreview(array) {
     this.setState({
-        skillArray: this.skillSum,
-        skillCount: this.state.skillArray.length
+        skillArray: array,
     })
 }
 setSkill(event, index) { //probably don't need array here
@@ -104,7 +118,7 @@ render() {
                     </button>
                 </section>
                 <section className="save-section-wrap">
-                    {this.state.skillArray.length > 0 && this.state.canSave === true
+                    {(this.state.skillArray.length > 0 && this.state.canSave === true) || this.state.saveAfterDelete === true
                     ?<SaveSection
                     display={'you must save the changes on this page'}
                     required={this.state.skillArray} //what goes here?
@@ -146,8 +160,8 @@ render() {
                                 : null}
                             </section>
                 { this.state.skillArray.length > 0
-                ? <PreviewDataSkills updateParent={this.updateFromPreview} data={this.state.skillArray}/>
-                : null }
+                ? <PreviewDataSkills2 save={this.setDeleteSave} updateParent={this.updateFromPreview} data={this.state.skillArray}/>
+                : <PreviewDataSkills2 updateParent={this.updateFromPreview} data={this.state.skillArray}/> }
                     </section>
                 </section>
             </section>

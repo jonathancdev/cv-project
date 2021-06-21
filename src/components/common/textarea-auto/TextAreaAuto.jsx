@@ -34,6 +34,7 @@ class TextAreaAuto extends Component {
 	};
 	
 	render() {
+		console.log('render taa')
 		return (
 			<textarea
 				ref={this.props.refA}

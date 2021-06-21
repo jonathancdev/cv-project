@@ -16,8 +16,6 @@ function PreviewDataSkills (props) {
                     <div className="skill-preview-item" id={index}>
 				{item}
                 <div className="delete-storage">
-                    {log(item)}
-                    {log(storeCompare)}
                     {item === storeCompare
                     ? <button onClick={handleDelete}>delete</button>
                     : null}
@@ -29,15 +27,12 @@ function PreviewDataSkills (props) {
 			return null
 		}
     }
-    function log(thing) {
-        console.log(thing)
-    }
 
     function handleDelete (e) {
         const index = e.target.parentElement.parentElement.id
         const keys = Object.keys(localStorage).filter(item => item.includes('skill')).sort()
         removeStorage(keys[index])
-        props.updateParent()
+        //props.updateParent()
     }
     const array = [
         previewItem(0),
