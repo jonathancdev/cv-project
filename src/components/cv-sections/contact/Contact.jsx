@@ -152,7 +152,7 @@ render () {
                         childRef={this.addressRef}
                         type="textarea"
                         >
-                        {
+                        
                             <TextAreaAuto
                                 refA={this.addressRef}
                                 rows='4'
@@ -163,7 +163,7 @@ render () {
                                 value={this.state.address}
                                 setValue={this.setAddress}
                             />
-                        }
+                        
                         </ProfileForm>
                         
                         <InputStd

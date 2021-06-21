@@ -41,7 +41,8 @@ const ProfileForm = ({
                                 minRows='3.5'
                                 maxRows='30'
                                 placeholder={value}
-                                className="rect-long"
+                                className="rect-long disabled"
+                                readOnly={true}
                             />
                   </div>
                 </div>

@@ -4,15 +4,14 @@ import './TextAreaAuto.css'
 class TextAreaAuto extends Component {
 	constructor(props) {
 		super(props);
+
 		this.state = {
 			value: this.props.value,
 			rows: this.props.rows,
 			minRows: this.props.minRows,
 			maxRows: this.props.maxRows,
 		};
-
 	}
-	
 	handleChange = (event) => {
 		const lineHeight = 30;
 		const { minRows, maxRows } = this.state;
@@ -34,15 +33,16 @@ class TextAreaAuto extends Component {
 	};
 	
 	render() {
-		console.log('render taa')
+		console.log(this.props)
 		return (
-			<textarea
+				<textarea
 				ref={this.props.refA}
 				rows={this.state.rows}
 				value={this.props.value}
 				placeholder={this.props.placeholder}
 				className={this.props.className}
-				onChange={this.handleChange.bind(this)}
+				onChange={this.handleChange}
+				readOnly={this.props.readOnly === true ? true : false}
 			/>
 		);
 	}
