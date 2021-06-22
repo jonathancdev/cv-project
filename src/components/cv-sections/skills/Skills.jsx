@@ -72,8 +72,8 @@ saveSkill() {
     })
 }
 checkKeys() { //new check keys
-    if (Object.keys(localStorage).includes('skill')) {
-        const storage = localStorage.getObject('skill')
+    if (Object.keys(localStorage).includes('skills')) {
+        const storage = localStorage.getObject('skills')
         return storage;
     } else {
         const empty = []
@@ -122,7 +122,7 @@ render() {
                     ?<SaveSection
                     display={'you must save the changes on this page'}
                     required={this.state.skillArray} //what goes here?
-                    storageName="skill"
+                    storageName="skills"
                     set={this.setCanSave}
                     />
                     : null}
@@ -153,6 +153,7 @@ render() {
                                         onChange={(e) => {
                                             this.setSkill(e);
                                         }}
+                                        maxLength="50"
                                     />
                                 </InputStd>
                                 <button onClick={this.saveSkill}>save</button>

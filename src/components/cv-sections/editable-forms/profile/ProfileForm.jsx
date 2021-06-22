@@ -34,6 +34,7 @@ const ProfileForm = ({
             ) : (
                 <div
                   onClick={() => setEditing(true)}
+                  onFocus={() => setEditing(true)}
                 >
                   <div>
                   <TextAreaAuto

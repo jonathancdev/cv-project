@@ -25,9 +25,10 @@ const InputStd = ({
             ) : (
                 <div
                   onClick={() => setEditing(true)}
+                  onFocus={() => setEditing(true)}
                 >
                   <div>
-                      <input className="rect-std" placeholder={value} />
+                      <input className="rect-std" placeholder={value} readOnly={true}/>
                   </div>
                 </div>
             )}

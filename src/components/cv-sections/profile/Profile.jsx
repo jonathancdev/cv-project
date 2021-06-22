@@ -69,6 +69,7 @@ render() {
                                 className="rect-long"
                                 value={this.state.value}
                                 setValue={this.setValue}
+                                length="1000"
                             />
                         }
 

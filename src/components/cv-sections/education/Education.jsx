@@ -187,7 +187,8 @@ render () {
                                         className="rect-std"
                                         placeholder='institution'
                                         value={this.state.loc} 
-                                        onChange={this.setLoc} 
+                                        onChange={this.setLoc}
+                                        maxLength="75"
 
                                     />
                                 </InputStd>
@@ -202,6 +203,7 @@ render () {
                                         placeholder='type of degree or certificate'
                                         value={this.state.degree} 
                                         onChange={this.setDegree} 
+                                        maxLength="75"
 
                                     />
                                 </InputStd>
@@ -215,8 +217,8 @@ render () {
                                         className="rect-std"
                                         placeholder='description'
                                         value={this.state.desc} 
-                                        onChange={this.setDesc} 
-
+                                        onChange={this.setDesc}
+                                        maxLength="200"
                                     />
                                 </InputStd>
                                 <p>graduated</p>
@@ -227,7 +229,6 @@ render () {
                             />
                                 <div>
                                     <input 
-                                        type="year" 
                                         className="rect-date year" 
                                         placeholder="year"
                                         onChange={this.setYearOne}

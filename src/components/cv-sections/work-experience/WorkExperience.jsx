@@ -236,6 +236,7 @@ render() {
                                     placeholder='enter title'
                                     value={this.state.title} 
                                     onChange={this.setTitle} 
+                                    maxLength="75"
 
                                 />
                             </InputStd>
@@ -250,7 +251,8 @@ render() {
                                     className="rect-std"
                                     placeholder='enter company'
                                     value={this.state.company} 
-                                    onChange={this.setCompany} 
+                                    onChange={this.setCompany}
+                                    maxLength="50"
 
                                 />
                             </InputStd>
@@ -264,7 +266,6 @@ render() {
                             />
                                 <div>
                                     <input 
-                                        type="year" 
                                         className="rect-date year" 
                                         placeholder="year"
                                         onChange={this.setYearOne}
@@ -280,7 +281,6 @@ render() {
                             />
                                 <div>
                                     <input 
-                                    type="year" 
                                     className="rect-date year" 
                                     placeholder="year"
                                     onChange={this.setYearTwo}

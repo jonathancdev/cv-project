@@ -38,6 +38,7 @@ function Duties (props) {
                     onChange={(e) => {
                         props.setDuty(e, index);
                     }}
+                    maxLength="100"
                 />
             </InputStd>
             <div className="delete-storage">

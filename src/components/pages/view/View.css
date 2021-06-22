@@ -1,0 +1,13 @@
+.view .section-wrap {
+    margin: 0 auto;
+    border-style: dotted;
+    height: 800px;
+    width: 650px;
+}
+#view-avatar {
+    height: 100px;
+    width: 100px;
+}
+.view-wrapper {
+    border-style: dotted;
+}

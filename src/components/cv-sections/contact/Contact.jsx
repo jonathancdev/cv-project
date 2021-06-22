@@ -29,6 +29,8 @@ class Contact extends Component {
         this.setDeleteSave = this.setDeleteSave.bind(this)
         this.inputsExist = this.inputsExist.bind(this)
         this.handleDelete = this.handleDelete.bind(this)
+
+        this.contactObj = []
     }
 
     setCanSave() { //toggle save section
@@ -87,7 +89,6 @@ class Contact extends Component {
         }
     }
     handleDelete () {
-        removeStorage('contact')
         this.setState({
             tel: 'telephone',
             email: 'email',
@@ -162,6 +163,8 @@ render () {
                                 className="rect-long"
                                 value={this.state.address}
                                 setValue={this.setAddress}
+                                length="200"
+
                             />
                         
                         </ProfileForm>

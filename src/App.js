@@ -1,8 +1,8 @@
 import './App.css';
 import React from "react";
-import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
+import { Route, BrowserRouter as Router, Switch, withRouter } from 'react-router-dom';
 import { Header, Footer, storeObjects } from './components/common';
-import { HomeMain, Create, Pricing, Login, Signup, Help } from './components/pages'
+import { HomeMain, Create, Pricing, Login, Signup, Help, View } from './components/pages'
 
 function App() {
   storeObjects()
@@ -32,6 +32,7 @@ function App() {
             <Route path="/help">
               <Help />
             </Route>
+            <Route exact path="/view" component={withRouter(View)} />
           </Switch>
         </main>
         <footer>

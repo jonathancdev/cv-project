@@ -36,7 +36,7 @@ class PhotoInput extends Component {
         return(
             <section key={this.props.path}>
                 <input className="rect-std" placeholder={this.props.path} disabled ref={this.fileDisplay}></input>
-                <input onChange={this.onChange} id="browse-btn" type="file" hidden ref={this.fileInput}></input>
+                <input onChange={this.onChange} id="browse-btn" type="file" accept="image/png, image/gif, image/jpeg" hidden ref={this.fileInput}></input>
                 <label htmlFor="browse-btn" id="btn-lbl"><div id="btn-layer"></div></label>
             </section>
         )
