@@ -1,9 +1,9 @@
 import { React, useState, useEffect, useRef } from 'react';
 
-function ViewContact () {
+function ViewContact (props) {
 
     const [state1, setState1] = useState('state');
-    const contact = localStorage.getObject('contact')
+    const contact = localStorage.getObject(props.userId + '_contact')
     console.log(contact)
     return (
         <div className="view-wrapper contact">

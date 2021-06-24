@@ -4,8 +4,8 @@ import InputStd from '../editable-forms/input-std'
 import {SaveSection, PreviewDataSkills2} from '../../common'
 
 class Skills extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
 
         this.skillRef = createRef();
         this.state = {
@@ -72,8 +72,8 @@ saveSkill() {
     })
 }
 checkKeys() { //new check keys
-    if (Object.keys(localStorage).includes('skills')) {
-        const storage = localStorage.getObject('skills')
+    if (Object.keys(localStorage).includes(this.props.userId + "_skills")) {
+        const storage = localStorage.getObject(this.props.userId + "_skills")
         return storage;
     } else {
         const empty = []
@@ -122,7 +122,7 @@ render() {
                     ?<SaveSection
                     display={'you must save the changes on this page'}
                     required={this.state.skillArray} //what goes here?
-                    storageName="skills"
+                    storageName={this.props.userId + "_skills"}
                     set={this.setCanSave}
                     />
                     : null}
@@ -161,8 +161,8 @@ render() {
                                 : null}
                             </section>
                 { this.state.skillArray.length > 0
-                ? <PreviewDataSkills2 save={this.setDeleteSave} updateParent={this.updateFromPreview} data={this.state.skillArray}/>
-                : <PreviewDataSkills2 updateParent={this.updateFromPreview} data={this.state.skillArray}/> }
+                ? <PreviewDataSkills2 userId={this.props.userId} save={this.setDeleteSave} updateParent={this.updateFromPreview} data={this.state.skillArray}/>
+                : null}
                     </section>
                 </section>
             </section>

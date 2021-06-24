@@ -4,12 +4,12 @@ import ProfileForm from '../editable-forms/profile'
 import { TextAreaAuto, SaveSection, checkStorage, removeStorage } from '../../common'
 
 class Profile extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.inputRef = createRef();
 
         this.state = {
-            value: checkStorage('profile') ? localStorage.getItem('profile') : 'click to edit profile',
+            value: checkStorage(this.props.userId + '_profile') ? localStorage.getItem(this.props.userId + '_profile') : 'click to edit profile',
             canSave: false
         };
         this.setValue = this.setValue.bind(this)
@@ -20,16 +20,16 @@ setValue (e) {
       const value = e.target.value;
       this.setState({
          value: value,
-         canSave: this.state.value !== 'click to edit profile' && this.state.value !== localStorage.getItem('profile')
+         canSave: this.state.value !== 'click to edit profile' && this.state.value !== localStorage.getItem(this.props.userId + '_profile')
       })
  }
 setCanSave() {
     this.setState({
-        canSave: this.state.value !== 'click to edit profile' && this.state.value !== localStorage.getItem('profile')
+        canSave: this.state.value !== 'click to edit profile' && this.state.value !== localStorage.getItem(this.props.userId + '_profile')
     })
 }
 handleDelete() {
-    removeStorage('profile')
+    removeStorage(this.props.userId + "_profile")
     this.setState({value: 'click to edit profile'})
 }
 render() {
@@ -47,7 +47,7 @@ render() {
                     ?<SaveSection
                     display={'you must save the changes on this page'}
                     required={this.state.value} //object or info required before saving
-                    storageName="profile"
+                    storageName={this.props.userId + "_profile"}
                     />
                     : null}
                 </section>

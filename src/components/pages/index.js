@@ -4,6 +4,7 @@ import Create from './create';
 import Pricing from './pricing';
 import Login from './login';
 import Signup from './signup';
+import Account from './account';
 import Help from './help';
 import View from './view'
 import ViewPhoto from './view-components/view-photo'
@@ -20,6 +21,7 @@ export {
     Pricing,
     Login,
     Signup,
+    Account,
     Help,
     View,
     ViewPhoto,

@@ -1,9 +1,9 @@
 import { React, useState, useEffect, useRef } from 'react';
 
-function ViewSkills () {
+function ViewSkills (props) {
 
     const [state1, setState1] = useState('state');
-    const skills = localStorage.getObject('skills')
+    const skills = localStorage.getObject(props.userId + '_skills')
     console.log(skills)
     return (
         <div className="view-wrapper skills">

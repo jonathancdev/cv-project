@@ -10,6 +10,7 @@ import SkillItems from './skill-items';
 import PhotoInput from './photo-input';
 import ProfileForm from './editable-forms/profile'
 import InputStd from './editable-forms/input-std'
+import InputPwd from './editable-forms/input-pwd'
 import Cvnav from './cvnav';
 
 export { 
@@ -25,5 +26,6 @@ export {
     PhotoInput,
     ProfileForm,
     InputStd,
+    InputPwd,
     Cvnav
 }

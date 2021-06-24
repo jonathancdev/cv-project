@@ -5,9 +5,9 @@ import './WorkItem.css';
 function WorkItem (props) {
 
     function canDelete() {
-        if (localStorage.getObject('work')) {
-            if (localStorage.getObject('work').length > props.index) {
-                if (localStorage.getObject('work')[props.index].title === props.object.title) {
+        if (localStorage.getObject(props.userId + '_work')) {
+            if (localStorage.getObject(props.userId + '_work').length > props.index) {
+                if (localStorage.getObject(props.userId + '_work')[props.index].title === props.object.title) {
                     return true
                 }
             }

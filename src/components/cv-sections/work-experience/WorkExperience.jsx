@@ -5,8 +5,8 @@ import { MonthDrop, PreviewDataWork, SaveSection, removeStorage} from '../../com
 import Duties from '../duties';
 
 class WorkExperience extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         //refs
         this.titleRef = createRef();
         this.companyRef = createRef();
@@ -132,8 +132,8 @@ setDeleteSave() {
       }));
 }
 checkKeys() { //new check keys
-    if (Object.keys(localStorage).includes('work')) {
-        const storage = localStorage.getObject('work')
+    if (Object.keys(localStorage).includes(this.props.userId + '_work')) {
+        const storage = localStorage.getObject(this.props.userId + '_work')
         return storage;
     } else {
         const empty = []
@@ -207,7 +207,7 @@ render() {
                     ?<SaveSection
                     display={'you must save the changes on this page'}
                     required={this.state.expArray} //object or info required before saving
-                    storageName="work"
+                    storageName={this.props.userId + '_work'}
                     set={this.setCanSave}
                     />
                     : null}
@@ -313,7 +313,7 @@ render() {
                         : null}
             {/* form ends here */}
             { this.state.expArray.length > 0
-                ? <PreviewDataWork save={this.setDeleteSave} updateParent={this.updateFromPreview} data={this.state.expArray}/>
+                ? <PreviewDataWork userId={this.props.userId} save={this.setDeleteSave} updateParent={this.updateFromPreview} data={this.state.expArray}/>
                 : null }
                     </section>
                 </section>

@@ -1,9 +1,9 @@
 import { React, useState, useEffect, useRef } from 'react';
 
-function ViewPhoto () {
+function ViewPhoto (props) {
 
     const [state1, setState1] = useState('state');
-    const photo = localStorage.getItem('avatar')
+    const photo = localStorage.getItem(props.userId + '_avatar')
     return (
         <div className="view-wrapper photo">
             <img id="view-avatar" src={photo} alt="photo"></img>

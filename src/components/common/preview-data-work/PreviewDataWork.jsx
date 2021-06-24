@@ -64,7 +64,7 @@ function PreviewDataWork (props) {
     const array = props.data
     return (
         <ul>
-            {array.map((item, i) => <li><WorkItem index={i} data={props.data} save={props.save} key={item.title} update={props.updateParent} object={item}/></li>)}
+            {array.map((item, i) => <li><WorkItem userId={props.userId} index={i} data={props.data} save={props.save} key={item.title} update={props.updateParent} object={item}/></li>)}
         </ul>
     )
 

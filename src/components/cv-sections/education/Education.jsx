@@ -4,8 +4,8 @@ import InputStd from '../editable-forms/input-std'
 import { MonthDrop, PreviewDataEdu, SaveSection } from '../../common'
 
 class Education extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
 
         this.locRef = createRef();
         this.degreeRef = createRef();
@@ -89,8 +89,8 @@ setDeleteSave() {
 }
 
 checkKeys() { //new check keys
-    if (Object.keys(localStorage).includes('education')) {
-        const storage = localStorage.getObject('education')
+    if (Object.keys(localStorage).includes(this.props.userId + '_education')) {
+        const storage = localStorage.getObject(this.props.userId + '_education')
         return storage;
     } else {
         const empty = []
@@ -161,7 +161,7 @@ render () {
                     ?<SaveSection
                     display={'you must save the changes on this page'}
                     required={this.state.eduArray} //object or info required before saving
-                    storageName="education"
+                    storageName={this.props.userId + '_education'}
                     set={this.setCanSave}
                     />
                     : null}
@@ -240,7 +240,7 @@ render () {
                             </div>
                                 : null}
                             { this.state.eduArray.length > 0
-                            ? <PreviewDataEdu save={this.setDeleteSave} updateParent={this.updateFromPreview} data={this.state.eduArray}/>
+                            ? <PreviewDataEdu userId={this.props.userId} save={this.setDeleteSave} updateParent={this.updateFromPreview} data={this.state.eduArray}/>
                             : null }
 
                     </section>

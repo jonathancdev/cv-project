@@ -7,7 +7,7 @@ function PreviewDataEdu (props) {
     const array = props.data
     return (
         <ul>
-            {array.map((item, i) => <li><EduItem index={i} data={props.data} save={props.save} key={item.loc} update={props.updateParent} object={item}/></li>)}
+            {array.map((item, i) => <li><EduItem userId={props.userId} index={i} data={props.data} save={props.save} key={item.loc} update={props.updateParent} object={item}/></li>)}
         </ul>
     )
 

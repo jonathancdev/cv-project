@@ -25,7 +25,7 @@ function SkillItem (props) {
             <li>
             {props.skill}
             </li>
-        {localStorage.getObject('skills') && localStorage.getObject('skills').includes(props.skill)
+        {localStorage.getObject(props.userId + '_skills') && localStorage.getObject(props.userId + '_skills').includes(props.skill)
         ? <div className="delete-storage">
         <button className="delete-button" onClick={handleDelete}>delete</button>
         </div>

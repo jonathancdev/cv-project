@@ -3,20 +3,20 @@ import './Photo.css';
 import PhotoInput from '../photo-input'
 import {SaveSection, checkStorage, removeStorage} from '../../common'
 
-function Photo () {
+function Photo (props) {
 
     //checks if items are already in localstorage for init
     const [userAvatar, setUserAvatar] = useState(() => {
-        if (checkStorage('avatar')) {
-            return localStorage.getItem('avatar');
+        if (checkStorage(props.userId + "_avatar")) {
+            return localStorage.getItem(props.userId + "_avatar");
         } else {
             return ''
         }
     });
 
     const [filePath, setFilePath] = useState(() => {
-        if (checkStorage('path')) {
-            return localStorage.getItem('path');
+        if (checkStorage(props.userId + "_path")) {
+            return localStorage.getItem(props.userId + "_path");
         } else {
             return ''
         }
@@ -31,8 +31,8 @@ function Photo () {
         setUserAvatar(file);
     }
     function handleDelete () {
-        removeStorage('path')
-        removeStorage('avatar')
+        removeStorage(props.userId + "_avatar")
+        removeStorage(props.userId + "_path")
         updateAvatar('')
         updatePath('')
     }
@@ -46,13 +46,13 @@ function Photo () {
                     </button>
                 </section>
                 <section className="save-section-wrap">
-                    {userAvatar !== '' && userAvatar !== localStorage.getItem('avatar')
+                    {userAvatar !== '' && userAvatar !== localStorage.getItem(props.userId + "_avatar")
                     ?<SaveSection
                     display={'you must save the changes on this page'}
                     required={userAvatar} //object or info required before saving
                     requiredB={filePath}
-                    storageName="avatar"
-                    storageNameB="path"
+                    storageName={props.userId + "_avatar"}
+                    storageNameB={props.userId + "_path"}
                     />
                     : null}
                 </section>

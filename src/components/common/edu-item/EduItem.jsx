@@ -5,9 +5,9 @@ import './EduItem.css';
 function EduItem (props) {
 
     function canDelete() {
-        if (localStorage.getObject('education')) {
-            if (localStorage.getObject('education').length > props.index) {
-                if (localStorage.getObject('education')[props.index].loc === props.object.loc) {
+        if (localStorage.getObject(props.userId + '_education')) {
+            if (localStorage.getObject(props.userId + '_education').length > props.index) {
+                if (localStorage.getObject(props.userId + '_education')[props.index].loc === props.object.loc) {
                     return true
                 }
             }

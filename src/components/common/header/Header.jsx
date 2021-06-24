@@ -4,7 +4,7 @@ import Navbar from '../navbar';
 import './Header.css';
 import logo from '../../../img/logo.png'
 
-function Header () {
+function Header (props) {
     function handleClick() {
         localStorage.clear();
     }
@@ -16,7 +16,7 @@ function Header () {
                     </Link>
             </section>
             <button onClick={handleClick}>clear storage</button>
-            <Navbar />
+            <Navbar user={props.user}/>
         </section>
     )
 }

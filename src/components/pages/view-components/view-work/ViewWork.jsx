@@ -1,9 +1,9 @@
 import { React, useState, useEffect, useRef } from 'react';
 
-function ViewWork () {
+function ViewWork (props) {
 
     const [state1, setState1] = useState('state');
-    const work = localStorage.getObject('work')
+    const work = localStorage.getObject(props.userId + '_work')
     console.log(work)
     return (
         <div className="view-wrapper work">

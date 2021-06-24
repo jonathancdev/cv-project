@@ -5,18 +5,18 @@ import ProfileForm from '../editable-forms/profile'
 import { TextAreaAuto, SaveSection, checkStorage, removeStorage } from '../../common'
 
 class Contact extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.telRef = createRef();
         this.emailRef = createRef();
         this.addressRef = createRef();
         this.webRef = createRef();
 
         this.state = {
-            tel: checkStorage('contact') ? localStorage.getObject('contact')[0].tel : 'telephone',
-            email: checkStorage('contact') ? localStorage.getObject('contact')[0].email : 'email',
-            address: checkStorage('contact') ? localStorage.getObject('contact')[0].address : 'address',
-            web: checkStorage('contact') ? localStorage.getObject('contact')[0].web : 'website',
+            tel: checkStorage(this.props.userId + '_contact') ? localStorage.getObject(this.props.userId + '_contact')[0].tel : 'telephone',
+            email: checkStorage(this.props.userId + '_contact') ? localStorage.getObject(this.props.userId + '_contact')[0].email : 'email',
+            address: checkStorage(this.props.userId + '_contact') ? localStorage.getObject(this.props.userId + '_contact')[0].address : 'address',
+            web: checkStorage(this.props.userId + '_contact') ? localStorage.getObject(this.props.userId + '_contact')[0].web : 'website',
             canSave: false,
             saveAfterDelete: false
         }
@@ -113,7 +113,7 @@ render () {
                     ?<SaveSection
                     display={'you must save the changes on this page'}
                     required={this.createObject()} //object or info required before saving
-                    storageName="contact"
+                    storageName={this.props.userId + '_contact'}
                     set={this.setCanSave}
                     />
                     : null}

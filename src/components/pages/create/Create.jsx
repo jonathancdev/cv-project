@@ -1,14 +1,16 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 import { Default, Cvnav, Profile, Photo, WorkExperience, Education, Skills, Contact } from '../../cv-sections'
 import './Create.css';
 
-function Create () {
+function Create (props) {
+
     return (
         <section className="home-build">
             <Router>
                 <section className="sidebar">
-                    <Cvnav />
+                    <p>{props.user.userId}</p>
+                    <Cvnav userId={props.user.userId}/>
                 </section>
                 <section className="section-wrap">
                 <Switch>
@@ -16,22 +18,22 @@ function Create () {
                             <Default />
                         </Route>
                         <Route path="/create/photo">
-                            <Photo />
+                            <Photo userId={props.user.userId}/>
                         </Route>
                         <Route path="/create/profile">
-                            <Profile />
+                            <Profile userId={props.user.userId}/>
                         </Route>
                         <Route path="/create/work-experience">
-                            <WorkExperience />
+                            <WorkExperience userId={props.user.userId}/>
                         </Route>
                         <Route path="/create/education">
-                            <Education />
+                            <Education userId={props.user.userId}/>
                         </Route>
                         <Route path="/create/skills">
-                            <Skills />
+                            <Skills userId={props.user.userId}/>
                         </Route>
                         <Route path="/create/contact">
-                            <Contact />
+                            <Contact userId={props.user.userId}/>
                         </Route>
                     </Switch>
                 </section>
