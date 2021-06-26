@@ -16,7 +16,7 @@ function Header (props) {
                     </Link>
             </section>
             <button onClick={handleClick}>clear storage</button>
-            <Navbar user={props.user}/>
+            <Navbar complete={props.complete} logOut={props.logOut} user={props.user}/>
         </section>
     )
 }

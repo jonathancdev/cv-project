@@ -9,6 +9,17 @@
     font-size: 24px;
     letter-spacing: 1.5px;
 }
+.cvnav h4 {
+    font-family: overpass light;
+    font-size: 10px;
+    letter-spacing: 0.75px;
+}
+.cvnav h3 {
+    font-family: overpass light;
+    font-size: 20px;
+    letter-spacing: 0.75px;
+    padding: 0;
+}
 .cvnav a {
     font-size: 18px;
     color: black;
@@ -17,6 +28,10 @@
     padding: 7.5px;
     text-decoration: none;
 }
-.cvnav a:visited {
-    color: black;
+
+.section-incomplete {
+    color: rgb(194, 82, 82);
+}
+.section-incomplete:visited {
+    color: rgb(194, 82, 82);
 }

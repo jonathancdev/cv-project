@@ -11,6 +11,7 @@ import PhotoInput from './photo-input';
 import ProfileForm from './editable-forms/profile'
 import InputStd from './editable-forms/input-std'
 import InputPwd from './editable-forms/input-pwd'
+import InputEmail from './editable-forms/input-email'
 import Cvnav from './cvnav';
 
 export { 
@@ -27,5 +28,6 @@ export {
     ProfileForm,
     InputStd,
     InputPwd,
+    InputEmail,
     Cvnav
 }

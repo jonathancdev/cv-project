@@ -58,3 +58,23 @@ textarea {
 textarea:focus {
   outline: none;
 }
+.invalid {
+  background-color: rgba(192, 192, 192, 0.342);
+}
+.form-error-wrap {
+  position: absolute;
+  display: flex;
+  justify-content: flex-end;
+  margin-left: 240px;
+  margin-top: -40px;
+  width: 150px;
+  color: rgb(201, 43, 43);
+}
+.form-error {
+  display: none;
+  text-align: center;
+}
+.inactive-link {
+  pointer-events: none;
+  color: rgba(128, 128, 128, 0.452);
+}

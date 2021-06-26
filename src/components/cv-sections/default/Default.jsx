@@ -1,15 +1,15 @@
 import React from 'react';
 import './Default.css';
 
-function Default () {
+function Default (props) {
     return (
 
         <section className="cv-sec-wrap">
                 <section className="default">
-                    <h1>Ok, let's get started!</h1>
+                    <h1>Hello, {props.user.name}!</h1>
                     <div className="pwrap">
                         <p>Choose a CV section from the navigation bar to add or edit information for that element.
-                            Your progress is saved automatically! Come and go as you need to edit and update your CV.</p>
+                            Save your changes as you go. Come and go as you need to edit and update your CV.</p>
                     </div>
                 </section>
         </section>

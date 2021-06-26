@@ -1,12 +1,13 @@
 import React, { useState, useEffect, useRef } from "react";
-import './InputPwd.css'
+import './InputEmail.css'
 
-const InputPwd = ({
+const InputEmail = ({
     childRef,
     children,
     value,
     ...props
 }) => {
+    
     const [isEditing, setEditing] = useState(false);
     const [isValid, setIsValid] = useState(false)
     const errorRef = useRef()
@@ -20,16 +21,21 @@ const InputPwd = ({
              childRef.current.select();
          }
      }, [isEditing, childRef]);
+
     function handleBlur() {
-        const value = childRef.current.value.length
+        const value = childRef.current.value
         setEditing(false)
-        if (value > 8) {
+        if (validateEmail(value)) {
             setIsValid(true)
             errorRef.current.style.display = 'none'
         } else {
             setIsValid(false)
             errorRef.current.style.display = 'flex'
         }
+    }
+    function validateEmail(email) {
+        var re = /\S+@\S+\.\S+/;
+        return re.test(email);
     }
     validate(isValid)
     return (
@@ -46,15 +52,15 @@ const InputPwd = ({
                   onFocus={() => setEditing(true)}
                 >
                   <div>
-                      <input className="rect-std" placeholder={value !== '' ? value : 'password'} minLength="8" />
+                      <input className="rect-std" placeholder={value} />
                   </div>
                 </div>
             )}
             <div className="form-error-wrap">
-                <span ref={errorRef} class="form-error">enter 8 or more characters</span>
+                <span ref={errorRef} class="form-error">invalid email</span>
             </div>
         </section>
     )
 };
 
-export default InputPwd;
+export default InputEmail;

@@ -17,13 +17,13 @@ const InputStd = ({
     return (
         <section {...props}>
             {isEditing ? (
-                <div
+                <div className="input-std-div"
                   onBlur={() => setEditing(false)}
                 >
                 {children}
                   </div>
             ) : (
-                <div
+                <div className="input-std-div"
                   onClick={() => setEditing(true)}
                   onFocus={() => setEditing(true)}
                 >

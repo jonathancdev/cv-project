@@ -1,7 +1,7 @@
 import { React, useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import './Signup.css';
-import { InputStd, InputPwd } from '../../cv-sections/'
+import { InputStd, InputPwd, InputEmail } from '../../cv-sections/'
 
 function Signup (props) {
 
@@ -10,7 +10,9 @@ function Signup (props) {
     const [profession, setProfession] = useState('profession')
     const [password, setPassword] = useState('')
     const [email, setEmail] = useState('email')
-    const [userCount, setUserCount] = useState(Object.keys(localStorage).includes("userId") ? Object.keys(localStorage).filter( item => item.includes('userId')).length : 1 )
+    const [userCount, setUserCount] = useState(Object.keys(localStorage).includes("userId0") ? Object.keys(localStorage).filter( item => item.includes('userId')).length : 0 )
+    const [emailValid, setEmailValid] = useState(false)
+    const [passwordValid, setPasswordValid] = useState(false)
 
     const firstNameRef = useRef(null)
     const lastNameRef = useRef(null)
@@ -19,7 +21,7 @@ function Signup (props) {
     const emailRef = useRef(null)
 
    let userObj = {}
-
+    console.log(userCount)
 
     function setFirst(e) {
         const value = e.target.value
@@ -41,39 +43,24 @@ function Signup (props) {
         const value = e.target.value
         setEmail(value)
     }
-    function emailBlur(e) {
-        const value = e.target.value
-        if (validateEmail(value)) {
-            console.log('valid')
-            e.target.parentElement.classList.toggle('invalid')
-        } else {
-            console.log('invalid')
-            e.target.parentElement.classList.toggle('invalid')
-        }
-    }
-    function validateEmail(email) {
-        var re = /\S+@\S+\.\S+/;
-        return re.test(email);
-    }
     function hidePw(pw) {
         const length = pw.length
         const hidden = '*'.repeat(length)
         return hidden
     }
-    function updateUserCount() {
-        setUserCount(Object.keys(localStorage).filter( item => item.includes('userId')).length + 1)
-    }
     function handleSubmit() {
-        if (validateEmail(email)) {
+        if (emailValid && passwordValid) {
             localStorage.setObject('userInfo' + userCount, createObject())
             localStorage.setObject('userId' + userCount, 'cvID' + firstName[0] + firstName.length + lastName[0] + lastName.length + profession[0] + profession.length)
             updateUserCount()
             props.setUser(userObj)
             reset()
-        } else {
-            alert('enter a valid email address')
         }
     }
+    function updateUserCount() {
+        setUserCount(prevUserCount => prevUserCount + 1)
+    }
+
     function createObject() {
         const userInfo = {
             name: firstName,
@@ -89,6 +76,12 @@ function Signup (props) {
     function reset () {
         userObj = {}
         setFirstName('first name')
+    }
+    function checkEmail(bool) {
+        setEmailValid(bool)
+    }
+    function checkPassword(bool) {
+        setPasswordValid(bool)
     }
 
     return (
@@ -143,9 +136,10 @@ function Signup (props) {
                         />
                     </InputStd>
 
-                    <InputStd
+                    <InputEmail
                     childRef={emailRef}
                     value={email}
+                    validate={checkEmail}
                     >
                         {/* isEditing input */}
                         <input
@@ -155,15 +149,13 @@ function Signup (props) {
                             value={email} 
                             onChange={setMail}
                             maxLength="25"
-                            type="email"
-                            onBlur={emailBlur}
-
                         />
-                    </InputStd>
+                    </InputEmail>
 
                     <InputPwd
                     childRef={passwordRef}
                     value={hidePw(password)}
+                    validate={checkPassword}
                     >
                         {/* isEditing input */}
                         <input
@@ -173,10 +165,15 @@ function Signup (props) {
                             value={password} 
                             onChange={setPw}
                             maxLength="30"
+                            minLength="8"
                         />
                     </InputPwd>
                     <div>
-                        <Link to={validateEmail(email) ? '/create' : '/signup'} onClick={handleSubmit}>create account</Link>
+                        <Link to={emailValid && passwordValid ? '/create' : '/signup'} className={emailValid && passwordValid ? 'active-link' : 'inactive-link'} onClick={handleSubmit}>create account</Link>
+                    </div>
+                    <div>
+                        <p>already have an account?</p>
+                        <Link to={'/login'} >sign in here</Link>
                     </div>
                 </div>
             </section> 

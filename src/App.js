@@ -1,17 +1,54 @@
 import './App.css';
 import {React, useState} from "react";
 import { Route, BrowserRouter as Router, Switch, withRouter } from 'react-router-dom';
-import { Header, Footer, storeObjects } from './components/common';
+import { Header, Footer, storeObjects, checkStorage } from './components/common';
 import { HomeMain, Create, Pricing, Login, Signup, Account, Help, View } from './components/pages'
 
 
 function App() {
   storeObjects()
 
-  const [currentUser, setCurrentUser] = useState(Object.keys(localStorage).includes('currentUser') ? localStorage.getObject('currentUser') : null)
+  function isUser() {
+    if (Object.keys(localStorage).includes('currentUser')) {
+      return true
+    } else {
+      return false
+    }
+  }
+  
+  const [currentUser, setCurrentUser] = useState(isUser() ? localStorage.getObject('currentUser') : null)
+  // const [avatarFound, setAvatarFound] = useState(isUser() && checkStorage(currentUser.userId + '_avatar') ? true : false)
+  // const [contactFound, setContactFound] = useState(isUser() && checkStorage(currentUser.userId + '_contact') ? true : false)
+  // const [educationFound, setEducationFound] = useState(isUser() && checkStorage(currentUser.userId + '_education') ? true : false)
+  // const [profileFound, setProfileFound] = useState(isUser() && checkStorage(currentUser.userId + '_profile') ? true : false)
+  // const [skillsFound, setSkillsFound] = useState(isUser() && checkStorage(currentUser.userId + '_skills') ? true : false)
+  // const [workFound, setWorkFound] = useState(isUser() && checkStorage(currentUser.userId + '_work') ? true : false)
   const [activeSession, setActiveSession] = useState(Object.keys(localStorage).includes('activeSession') ? true : false)
+  // const [infoComplete, setInfoComplete] = useState(false)
 
 
+  // function checkInfo() {
+  //   setAvatarFound(checkStorage(currentUser.userId + '_avatar') ? true : false)
+  //   setContactFound(checkStorage(currentUser.userId + '_contact') ? true : false)
+  //   setEducationFound(checkStorage(currentUser.userId + '_education') ? true : false)
+  //   setProfileFound(checkStorage(currentUser.userId + '_profile') ? true : false)
+  //   setSkillsFound(checkStorage(currentUser.userId + '_skills') ? true : false)
+  //   setWorkFound(checkStorage(currentUser.userId + '_work') ? true : false)
+  //   if (
+  //     avatarFound &&
+  //     contactFound &&
+  //     educationFound &&
+  //     profileFound &&
+  //     skillsFound &&
+  //     workFound
+  //   ) {
+  //     setInfoComplete(true)
+  //     console.log(avatarFound, contactFound, educationFound, profileFound, skillsFound, workFound, infoComplete)
+  //   } else {
+  //     console.log('false')
+  //     console.log(avatarFound, contactFound, educationFound, profileFound, skillsFound, workFound, infoComplete)
+  //   }
+  // }
   function setUser(obj) {
     setCurrentUser(obj)
     setActiveSession(true)
@@ -29,14 +66,7 @@ function App() {
     <div className="App">
       <Router>
         <header>
-          <Header user={currentUser}/>
-          <div>{currentUser !== null ? currentUser.name : null }</div>
-          <div>
-            {activeSession 
-              ? <button onClick={endSession}>logout</button> 
-              : 'inactive' }
-              </div>
-
+          <Header logOut={endSession} user={currentUser}/>
         </header>
         <main>
         <Switch>
@@ -44,7 +74,7 @@ function App() {
               <HomeMain />
             </Route>
             <Route path="/create" exact>
-              <Create user={Object.keys(localStorage).includes('activeSession') ? currentUser : ''} />
+              <Create user={currentUser} />
             </Route>
             <Route path="/pricing">
               <Pricing />
@@ -60,9 +90,6 @@ function App() {
             </Route>
             <Route path="/help">
               <Help />
-            </Route>
-            <Route exact path="/view" component={withRouter(View)}>
-              <View user={currentUser}/>
             </Route>
           </Switch>
         </main>
