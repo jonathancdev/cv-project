@@ -76,5 +76,4 @@ textarea:focus {
 }
 .inactive-link {
   pointer-events: none;
-  color: rgba(128, 128, 128, 0.452);
 }

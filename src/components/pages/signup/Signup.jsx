@@ -87,7 +87,10 @@ function Signup (props) {
     return (
         <section className="signup">
             <section className="section-wrap">
-                <div>
+                <section className="cv-header">
+                    <h2>Create your account:</h2>
+                </section>
+                <div className="signup-form-wrap">
                 <InputStd
                     childRef={firstNameRef}
                     value={firstName}
@@ -168,13 +171,17 @@ function Signup (props) {
                             minLength="8"
                         />
                     </InputPwd>
-                    <div>
-                        <Link to={emailValid && passwordValid ? '/create' : '/signup'} className={emailValid && passwordValid ? 'active-link' : 'inactive-link'} onClick={handleSubmit}>create account</Link>
+
+                    <section className="signup-form-submit">
+                    <div className={emailValid && passwordValid ? 'active-div signup-btn-div' : 'inactive-div signup-btn-div'}>
+                        <Link to={emailValid && passwordValid ? '/create' : '/signup'} className={emailValid && passwordValid ? 'active-link signup-btn' : 'inactive-link signup-btn'} onClick={handleSubmit}>create account</Link>
                     </div>
                     <div>
                         <p>already have an account?</p>
-                        <Link to={'/login'} >sign in here</Link>
+                        <Link to='/login' className="tologin">sign in here</Link>
                     </div>
+                    </section>
+
                 </div>
             </section> 
         </section>

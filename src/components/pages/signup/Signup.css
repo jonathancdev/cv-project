@@ -7,17 +7,60 @@
   }
 .signup .section-wrap {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    border-style: dotted;
     min-width: 750px;
     height: 500px;
 }
-.signup h1 {
+.signup-form-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.signup h2 {
     font-family: overpass black;
-    font-size: 48px;
+    font-size: 36px;
+    margin: 20px 20px 10px -60px;
 }
 .signup p {
     font-family: overpass thin;
-    font-size: 18px;
+    font-size: 16px;
+}
+.signup-form-submit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.signup-form-submit div {
+    display: flex;
+    align-items: center;
+}
+.signup-btn-div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    margin: 0 auto;
+    height: 30px;
+    width: 120px;
+    background-color: black;
+    border-radius: 3px;
+}
+.inactive-div {
+    background-color: rgb(158, 158, 158);
+}
+.signup-btn {
+    font-family: overpass black;
+    text-decoration: none;
+    color: white;
+    font-size: 14px;
+}
+.tologin {
+    text-decoration: none;
+    color: black;
+    font-size: 14px;
+}
+.tologin:visited {
+    text-decoration: none;
+    color: black;
 }

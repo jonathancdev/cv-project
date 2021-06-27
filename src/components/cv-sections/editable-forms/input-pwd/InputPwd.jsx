@@ -23,7 +23,7 @@ const InputPwd = ({
     function handleBlur() {
         const value = childRef.current.value.length
         setEditing(false)
-        if (value > 8) {
+        if (value > 7) {
             setIsValid(true)
             errorRef.current.style.display = 'none'
         } else {
