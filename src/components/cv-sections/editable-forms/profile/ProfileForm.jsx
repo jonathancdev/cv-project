@@ -25,14 +25,14 @@ const ProfileForm = ({
     return (
         <section {...props}>
             {isEditing ? (
-                <div
+                <div className="textarea-div"
                   onBlur={() => setEditing(false)}
                   onKeyDown={e => handleKeyDown(e, type)} //come back to this later in tutorial
                 >
                 {children} {/* editable TextAreaAuto in Profile.jsx */}
                   </div>
             ) : (
-                <div
+                <div className="textarea-div"
                   onClick={() => setEditing(true)}
                   onFocus={() => setEditing(true)}
                 >

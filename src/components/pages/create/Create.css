@@ -108,15 +108,20 @@ p {
     width: 395px;
     height: 40px;
 }
+.textarea-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 395px;
+    max-height: 125px;
+}
 .rect-long {
-    min-width: 400px;
-    max-width: 400px;
+    width: 395px;
     line-height: 24px;
     overflow: auto;
     height: auto;
     max-height: 125px;
     text-justify: start;
-    margin: 0 0 5px 0;
     font-size: 16px;
     text-overflow: ellipsis;
 }

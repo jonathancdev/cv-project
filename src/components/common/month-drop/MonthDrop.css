@@ -19,5 +19,9 @@ li {
     list-style: none;
 }
 .li-item:hover {
-    background-color: plum;
+    background-color: rgba(130, 156, 208, 0.5);
+    color: white;
+}
+li #text:hover {
+ color: white;
 }

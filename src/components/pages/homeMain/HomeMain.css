@@ -8,13 +8,20 @@
 .smallp {
     font-size: 12px;
 }
-#try-btn {
-    padding: 10px;
-    height: 40px;
-    width: 120px;
+#try-btn-div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    margin: 0 auto;
+    height: 30px;
+    width: 100px;
     background-color: black;
-    color: white;
-    border-style: none;
     border-radius: 3px;
+}
+#try-btn {
     font-family: overpass black;
+    text-decoration: none;
+    color: white;
+    font-size: 14px;
 }

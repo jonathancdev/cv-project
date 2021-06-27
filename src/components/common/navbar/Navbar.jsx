@@ -5,12 +5,11 @@ import './Navbar.css';
 function Navbar (props) {
     return (
         <section className="navbar">
-            {Object.keys(localStorage).includes('activeSession')
-            ?<Link to='/' onClick={props.logOut} className="navlinks">sign out</Link>
-            : null }
+
+            <Link id="bluea" to={Object.keys(localStorage).includes('activeSession') ? "/create" : '/signup'} className="navlinks">create cv</Link>
 
             {props.user !== null && Object.keys(localStorage).includes('activeSession')
-            ?  <a></a>
+            ?  null
             :  <Link to="/signup" className="navlinks">sign up</Link>   
             }
 
@@ -19,9 +18,15 @@ function Navbar (props) {
             : <Link to="/login" className="navlinks">sign in</Link>
             }
 
-            <div id="bluenav">
-                <Link id="bluea" to={Object.keys(localStorage).includes('activeSession') ? "/create" : '/signup'} className="navlinks">create cv</Link>
-            </div>
+            {Object.keys(localStorage).includes('activeSession')
+            ?<Link to='/' onClick={props.logOut} className="navlinks">
+                sign out
+                <div className="signout-flag-div">
+                    <p className="signout-flag">sign out of {props.user.name + 's account?'}</p>
+                </div>
+            </Link>
+            : null }
+
         </section>
     )
 }
