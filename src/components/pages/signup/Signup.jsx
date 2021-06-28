@@ -94,6 +94,8 @@ function Signup (props) {
                 <InputStd
                     childRef={firstNameRef}
                     value={firstName}
+                    required={true}
+                    originalValue='first name'
                     >
                         {/* isEditing input */}
                         <input
@@ -110,6 +112,8 @@ function Signup (props) {
                     <InputStd
                     childRef={lastNameRef}
                     value={lastName}
+                    required={true}
+                    originalValue='last name'
                     >
                         {/* isEditing input */}
                         <input
@@ -151,7 +155,7 @@ function Signup (props) {
                             placeholder='email'
                             value={email} 
                             onChange={setMail}
-                            maxLength="25"
+                            maxLength="40"
                         />
                     </InputEmail>
 

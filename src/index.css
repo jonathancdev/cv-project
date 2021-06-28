@@ -77,3 +77,16 @@ textarea:focus {
 .inactive-link {
   pointer-events: none;
 }
+.std-form-error-wrap {
+  position: absolute;
+  display: flex;
+  justify-content: flex-end;
+  margin-left: 240px;
+  margin-top: -40px;
+  width: 150px;
+  color: rgb(201, 43, 43);
+}
+.std-form-error {
+  display: flex;
+  text-align: center;
+}

@@ -229,6 +229,8 @@ render() {
                             <InputStd
                             childRef={this.titleRef}
                             value={this.state.title}
+                            required={true}
+                            originalValue='click to edit title'
                             >
                                 <input
                                     ref={this.titleRef}
@@ -244,6 +246,8 @@ render() {
                             <InputStd
                             childRef={this.companyRef}
                             value={this.state.company}
+                            required={true}
+                            originalValue='click to edit company name'
                             >
                                 {/* isEditing input */}
                                 <input

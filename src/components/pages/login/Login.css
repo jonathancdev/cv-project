@@ -7,9 +7,8 @@
   }
 .login .section-wrap {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    border-style: dotted;
     min-width: 750px;
     height: 500px;
 }
@@ -17,7 +16,25 @@
     font-family: overpass black;
     font-size: 48px;
 }
+.login h2 {
+    font-family: overpass black;
+    font-size: 36px;
+    margin: 20px 20px 0px -20px;
+}
 .login p {
     font-family: overpass thin;
     font-size: 18px;
+}
+.login-form-wrap {
+    display: flex;
+    flex-direction: column;
+}
+.login-form-submit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.login-form-submit div {
+    display: flex;
+    align-items: center;
 }

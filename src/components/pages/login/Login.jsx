@@ -47,7 +47,11 @@ function Login (props) {
     return (
         <section className="login">
             <section className="section-wrap">
+                <section className="cv-header">
+                    <h2>Enter your account:</h2>
+                </section>
                 <div>
+                <div className='login-form-wrap'>
                 <input
                     ref={emailRef}
                     className="rect-std user"
@@ -64,14 +68,17 @@ function Login (props) {
                     onBlur={authenticate}
                 />
                 </div>
+            </div>
 
-                <div>
-                    <Link to={auth ? '/create' : '/login'} onClick={auth ? props.setUser(tempUser) : null}>log in</Link>
+                <section className="login-form-submit">
+                <div className="signup-btn-div">
+                    <Link className="signup-btn" to={auth ? '/create' : '/login'} onClick={auth ? props.setUser(tempUser) : null}>log in</Link>
                 </div>
                     <div>
                         <p>don't have an account?</p>
-                        <Link to={'/signup'} >sign up here</Link>
+                        <Link className="tologin" to={'/signup'} >sign up here</Link>
                     </div>
+                </section>
             </section> 
         </section>
     )

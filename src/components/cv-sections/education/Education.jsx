@@ -181,6 +181,8 @@ render () {
                                 <InputStd
                                 childRef={this.locRef}
                                 value={this.state.loc}
+                                required={true}
+                                originalValue='institution'
                                 >
                                     <input
                                         ref={this.locRef}
@@ -196,6 +198,8 @@ render () {
                                 <InputStd
                                 childRef={this.degreeRef}
                                 value={this.state.degree}
+                                required={true}
+                                originalValue='type of degree or certificate'
                                 >
                                     <input
                                         ref={this.degreeRef}

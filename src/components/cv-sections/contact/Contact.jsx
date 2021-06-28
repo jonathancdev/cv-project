@@ -123,6 +123,8 @@ render () {
                         <InputStd
                         childRef={this.telRef}
                         value={this.state.tel}
+                        required={true}
+                        originalValue='telephone'
                         >
                             <input
                                 ref={this.telRef}
@@ -137,6 +139,8 @@ render () {
                         <InputStd
                         childRef={this.emailRef}
                         value={this.state.email}
+                        required={true}
+                        originalValue='email'
                         >
                             <input
                                 ref={this.emailRef}

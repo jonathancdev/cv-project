@@ -20,7 +20,7 @@
 .signup h2 {
     font-family: overpass black;
     font-size: 36px;
-    margin: 20px 20px 10px -60px;
+    margin: 20px 20px 0px -20px;
 }
 .signup p {
     font-family: overpass thin;
@@ -40,7 +40,7 @@
     align-items: center;
     justify-content: center;
     padding: 5px;
-    margin: 0 auto;
+    margin: 10px auto;
     height: 30px;
     width: 120px;
     background-color: black;
