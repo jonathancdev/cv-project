@@ -7,6 +7,8 @@ function Login (props) {
     const [auth, setAuth] = useState(false)
     const [errorMsg, setErrorMsg] = useState('')
     const [tempUser, setTempUser] = useState(null)
+    const [currEmail, setCurrEmail] = useState('')
+    const [currPassword, setCurrPassword] = useState('')
 
     const passwordRef = useRef(null)
     const emailRef = useRef(null)
@@ -21,7 +23,7 @@ function Login (props) {
         const pw = passwordRef.current.value
         const keys = Object.keys(localStorage).filter( item => item.includes('userInfo'))
         if (keys.length === 0) {
-            setErrorMsg('account does not exist, please sign up')
+            setErrorMsg('no account found for ' + currEmail)
             setAuth(false)
         } else {
             keys.forEach(key => {
@@ -43,7 +45,14 @@ function Login (props) {
         //if no match, say login not found, prompt to create account
         //setUser to null
     }
-
+    function emailHandleChange(e) {
+        const value = e.target.value
+        setCurrEmail(value)
+    }
+    function passwordHandleChange(e) {
+        const value = e.target.value
+        setCurrPassword(value)
+    }
     return (
         <section className="login">
             <section className="section-wrap">
@@ -56,7 +65,8 @@ function Login (props) {
                     ref={emailRef}
                     className="rect-std user"
                     placeholder='email'
-                    maxLength="25"
+                    maxLength="40"
+                    onChange={emailHandleChange}
                 />
 
                 <input
@@ -65,15 +75,20 @@ function Login (props) {
                     ref={passwordRef}
                     className="rect-std user"
                     maxLength="30"
+                    onChange={passwordHandleChange}
                     onBlur={authenticate}
                 />
                 </div>
             </div>
 
                 <section className="login-form-submit">
-                <div className="signup-btn-div">
-                    <Link className="signup-btn" to={auth ? '/create' : '/login'} onClick={auth ? props.setUser(tempUser) : null}>log in</Link>
+                <div className={currEmail !== '' && currPassword !== '' ? 'active-div signup-btn-div' : 'inactive-div signup-btn-div'}>
+                    <Link className={currEmail !== '' && currPassword !== '' ? 'active-div signup-btn' : 'inactive-div signup-btn'} to={auth ? '/create' : '/login'} onClick={auth ? props.setUser(tempUser) : null}>log in</Link>
                 </div>
+                <div className="login-form-error-wrap">
+                    <span className="login-form-error">{errorMsg}</span>
+                </div>
+
                     <div>
                         <p>don't have an account?</p>
                         <Link className="tologin" to={'/signup'} >sign up here</Link>

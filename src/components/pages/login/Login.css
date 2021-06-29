@@ -38,3 +38,13 @@
     display: flex;
     align-items: center;
 }
+.login-form-error-wrap {
+    display: flex;
+    justify-content: center;
+    width: 300px;
+    color: rgb(201, 43, 43);
+  }
+  .login-form-error {
+    display: flex;
+    text-align: center;
+  }
