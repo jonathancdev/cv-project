@@ -53,7 +53,6 @@ render() {
                 </section>
                 <section className="sec-form-wrap">
                     <section className="mult-form">
-                    <p>Enter your profile here</p>
                     <ProfileForm
                         value={this.state.value}
                         childRef={this.inputRef}

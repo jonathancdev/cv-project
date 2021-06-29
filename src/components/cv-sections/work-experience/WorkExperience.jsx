@@ -261,13 +261,13 @@ render() {
                                 />
                             </InputStd>
 
-                            <div>
+                            <div className="date-div">
                                 <p>from</p>
                                 <MonthDrop 
-                            id="month-one"
-                            value={this.state.monthOne}
-                            setMonth={this.setMonthOne}
-                            />
+                                id="month-one"
+                                value={this.state.monthOne}
+                                setMonth={this.setMonthOne}
+                                />
                                 <div>
                                     <input 
                                         className="rect-date year" 
@@ -279,10 +279,10 @@ render() {
                                 </div>
                                 <p>to</p>
                                 <MonthDrop 
-                            id="month-two"
-                            value={this.state.monthTwo}
-                            setMonth={this.setMonthTwo}
-                            />
+                                id="month-two"
+                                value={this.state.monthTwo}
+                                setMonth={this.setMonthTwo}
+                                />
                                 <div>
                                     <input 
                                     className="rect-date year" 
@@ -312,7 +312,9 @@ render() {
                             </Duties>
                             
                             </section>
-                            <button onClick={this.createObject}>save</button>
+                            <div className="save-btn-div">
+                                <button className="save-btn"onClick={this.createObject}>save item</button>
+                            </div>
                         </div>
                         : null}
             {/* form ends here */}

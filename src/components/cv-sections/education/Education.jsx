@@ -225,13 +225,13 @@ render () {
                                         maxLength="200"
                                     />
                                 </InputStd>
+                                <div className="date-div">
                                 <p>graduated</p>
                             <MonthDrop 
                             id="month-one"
                             value={this.state.monthOne}
                             setMonth={this.setMonthOne}
                             />
-                                <div>
                                     <input 
                                         className="rect-date year" 
                                         placeholder="year"
@@ -240,8 +240,9 @@ render () {
                                     >
                                     </input>
                                 </div>
-                                <button onClick={this.createObject}>save</button>
-                            </div>
+                                <div className="save-btn-div">
+                                <button className="save-btn"onClick={this.createObject}>save item</button>
+                            </div>                            </div>
                                 : null}
                             { this.state.eduArray.length > 0
                             ? <PreviewDataEdu userId={this.props.userId} save={this.setDeleteSave} updateParent={this.updateFromPreview} data={this.state.eduArray}/>

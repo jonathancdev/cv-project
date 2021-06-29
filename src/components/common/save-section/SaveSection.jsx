@@ -32,30 +32,7 @@ class SaveSection extends Component {
         }
 
     }
-    // propsExist() {
-    //     if (this.props.required !== undefined ) {
-    //         if (Array.isArray(this.props.required)) {
-    //             const array = this.props.required
-    //             let count = 1
-    //             array.forEach((obj) => {
-    //                 localStorage.setObject((this.props.storageName + count), obj)
-    //                 count += 1
-    //             })
-    //             return array
 
-    //         } else {
-    //             localStorage.setItem(this.props.storageName, this.props.required)
-    //         }
-    //     }
-    //     if (this.props.requiredB !== undefined ) {
-    //         if (Array.isArray(this.props.required)) {
-    //             localStorage.setItem(this.props.storageNameB, JSON.stringify(this.props.requiredB))
-    //         } else {
-    //             localStorage.setItem(this.props.storageNameB, this.props.requiredB)
-    //         }
-    //     }
-
-    // }
     set() {
         if (this.props.set) {
             this.props.set()

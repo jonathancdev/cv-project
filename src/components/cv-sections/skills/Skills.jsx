@@ -129,14 +129,14 @@ render() {
                 </section>
                 <section className="sec-form-wrap">
                     <section className="multi-form">
-                            <section className="duties-wrap">
+
                                 <div>
                                     <p>add skill</p>
                                     <button onClick={this.toggleNewItem} className="add-btn">
                                 {this.state.hideNewSkill
                                 ? <i className="fas fa-plus"></i>
                                 : <i className="fas fa-window-minimize"></i> }
-                            </button>
+                                </button>
                                 </div>
 
                                 {!this.state.hideNewSkill
@@ -156,10 +156,12 @@ render() {
                                         maxLength="50"
                                     />
                                 </InputStd>
-                                <button onClick={this.saveSkill}>save</button>
-                                </div>
+                                <div className="save-btn-div">
+                                    <button className="save-btn"onClick={this.saveSkill}>save skill</button>
+                                </div>                                
+                            </div>
                                 : null}
-                            </section>
+
                 { this.state.skillArray.length > 0
                 ? <PreviewDataSkills2 userId={this.props.userId} save={this.setDeleteSave} updateParent={this.updateFromPreview} data={this.state.skillArray}/>
                 : null}

@@ -16,6 +16,7 @@
     height: 35px;
 }
 #avatar-display {
+    padding: 0px 5px 0px 5px;
     border: none;
     background-color: transparent;
     border-color: black;
@@ -29,4 +30,7 @@
     width: 200px;
     min-height: 200px;
     border-style: dotted;
+}
+.photo .delete-storage button{
+margin-right: 38px;
 }
