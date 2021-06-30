@@ -13,19 +13,11 @@ function Login (props) {
     const passwordRef = useRef(null)
     const emailRef = useRef(null)
 
-    // function handleSubmit() {
-    //     console.log('login attempt')
-    //     authenticate()
-    // }
     console.log(auth)
     function authenticate() {
         const mail = emailRef.current.value
         const pw = passwordRef.current.value
         const keys = Object.keys(localStorage).filter( item => item.includes('userInfo'))
-        if (keys.length === 0) {
-            setErrorMsg('no account found for ' + currEmail)
-            setAuth(false)
-        } else {
             keys.forEach(key => {
                 const user = localStorage.getObject(key)
                 const userMail = user.email
@@ -34,24 +26,29 @@ function Login (props) {
                     setTempUser(user)
                     setAuth(true)
                 } else {
-                    setErrorMsg('login failed')
                     setAuth(false)
                 }
             })
-        }
-
-        //for all localstorage userIDs, if email and password match
-        //setUser to that userID
-        //if no match, say login not found, prompt to create account
-        //setUser to null
     }
     function emailHandleChange(e) {
         const value = e.target.value
         setCurrEmail(value)
+        setErrorMsg('')
     }
     function passwordHandleChange(e) {
         const value = e.target.value
         setCurrPassword(value)
+        setErrorMsg('')
+    }
+    function handleClick() {
+        const keys = Object.keys(localStorage).filter( item => item.includes('userInfo'))
+        if (auth) {
+            props.setUser(tempUser)
+        } else if (keys.length > 0) {
+            setErrorMsg('incorrect email or password')
+        } else {
+            setErrorMsg('no account found for ' + currEmail)
+        }
     }
     return (
         <section className="login">
@@ -83,7 +80,7 @@ function Login (props) {
 
                 <section className="login-form-submit">
                 <div className={currEmail !== '' && currPassword !== '' ? 'active-div signup-btn-div' : 'inactive-div signup-btn-div'}>
-                    <Link className={currEmail !== '' && currPassword !== '' ? 'active-div signup-btn' : 'inactive-div signup-btn'} to={auth ? '/create' : '/login'} onClick={auth ? props.setUser(tempUser) : null}>log in</Link>
+                    <Link className={currEmail !== '' && currPassword !== '' ? 'active-div signup-btn' : 'inactive-div signup-btn'} to={auth ? '/create' : '/login'} onClick={handleClick}>log in</Link>
                 </div>
                 <div className="login-form-error-wrap">
                     <span className="login-form-error">{errorMsg}</span>

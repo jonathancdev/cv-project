@@ -28,7 +28,7 @@ function EduItem (props) {
         })
     }
     function handleExpand(e) {
-        const expandable = e.target.parentElement.parentElement.firstChild.nextSibling
+        const expandable = e.target.parentElement.parentElement.nextSibling.firstChild
         if (e.target.innerHTML === 'expand') {
         expandable.hidden = false
         e.target.innerHTML = 'hide'
@@ -39,21 +39,28 @@ function EduItem (props) {
  
     }
     return (
-        <div id={props.object.loc}>
+<div className="preview-item" id={props.object.title}>
             <li>
-            {props.object.degree} at {props.object.loc}
+                <h3>{props.object.degree} at {props.object.loc}</h3>
+                <div className="delete-storage">
+                { canDelete()
+                ? <button className="delete-button" onClick={handleDelete}>delete</button>
+                : null }
+                </div>
+                <div className="expand-preview">
+                    <button onClick={handleExpand}>expand</button>
+                </div>
             </li>
-            <ul className="expandable" hidden>
-                   {props.object.monthOne}
-               </ul>
-               <div className="expand-preview">
-                   <button onClick={handleExpand}>expand</button>
-               </div>
-            <div className="delete-storage">
-        { canDelete()
-        ? <button className="delete-button" onClick={handleDelete}>delete</button>
-        : null }
-        </div>
+            
+            <div className="expand-wrap">
+                <ul className="expandable" hidden>
+                    {props.object.monthOne + ' ' + props.object.yearOne}
+                    <section className="expand-duties">
+                        <p className="prev-duty">{props.object.desc}</p>
+                    </section>
+                </ul>
+            </div>
+            
         </div>
     )
 }

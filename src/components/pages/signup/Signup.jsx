@@ -178,7 +178,7 @@ function Signup (props) {
 
                     <section className="signup-form-submit">
                     <div className={emailValid && passwordValid ? 'active-div signup-btn-div' : 'inactive-div signup-btn-div'}>
-                        <Link to={emailValid && passwordValid ? '/create' : '/signup'} className={emailValid && passwordValid ? 'active-link signup-btn' : 'inactive-link signup-btn'} onClick={handleSubmit}>create account</Link>
+                        <Link to={emailValid && passwordValid ? '/create' : '#'} className={emailValid && passwordValid ? 'active-link signup-btn' : 'inactive-link signup-btn'} onClick={handleSubmit}>create account</Link>
                     </div>
                     <div>
                         <p>already have an account?</p>

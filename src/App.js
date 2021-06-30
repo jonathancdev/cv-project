@@ -1,7 +1,7 @@
 import './App.css';
 import {React, useState} from "react";
 import { Route, BrowserRouter as Router, Switch, withRouter } from 'react-router-dom';
-import { Header, Footer, storeObjects, checkStorage } from './components/common';
+import { Header, Footer, storeObjects, checkStorage, removeStorage } from './components/common';
 import { HomeMain, Create, Pricing, Login, Signup, Account, Help, View } from './components/pages'
 
 
@@ -59,14 +59,13 @@ function App() {
   function endSession() {
     setCurrentUser(null)
     setActiveSession(false)
-    localStorage.removeItem('activeSession')
+    removeStorage('activeSession')
   }
-
   return (
     <div className="App">
       <Router>
         <header>
-          <Header logOut={endSession} user={currentUser}/>
+          <Header logOut={endSession} active={activeSession} user={currentUser}/>
         </header>
         <main>
         <Switch>
@@ -86,7 +85,7 @@ function App() {
               <Signup setUser={setUser}/>
             </Route>
             <Route path="/account">
-              <Account user={currentUser}/>
+              <Account logOut={endSession} user={currentUser}/>
             </Route>
             <Route path="/help">
               <Help />

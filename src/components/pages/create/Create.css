@@ -58,13 +58,13 @@ p {
 .fa-window-minimize {
     padding: 0;
     margin: 0;
-    margin-top: -10px;
+    margin-top: -6px;
     font-size: 12px;
 }
 .fa-plus {
     padding: 0;
     margin: 0;
-    margin-top: -2px;
+    margin-top: 0px;
     font-size: 16px;
 }
 
@@ -174,7 +174,6 @@ p {
 .multi-form div {
     display: flex;
     flex-direction: row;
-    align-items: center;
 }
 #form-wrapper {
     display: flex;
@@ -235,4 +234,46 @@ p {
     border: none;
     background-color: transparent;
     cursor: pointer;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+.preview-data {
+    padding: 5px;
+    margin: 5px 0px;
+    display: flex;
+    flex-direction: column;
+}
+.preview-data li, .preview-data div {
+    padding: 0px 0px;
+}
+li .preview-item {
+    display: flex;
+    flex-direction: column;
+}
+.preview-item li {
+    display: flex;
+    align-items: center;
+    
+}
+.preview-item h3 {
+    font-family: overpass thin;
+    font-size: 14px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    font-weight: normal
+}
+.expand-duties {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
+}
+.prev-duty {
+    font-size: 12px;
+    padding: 0px;
+    margin: 0;
+}
+.expandable {
+    margin-top: 0px;
+    padding-top: 0px;
 }

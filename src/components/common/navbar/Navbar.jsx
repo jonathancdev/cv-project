@@ -18,21 +18,22 @@ function Navbar (props) {
         setShowFlag(prevShowFlag => !prevShowFlag)
 
     }
+    console.log('navbar rendered')
     return (
         <section className="navbar">
-            <Link id="bluea" to={Object.keys(localStorage).includes('activeSession') ? "/create" : '/signup'} className="navlinks">create cv</Link>
+            <Link id="bluea" to={props.active ? "/create" : '/signup'} className="navlinks">create cv</Link>
 
-            {props.user !== null && Object.keys(localStorage).includes('activeSession')
+            {props.user !== null && props.active
             ?  null
             :  <Link to="/signup" className="navlinks">sign up</Link>   
             }
 
-            {props.user !== null && Object.keys(localStorage).includes('activeSession')
+            {props.user !== null && props.active
             ?  <Link to="/account" className="navlinks">{props.user.name + ' ' + props.user.surname[0] + '.'}</Link>
             : <Link to="/login" className="navlinks">sign in</Link>
             }
 
-            {Object.keys(localStorage).includes('activeSession')
+            {props.active
             ?<a 
             onClick={handleFlag}
             className="navlinks">

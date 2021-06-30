@@ -27,7 +27,8 @@ function WorkItem (props) {
         })
     }
     function handleExpand(e) {
-        const expandable = e.target.parentElement.parentElement.firstChild.nextSibling
+        const expandable = e.target.parentElement.parentElement.nextSibling.firstChild
+        console.log(expandable)
         if (e.target.innerHTML === 'expand') {
         expandable.hidden = false
         e.target.innerHTML = 'hide'
@@ -35,24 +36,36 @@ function WorkItem (props) {
             expandable.hidden = true
             e.target.innerHTML = 'expand' 
         }
- 
+    }
+    function filterDuties(dutyArray) {
+        const duties = dutyArray.filter(duty => duty !== 'what did you do in this position?')
+        return duties
     }
     return (
-        <div id={props.object.title}>
+        <div className="preview-item" id={props.object.title}>
             <li>
-            {props.object.title} at {props.object.company}
+                <h3>{props.object.title} at {props.object.company}</h3>
+                <div className="delete-storage">
+                { canDelete()
+                ? <button className="delete-button" onClick={handleDelete}>delete</button>
+                : null }
+                </div>
+                <div className="expand-preview">
+                    <button onClick={handleExpand}>expand</button>
+                </div>
             </li>
-            <ul className="expandable" hidden>
-                   {props.object.monthOne}
-               </ul>
-               <div className="expand-preview">
-                   <button onClick={handleExpand}>expand</button>
-               </div>
-            <div className="delete-storage">
-        { canDelete()
-        ? <button className="delete-button" onClick={handleDelete}>delete</button>
-        : null }
-        </div>
+            
+            <div className="expand-wrap">
+                <ul className="expandable" hidden>
+                    {props.object.monthOne + ' ' + props.object.yearOne + ' - ' + props.object.monthTwo + ' ' + props.object.yearTwo}
+                    <section className="expand-duties">
+                        <p className="prev-duty">{filterDuties(props.object.duties)[0]}</p>
+                        <p className="prev-duty">{filterDuties(props.object.duties)[1]}</p>
+                        <p className="prev-duty">{filterDuties(props.object.duties)[2]}</p>
+                    </section>
+                </ul>
+            </div>
+            
         </div>
     )
 }
