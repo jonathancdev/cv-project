@@ -15,11 +15,10 @@ function EduItem (props) {
     }
 
     function handleDelete(e) {
-        const target = e.target.parentElement.parentElement.id
-        console.log(target)
+        const target = e.target.parentElement.parentElement.firstChild.innerHTML
         const eduArray = props.data
         eduArray.forEach(item => {
-            if (item.loc === target) {
+            if ((item.degree + ' at ' + item.loc) === target) {
             const index = eduArray.findIndex(obj => obj.loc === item.loc)
             eduArray.splice(index, 1)
             props.update(eduArray)

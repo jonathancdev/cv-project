@@ -28,6 +28,10 @@ class Skills extends Component {
         this.toggleNewItem = this.toggleNewItem.bind(this)
         this.skillSum = this.checkKeys()
     }
+
+componentWillUnmount () {
+    this.props.updateComplete()
+}
 toggleNewItem () { //toggles form to allow new experience input
     this.setState(prevState => ({
         hideNewSkill: !prevState.hideNewSkill
@@ -124,6 +128,7 @@ render() {
                     required={this.state.skillArray} //what goes here?
                     storageName={this.props.userId + "_skills"}
                     set={this.setCanSave}
+                    updateParents={this.props.updateComplete}
                     />
                     : null}
                 </section>

@@ -32,7 +32,9 @@ class Contact extends Component {
 
         this.contactObj = []
     }
-
+    componentWillUnmount () {
+        this.props.updateComplete()
+    }
     setCanSave() { //toggle save section
         this.setState(prevState => ({
             canSave: !prevState.canSave
@@ -96,6 +98,8 @@ class Contact extends Component {
             web: 'website',
         })
         this.setDeleteSave()
+        this.props.updateComplete()
+
     }
 
 render () {
@@ -115,6 +119,7 @@ render () {
                     required={this.createObject()} //object or info required before saving
                     storageName={this.props.userId + '_contact'}
                     set={this.setCanSave}
+                    updateParents={this.props.updateComplete}
                     />
                     : null}
                 </section>

@@ -27,28 +27,6 @@ function App() {
   // const [infoComplete, setInfoComplete] = useState(false)
 
 
-  // function checkInfo() {
-  //   setAvatarFound(checkStorage(currentUser.userId + '_avatar') ? true : false)
-  //   setContactFound(checkStorage(currentUser.userId + '_contact') ? true : false)
-  //   setEducationFound(checkStorage(currentUser.userId + '_education') ? true : false)
-  //   setProfileFound(checkStorage(currentUser.userId + '_profile') ? true : false)
-  //   setSkillsFound(checkStorage(currentUser.userId + '_skills') ? true : false)
-  //   setWorkFound(checkStorage(currentUser.userId + '_work') ? true : false)
-  //   if (
-  //     avatarFound &&
-  //     contactFound &&
-  //     educationFound &&
-  //     profileFound &&
-  //     skillsFound &&
-  //     workFound
-  //   ) {
-  //     setInfoComplete(true)
-  //     console.log(avatarFound, contactFound, educationFound, profileFound, skillsFound, workFound, infoComplete)
-  //   } else {
-  //     console.log('false')
-  //     console.log(avatarFound, contactFound, educationFound, profileFound, skillsFound, workFound, infoComplete)
-  //   }
-  // }
   function setUser(obj) {
     setCurrentUser(obj)
     setActiveSession(true)

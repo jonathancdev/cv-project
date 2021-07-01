@@ -15,20 +15,19 @@ function WorkItem (props) {
     }
 
     function handleDelete(e) {
-        const target = e.target.parentElement.parentElement.id
+        const target = e.target.parentElement.parentElement.firstChild.innerHTML
         const workArray = props.data
         workArray.forEach(item => {
-            if (item.title === target) {
-            const index = workArray.findIndex(obj => obj.title === item.title)
-            workArray.splice(index, 1)
-            props.update(workArray)
-            props.save();
+            if ((item.title + ' at ' + item.company) === target) {
+        const index = workArray.findIndex(obj => obj.title === item.title)
+        workArray.splice(index, 1)
+        props.update(workArray)
+        props.save();
             }
         })
     }
     function handleExpand(e) {
         const expandable = e.target.parentElement.parentElement.nextSibling.firstChild
-        console.log(expandable)
         if (e.target.innerHTML === 'expand') {
         expandable.hidden = false
         e.target.innerHTML = 'hide'

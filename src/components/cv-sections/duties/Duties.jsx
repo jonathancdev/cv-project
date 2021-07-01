@@ -2,7 +2,6 @@ import React, { useRef } from 'react';
 import InputStd from '../editable-forms/input-std'
 
 function Duties (props) {
-    console.log(props.value)
     const dutyRef = useRef();
     const count = props.dutyCount
     function handleDelete(e) {
@@ -10,8 +9,6 @@ function Duties (props) {
         const target = e.target.parentElement.parentElement.id
         const index = array.indexOf(target)
         array[index] = 'what did you do in this position?'
-        //console.log(target)
-        //console.log(index)
         props.update(count - 1)
         orderArray(array, index, 2)
 

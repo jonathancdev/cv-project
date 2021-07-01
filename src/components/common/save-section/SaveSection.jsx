@@ -54,6 +54,7 @@ class SaveSection extends Component {
 
         this.btnToggle();
         this.set()
+        this.props.updateParents()
       };
 
     render() {

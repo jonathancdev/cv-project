@@ -58,6 +58,10 @@ class WorkExperience extends Component {
 
  }
 
+ componentWillUnmount () {
+    this.props.updateComplete()
+}
+
 resetExp() { //when new work exp item added, resets values to set up new object
     this.setState({
         title: "click to edit title", 
@@ -192,7 +196,6 @@ setYearTwo(e) {
 }
 
 render() {
-    console.log(this.state.expArray.length > 0)
     return (
         <section className="cv-sec-wrap">
             <section className="work-experience cv-section">
@@ -209,6 +212,7 @@ render() {
                     required={this.state.expArray} //object or info required before saving
                     storageName={this.props.userId + '_work'}
                     set={this.setCanSave}
+                    updateParents={this.props.updateComplete}
                     />
                     : null}
                 </section>

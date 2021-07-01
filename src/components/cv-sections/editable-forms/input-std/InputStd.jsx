@@ -31,7 +31,6 @@ const InputStd = ({
             setIsValid(true)
         }
     }
-    console.log(isValid)
     return (
         <section {...props}>
             {isEditing ? (

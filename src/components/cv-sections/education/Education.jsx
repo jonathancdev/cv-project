@@ -40,6 +40,9 @@ class Education extends Component {
 
  }
 
+componentWillUnmount () {
+    this.props.updateComplete()
+}
 resetExp() {
     this.setState({
         hideNewItem: true,
@@ -163,6 +166,7 @@ render () {
                     required={this.state.eduArray} //object or info required before saving
                     storageName={this.props.userId + '_education'}
                     set={this.setCanSave}
+                    updateParents={this.props.updateComplete}
                     />
                     : null}
                 </section>

@@ -16,6 +16,10 @@ class Profile extends Component {
         this.handleDelete = this.handleDelete.bind(this)
     }
 
+componentWillUnmount () {
+    this.props.updateComplete()
+}
+
 setValue (e) {
       const value = e.target.value;
       this.setState({
@@ -31,6 +35,8 @@ setCanSave() {
 handleDelete() {
     removeStorage(this.props.userId + "_profile")
     this.setState({value: 'click to edit profile'})
+    this.props.updateComplete()
+
 }
 render() {
     return (
@@ -48,6 +54,7 @@ render() {
                     display={'you must save the changes on this page'}
                     required={this.state.value} //object or info required before saving
                     storageName={this.props.userId + "_profile"}
+                    updateParents={this.props.updateComplete}
                     />
                     : null}
                 </section>

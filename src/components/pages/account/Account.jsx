@@ -4,7 +4,6 @@ import { removeStorage } from '../../common'
 import './Account.css';
 
 function Account (props) {
-    console.log(props)
     const [message, setMessage] = useState('')
     const [fnc, setFnc] = useState(null)
     const options = useRef()
@@ -29,20 +28,16 @@ function Account (props) {
 
     function deleteUser() {
         props.logOut()
-        console.log(props.user.userId)
         const id = props.user.userId
         const keys = Object.keys(localStorage).filter(item => item.includes(id))
-        console.log(keys)
         keys.forEach(key => {
             removeStorage(key)
         })
         const users = Object.keys(localStorage).filter(item => item.includes('user'))
-        console.log(users)
         const thisUser = users.filter(item => localStorage.getObject(item) === id  || localStorage.getObject(item).userId === id)
         thisUser.forEach(key => {
             removeStorage(key)
         })
-        console.log(thisUser)
         removeStorage('currentUser')
     }
     function handleNo() {

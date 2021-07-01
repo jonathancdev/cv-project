@@ -1,9 +1,15 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import './Default.css';
 
 function Default (props) {
-    return (
 
+    useEffect( () => {
+        return () => {
+            props.updateComplete()
+        }
+    }, [])
+
+    return (
         <section className="cv-sec-wrap">
                 <section className="default">
                     <h1>Hello, {props.user.name}!</h1>

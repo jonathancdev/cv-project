@@ -277,3 +277,12 @@ li .preview-item {
     margin-top: 0px;
     padding-top: 0px;
 }
+.view .section-wrap {
+    display: flex;
+    justify-content: center;
+}
+.view-error {
+    margin-top: 100px;
+    font-size: 14px;
+    color: red;
+}

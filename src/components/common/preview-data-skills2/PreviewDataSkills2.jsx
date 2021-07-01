@@ -6,7 +6,7 @@ function PreviewDataSkills2 (props) {
     
     const array = props.data
     return (
-        <ul>
+        <ul className="preview-data">
             {array.map((item) => <li><SkillItem userId={props.userId} data={props.data} save={props.save} update={props.updateParent} key={item[1]} listId={item[1]} skill={item}/></li>)}
         </ul>
     )

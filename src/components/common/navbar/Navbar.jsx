@@ -6,19 +6,16 @@ function Navbar (props) {
     const [showFlag, setShowFlag] = useState(false)
 
     function clickYes() {
-        console.log('yes')
         props.logOut()
         setShowFlag(prevShowFlag => !prevShowFlag)
     }
     function clickNo() {
-        console.log(this)
         setShowFlag(prevShowFlag => !prevShowFlag)
     }
     function handleFlag() {
         setShowFlag(prevShowFlag => !prevShowFlag)
 
     }
-    console.log('navbar rendered')
     return (
         <section className="navbar">
             <Link id="bluea" to={props.active ? "/create" : '/signup'} className="navlinks">create cv</Link>

@@ -13,7 +13,6 @@ function Login (props) {
     const passwordRef = useRef(null)
     const emailRef = useRef(null)
 
-    console.log(auth)
     function authenticate() {
         const mail = emailRef.current.value
         const pw = passwordRef.current.value

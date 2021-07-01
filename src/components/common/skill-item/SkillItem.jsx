@@ -21,15 +21,15 @@ function SkillItem (props) {
         //removeStorage('skill' + storageIndex)
     }
     return (
-        <div id={props.listId}>
+        <div className="preview-item" id={props.listId}>
             <li>
-            {props.skill}
-            </li>
-        {localStorage.getObject(props.userId + '_skills') && localStorage.getObject(props.userId + '_skills').includes(props.skill)
+                <h3>{props.skill}</h3>
+                {localStorage.getObject(props.userId + '_skills') && localStorage.getObject(props.userId + '_skills').includes(props.skill)
         ? <div className="delete-storage">
         <button className="delete-button" onClick={handleDelete}>delete</button>
         </div>
         : null }
+            </li>
         </div>
     )
 }

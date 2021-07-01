@@ -1,9 +1,15 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import './Photo.css';
 import PhotoInput from '../photo-input'
 import {SaveSection, checkStorage, removeStorage} from '../../common'
 
 function Photo (props) {
+
+    useEffect( () => {
+        return () => {
+            props.updateComplete()
+        }
+    }, [])
 
     //checks if items are already in localstorage for init
     const [userAvatar, setUserAvatar] = useState(() => {
@@ -35,6 +41,7 @@ function Photo (props) {
         removeStorage(props.userId + "_path")
         updateAvatar('')
         updatePath('')
+        props.updateComplete()
     }
     return (
         <section className="cv-sec-wrap">
@@ -53,6 +60,7 @@ function Photo (props) {
                     requiredB={filePath}
                     storageName={props.userId + "_avatar"}
                     storageNameB={props.userId + "_path"}
+                    updateParents={props.updateComplete}
                     />
                     : null}
                 </section>

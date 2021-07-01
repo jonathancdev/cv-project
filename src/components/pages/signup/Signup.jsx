@@ -21,7 +21,6 @@ function Signup (props) {
     const emailRef = useRef(null)
 
    let userObj = {}
-    console.log(userCount)
 
     function setFirst(e) {
         const value = e.target.value

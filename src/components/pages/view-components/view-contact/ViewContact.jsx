@@ -4,7 +4,6 @@ function ViewContact (props) {
 
     const [state1, setState1] = useState('state');
     const contact = localStorage.getObject(props.userId + '_contact')
-    console.log(contact)
     return (
         <div className="view-wrapper contact">
             <p id="view-contact">{contact[0].tel}</p>
