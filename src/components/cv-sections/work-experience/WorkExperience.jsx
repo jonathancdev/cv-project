@@ -1,7 +1,7 @@
 import React, { Component, createRef } from 'react';
 import './WorkExperience.css';
 import InputStd from '../editable-forms/input-std'
-import { MonthDrop, PreviewDataWork, SaveSection, removeStorage} from '../../common'
+import { MonthDrop, PreviewDataWork, SaveSection, removeStorage, HoverInfo} from '../../common'
 import Duties from '../duties';
 
 class WorkExperience extends Component {
@@ -32,9 +32,12 @@ class WorkExperience extends Component {
             //booleans
             canSave: false,
             saveAfterDelete: false,
-            hideNewItem: true
+            hideNewItem: true,
+            hovered: false,
+            expLimit: '',
+            dutyLimit: ''
         };
-        //bind methods
+        //bind functions
         this.createObject = this.createObject.bind(this)
         this.toggleNewItem = this.toggleNewItem.bind(this)
         this.setTitle = this.setTitle.bind(this)
@@ -53,12 +56,36 @@ class WorkExperience extends Component {
         this.checkKeys = this.checkKeys.bind(this)
         this.updateFromPreview = this.updateFromPreview.bind(this)
         this.updateDutiesChild = this.updateDutiesChild.bind(this)
+        this.onHoverIn = this.onHoverIn.bind(this)
+        this.onHoverOut = this.onHoverOut.bind(this)
+        this.setWorkLimit = this.setWorkLimit.bind(this)
+        this.setDutyLimit = this.setDutyLimit.bind(this)
         //set expSum
         this.expSum = this.checkKeys();
-
  }
 
- componentWillUnmount () {
+setWorkLimit () {
+    this.setState({
+        workLimit: 'use only your most relevant experience! limit of 4 previous jobs'
+    })
+}
+setDutyLimit () {
+    this.setState({
+        dutyLimit: 'keep it short and sweet! limit of 3 job duties'
+    })
+}
+onHoverIn() {
+    this.setState({
+        hovered: true
+    })
+}
+onHoverOut() {
+    this.setState({
+        hovered: false
+    })
+}
+
+componentWillUnmount () {
     this.props.updateComplete()
 }
 
@@ -79,63 +106,72 @@ resetExp() { //when new work exp item added, resets values to set up new object
         hideNewItem: true
     })
 }
+
 createObject () { //save button creates new object with current form inputs, pushes to expSum
-    let newExp = {};
-    newExp.title = this.state.title
-    newExp.company = this.state.company
-    newExp.monthOne = this.state.monthOne
-    newExp.monthTwo = this.state.monthTwo
-    newExp.yearOne = this.state.yearOne
-    newExp.yearTwo = this.state.yearTwo
-    newExp.duties = this.state.duties
-    this.expSum.push(newExp)
-    this.setExpArray();
-    this.resetExp();
-    this.setState({
-        canSave: true
-    })
+    if (this.expSum.length < 4) {
+        let newExp = {};
+        newExp.title = this.state.title
+        newExp.company = this.state.company
+        newExp.monthOne = this.state.monthOne
+        newExp.monthTwo = this.state.monthTwo
+        newExp.yearOne = this.state.yearOne
+        newExp.yearTwo = this.state.yearTwo
+        newExp.duties = this.state.duties
+        this.expSum.push(newExp)
+        this.setExpArray();
+        this.resetExp();
+        this.setState({
+            canSave: true
+        })
+    } else {
+        this.setWorkLimit()
+    }
 }
+
 toggleNewItem () { //toggles form to allow new experience input
     this.setState(prevState => ({
         hideNewItem: !prevState.hideNewItem
       }));
 }
+
 setDutyCount() { //counts # duties within exp object (limit 3)
     this.setState({
         dutyCount: this.state.dutyCount + 1
     })
 }
-updateDutiesChild(newCount) {
+updateDutiesChild(newCount) { //updates duty count from child
     this.setState({
-        //duties: array,
         dutyCount: newCount
     })
 }
 newDuty () { //when button clicked to add new duty, checks if over limit
     if (this.state.dutyCount >= 3) {
-        alert('limit 3 duties per thing')
+        this.setDutyLimit();
     } else {
         this.setDutyCount();
     }
 }
+
 setExpArray () { //when new work exp obj saved, sets state array to include all in expSum array
     this.setState({
         expArray: this.expSum
     })
 }
+
 setCanSave() { //toggle save section
     this.setState(prevState => ({
         canSave: !prevState.canSave
       }));
       this.setState({saveAfterDelete: false})
 }
-setDeleteSave() {
+setDeleteSave() { 
     this.setState({saveAfterDelete: true})
     this.setState(prevState => ({
         canSave: !prevState.canSave,
       }));
 }
-checkKeys() { //new check keys
+
+checkKeys() { //checks storage for values before using intiial
     if (Object.keys(localStorage).includes(this.props.userId + '_work')) {
         const storage = localStorage.getObject(this.props.userId + '_work')
         return storage;
@@ -145,10 +181,11 @@ checkKeys() { //new check keys
     }
 }
 
-updateFromPreview(array) {
+updateFromPreview(array) { //updates state when WorkItem is deleted
     this.setState({expArray: array})
 }
-//methods to save inputs as they are being entered in form
+
+//functions to save inputs as they are being entered in form
 setTitle (e) {
     const value = e.target.value;
     this.setState({
@@ -201,15 +238,23 @@ render() {
             <section className="work-experience cv-section">
                 <section className="cv-header">
                         <h1>Add your work experience</h1>
-                        <button className="help-btn">
-                            <i className="far fa-question-circle"></i>
-                        </button>
+                        <button onMouseEnter={this.onHoverIn} onMouseLeave={this.onHoverOut} className="help-btn">
+                    {this.state.hovered
+                        ? <HoverInfo
+                            text="Include your work experience in this section. You can add up to
+                                four items here. There is a limit to 3 duties for each item, so only
+                                enter the most important details."
+                            >
+                        </HoverInfo>
+                        : null }
+                        <i className="far fa-question-circle"></i>
+                    </button>
                 </section>
                 <section className="save-section-wrap">
                     {(this.state.expArray.length > 0 && this.state.canSave === true) || this.state.saveAfterDelete === true
                     ?<SaveSection
                     display={'you must save the changes on this page'}
-                    required={this.state.expArray} //object or info required before saving
+                    required={this.state.expArray}
                     storageName={this.props.userId + '_work'}
                     set={this.setCanSave}
                     updateParents={this.props.updateComplete}
@@ -226,6 +271,7 @@ render() {
                                 ? <i className="fas fa-plus"></i>
                                 : <i className="fas fa-window-minimize"></i> }
                             </button>
+                            <p className="error-msg">{this.state.workLimit}</p>
                         </div>
             {/* form starts here */}
                         {!this.state.hideNewItem
@@ -304,6 +350,7 @@ render() {
                                     <button className="add-btn" onClick={this.newDuty}>
                                         <i className="fas fa-plus"></i>
                                     </button>
+                                    <p className="error-msg">{this.state.dutyLimit}</p>
                                 </div>
 
                             <Duties

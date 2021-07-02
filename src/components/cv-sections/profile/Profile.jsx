@@ -1,7 +1,7 @@
 import React, { Component, createRef } from 'react';
 import './Profile.css';
 import ProfileForm from '../editable-forms/profile'
-import { TextAreaAuto, SaveSection, checkStorage, removeStorage } from '../../common'
+import { TextAreaAuto, SaveSection, checkStorage, removeStorage, HoverInfo } from '../../common'
 
 class Profile extends Component {
     constructor(props) {
@@ -10,10 +10,24 @@ class Profile extends Component {
 
         this.state = {
             value: checkStorage(this.props.userId + '_profile') ? localStorage.getItem(this.props.userId + '_profile') : 'click to edit profile',
-            canSave: false
+            canSave: false,
+            hovered: false
         };
         this.setValue = this.setValue.bind(this)
         this.handleDelete = this.handleDelete.bind(this)
+        this.onHoverIn = this.onHoverIn.bind(this)
+        this.onHoverOut = this.onHoverOut.bind(this)
+
+    }
+  onHoverIn() {
+        this.setState({
+            hovered: true
+        })
+    }
+  onHoverOut() {
+    this.setState({
+        hovered: false
+    })
     }
 
 componentWillUnmount () {
@@ -39,12 +53,21 @@ handleDelete() {
 
 }
 render() {
+    console.log(this.state.canSave)
+    console.log(this.state.value)
     return (
         <section className="cv-sec-wrap">
             <section className="profile cv-section">
                 <section className="cv-header">
                     <h1>Add your personal profile</h1>
-                    <button className="help-btn">
+                    <button onMouseEnter={this.onHoverIn} onMouseLeave={this.onHoverOut} className="help-btn">
+                    {this.state.hovered
+                        ? <HoverInfo
+                            text="Write a brief statement highlighting your knowledge, skills, and 
+                            professional achievements. Keep your profile short and to the point."
+                            >
+                        </HoverInfo>
+                        : null }
                         <i className="far fa-question-circle"></i>
                     </button>
                 </section>

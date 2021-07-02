@@ -9,13 +9,18 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border-style: dotted;
     min-width: 750px;
     height: 500px;
 }
+.text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 .help h1 {
     font-family: overpass black;
-    font-size: 48px;
+    font-size: 36px;
+    margin-top: 50px;
 }
 .help p {
     font-family: overpass thin;

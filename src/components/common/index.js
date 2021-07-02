@@ -16,6 +16,7 @@ import SkillItem from './skill-item'
 import WorkItem from './work-item'
 import EduItem from './edu-item'
 import SaveSection from './save-section';
+import HoverInfo from './hover-info'
 
 
 
@@ -39,5 +40,6 @@ export {
     SkillItem,
     WorkItem,
     EduItem,
-    SaveSection
+    SaveSection,
+    HoverInfo
 }

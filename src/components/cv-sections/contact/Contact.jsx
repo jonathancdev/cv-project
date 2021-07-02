@@ -2,7 +2,7 @@ import React, { Component, createRef } from 'react';
 import './Contact.css';
 import InputStd from '../editable-forms/input-std'
 import ProfileForm from '../editable-forms/profile'
-import { TextAreaAuto, SaveSection, checkStorage, removeStorage } from '../../common'
+import { TextAreaAuto, SaveSection, checkStorage, removeStorage, HoverInfo } from '../../common'
 
 class Contact extends Component {
     constructor(props) {
@@ -18,7 +18,8 @@ class Contact extends Component {
             address: checkStorage(this.props.userId + '_contact') ? localStorage.getObject(this.props.userId + '_contact')[0].address : 'address',
             web: checkStorage(this.props.userId + '_contact') ? localStorage.getObject(this.props.userId + '_contact')[0].web : 'website',
             canSave: false,
-            saveAfterDelete: false
+            saveAfterDelete: false,
+            hovered: false
         }
 
         this.setTel = this.setTel.bind(this)
@@ -29,8 +30,21 @@ class Contact extends Component {
         this.setDeleteSave = this.setDeleteSave.bind(this)
         this.inputsExist = this.inputsExist.bind(this)
         this.handleDelete = this.handleDelete.bind(this)
+        this.onHoverIn = this.onHoverIn.bind(this)
+        this.onHoverOut = this.onHoverOut.bind(this)
 
         this.contactObj = []
+    }
+
+    onHoverIn() {
+        this.setState({
+            hovered: true
+        })
+    }
+    onHoverOut() {
+    this.setState({
+        hovered: false
+    })
     }
     componentWillUnmount () {
         this.props.updateComplete()
@@ -108,7 +122,14 @@ render () {
             <section className="contact cv-section">
                 <section className="cv-header">
                     <h1>Add your contact information</h1>
-                    <button className="help-btn">
+                    <button onMouseEnter={this.onHoverIn} onMouseLeave={this.onHoverOut} className="help-btn">
+                    {this.state.hovered
+                        ? <HoverInfo
+                        text="Enter your contact information here for potential employers to reach out. Only
+                                email and phone number are required in this section."
+                        >
+                    </HoverInfo>
+                        : null }
                         <i className="far fa-question-circle"></i>
                     </button>
                 </section>

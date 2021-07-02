@@ -1,7 +1,7 @@
 import React, { Component, createRef } from 'react';
 import './Skills.css';
 import InputStd from '../editable-forms/input-std'
-import {SaveSection, PreviewDataSkills2} from '../../common'
+import {SaveSection, PreviewDataSkills2, HoverInfo} from '../../common'
 
 class Skills extends Component {
     constructor(props) {
@@ -10,25 +10,43 @@ class Skills extends Component {
         this.skillRef = createRef();
         this.state = {
             skill: 'enter skill',
-            skillCount: 0,
+            skillCount: Object.keys(localStorage).includes(this.props.userId + "_skills") ? localStorage.getObject(this.props.userId + "_skills").length : 0,
             skillArray: this.checkKeys(),
             canSave: false,
             saveAfterDelete: false,
-            hideNewSkill: true
+            hideNewSkill: true,
+            hovered: false,
+            skillLimit: ''
         };
 
         this.setSkill = this.setSkill.bind(this)
         this.setSkillCount = this.setSkillCount.bind(this)
-        this.newSkill = this.newSkill.bind(this)
         this.setCanSave = this.setCanSave.bind(this)
         this.setDeleteSave = this.setDeleteSave.bind(this)
         this.checkKeys = this.checkKeys.bind(this)
         this.updateFromPreview = this.updateFromPreview.bind(this)
         this.saveSkill = this.saveSkill.bind(this)
         this.toggleNewItem = this.toggleNewItem.bind(this)
+        this.onHoverIn = this.onHoverIn.bind(this)
+        this.onHoverOut = this.onHoverOut.bind(this)
+        this.setSkillLimit = this.setSkillLimit.bind(this)
         this.skillSum = this.checkKeys()
     }
-
+setSkillLimit () {
+    this.setState({
+        skillLimit: "very talented! limit of 8 skills here"
+    })
+}
+onHoverIn() {
+        this.setState({
+            hovered: true
+        })
+    }
+onHoverOut() {
+    this.setState({
+        hovered: false
+    })
+    }
 componentWillUnmount () {
     this.props.updateComplete()
 }
@@ -42,16 +60,7 @@ setSkillCount() {
         skillCount: this.state.skillCount + 1
     })
 }
-newSkill () {
-    if (this.state.skillCount >= 8) {
-        alert('limit 8 skills per thang')
-    } else {
-        this.setSkillCount();
-    }
-    this.setState({
-        canSave: true
-    })
-}
+
 setCanSave() {
     this.setState(prevState => ({
         canSave: !prevState.canSave,
@@ -66,14 +75,19 @@ setDeleteSave() {
       this.setState({expArray: this.checkKeys()})
 }
 saveSkill() {
-    let newSkill = this.state.skill
-    this.skillSum.push(newSkill)
-    this.setState({
-        skill: 'enter skill',
-        skillArray: this.skillSum,
-        canSave: true,
-        hideNewSkill: true
-    })
+    if (this.state.skillCount < 8) {
+        let newSkill = this.state.skill
+        this.skillSum.push(newSkill)
+        this.setSkillCount()
+        this.setState({
+            skill: 'enter skill',
+            skillArray: this.skillSum,
+            canSave: true,
+            hideNewSkill: true
+        })
+    } else {
+        this.setSkillLimit()
+    }
 }
 checkKeys() { //new check keys
     if (Object.keys(localStorage).includes(this.props.userId + "_skills")) {
@@ -84,21 +98,7 @@ checkKeys() { //new check keys
         return empty;
     }
 }
-// checkKeys() { //checks local storage for any key/data pairs for workexp, returns them in array or []
-//     const skillKeys = Object.keys(localStorage).filter(item => item.includes('skill')).sort()
-//     if (skillKeys.length > 0) {
-//         let i = 0;
-//         let pairs = [];
-//         for (i = 0; i < skillKeys.length; i++) {
-//             pairs.push(localStorage.getObject(skillKeys[i]))
-//         }
-//         pairs.sort()
-//         return pairs;
-//     } else {
-//         const empty = []
-//         return empty;
-//     }
-// }
+
 updateFromPreview(array) {
     this.setState({
         skillArray: array,
@@ -112,12 +112,20 @@ setSkill(event, index) { //probably don't need array here
     })
 }
 render() {
+    console.log(this.state.skillCount)
     return (
         <section className="cv-sec-wrap">
             <section className="skills cv-section">
                 <section className="cv-header">
                     <h1>Add your skills</h1>
-                    <button className="help-btn">
+                    <button onMouseEnter={this.onHoverIn} onMouseLeave={this.onHoverOut} className="help-btn">
+                    {this.state.hovered
+                        ? <HoverInfo
+                        text="Include your skills and qualifications relevant to the positions you are seeking in this section. 
+                            There is a limit to 8 items here, but you can group similar skills together."
+                        >
+                    </HoverInfo>
+                        : null }
                         <i className="far fa-question-circle"></i>
                     </button>
                 </section>
@@ -142,6 +150,7 @@ render() {
                                 ? <i className="fas fa-plus"></i>
                                 : <i className="fas fa-window-minimize"></i> }
                                 </button>
+                                <p className="error-msg">{this.state.skillLimit}</p>
                                 </div>
 
                                 {!this.state.hideNewSkill

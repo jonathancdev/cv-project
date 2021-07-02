@@ -3,7 +3,7 @@ import './View.css';
 import { ViewPhoto, ViewProfile, ViewWork, ViewEducation, ViewSkills, ViewContact } from '../../pages'
 function View (props) {
     const photo = localStorage.getItem('avatar')
-    console.log(props.completed)
+    console.log(props)
     return (
         <section className="view">
             {props.completed

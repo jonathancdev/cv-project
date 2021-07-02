@@ -71,4 +71,3 @@ function WorkItem (props) {
 
 export default WorkItem;
 
-//localStorage.getObject('work') && localStorage.getObject('work').length <= props.index && localStorage.getObject('work')[props.index].title === props.object.title

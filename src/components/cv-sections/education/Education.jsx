@@ -1,7 +1,7 @@
 import React, { Component, createRef } from 'react';
 import './Education.css';
 import InputStd from '../editable-forms/input-std'
-import { MonthDrop, PreviewDataEdu, SaveSection } from '../../common'
+import { MonthDrop, PreviewDataEdu, SaveSection, HoverInfo } from '../../common'
 
 class Education extends Component {
     constructor(props) {
@@ -20,7 +20,9 @@ class Education extends Component {
             eduArray: this.checkKeys(),
             canSave: false,
             saveAfterDelete: false,
-            hideNewItem: true
+            hideNewItem: true,
+            hovered: false,
+            eduLimit: ''
         };
 
         this.createObject = this.createObject.bind(this)
@@ -36,10 +38,27 @@ class Education extends Component {
         this.checkKeys = this.checkKeys.bind(this)
         this.updateFromPreview = this.updateFromPreview.bind(this)
         this.resetExp = this.resetExp.bind(this)
+        this.onHoverIn = this.onHoverIn.bind(this)
+        this.onHoverOut = this.onHoverOut.bind(this)
+        this.setEduLimit = this.setEduLimit.bind(this)
         this.expSum = this.checkKeys()
 
  }
-
+setEduLimit () {
+    this.setState({
+        eduLimit: "that's a lot of education! limit of 3 items here"
+    })
+}
+onHoverIn() {
+    this.setState({
+        hovered: true
+    })
+}
+onHoverOut() {
+this.setState({
+    hovered: false
+})
+}
 componentWillUnmount () {
     this.props.updateComplete()
 }
@@ -55,18 +74,22 @@ resetExp() {
     })
 }
 createObject () {
-    let newExp = {};
-    newExp.loc = this.state.loc
-    newExp.degree = this.state.degree
-    newExp.desc = this.state.desc
-    newExp.monthOne = this.state.monthOne
-    newExp.yearOne = this.state.yearOne
-    this.expSum.push(newExp)
-    this.setEduArray();
-    this.resetExp();
-    this.setState({
-        canSave: true
-    })
+    if (this.expSum.length < 3) {
+        let newExp = {};
+        newExp.loc = this.state.loc
+        newExp.degree = this.state.degree
+        newExp.desc = this.state.desc
+        newExp.monthOne = this.state.monthOne
+        newExp.yearOne = this.state.yearOne
+        this.expSum.push(newExp)
+        this.setEduArray();
+        this.resetExp();
+        this.setState({
+            canSave: true
+        })
+    } else {
+        this.setEduLimit()
+    }
 }
 toggleNewItem () {
     this.setState(prevState => ({
@@ -155,7 +178,14 @@ render () {
             <section className="education cv-section">
             <section className="cv-header">
                     <h1>Add your education history</h1>
-                    <button className="help-btn">
+                    <button onMouseEnter={this.onHoverIn} onMouseLeave={this.onHoverOut} className="help-btn">
+                    {this.state.hovered
+                        ? <HoverInfo
+                        text="Include your educational background in this section. You can add up to three different
+                                items in this section. Use the description box to specific details to each item."
+                        >
+                    </HoverInfo>
+                        : null }
                         <i className="far fa-question-circle"></i>
                     </button>
                 </section>
@@ -179,6 +209,7 @@ render () {
                                 ? <i className="fas fa-plus"></i>
                                 : <i className="fas fa-window-minimize"></i> }
                             </button>
+                            <p className="error-msg">{this.state.eduLimit}</p>
                         </div>
                         {!this.state.hideNewItem
                         ? <div id="form-wrapper">

@@ -41,6 +41,7 @@ class TextAreaAuto extends Component {
 				placeholder={this.props.placeholder}
 				className={this.props.className}
 				onChange={this.handleChange}
+				onBlur={this.handleChange}
 				readOnly={this.props.readOnly === true ? true : false}
 				maxLength={this.props.length}
 			/>
