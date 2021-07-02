@@ -2,11 +2,18 @@ import { React, useState, useEffect, useRef } from 'react';
 
 function ViewSkills (props) {
 
-    const [state1, setState1] = useState('state');
     const skills = localStorage.getObject(props.userId + '_skills')
+    function createSkillItems() {
+        return skills.map(skill => {
+            return <li>{skill}</li>
+        })
+    }
+
     return (
         <div className="view-wrapper skills">
-            <p id="view-skills">{skills[0]} at {skills[0]}</p>
+            <ul>
+            {createSkillItems()}
+            </ul>
         </div>
     )
 }

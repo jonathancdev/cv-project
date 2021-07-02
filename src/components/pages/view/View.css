@@ -1,13 +1,65 @@
+.view * {
+    margin: 0;
+    padding: 0;
+}
+.view h1 {
+    font-size: 48px;
+    text-transform: uppercase;
+}
+.view h2 {
+    font-size: 26px;
+    text-transform: uppercase;
+}
+.view h3 {
+    font-size: 22px;
+    text-transform: uppercase;
+}
+.view h4 {
+    font-size: 16px;
+    text-transform: uppercase;
+}
+.view h5 {
+    font-size: 14px;
+}
+.view p {
+    font-size: 12px;
+}
 .view .section-wrap {
     margin: 0 auto;
     height: 800px;
     width: 650px;
 }
 #view-avatar {
-    height: 100px;
-    width: 100px;
+    height: 125px;
+    width: 125px;
     border-radius: 100%;
 }
 .view-wrapper {
+    border-style: solid;
+}
+.view-inner-wrap {
+    display: flex;
+    flex-direction: column;
+    padding: 15px 0px;
+    background-color: rgba(200, 212, 236, 0.973);
+}
+.view-sec {
+    background-color: white;
     border-style: dotted;
+}
+.view-header {
+    display: flex;
+}
+.view-body {
+    display: flex;
+}
+.view-side {
+    min-width: 175px;
+}
+.view-main {
+
+}
+.view-company-dates {
+    display: flex;
+    align-items: center;
 }
