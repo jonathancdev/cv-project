@@ -14,6 +14,7 @@ function View (props) {
             <section className="section-wrap">
                 <div className="view-inner-wrap">
                     <div className="view-header view-sec">
+                        <div className="color-block"></div>
                         <ViewPhoto userId={props.userId}/>
                         <div className="view-name-title">
                             <h1>{user.name} {user.surname}</h1>
@@ -22,17 +23,12 @@ function View (props) {
                     </div>
                     <div className="view-body">
                         <div className="view-side view-sec">
-                            <h3>SKILLS</h3>
                             <ViewSkills userId={props.userId}/>
-                            <h3>CONTACT</h3>
                             <ViewContact userId={props.userId}/>
                         </div>
                         <div className="view-main view-sec">
-                            <h3>PROFILE</h3>
                             <ViewProfile userId={props.userId}/>
-                            <h3>EXPERIENCE</h3>
                             <ViewWork userId={props.userId}/>
-                            <h3>EDUCATION</h3>
                             <ViewEducation userId={props.userId}/>
                         </div>
                     </div>

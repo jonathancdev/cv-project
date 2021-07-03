@@ -11,7 +11,8 @@ function ViewSkills (props) {
 
     return (
         <div className="view-wrapper skills">
-            <ul>
+            <h3>SKILLS</h3>
+            <ul className="view-skill-list">
             {createSkillItems()}
             </ul>
         </div>

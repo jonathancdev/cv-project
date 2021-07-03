@@ -5,7 +5,9 @@ function ViewPhoto (props) {
     const photo = localStorage.getItem(props.userId + '_avatar')
     return (
         <div className="view-wrapper photo">
-            <img id="view-avatar" src={photo} alt="photo"></img>
+            <div className="photo-border">
+                <img id="view-avatar" src={photo} alt="photo"></img>
+            </div>
         </div>
     )
 }

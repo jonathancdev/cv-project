@@ -1,28 +1,51 @@
 .view * {
     margin: 0;
+    padding: 0px;
+}
+.view {
+    background-color: #829CD0;
+    border-width: 1px;
+    border-color: grey;
+    border-radius: 3px;
+    box-shadow: 1px 1px 15px 3px rgba(128, 128, 128, 0.527);
+    margin: 0;
     padding: 0;
 }
 .view h1 {
     font-size: 48px;
     text-transform: uppercase;
+    height: 50px;
 }
 .view h2 {
     font-size: 26px;
     text-transform: uppercase;
+    color: #20368F;
 }
 .view h3 {
-    font-size: 22px;
+    font-size: 20px;
     text-transform: uppercase;
+    color: #20368F;
+    margin-top: 15px;
 }
 .view h4 {
-    font-size: 16px;
+    font-size: 15px;
     text-transform: uppercase;
+    font-weight: bold;
 }
 .view h5 {
     font-size: 14px;
 }
-.view p {
-    font-size: 12px;
+.view p, .view li {
+    font-size: 13px;
+}
+.view-skill-list li {
+    font-size: 16px;
+}
+#view-profile {
+    width: 400px;
+}
+.item-wrap {
+    padding: 5px 0px;
 }
 .view .section-wrap {
     margin: 0 auto;
@@ -30,36 +53,108 @@
     width: 650px;
 }
 #view-avatar {
-    height: 125px;
-    width: 125px;
+    max-height: 140px;
+    max-width: 140px;
     border-radius: 100%;
+    z-index: 2;
+}
+.photo-border {
+    background-color: #829CD0;
+    border-radius: 100%;
+    min-height: 157px;
+    min-width: 157px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.view-wrapper.photo {
+    height: 160px;
+    width: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: -16px;
+    margin-left: -2px;
+    border-style: none;
+}
+.view-wrapper.profile {
+    height: 75px;
+}
+.view-wrapper.work {
+    height: 320px
+}
+.view-wrapper.education {
+    height: 190px
+}
+.view-wrapper.skills {
+    height: 250px;
+}
+.view-wrapper.contact {
+    height: 200px;
+    margin-top: 10px;
+    padding: 0 3px;
+}
+.view-wrapper.contact p{
+    line-height: 18px;
+    margin-top: 10px;
+}
+.color-block {
+    position: absolute;
+    height: 156px;
+    width: 80px;
+    margin-top: -15px;
+    margin-left: -5px;
+    background-color: #829CD0;
+    
 }
 .view-wrapper {
-    border-style: solid;
+    border-style: none;
 }
 .view-inner-wrap {
     display: flex;
     flex-direction: column;
     padding: 15px 0px;
-    background-color: rgba(200, 212, 236, 0.973);
+    background-color: #829CD0;
 }
 .view-sec {
     background-color: white;
-    border-style: dotted;
+    border-style: none;
+    padding: 5px;
 }
 .view-header {
     display: flex;
+    align-items: center;
+    height: 170px;
+    border-style: none;
+}
+.view-name-title {
+    margin: 0 auto;
 }
 .view-body {
     display: flex;
+    height: 675px;
 }
 .view-side {
-    min-width: 175px;
+    min-width: 150px;
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: column;
 }
 .view-main {
-
+    margin-top: -40px;
+    width: 450px;
 }
 .view-company-dates {
+    width: 400px;
     display: flex;
     align-items: center;
+    justify-content: space-between
+}
+.view-skill-list {
+    margin-left: 8px;
+    padding: 5px
+}
+.view-skill-list li {
+    list-style: disc;
+    padding: 5px;
 }

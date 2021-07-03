@@ -22,6 +22,7 @@ function ViewEducation (props) {
 
     return (
         <div className="view-wrapper education">
+            <h3>EDUCATION</h3>
             {createEduItems()}
         </div>
     )

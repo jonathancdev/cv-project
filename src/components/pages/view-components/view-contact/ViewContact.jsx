@@ -10,12 +10,18 @@ function ViewContact (props) {
             return <p>{line}</p>
         })
     }
-    console.log(address)
+    console.log(contact)
     return (
         <div className="view-wrapper contact">
+            <h3>CONTACT</h3>
             <p>tel: {contact[0].tel}</p>
             <p>{contact[0].email}</p>
-            {outputAddress()}
+            <br></br>
+            {contact[0].address !== 'address' ?
+            outputAddress() : null}
+            <br></br>
+            {contact[0].web !== 'website' ?
+            <p>{contact[0].web}</p> : null }
         </div>
     )
 }
