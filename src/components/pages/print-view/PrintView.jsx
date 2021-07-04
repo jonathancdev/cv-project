@@ -1,9 +1,9 @@
 import { React, useState, useEffect, useRef } from 'react';
-import './View.css';
-import { ViewPhoto, ViewProfile, ViewWork, ViewEducation, ViewSkills, ViewContact } from '../../pages'
+import './PrintView.css';
+import { ViewPhoto, ViewProfile, ViewWork, ViewEducation, ViewSkills, ViewContact } from '..'
 import { Link } from 'react-router-dom';
 
-function View (props) {
+function PrintView (props) {
     const photo = localStorage.getItem('avatar')
     const user = localStorage.getObject('currentUser')
     const printArea = useRef(null)
@@ -12,9 +12,8 @@ function View (props) {
     }
     return (
 
-        <section id="print-element" className="view">
-            {props.completed ?
-            
+        <section id="print-element" className="print-view view">
+            {props.completed ?            
             <section className="section-wrap">
                 <div ref={printArea} className="view-inner-wrap">
                     <div className="view-header view-sec">
@@ -24,7 +23,6 @@ function View (props) {
                             <h1>{user.name} {user.surname}</h1>
                             <h2>{user.profession}</h2>
                         </div>
-                        <button className="print-btn" onClick={printIt}>print or save to .pdf</button>
                     </div>
                     <div className="view-body">
                         <div className="view-side view-sec">
@@ -49,4 +47,4 @@ function View (props) {
     )
 }
 
-export default View;
+export default PrintView;

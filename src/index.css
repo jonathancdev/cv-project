@@ -96,3 +96,32 @@ textarea:focus {
   font-weight: bold;
   align-self: center;
 }
+
+/* print media query */
+@media print {
+  html, main, .print, .App, #root, .section-wrap {
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    visibility: hidden;
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
+  }
+  .back-btn {
+    display: none;
+  }
+  #print-element {
+    visibility: visible;
+    transform: scale(1.22);
+    transform-origin: 0 0;
+    box-shadow: none;
+  }
+  .view .section-wrap {
+    min-height: 920px;
+  }
+  .photo-border {
+    background-color: #829CD0 !important;
+  }
+}

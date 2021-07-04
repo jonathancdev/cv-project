@@ -2,14 +2,15 @@
     margin: 0;
     padding: 0px;
 }
-.view {
-    background-color: #829CD0;
+.print-view {
+    max-width: 650px;
+    background-color: white;
     border-width: 1px;
     border-color: grey;
     border-radius: 3px;
-    box-shadow: 1px 1px 15px 3px rgba(128, 128, 128, 0.527);
     margin: 0;
     padding: 0;
+    -webkit-print-color-adjust: exact;
 }
 .view h1 {
     font-size: 48px;
@@ -59,7 +60,7 @@
     z-index: 2;
 }
 .photo-border {
-    background-color: #829CD0;
+    background-color: #829CD0 !important;
     border-radius: 100%;
     min-height: 157px;
     min-width: 157px;

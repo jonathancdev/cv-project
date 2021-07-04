@@ -1,8 +1,8 @@
 import './App.css';
-import {React, useState} from "react";
+import {React, useState, useRef} from "react";
 import { Route, BrowserRouter as Router, Switch, withRouter } from 'react-router-dom';
 import { Header, Footer, storeObjects, checkStorage, removeStorage } from './components/common';
-import { HomeMain, Create, Pricing, Login, Signup, Account, Help, View } from './components/pages'
+import { HomeMain, Create, Pricing, Login, Signup, Account, Help, View, Print } from './components/pages'
 
 
 function App() {
@@ -17,15 +17,8 @@ function App() {
   }
   
   const [currentUser, setCurrentUser] = useState(isUser() ? localStorage.getObject('currentUser') : null)
-  // const [avatarFound, setAvatarFound] = useState(isUser() && checkStorage(currentUser.userId + '_avatar') ? true : false)
-  // const [contactFound, setContactFound] = useState(isUser() && checkStorage(currentUser.userId + '_contact') ? true : false)
-  // const [educationFound, setEducationFound] = useState(isUser() && checkStorage(currentUser.userId + '_education') ? true : false)
-  // const [profileFound, setProfileFound] = useState(isUser() && checkStorage(currentUser.userId + '_profile') ? true : false)
-  // const [skillsFound, setSkillsFound] = useState(isUser() && checkStorage(currentUser.userId + '_skills') ? true : false)
-  // const [workFound, setWorkFound] = useState(isUser() && checkStorage(currentUser.userId + '_work') ? true : false)
   const [activeSession, setActiveSession] = useState(Object.keys(localStorage).includes('activeSession') ? true : false)
-  // const [infoComplete, setInfoComplete] = useState(false)
-
+  const [hideElements, setHideElements] = useState(false)
 
   function setUser(obj) {
     setCurrentUser(obj)
@@ -39,11 +32,20 @@ function App() {
     setActiveSession(false)
     removeStorage('activeSession')
   }
+  function hide() {
+    setHideElements(true)
+  }
+  function show() {
+    setHideElements(false)
+  }
+  console.log(currentUser)
   return (
     <div className="App">
       <Router>
         <header>
-          <Header logOut={endSession} active={activeSession} user={currentUser}/>
+          { !hideElements
+          ? <Header id="site-header" logOut={endSession} active={activeSession} user={currentUser}/>
+          : null}
         </header>
         <main>
         <Switch>
@@ -68,10 +70,13 @@ function App() {
             <Route path="/help">
               <Help />
             </Route>
+            <Route render={(props) => <Print hide={hide} show={show} user={currentUser} />} path="/print" />
           </Switch>
         </main>
         <footer>
-          <Footer />
+          { !hideElements
+          ? <Footer />
+          : null }
         </footer>
       </Router>
     </div>
