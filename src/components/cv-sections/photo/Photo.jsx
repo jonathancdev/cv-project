@@ -5,10 +5,19 @@ import {SaveSection, checkStorage, removeStorage, HoverInfo} from '../../common'
 
 function Photo (props) {
 
+    const [noAvatar, setNoAvatar] = useState(false);
+    const [hovered, setHovered] = useState(false);
     const avatarDisplay = useRef(null);
+    const checkbox = useRef(null)
 
     useEffect( () => {
-
+        if (userAvatar === 'disabled') {
+            setNoAvatar(true)
+            checkbox.current.checked = true
+        } else if (userAvatar === 'enabled') {
+            setNoAvatar(false)
+            checkbox.current.checked = false
+        }
         return () => {
             props.updateComplete()
         }
@@ -31,7 +40,6 @@ function Photo (props) {
         }
     });
 
-    const [hovered, setHovered] = useState(false);
 
     function updatePath(path) {
         setFilePath(path)
@@ -52,6 +60,21 @@ function Photo (props) {
     function onHoverOut() {
         setHovered(false)
     }
+    function handleCheckbox () {
+        if(checkbox.current.checked) {
+        setFilePath('photo disabled')
+        updateAvatar('disabled')
+        setNoAvatar(true)
+        } else {
+            updateAvatar('enabled')
+            updatePath('click to browse files')
+            setNoAvatar(false)
+            checkbox.current.checked = false
+        }
+    }
+    console.log(userAvatar)
+    console.log(filePath)
+    console.log(noAvatar)
     return (
         <section className="cv-sec-wrap">
             <section className="photo cv-section">
@@ -80,16 +103,26 @@ function Photo (props) {
                     : null}
                 </section>
                 <section className="sec-form-wrap">
-                    <PhotoInput path={filePath === '' ? 'click to browse files' : filePath} updatePath={updatePath} updateAvatar={updateAvatar}/>
+                    {!noAvatar
+                    ? <PhotoInput path={filePath === '' ? 'click to browse files' : filePath} updatePath={updatePath} updateAvatar={updateAvatar}/>
+                    : <section><input className="rect-std" placeholder={filePath} disabled/></section>}
                     <div>
-                        {userAvatar === '' ?
+                        {userAvatar === '' || userAvatar === 'enabled' ?
                         <i className="far fa-grin"></i> :
-                        <img id="avatar-display" ref={avatarDisplay} src={userAvatar} alt="user"></img>
+                        <>
+                        { noAvatar && userAvatar !== 'enabled' ?
+                         <div className="blank-avatar"><i class="far fa-dizzy"></i></div>
+                        : <img id="avatar-display" ref={avatarDisplay} src={userAvatar} alt="user"></img>}
+                        </>
                         }
                     </div>
                 </section>
+                <div className="no-photo">
+                    <input ref={checkbox} type="checkbox" onClick={handleCheckbox} className="photo-check"/>
+                    <p>check this box if you prefer not to include a photo</p>
+                </div>
                 <div className='delete-storage'>
-                    {filePath !== ''
+                    {filePath !== '' && filePath !== 'photo disabled' && filePath !=='click to browse files'
                     ?<button onClick={handleDelete}>delete</button>
                     : null}
                 </div>

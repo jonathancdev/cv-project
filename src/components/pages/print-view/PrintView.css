@@ -6,7 +6,7 @@
     max-width: 650px;
     background-color: white;
     border-width: 1px;
-    border-color: grey;
+    border-color: rgb(209, 209, 209);
     border-radius: 3px;
     margin: 0;
     padding: 0;
@@ -60,7 +60,7 @@
     z-index: 2;
 }
 .photo-border {
-    background-color: #829CD0 !important;
+    background-color: #829CD0;
     border-radius: 100%;
     min-height: 157px;
     min-width: 157px;
@@ -158,9 +158,4 @@
 .view-skill-list li {
     list-style: disc;
     padding: 5px;
-}
-.print-btn {
-    position: absolute;
-    z-index: 3;
-    margin-left: 600px;
 }

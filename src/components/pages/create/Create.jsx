@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 import { Default, Cvnav, Profile, Photo, WorkExperience, Education, Skills, Contact } from '../../cv-sections'
 import { checkStorage } from '../../common'
@@ -10,14 +10,18 @@ function Create (props) {
     const userId = props.user.userId
     const [completed, setCompleted] = useState(false)
 
+    useEffect(() => {
+        checkCompleted()
+    }, [])
+
     function checkCompleted () {
-        if (!checkStorage(props.user.userId + '_avatar') ||
+        if ((!checkStorage(props.user.userId + '_avatar') || localStorage.getItem(props.user.userId + '_avatar') === 'enabled' ) ||
         !checkStorage(props.user.userId + '_profile') ||
         (!checkStorage(props.user.userId + '_work') || localStorage.getObject(props.user.userId + '_work').length < 1) ||
         (!checkStorage(props.user.userId + '_education') || localStorage.getObject(props.user.userId + '_education').length < 1) ||
         (!checkStorage(props.user.userId + '_skills')  || localStorage.getObject(props.user.userId + '_education').length < 1) ||
-        (!checkStorage(props.user.userId + '_contact')  || (localStorage.getObject(props.user.userId + '_contact')[0].tel == 'telephone' || localStorage.getObject(props.user.userId + '_contact')[0].tel == '' ||
-        localStorage.getObject(props.user.userId + '_contact')[0].email == 'email' || localStorage.getObject(props.user.userId + '_contact')[0].email == '') )
+        (!checkStorage(props.user.userId + '_contact')  || (localStorage.getObject(props.user.userId + '_contact')[0].tel === 'telephone' || localStorage.getObject(props.user.userId + '_contact')[0].tel == '' ||
+        localStorage.getObject(props.user.userId + '_contact')[0].email == 'email' || localStorage.getObject(props.user.userId + '_contact')[0].email === '') )
         ) {
             console.log('incomplete')
             setCompleted(false)
@@ -27,7 +31,7 @@ function Create (props) {
             setCompleted(true)
         }
     }
-    console.log('create page completed = ' + completed)
+    console.log(props)
 
     return (
         <section className="home-build">

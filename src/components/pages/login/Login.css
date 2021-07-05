@@ -42,7 +42,7 @@
     display: flex;
     justify-content: center;
     width: 300px;
-    color: rgb(201, 43, 43);
+    color: #bd0000;
   }
   .login-form-error {
     display: flex;

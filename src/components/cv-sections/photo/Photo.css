@@ -4,7 +4,7 @@
     margin-top: -5px;
     cursor: pointer;
 }
-.fa-grin {
+.fa-grin, .fa-dizzy {
     font-size: 100px;
     position: relative;
 }
@@ -26,11 +26,24 @@
     border-radius: 100%;
 }
 
-#test {
-    width: 200px;
-    min-height: 200px;
-    border-style: dotted;
-}
 .photo .delete-storage button{
 margin-right: 38px;
+}
+.blank-avatar {
+    padding: 0;
+    margin: 0;
+    border: black;
+    background-color: white;
+    height: 100px;
+    width: 100px;
+    border-radius: 100%;
+}
+.no-photo {
+    display: flex;
+    align-items: center;
+    margin-left: 0px;
+}
+.no-photo input {
+    margin-right: 10px;
+    transform: scale(1.5);
 }

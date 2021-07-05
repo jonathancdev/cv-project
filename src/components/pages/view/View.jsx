@@ -11,41 +11,43 @@ function View (props) {
         window.location = "/print"
     }
     return (
-
-        <section id="print-element" className="view">
+        <div>
             {props.completed ?
-            
-            <section className="section-wrap">
-                <div ref={printArea} className="view-inner-wrap">
-                    <div className="view-header view-sec">
-                        <div className="color-block"></div>
-                        <ViewPhoto userId={props.userId}/>
-                        <div className="view-name-title">
-                            <h1>{user.name} {user.surname}</h1>
-                            <h2>{user.profession}</h2>
+            <button className="print-btn" onClick={printIt}>print or save to .pdf</button> : null}
+            <section id="print-element" className="view">
+                {props.completed ?
+                
+                <section className="section-wrap">
+                    <div ref={printArea} className="view-inner-wrap">
+                        <div className="view-header view-sec">
+                            <div className="color-block"></div>
+                            <ViewPhoto userId={props.userId}/>
+                            <div className="view-name-title">
+                                <h1>{user.name} {user.surname}</h1>
+                                <h2>{user.profession}</h2>
+                            </div>
                         </div>
-                        <button className="print-btn" onClick={printIt}>print or save to .pdf</button>
+                        <div className="view-body">
+                            <div className="view-side view-sec">
+                                <ViewSkills userId={props.userId}/>
+                                <ViewContact userId={props.userId}/>
+                            </div>
+                            <div className="view-main view-sec">
+                                <ViewProfile userId={props.userId}/>
+                                <ViewWork userId={props.userId}/>
+                                <ViewEducation userId={props.userId}/>
+                            </div>
+                        </div>
                     </div>
-                    <div className="view-body">
-                        <div className="view-side view-sec">
-                            <ViewSkills userId={props.userId}/>
-                            <ViewContact userId={props.userId}/>
-                        </div>
-                        <div className="view-main view-sec">
-                            <ViewProfile userId={props.userId}/>
-                            <ViewWork userId={props.userId}/>
-                            <ViewEducation userId={props.userId}/>
-                        </div>
-                    </div>
-                </div>
-            </section> 
+                </section> 
 
-            : <section className="section-wrap">
-                <div className="view-error">you must complete all sections</div>
-            </section> 
-            }
+                : <section className="section-wrap">
+                    <div className="view-error">you must complete all sections</div>
+                </section> 
+                }
 
-        </section>
+            </section>
+        </div>
     )
 }
 
