@@ -24,6 +24,11 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+    border-radius: 3px;
+    min-width: 400px;
+    min-height: 225px;
+    margin-top: 50px;
 }
 .account-wrap h2 {
     font-size: 24px;
@@ -43,6 +48,9 @@
     font-size: 14px;
     text-decoration: none;
 }
+.account-message {
+    min-height: 60px;
+}
 .message-wrap {
     display: flex;
     flex-direction: column;
@@ -52,12 +60,13 @@
     flex-direction: column;
     font-size: 14px;
     text-align: center;
-    color: red;
+    color: #bd0000;
 }
 .buttons-wrap {
     display: flex;
     flex-direction: row;
     justify-content: center;
+    margin-top: 10px;
 }
 .buttons-wrap button{
     padding: 5px 0px;
@@ -66,7 +75,7 @@
     border-style: solid;
     border-width: 0.3px;
     border-radius: 3px;
-    background-color: black;
+    background-color: #829cd0;
     color: white;
     font-family: overpass thin;
     font-size: 14px;

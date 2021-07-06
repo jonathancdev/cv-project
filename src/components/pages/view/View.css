@@ -3,7 +3,7 @@
     padding: 0px;
 }
 .view {
-    background-color: #829CD0;
+    background-color: white;
     border-width: 1px;
     border-color: rgb(209, 209, 209);
     border-radius: 3px;
@@ -48,6 +48,7 @@
     padding: 5px 0px;
 }
 .view .section-wrap {
+    background-color: #829CD0;
     margin: 0 auto;
     height: 800px;
     width: 650px;
@@ -166,4 +167,8 @@ border-radius: 3px;
 background-color: transparent;
 text-decoration: underline;
 cursor: pointer;
+}
+.view-error {
+    text-align: center;
+    margin-top: 150px;
 }

@@ -22,13 +22,15 @@
     border-style: solid;
     border-width: 0.3px;
     border-radius: 3px;
+    border-color:#829cd0;
 }
 .save-btn {
     border-style: none;
     background-color: white;
-    font-family: overpass thin;
+    font-family: overpass regular;
+    font-weight: bold;
     text-decoration: none;
-    color: black;
+    color:#829cd0;
     font-size: 12px;
 }
 .work-experience .save-section {

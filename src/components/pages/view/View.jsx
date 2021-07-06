@@ -24,7 +24,9 @@ function View (props) {
                             <ViewPhoto userId={props.userId}/>
                             <div className="view-name-title">
                                 <h1>{user.name} {user.surname}</h1>
-                                <h2>{user.profession}</h2>
+                                {user.profession !== 'profession'
+                                ? <h2>{user.profession}</h2>
+                                : null}
                             </div>
                         </div>
                         <div className="view-body">
@@ -41,9 +43,9 @@ function View (props) {
                     </div>
                 </section> 
 
-                : <section className="section-wrap">
-                    <div className="view-error">you must complete all sections</div>
-                </section> 
+                : 
+                    <div className="view-error">complete all of the sections</div>
+
                 }
 
             </section>

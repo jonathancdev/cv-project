@@ -28,7 +28,7 @@ function Cvnav (props) {
             <Link to="/create/education" onClick={()=>setPage('education')} className='cvnavlinks'>education</Link>
             <Link to="/create/skills" onClick={()=>setPage('skills')} className='cvnavlinks'>skills</Link>
             <Link to="/create/contact" onClick={()=>setPage('contact')} className='cvnavlinks'>contact</Link>
-            <Link id="view-btn" to={props.completed ? '/create/view' : '#'} completed={props.completed} onClick={()=>setPage('view')} className={!props.completed ? "inactive cvnavlinks" : "cvnavlinks"} ><h3>view CV</h3></Link>
+            <Link id="view-btn" to={props.completed ? '/create/view' : '/create/view'} completed={props.completed} onClick={()=>setPage('view')} className={!props.completed ? "inactive cvnavlinks" : "cvnavlinks"} ><h3>view CV</h3></Link>
             <h4 className="section-incomplete">{flagIncomplete ? 'complete all the sections!' : ''}</h4>  
         </section>
     )

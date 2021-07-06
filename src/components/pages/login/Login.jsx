@@ -15,19 +15,24 @@ function Login (props) {
 
     function authenticate() {
         const mail = emailRef.current.value
+        console.log(mail)
         const pw = passwordRef.current.value
+        console.log(pw)
         const keys = Object.keys(localStorage).filter( item => item.includes('userInfo'))
-            keys.forEach(key => {
-                const user = localStorage.getObject(key)
-                const userMail = user.email
-                const userPw = user.password
-                if (mail === userMail && pw === userPw) {
-                    setTempUser(user)
-                    setAuth(true)
-                } else {
-                    setAuth(false)
-                }
-            })
+        console.log(keys)
+
+        for (var i = 0; i < keys.length; i++) {
+            const user = localStorage.getObject(keys[i])
+            const userMail = user.email
+            const userPw = user.password
+            if(mail === userMail && pw === userPw) {
+                setTempUser(user)
+                setAuth(true)
+                break;
+            } else {
+                setAuth(false)
+            }
+        }
     }
     function emailHandleChange(e) {
         const value = e.target.value
@@ -41,6 +46,8 @@ function Login (props) {
     }
     function handleClick() {
         const keys = Object.keys(localStorage).filter( item => item.includes('userInfo'))
+        console.log(keys)
+        console.log(auth)
         if (auth) {
             props.setUser(tempUser)
         } else if (keys.length > 0) {
@@ -49,6 +56,7 @@ function Login (props) {
             setErrorMsg('no account found for ' + currEmail)
         }
     }
+    console.log(tempUser)
     return (
         <section className="login">
             <section className="section-wrap">
