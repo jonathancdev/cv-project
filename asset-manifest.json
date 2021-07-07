@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/cv-project/cv-project/static/css/main.1a0afafd.chunk.css",
-    "main.js": "/cv-project/cv-project/static/js/main.b734519d.chunk.js",
-    "main.js.map": "/cv-project/cv-project/static/js/main.b734519d.chunk.js.map",
-    "runtime-main.js": "/cv-project/cv-project/static/js/runtime-main.587f960f.js",
-    "runtime-main.js.map": "/cv-project/cv-project/static/js/runtime-main.587f960f.js.map",
-    "static/js/2.351d195f.chunk.js": "/cv-project/cv-project/static/js/2.351d195f.chunk.js",
-    "static/js/2.351d195f.chunk.js.map": "/cv-project/cv-project/static/js/2.351d195f.chunk.js.map",
-    "index.html": "/cv-project/cv-project/index.html",
-    "static/css/main.1a0afafd.chunk.css.map": "/cv-project/cv-project/static/css/main.1a0afafd.chunk.css.map",
-    "static/js/2.351d195f.chunk.js.LICENSE.txt": "/cv-project/cv-project/static/js/2.351d195f.chunk.js.LICENSE.txt",
-    "static/media/index.css": "/cv-project/cv-project/static/media/Overpass-Thin.4fc47024.ttf",
-    "static/media/cover.fba4aa5d.png": "/cv-project/cv-project/static/media/cover.fba4aa5d.png"
+    "main.css": "/cv-project/static/css/main.8ee5d5de.chunk.css",
+    "main.js": "/cv-project/static/js/main.3df6b8f3.chunk.js",
+    "main.js.map": "/cv-project/static/js/main.3df6b8f3.chunk.js.map",
+    "runtime-main.js": "/cv-project/static/js/runtime-main.2ef4e0dc.js",
+    "runtime-main.js.map": "/cv-project/static/js/runtime-main.2ef4e0dc.js.map",
+    "static/js/2.351d195f.chunk.js": "/cv-project/static/js/2.351d195f.chunk.js",
+    "static/js/2.351d195f.chunk.js.map": "/cv-project/static/js/2.351d195f.chunk.js.map",
+    "index.html": "/cv-project/index.html",
+    "static/css/main.8ee5d5de.chunk.css.map": "/cv-project/static/css/main.8ee5d5de.chunk.css.map",
+    "static/js/2.351d195f.chunk.js.LICENSE.txt": "/cv-project/static/js/2.351d195f.chunk.js.LICENSE.txt",
+    "static/media/index.css": "/cv-project/static/media/Overpass-Thin.4fc47024.ttf",
+    "static/media/cover.fba4aa5d.png": "/cv-project/static/media/cover.fba4aa5d.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.587f960f.js",
+    "static/js/runtime-main.2ef4e0dc.js",
     "static/js/2.351d195f.chunk.js",
-    "static/css/main.1a0afafd.chunk.css",
-    "static/js/main.b734519d.chunk.js"
+    "static/css/main.8ee5d5de.chunk.css",
+    "static/js/main.3df6b8f3.chunk.js"
   ]
 }
