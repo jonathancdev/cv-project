@@ -49,7 +49,10 @@ function App() {
         </header>
         <main>
         <Switch>
-            <Route path={process.env.PUBLIC_URL + '/'} exact>
+            <Route path={'/'} exact>
+              <HomeMain active={activeSession}/>
+            </Route>
+            <Route path={'/cv-project'} exact>
               <HomeMain active={activeSession}/>
             </Route>
             <Route path="/create">
