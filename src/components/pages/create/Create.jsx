@@ -40,10 +40,10 @@ function Create (props) {
                 </section>
                 <section className="section-wrap">
                 <Router>
-                        <Switch>
                         <Route exact path="/create">
                             <Default updateComplete={checkCompleted} user={props.user}/>
                         </Route>
+                        <Switch>
                         <Route path="/create/photo">
                             <Photo updateComplete={checkCompleted} userId={props.user.userId}/>
                         </Route>
@@ -65,8 +65,8 @@ function Create (props) {
                         <Route exact path="/create/view">
                             <View completed={completed} updateComplete={checkCompleted} userId={props.user.userId}/>
                         </Route>
-                    </Switch>
-                </Router>
+                        </Switch>
+                    </Router>
                 </section>
         </section>
     )
