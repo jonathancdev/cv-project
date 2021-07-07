@@ -41,7 +41,7 @@ function App() {
   console.log(currentUser)
   return (
     <div className="App">
-      <Router basename="/">
+      <Router basename="/cv-project">
         <header>
           { !hideElements
           ? <Header id="site-header" logOut={endSession} active={activeSession} user={currentUser}/>
