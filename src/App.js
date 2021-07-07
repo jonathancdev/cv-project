@@ -1,6 +1,6 @@
 import './App.css';
 import {React, useState, useRef} from "react";
-import { Route, BrowserRouter as Router, Switch, withRouter } from 'react-router-dom';
+import { Route, HashRouter as Router, Switch, withRouter } from 'react-router-dom';
 import { Header, Footer, storeObjects, checkStorage, removeStorage } from './components/common';
 import { HomeMain, Create, Pricing, Login, Signup, Account, Help, View, Print } from './components/pages'
 
@@ -41,14 +41,14 @@ function App() {
   console.log(currentUser)
   return (
     <div className="App">
-      <Router basename={process.env.PUBLIC_URL}>
+      <Router basename="/">
         <header>
           { !hideElements
           ? <Header id="site-header" logOut={endSession} active={activeSession} user={currentUser}/>
           : null}
         </header>
         <main>
-        <Route exact path='/cv-project'>
+        <Route exact path="/">
               <HomeMain active={activeSession}/>
         </Route>
         <Switch> 
