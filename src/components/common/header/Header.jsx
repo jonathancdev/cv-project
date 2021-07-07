@@ -9,7 +9,7 @@ function Header (props) {
     return (
         <section className="header">
             <section className="logo">
-                    <Link to="/">
+                    <Link to="/cv-project">
                         <img src={logo} alt="cvbreeze logo"></img>
                     </Link>
             </section>
