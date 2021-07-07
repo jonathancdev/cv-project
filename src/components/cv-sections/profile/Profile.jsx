@@ -63,8 +63,8 @@ render() {
                     <button onMouseEnter={this.onHoverIn} onMouseLeave={this.onHoverOut} className="help-btn">
                     {this.state.hovered
                         ? <HoverInfo
-                            text="Write a brief statement highlighting your knowledge, skills, and 
-                            professional achievements. Keep your profile short and to the point."
+                            text="Write a brief statement highlighting your knowledge, skills, and achievements. Be bold!
+                            This is no place for modesty. Keep your profile short and to the point."
                             >
                         </HoverInfo>
                         : null }

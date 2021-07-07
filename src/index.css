@@ -36,6 +36,12 @@
   font-family: overpass light;
   font-size: 12px;
 }
+.App {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 600px;
+}
 body {
   margin: 0;
   -webkit-font-smoothing: antialiased;

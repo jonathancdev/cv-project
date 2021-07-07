@@ -181,8 +181,8 @@ render () {
                     <button onMouseEnter={this.onHoverIn} onMouseLeave={this.onHoverOut} className="help-btn">
                     {this.state.hovered
                         ? <HoverInfo
-                        text="Include your educational background in this section. You can add up to three different
-                                items in this section. Use the description box to specific details to each item."
+                        text="Include your educational background in this section. You can add up to 3 different
+                                items in this section. Use the description box to add detail as needed."
                         >
                     </HoverInfo>
                         : null }

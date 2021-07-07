@@ -52,7 +52,7 @@ function App() {
             <Route path="/" exact>
               <HomeMain active={activeSession}/>
             </Route>
-            <Route path="/create" exact>
+            <Route path="/create">
               <Create user={currentUser} />
             </Route>
             <Route path="/pricing">

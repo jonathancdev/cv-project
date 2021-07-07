@@ -7,21 +7,22 @@ section, div {
 }
 .home-build {
     min-width: 750px;
-    min-height: 500px;
-    max-height: 600px;
+    min-height: 250px;
     display: flex;
   }
 .sidebar {
     display: flex;
     justify-content: center;
-    height: 500px;
-    min-width: 230px;
+    min-height: 250px;
+    min-width: 200px;
     margin-top: 50px;
 }
 .home-build .section-wrap {
+    min-height: 250px;
+    display: flex;
+    flex-direction: column;
     min-width: 500px;
     max-width: 1200px;
-    height: 500px;
 }
 h1 {
     font-family: overpass black;
@@ -36,7 +37,7 @@ p {
     border-radius: 3px;
     display: flex;
     min-width: 600px;
-    height: 500px;
+    min-height: 200px;
     margin-top: 20px;
 }
 .cv-section {
@@ -233,7 +234,7 @@ p {
     flex-direction: column;
 }
 .preview-data li, .preview-data div {
-    padding: 0px 0px;
+    padding: 1px 0px;
 }
 li .preview-item {
     display: flex;

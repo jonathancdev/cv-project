@@ -242,7 +242,7 @@ render() {
                     {this.state.hovered
                         ? <HoverInfo
                             text="Include your work experience in this section. You can add up to
-                                four items here. There is a limit to 3 duties for each item, so only
+                                4 items here. There is a limit to 3 duties for each item, so only
                                 enter the most important details."
                             >
                         </HoverInfo>

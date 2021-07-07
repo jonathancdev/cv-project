@@ -125,8 +125,8 @@ render () {
                     <button onMouseEnter={this.onHoverIn} onMouseLeave={this.onHoverOut} className="help-btn">
                     {this.state.hovered
                         ? <HoverInfo
-                        text="Enter your contact information here for potential employers to reach out. Only
-                                email and phone number are required in this section."
+                        text="Enter your contact information here. Only
+                                email and phone number are required."
                         >
                     </HoverInfo>
                         : null }

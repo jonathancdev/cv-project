@@ -83,7 +83,7 @@ function Photo (props) {
                     <button onMouseEnter={onHoverIn} onMouseLeave={onHoverOut} className="help-btn">
                         {hovered
                         ? <HoverInfo
-                            text="Upload a high-quality, high-resolution photoAvoid busy backgrounds! A headshot from the shoulders
+                            text="Upload a high-quality, high-resolution photo. Avoid busy backgrounds! A headshot from the shoulders
                                     up is recommended. You can upload a .png, .jpg, .jpeg, or .gif file."
                             ></HoverInfo>
                         : null }
