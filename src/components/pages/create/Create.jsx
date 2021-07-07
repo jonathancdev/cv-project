@@ -35,34 +35,34 @@ function Create (props) {
 
     return (
         <section className="home-build">
-            <Router>
+            <Router basename="/create">
                 <section className="sidebar">
                     <Cvnav completed={completed} userId={props.user.userId}/>
                 </section>
                 <section className="section-wrap">
                         <Switch>
-                        <Route path="/create/default">
+                        <Route exact path="/">
                             <Default updateComplete={checkCompleted} user={props.user}/>
                         </Route>
-                        <Route path="/create/photo">
+                        <Route path="/photo">
                             <Photo updateComplete={checkCompleted} userId={props.user.userId}/>
                         </Route>
-                        <Route path="/create/profile">
+                        <Route path="/profile">
                             <Profile updateComplete={checkCompleted} userId={props.user.userId}/>
                         </Route>
-                        <Route path="/create/work-experience">
+                        <Route path="/work-experience">
                             <WorkExperience updateComplete={checkCompleted} userId={props.user.userId}/>
                         </Route>
-                        <Route path="/create/education">
+                        <Route path="/education">
                             <Education updateComplete={checkCompleted} userId={props.user.userId}/>
                         </Route>
-                        <Route path="/create/skills">
+                        <Route path="/skills">
                             <Skills updateComplete={checkCompleted} userId={props.user.userId}/>
                         </Route>
-                        <Route path="/create/contact">
+                        <Route path="/contact">
                             <Contact updateComplete={checkCompleted} userId={props.user.userId}/>
                         </Route>
-                        <Route exact path="/create/view">
+                        <Route exact path="/view">
                             <View completed={completed} updateComplete={checkCompleted} userId={props.user.userId}/>
                         </Route>
                     </Switch>
