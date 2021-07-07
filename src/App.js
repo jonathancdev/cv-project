@@ -48,17 +48,17 @@ function App() {
           : null}
         </header>
         <main>
-        <Route exact path='cv-project/home/'>
+        <Route exact path='/'>
               <HomeMain active={activeSession}/>
         </Route>
         <Switch> 
-            <Route path="cv-project/create">
+            <Route path="/create">
               <Create user={currentUser} />
             </Route>
             <Route path="/pricing">
               <Pricing />
             </Route>
-            <Route path="cv-project/login">
+            <Route path="/login">
               <Login setUser={setUser}/>
             </Route>
             <Route path="/signup">
