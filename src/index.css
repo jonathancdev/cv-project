@@ -64,7 +64,9 @@ textarea {
 textarea:focus {
   outline: none;
 }
-
+a {
+  color: black;
+}
 .form-error-wrap {
   position: absolute;
   display: flex;
