@@ -13,7 +13,7 @@ function View (props) {
     return (
         <div>
             {props.completed ?
-            <button className="print-btn" onClick={printIt}>print or save to .pdf</button> : null}
+            <Link className="print-btn" to="/print">print or save to .pdf</Link> : null}
             <section id="print-element" className="view">
                 {props.completed ?
                 
