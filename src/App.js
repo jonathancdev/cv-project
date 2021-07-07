@@ -49,10 +49,10 @@ function App() {
         </header>
         <main>
         <Switch>
-            <Route path={'/'} exact>
+            <Route path='/' exact>
               <HomeMain active={activeSession}/>
             </Route>
-            <Route path={'/cv-project'} exact>
+            <Route path='/cv-project'>
               <HomeMain active={activeSession}/>
             </Route>
             <Route path="/create">
