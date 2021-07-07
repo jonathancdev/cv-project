@@ -44,25 +44,25 @@ function Create (props) {
                         <Route exact path="/create">
                             <Default updateComplete={checkCompleted} user={props.user}/>
                         </Route>
-                        <Route path="create/photo">
+                        <Route path="/create/photo">
                             <Photo updateComplete={checkCompleted} userId={props.user.userId}/>
                         </Route>
-                        <Route path="create/profile">
+                        <Route path="/create/profile">
                             <Profile updateComplete={checkCompleted} userId={props.user.userId}/>
                         </Route>
-                        <Route path="create/work-experience">
+                        <Route path="/create/work-experience">
                             <WorkExperience updateComplete={checkCompleted} userId={props.user.userId}/>
                         </Route>
-                        <Route path="create/education">
+                        <Route path="/create/education">
                             <Education updateComplete={checkCompleted} userId={props.user.userId}/>
                         </Route>
-                        <Route path="create/skills">
+                        <Route path="/create/skills">
                             <Skills updateComplete={checkCompleted} userId={props.user.userId}/>
                         </Route>
-                        <Route path="create/contact">
+                        <Route path="/create/contact">
                             <Contact updateComplete={checkCompleted} userId={props.user.userId}/>
                         </Route>
-                        <Route exact path="create/view">
+                        <Route exact path="/create/view">
                             <View completed={completed} updateComplete={checkCompleted} userId={props.user.userId}/>
                         </Route>
                     </Switch>
