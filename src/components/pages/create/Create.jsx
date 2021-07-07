@@ -35,11 +35,11 @@ function Create (props) {
 
     return (
         <section className="home-build">
-            <Router>
                 <section className="sidebar">
                     <Cvnav completed={completed} userId={props.user.userId}/>
                 </section>
                 <section className="section-wrap">
+                <Router>
                         <Switch>
                         <Route exact path="/create">
                             <Default updateComplete={checkCompleted} user={props.user}/>
@@ -66,8 +66,8 @@ function Create (props) {
                             <View completed={completed} updateComplete={checkCompleted} userId={props.user.userId}/>
                         </Route>
                     </Switch>
+                </Router>
                 </section>
-            </Router>
         </section>
     )
 }
