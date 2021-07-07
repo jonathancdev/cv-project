@@ -8,7 +8,7 @@ function PrintView (props) {
     const user = localStorage.getObject('currentUser')
     const printArea = useRef(null)
     function printIt () {
-        window.location = "/print"
+        window.location = "/cv-section/print"
     }
     return (
 
