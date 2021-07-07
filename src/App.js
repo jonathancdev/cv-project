@@ -41,24 +41,25 @@ function App() {
   console.log(currentUser)
   return (
     <div className="App">
-      <Router basename={process.env.PUBLIC_URL}>
+      <Router>
         <header>
           { !hideElements
           ? <Header id="site-header" logOut={endSession} active={activeSession} user={currentUser}/>
           : null}
         </header>
         <main>
+        <HomeMain active={activeSession}/>
         <Switch>
-            <Route exact path='cv-project/home/'>
+           {/* <Route exact path='cv-project/home/'>
               <HomeMain active={activeSession}/>
-            </Route>
-            <Route path="cv-project/create">
+            </Route>  */}
+            <Route path="/create">
               <Create user={currentUser} />
             </Route>
             <Route path="/pricing">
               <Pricing />
             </Route>
-            <Route path="cv-project/login">
+            <Route path="/login">
               <Login setUser={setUser}/>
             </Route>
             <Route path="/signup">
