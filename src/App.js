@@ -46,6 +46,7 @@ function App() {
           { !hideElements
           ? <Header id="site-header" logOut={endSession} active={activeSession} user={currentUser}/>
           : null}
+          wassup
         </header>
         <main>
         <Route exact path="/">
