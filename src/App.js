@@ -70,7 +70,7 @@ function App() {
             <Route path="/help">
               <Help />
             </Route>
-            <Route render={(props) => <Print hide={hide} show={show} user={currentUser} />} path="/print" />
+            <Route render={(props) => <Print hide={hide} show={show} user={currentUser} />} path="/cv-section/print" />
           </Switch>
         </main>
         <footer>
