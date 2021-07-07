@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
+import { Route, HashRouter as Router, Switch } from 'react-router-dom';
 import { Default, Cvnav, Profile, Photo, WorkExperience, Education, Skills, Contact } from '../../cv-sections'
 import { checkStorage } from '../../common'
 import { View } from '../../../components/pages'
@@ -35,15 +35,15 @@ function Create (props) {
 
     return (
         <section className="home-build">
-            <Router basename="/create">
+            <Router>
                 <section className="sidebar">
                     <Cvnav completed={completed} userId={props.user.userId}/>
                 </section>
                 <section className="section-wrap">
-                        <Route exact path="/">
+                        <Switch>
+                        <Route exact path="/create">
                             <Default updateComplete={checkCompleted} user={props.user}/>
                         </Route>
-                        <Switch>
                         <Route path="/photo">
                             <Photo updateComplete={checkCompleted} userId={props.user.userId}/>
                         </Route>
