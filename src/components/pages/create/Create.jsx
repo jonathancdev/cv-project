@@ -40,7 +40,7 @@ function Create (props) {
                     <Cvnav completed={completed} userId={props.user.userId}/>
                 </section>
                 <section className="section-wrap">
-                        <Route exact path="/create">
+                        <Route path="/create/default">
                             <Default updateComplete={checkCompleted} user={props.user}/>
                         </Route>
                         <Switch>
