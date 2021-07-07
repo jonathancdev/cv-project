@@ -18,7 +18,7 @@ function Navbar (props) {
     }
     return (
         <section className="navbar">
-            <Link id="bluea" to={props.active ? "/create/default" : '/signup'} className="navlinks">create cv</Link>
+            <Link id="bluea" to={props.active ? "/create" : '/signup'} className="navlinks">create cv</Link>
 
             {props.user !== null && props.active
             ?  null
