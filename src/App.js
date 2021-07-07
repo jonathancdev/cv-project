@@ -49,7 +49,7 @@ function App() {
         </header>
         <main>
         <Switch>
-            <Route path="/" exact>
+            <Route path={process.env.PUBLIC_URL + '/'} exact>
               <HomeMain active={activeSession}/>
             </Route>
             <Route path="/create">
