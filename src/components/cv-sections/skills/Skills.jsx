@@ -102,6 +102,7 @@ checkKeys() { //new check keys
 updateFromPreview(array) {
     this.setState({
         skillArray: array,
+        skillCount: localStorage.getObject(this.props.userId + "_skills").length
     })
 }
 setSkill(event, index) { //probably don't need array here
