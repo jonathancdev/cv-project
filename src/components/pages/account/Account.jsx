@@ -15,7 +15,7 @@ function Account (props) {
     }
     function handleDelete() {
         options.current.style.display = 'flex'
-        setMessage('are you sure you want to delete your account?')
+        setMessage('are you sure you want to delete this account?')
         setFnc('b')
     }
     function chooseFnc() {

@@ -41,7 +41,7 @@ p {
     margin-top: 20px;
 }
 .cv-section {
-    max-height: 40px;
+    max-height: 700px;
     margin-top: 5px;
     display: flex;
     flex-direction: column;

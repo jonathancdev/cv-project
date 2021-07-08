@@ -47,7 +47,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   min-width: 750px;
-  max-height: 600px;
+  max-height: 700px;
 }
 input {
   border-radius: 3px;

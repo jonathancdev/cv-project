@@ -108,6 +108,7 @@ resetExp() { //when new work exp item added, resets values to set up new object
 }
 
 createObject () { //save button creates new object with current form inputs, pushes to expSum
+    console.log('ouch')
     if (this.expSum.length < 4) {
         let newExp = {};
         newExp.title = this.state.title
@@ -364,7 +365,7 @@ render() {
                             
                             </section>
                             <div className="save-btn-div">
-                                <button className="save-btn"onClick={this.createObject}>save item</button>
+                                <button className="save-btn" onClick={this.createObject}>save item</button>
                             </div>
                         </div>
                         : null}
