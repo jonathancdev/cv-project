@@ -79,7 +79,7 @@
     border-style: none;
 }
 .view-wrapper.profile {
-    height: 75px;
+    height: 125px;
 }
 .view-wrapper.work {
     height: 320px
@@ -88,7 +88,11 @@
     height: 190px
 }
 .view-wrapper.skills {
-    height: 250px;
+    height: 350px;
+}
+.view-wrapper.skills li{
+    padding: 3px 0px;
+    font-size: 14px;
 }
 .view-wrapper.contact {
     height: 200px;
@@ -120,7 +124,7 @@
 .view-sec {
     background-color: white;
     border-style: none;
-    padding: 5px;
+    padding: 0px 5px;
 }
 .view-header {
     display: flex;
@@ -142,7 +146,7 @@
     flex-direction: column;
 }
 .view-main {
-    margin-top: -40px;
+    margin-top: -50px;
     width: 450px;
 }
 .view-company-dates {
