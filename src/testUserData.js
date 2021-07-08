@@ -96,9 +96,9 @@ localStorage.setObject('cvIDJ4B6P12_contact', [{
   ])
 
 //userid
-localStorage.setObject('userId0', "cvIDJ4B6P12")
+localStorage.setObject('userIdTest', "cvIDJ4B6P12")
 //userInfo
-localStorage.setObject('userInfo0', {
+localStorage.setObject('userInfoTest', {
     name: "Jane",
     surname: "Breeze",
     profession: "Professional",
