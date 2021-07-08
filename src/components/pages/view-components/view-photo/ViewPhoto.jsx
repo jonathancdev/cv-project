@@ -1,4 +1,5 @@
-import { React, useState, useEffect, useRef } from 'react';
+import { React } from 'react';
+import img from '../../../../img/AI_photo.jpg'
 
 function ViewPhoto (props) {
 
@@ -9,7 +10,7 @@ function ViewPhoto (props) {
             <div className="photo-border">
                 {photo === 'disabled'
                 ? null
-            : <img id="view-avatar" src={photo} alt="photo"></img>}
+            : <img id="view-avatar" src={props.userId === 'cvIDJ4B6P12' && photo === 'test user' ? img : photo} alt="photo"></img>}
             </div>
         </div>
     )

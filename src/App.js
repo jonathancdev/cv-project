@@ -1,12 +1,12 @@
 import './App.css';
-import {React, useState, useRef} from "react";
+import {React, useState, useEffect} from "react";
 import { Route, HashRouter as Router, Switch, withRouter } from 'react-router-dom';
 import { Header, Footer, storeObjects, checkStorage, removeStorage } from './components/common';
 import { HomeMain, Create, Pricing, Login, Signup, Account, Help, View, Print } from './components/pages'
 
-
 function App() {
   storeObjects()
+
 
   function isUser() {
     if (Object.keys(localStorage).includes('currentUser')) {
@@ -19,6 +19,7 @@ function App() {
   const [currentUser, setCurrentUser] = useState(isUser() ? localStorage.getObject('currentUser') : null)
   const [activeSession, setActiveSession] = useState(Object.keys(localStorage).includes('activeSession') ? true : false)
   const [hideElements, setHideElements] = useState(false)
+  const [isDefault, setIsDefault] = useState(localStorage.getItem('userId0') === 'cvIDJ4B6P12' ? true : false)
 
   function setUser(obj) {
     setCurrentUser(obj)
@@ -38,7 +39,8 @@ function App() {
   function show() {
     setHideElements(false)
   }
-  console.log(currentUser)
+
+  console.log(isDefault)
   return (
     <div className="App">
       <Router>

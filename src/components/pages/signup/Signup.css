@@ -64,3 +64,15 @@
     text-decoration: none;
     color: black;
 }
+.example-div {
+    display: flex;
+    align-items: center;
+}
+.example-div a{
+    border: none;
+    background-color: transparent;
+    color:#829cd0;
+    font-weight: bold;
+    font-size: 16px;
+    text-decoration: none;
+}

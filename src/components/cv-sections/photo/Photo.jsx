@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import './Photo.css';
 import PhotoInput from '../photo-input'
 import {SaveSection, checkStorage, removeStorage, HoverInfo} from '../../common'
+import img from '../../../img/AI_photo.jpg'
 
 function Photo (props) {
 
@@ -73,8 +74,6 @@ function Photo (props) {
         }
     }
     console.log(userAvatar)
-    console.log(filePath)
-    console.log(noAvatar)
     return (
         <section className="cv-sec-wrap">
             <section className="photo cv-section">
@@ -112,7 +111,7 @@ function Photo (props) {
                         <>
                         { noAvatar && userAvatar !== 'enabled' ?
                          <div className="blank-avatar"><i class="far fa-dizzy"></i></div>
-                        : <img id="avatar-display" ref={avatarDisplay} src={userAvatar} alt="user"></img>}
+                        : <img id="avatar-display" ref={avatarDisplay} src={ props.userId === 'cvIDJ4B6P12' && userAvatar === 'test user' ? img : userAvatar} alt="user"></img>}
                         </>
                         }
                     </div>

@@ -1,7 +1,9 @@
-import { React, useState, useRef } from 'react';
+import { React, useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './Signup.css';
 import { InputStd, InputPwd, InputEmail } from '../../cv-sections/'
+import { importUserData } from '../../../testUserData'
+
 
 function Signup (props) {
 
@@ -13,6 +15,7 @@ function Signup (props) {
     const [userCount, setUserCount] = useState(Object.keys(localStorage).includes("userId0") ? Object.keys(localStorage).filter( item => item.includes('userId')).length : 0 )
     const [emailValid, setEmailValid] = useState(false)
     const [passwordValid, setPasswordValid] = useState(false)
+    const [isDefault, setIsDefault] = useState(false)
 
     const firstNameRef = useRef(null)
     const lastNameRef = useRef(null)
@@ -82,13 +85,26 @@ function Signup (props) {
     function checkPassword(bool) {
         setPasswordValid(bool)
     }
-
+    function loadDefaultUser() {
+        importUserData()
+        props.setUser({ 
+            name: "Jane", 
+            surname: "Breeze", 
+            profession: "Professional", 
+            password: "password", 
+            email: "jane@cvbreeze.au", 
+            userId: "cvIDJ4B6P12" })
+    }
     return (
         <section className="signup">
             <section className="section-wrap">
                 <section className="cv-header">
                     <h2>Create your account:</h2>
                 </section>
+                <div className="example-div">
+                    <p>not ready to make an account?</p>
+                    <Link to='/create' onClick={loadDefaultUser}>try it out free!</Link>
+                </div>
                 <div className="signup-form-wrap">
                 <InputStd
                     childRef={firstNameRef}

@@ -7,7 +7,6 @@ import { View } from '../../../components/pages'
 import './Create.css';
 
 function Create (props) {
-    const userId = props.user.userId
     const [completed, setCompleted] = useState(false)
 
     useEffect(() => {

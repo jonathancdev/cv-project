@@ -4,12 +4,9 @@ import { ViewPhoto, ViewProfile, ViewWork, ViewEducation, ViewSkills, ViewContac
 import { Link } from 'react-router-dom';
 
 function View (props) {
-    const photo = localStorage.getItem('avatar')
     const user = localStorage.getObject('currentUser')
     const printArea = useRef(null)
-    function printIt () {
-        window.location = "/cv-section/print"
-    }
+
     return (
         <div>
             {props.completed ?
