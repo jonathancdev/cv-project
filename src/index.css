@@ -109,6 +109,9 @@ a {
     margin: 0;
     padding: 0;
   }
+  .print {
+    margin-top: -20px;
+  }
   body {
     visibility: hidden;
     margin: 0;
@@ -120,12 +123,12 @@ a {
   }
   #print-element {
     visibility: visible;
-    transform: scale(1.22);
+    transform: scale(1.21);
     transform-origin: 0 0;
     box-shadow: none;
   }
   .view .section-wrap {
-    min-height: 850px;
+    max-height: 850px;
   }
   .photo-border {
     background-color: #829CD0 !important;
