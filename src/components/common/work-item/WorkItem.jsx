@@ -1,18 +1,7 @@
 import {React, useState} from 'react';
 import './WorkItem.css';
 
-
 function WorkItem (props) {
-
-    function canDelete() {
-        if (localStorage.getObject(props.userId + '_work')) {
-            if (localStorage.getObject(props.userId + '_work').length > props.index) {
-                if (localStorage.getObject(props.userId + '_work')[props.index].title === props.object.title) {
-                    return true
-                }
-            }
-        }
-    }
 
     function handleDelete(e) {
         const target = e.target.parentElement.parentElement.firstChild.innerHTML
@@ -22,7 +11,7 @@ function WorkItem (props) {
         const index = workArray.findIndex(obj => obj.title === item.title)
         workArray.splice(index, 1)
         props.update(workArray)
-        props.save();
+        props.show()
             }
         })
     }
@@ -40,19 +29,23 @@ function WorkItem (props) {
         const duties = dutyArray.filter(duty => duty !== 'what did you do in this position?')
         return duties
     }
+    const x = localStorage.getObject(props.userId + '_work')
+    const y = JSON.stringify(x)
+    const z = JSON.stringify(props.object)
+
     return (
         <div className="preview-item" id={props.object.title}>
-            <li>
+            <div>
                 <h3>{props.object.title} at {props.object.company}</h3>
                 <div className="delete-storage">
-                { canDelete()
+                { y.includes(z)
                 ? <button className="delete-button" onClick={handleDelete}>delete</button>
                 : null }
                 </div>
                 <div className="expand-preview">
                     <button onClick={handleExpand}>expand</button>
                 </div>
-            </li>
+            </div>
             
             <div className="expand-wrap">
                 <ul className="expandable" hidden>

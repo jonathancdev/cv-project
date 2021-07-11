@@ -5,13 +5,20 @@ class SaveSection extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            display: this.props.display,
+            display: '',
             saveBtn: false
         }
         this.handleClick = this.handleClick.bind(this);
         this.propsExist = this.propsExist.bind(this);
-        this.btnToggle = this.btnToggle.bind(this);
     }
+    // componentDidUpdate(prevProps) {
+    //     if (this.props !== prevProps) {
+    //         console.log('different props')
+    //         this.setState({
+    //             display: 'changes must be saved'
+    //         })
+    //     }
+    // }
     propsExist() { //save entire array, not to individual keys
         if (this.props.required !== undefined && this.props.required !== [] ) {
             if (Array.isArray(this.props.required)) {
@@ -39,29 +46,24 @@ class SaveSection extends Component {
         }
     }
     
-    btnToggle () {
-        this.setState({
-            saveBtn: true
-        })
-    }
 
     handleClick = () => {
         this.propsExist()
 
         this.setState({
-            display: "changes saved successfully"
+            display: "changes saved successfully!"
         })
 
-        this.btnToggle();
         this.set()
         this.props.updateParents()
+        this.props.hide()
       };
 
     render() {
         return(
             <section className="save-section">
-                <p className="save-message">{this.state.display}</p>
-                <button className="save-button" onClick={this.handleClick} disabled={this.state.saveBtn}>save</button>
+                {/* <p className="save-message" disabled={this.props.hideMessage}>{this.state.display}</p> */}
+                <button className="save-button" onClick={this.handleClick} disabled={this.props.hideButton}>save</button>
             </section>
         )
     }

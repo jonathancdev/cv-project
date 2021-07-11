@@ -10,19 +10,15 @@ class Skills extends Component {
         this.skillRef = createRef();
         this.state = {
             skill: 'enter skill',
-            skillCount: Object.keys(localStorage).includes(this.props.userId + "_skills") ? localStorage.getObject(this.props.userId + "_skills").length : 0,
             skillArray: this.checkKeys(),
-            canSave: false,
-            saveAfterDelete: false,
             hideNewSkill: true,
             hovered: false,
-            skillLimit: ''
+            skillLimit: '',
+            hideButton: true,
+            saveDisplay: '',
         };
 
         this.setSkill = this.setSkill.bind(this)
-        this.setSkillCount = this.setSkillCount.bind(this)
-        this.setCanSave = this.setCanSave.bind(this)
-        this.setDeleteSave = this.setDeleteSave.bind(this)
         this.checkKeys = this.checkKeys.bind(this)
         this.updateFromPreview = this.updateFromPreview.bind(this)
         this.saveSkill = this.saveSkill.bind(this)
@@ -31,6 +27,9 @@ class Skills extends Component {
         this.onHoverOut = this.onHoverOut.bind(this)
         this.setSkillLimit = this.setSkillLimit.bind(this)
         this.skillSum = this.checkKeys()
+        this.showSaveButton = this.showSaveButton.bind(this)
+        this.hideSaveButton = this.hideSaveButton.bind(this)
+        this.setSuccessMessage = this.setSuccessMessage.bind(this)
     }
 setSkillLimit () {
     this.setState({
@@ -52,41 +51,38 @@ componentWillUnmount () {
 }
 toggleNewItem () { //toggles form to allow new experience input
     this.setState(prevState => ({
-        hideNewSkill: !prevState.hideNewSkill
+        hideNewSkill: !prevState.hideNewSkill,
         }));
-}
-setSkillCount() {
-    this.setState({
-        skillCount: this.state.skillCount + 1
-    })
-}
-
-setCanSave() {
-    this.setState(prevState => ({
-        canSave: !prevState.canSave,
-      }));
-      this.setState({saveAfterDelete: false})
-}
-setDeleteSave() {
-    this.setState({saveAfterDelete: true})
-    this.setState(prevState => ({
-        canSave: !prevState.canSave,
-      }));
-      this.setState({expArray: this.checkKeys()})
+    if (this.state.saveDisplay === 'changes must be saved') {
+        this.setState({
+            saveDisplay: 'changes must be saved',
+            hideButton: false
+        })
+    } else {
+        this.setState({
+            saveDisplay: '',
+            hideButton: true,
+            skillLimit: ''
+        })
+    }
 }
 saveSkill() {
-    if (this.state.skillCount < 8) {
+    if (this.state.skillArray.length < 8) {
         let newSkill = this.state.skill
         this.skillSum.push(newSkill)
-        this.setSkillCount()
+        this.showSaveButton()
         this.setState({
             skill: 'enter skill',
             skillArray: this.skillSum,
-            canSave: true,
-            hideNewSkill: true
+            hideNewSkill: true,
+            saveDisplay: 'changes must be saved'
         })
     } else {
         this.setSkillLimit()
+        this.setState({
+            skill: 'enter skill',
+            hideNewSkill: true
+        })
     }
 }
 checkKeys() { //new check keys
@@ -98,22 +94,39 @@ checkKeys() { //new check keys
         return empty;
     }
 }
-
+showSaveButton() {
+    this.setState({
+        hideButton: false
+    })
+}
+hideSaveButton() {
+    this.setState({
+        hideButton: true
+    })
+}
+setSuccessMessage() {
+    this.setState({
+        saveDisplay: 'changes saved successfully'
+    })
+}
 updateFromPreview(array) {
+    this.skillSum = array
     this.setState({
         skillArray: array,
-        skillCount: localStorage.getObject(this.props.userId + "_skills").length
+        saveDisplay: 'changes must be saved'
     })
 }
 setSkill(event, index) { //probably don't need array here
     const value = event.target.value;
-    
     this.setState({
        skill: value
     })
 }
 render() {
-    console.log(this.state.skillCount)
+    console.log(this.state.skillArray)
+    console.log(this.state.skillLimit)
+    console.log(this.state.saveDisplay)
+
     return (
         <section className="cv-sec-wrap">
             <section className="skills cv-section">
@@ -131,13 +144,16 @@ render() {
                     </button>
                 </section>
                 <section className="save-section-wrap">
-                    {(this.state.skillArray.length > 0 && this.state.canSave === true) || this.state.saveAfterDelete === true
+                    <p className="save-message">{this.state.saveDisplay}</p>
+                    { !this.state.hideButton
                     ?<SaveSection
-                    display={'you must save the changes on this page'}
-                    required={this.state.skillArray} //what goes here?
+                    display={this.state.saveDisplay}
+                    required={this.state.skillArray}
                     storageName={this.props.userId + "_skills"}
-                    set={this.setCanSave}
+                    set={this.setSuccessMessage}
                     updateParents={this.props.updateComplete}
+                    hideButton={this.state.hideButton}
+                    hide={this.hideSaveButton}
                     />
                     : null}
                 </section>
@@ -151,7 +167,7 @@ render() {
                                 ? <i className="fas fa-plus"></i>
                                 : <i className="fas fa-window-minimize"></i> }
                                 </button>
-                                <p className="error-msg">{this.state.skillLimit}</p>
+                                <p className="error-msg">{this.state.skillArray.length > 7 ? this.state.skillLimit : ''}</p>
                                 </div>
 
                                 {!this.state.hideNewSkill
@@ -178,7 +194,7 @@ render() {
                                 : null}
 
                 { this.state.skillArray.length > 0
-                ? <PreviewDataSkills2 userId={this.props.userId} save={this.setDeleteSave} updateParent={this.updateFromPreview} data={this.state.skillArray}/>
+                ? <PreviewDataSkills2 userId={this.props.userId} updateParent={this.updateFromPreview} data={this.state.skillArray} show={this.showSaveButton} />
                 : null}
                     </section>
                 </section>

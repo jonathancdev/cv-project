@@ -8,6 +8,8 @@ function Photo (props) {
 
     const [noAvatar, setNoAvatar] = useState(false);
     const [hovered, setHovered] = useState(false);
+    const [hideButton, setHideButton] = useState(true)
+    const [saveDisplay, setSaveDisplay] = useState('')
     const avatarDisplay = useRef(null);
     const checkbox = useRef(null)
 
@@ -41,12 +43,25 @@ function Photo (props) {
         }
     });
 
-
+    function setSuccessMessage () {
+        setSaveDisplay('changed saved successfully')
+    }
+    function setSaveMessage () {
+        setSaveDisplay('changes must be saved')
+    }
+    function showSaveButton () {
+        setHideButton(false)
+    }
+    function hideSaveButton () {
+        setHideButton(true)
+    }
     function updatePath(path) {
         setFilePath(path)
     }
     function updateAvatar(file) {
         setUserAvatar(file);
+        showSaveButton()
+        setSaveMessage()
     }
     function handleDelete () {
         removeStorage(props.userId + "_avatar")
@@ -54,6 +69,8 @@ function Photo (props) {
         updateAvatar('')
         updatePath('')
         props.updateComplete()
+        showSaveButton()
+        setSaveMessage()
     }
     function onHoverIn() {
         setHovered(true)
@@ -73,7 +90,7 @@ function Photo (props) {
             checkbox.current.checked = false
         }
     }
-    console.log(userAvatar)
+
     return (
         <section className="cv-sec-wrap">
             <section className="photo cv-section">
@@ -90,14 +107,17 @@ function Photo (props) {
                     </button>
                 </section>
                 <section className="save-section-wrap">
-                    {userAvatar !== '' && userAvatar !== localStorage.getItem(props.userId + "_avatar")
+                <p className="save-message">{saveDisplay}</p>
+                    { !hideButton
                     ?<SaveSection
                     display={'you must save the changes on this page'}
                     required={userAvatar} //object or info required before saving
                     requiredB={filePath}
                     storageName={props.userId + "_avatar"}
                     storageNameB={props.userId + "_path"}
+                    set={setSuccessMessage}
                     updateParents={props.updateComplete}
+                    hide={hideSaveButton}
                     />
                     : null}
                 </section>

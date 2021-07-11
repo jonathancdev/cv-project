@@ -17,21 +17,22 @@ class Contact extends Component {
             email: checkStorage(this.props.userId + '_contact') ? localStorage.getObject(this.props.userId + '_contact')[0].email : 'email',
             address: checkStorage(this.props.userId + '_contact') ? localStorage.getObject(this.props.userId + '_contact')[0].address : 'address',
             web: checkStorage(this.props.userId + '_contact') ? localStorage.getObject(this.props.userId + '_contact')[0].web : 'website',
-            canSave: false,
-            saveAfterDelete: false,
-            hovered: false
+            hovered: false,
+            hideButton: true,
+            saveDisplay: ''
         }
 
         this.setTel = this.setTel.bind(this)
         this.setEmail = this.setEmail.bind(this)
         this.setAddress = this.setAddress.bind(this)
         this.setWeb = this.setWeb.bind(this)
-        this.setCanSave = this.setCanSave.bind(this)
-        this.setDeleteSave = this.setDeleteSave.bind(this)
         this.inputsExist = this.inputsExist.bind(this)
         this.handleDelete = this.handleDelete.bind(this)
         this.onHoverIn = this.onHoverIn.bind(this)
         this.onHoverOut = this.onHoverOut.bind(this)
+        this.showSaveButton = this.showSaveButton.bind(this)
+        this.hideSaveButton = this.hideSaveButton.bind(this)
+        this.setSuccessMessage = this.setSuccessMessage.bind(this)
 
         this.contactObj = []
     }
@@ -49,44 +50,57 @@ class Contact extends Component {
     componentWillUnmount () {
         this.props.updateComplete()
     }
-    setCanSave() { //toggle save section
-        this.setState(prevState => ({
-            canSave: !prevState.canSave
-          }));
+    showSaveButton() {
+        this.setState({
+            hideButton: false
+        })
     }
-    setDeleteSave() {
-        this.setState({saveAfterDelete: true})
-        this.setState(prevState => ({
-            canSave: !prevState.canSave,
-          }));
+    hideSaveButton() {
+        this.setState({
+            hideButton: true
+        })
+    }
+    setSuccessMessage() {
+        this.setState({
+            saveDisplay: 'changes saved successfully',
+        })
+    }
+    setSaveMessage() {
+        this.setState({
+            saveDisplay: 'changes must be saved',
+        })
     }
     setTel(e) {
         const value = e.target.value;
         this.setState({
             tel: value,
-            canSave: true
         })
+        this.showSaveButton()
+        this.setSaveMessage()
     }
     setEmail(e) {
         const value = e.target.value;
         this.setState({
             email: value,
-            canSave: true
         })
+        this.showSaveButton()
+        this.setSaveMessage()
     }
     setAddress(e) {
         const value = e.target.value;
         this.setState({
             address: value,
-            canSave: true
         })
+        this.showSaveButton()
+        this.setSaveMessage()
     }
     setWeb(e) {
         const value = e.target.value;
         this.setState({
             web: value,
-            canSave: true
         })
+        this.showSaveButton()
+        this.setSaveMessage()
     }
     createObject() {
         const obj = [{
@@ -111,8 +125,9 @@ class Contact extends Component {
             address: 'address',
             web: 'website',
         })
-        this.setDeleteSave()
         this.props.updateComplete()
+        this.showSaveButton()
+        this.setSaveMessage()
 
     }
 
@@ -133,14 +148,16 @@ render () {
                         <i className="far fa-question-circle"></i>
                     </button>
                 </section>
-                <section key={this.state.setCanSave} className="save-section-wrap">
-                    {this.state.canSave || this.state.saveAfterDelete
+                <section className="save-section-wrap">
+                <p className="save-message">{this.state.saveDisplay}</p>
+                    { !this.state.hideButton
                     ?<SaveSection
                     display={'you must save the changes on this page'}
                     required={this.createObject()} //object or info required before saving
                     storageName={this.props.userId + '_contact'}
-                    set={this.setCanSave}
                     updateParents={this.props.updateComplete}
+                    set={this.setSuccessMessage}
+                    hide={this.hideSaveButton}
                     />
                     : null}
                 </section>

@@ -18,11 +18,11 @@ class Education extends Component {
             monthOne: 'month',
             yearOne: 'year',
             eduArray: this.checkKeys(),
-            canSave: false,
-            saveAfterDelete: false,
             hideNewItem: true,
             hovered: false,
-            eduLimit: ''
+            eduLimit: '',
+            hideButton: true,
+            saveDisplay: ''
         };
 
         this.createObject = this.createObject.bind(this)
@@ -33,14 +33,15 @@ class Education extends Component {
         this.setMonthOne = this.setMonthOne.bind(this)
         this.setYearOne = this.setYearOne.bind(this)
         this.setEduArray = this.setEduArray.bind(this)
-        this.setCanSave = this.setCanSave.bind(this)
-        this.setDeleteSave = this.setDeleteSave.bind(this)
         this.checkKeys = this.checkKeys.bind(this)
         this.updateFromPreview = this.updateFromPreview.bind(this)
         this.resetExp = this.resetExp.bind(this)
         this.onHoverIn = this.onHoverIn.bind(this)
         this.onHoverOut = this.onHoverOut.bind(this)
         this.setEduLimit = this.setEduLimit.bind(this)
+        this.showSaveButton = this.showSaveButton.bind(this)
+        this.hideSaveButton = this.hideSaveButton.bind(this)
+        this.setSuccessMessage = this.setSuccessMessage.bind(this)
         this.expSum = this.checkKeys()
 
  }
@@ -70,7 +71,7 @@ resetExp() {
         desc: "description",
         monthOne: 'month',
         yearOne: 'year',
-        dutyCount: 0
+        hideNewItem: true
     })
 }
 createObject () {
@@ -85,33 +86,35 @@ createObject () {
         this.setEduArray();
         this.resetExp();
         this.setState({
-            canSave: true
+            saveDisplay: 'changes must be saved',
+            hideButton: false
         })
     } else {
         this.setEduLimit()
+        this.resetExp()
     }
 }
-toggleNewItem () {
+toggleNewItem () { //toggles form to allow new experience input
     this.setState(prevState => ({
         hideNewItem: !prevState.hideNewItem
       }));
+    if (this.state.saveDisplay === 'changes must be saved') {
+        this.setState({
+            saveDisplay: 'changes must be saved',
+            hideButton: false
+        })
+    } else {
+        this.setState({
+            saveDisplay: '',
+            hideButton: true,
+            workLimit: ''
+        })
+}
 }
 setEduArray () {
     this.setState({
         eduArray: this.expSum
     })
-}
-setCanSave() { //toggle save section
-    this.setState(prevState => ({
-        canSave: !prevState.canSave
-      }));
-      this.setState({saveAfterDelete: false})
-}
-setDeleteSave() {
-    this.setState({saveAfterDelete: true})
-    this.setState(prevState => ({
-        canSave: !prevState.canSave,
-      }));
 }
 
 checkKeys() { //new check keys
@@ -123,21 +126,21 @@ checkKeys() { //new check keys
         return empty;
     }
 }
-// checkKeys() { //checks local storage for any key/data pairs for workexp, returns them in array or []
-//     const keys = Object.keys(localStorage)
-//     const eduKeys = keys.filter(element => element.includes('eduExp'))
-//     if (eduKeys.length > 0) {
-//         let i = 0;
-//         let pairs = [];
-//         for (i = 0; i < eduKeys.length; i++) {
-//             pairs.push(localStorage.getObject(eduKeys[i]))
-//         }
-//         return pairs;
-//     } else {
-//         const empty = []
-//         return empty;
-//     }
-// }
+showSaveButton() {
+    this.setState({
+        hideButton: false
+    })
+}
+hideSaveButton() {
+    this.setState({
+        hideButton: true
+    })
+}
+setSuccessMessage() {
+    this.setState({
+        saveDisplay: 'changes saved successfully',
+    })
+}
 setLoc (e) {
     const value = e.target.value;
     this.setState({
@@ -168,8 +171,13 @@ setYearOne(e) {
         yearOne: value
     })
 }
-updateFromPreview(array) {
-    this.setState({eduArray: array})
+updateFromPreview(array) { //updates state when WorkItem is deleted
+    this.expSum = array
+    this.setState({
+        eduArray: array,
+        saveDisplay: 'changes must be saved',
+        eduLimit: ''
+    })
 }
 
 render () {
@@ -190,13 +198,16 @@ render () {
                     </button>
                 </section>
                 <section className="save-section-wrap">
-                    {(this.state.eduArray.length > 0 && this.state.canSave === true) || this.state.saveAfterDelete === true
+                <p className="save-message">{this.state.saveDisplay}</p>
+                    { !this.state.hideButton
                     ?<SaveSection
                     display={'you must save the changes on this page'}
                     required={this.state.eduArray} //object or info required before saving
                     storageName={this.props.userId + '_education'}
-                    set={this.setCanSave}
+                    set={this.setSuccessMessage}
                     updateParents={this.props.updateComplete}
+                    hideButton={this.state.hideButton}
+                    hide={this.hideSaveButton}
                     />
                     : null}
                 </section>
@@ -280,7 +291,7 @@ render () {
                             </div>                            </div>
                                 : null}
                             { this.state.eduArray.length > 0
-                            ? <PreviewDataEdu userId={this.props.userId} save={this.setDeleteSave} updateParent={this.updateFromPreview} data={this.state.eduArray}/>
+                            ? <PreviewDataEdu userId={this.props.userId} updateParent={this.updateFromPreview} data={this.state.eduArray} show={this.showSaveButton}/>
                             : null }
 
                     </section>

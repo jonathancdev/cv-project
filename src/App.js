@@ -40,7 +40,6 @@ function App() {
     setHideElements(false)
   }
 
-  console.log(isDefault)
   return (
     <div className="App">
       <Router>

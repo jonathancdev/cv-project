@@ -30,12 +30,12 @@ class WorkExperience extends Component {
             //counters
             dutyCount: 0,
             //booleans
-            canSave: false,
-            saveAfterDelete: false,
             hideNewItem: true,
             hovered: false,
             expLimit: '',
-            dutyLimit: ''
+            dutyLimit: '',
+            hideButton: true,
+            saveDisplay: ''
         };
         //bind functions
         this.createObject = this.createObject.bind(this)
@@ -50,8 +50,6 @@ class WorkExperience extends Component {
         this.setYearOne = this.setYearOne.bind(this)
         this.setYearTwo = this.setYearTwo.bind(this)
         this.setExpArray = this.setExpArray.bind(this)
-        this.setCanSave = this.setCanSave.bind(this)
-        this.setDeleteSave = this.setDeleteSave.bind(this)
         this.resetExp = this.resetExp.bind(this)
         this.checkKeys = this.checkKeys.bind(this)
         this.updateFromPreview = this.updateFromPreview.bind(this)
@@ -60,6 +58,9 @@ class WorkExperience extends Component {
         this.onHoverOut = this.onHoverOut.bind(this)
         this.setWorkLimit = this.setWorkLimit.bind(this)
         this.setDutyLimit = this.setDutyLimit.bind(this)
+        this.showSaveButton = this.showSaveButton.bind(this)
+        this.hideSaveButton = this.hideSaveButton.bind(this)
+        this.setSuccessMessage = this.setSuccessMessage.bind(this)
         //set expSum
         this.expSum = this.checkKeys();
  }
@@ -108,7 +109,6 @@ resetExp() { //when new work exp item added, resets values to set up new object
 }
 
 createObject () { //save button creates new object with current form inputs, pushes to expSum
-    console.log('ouch')
     if (this.expSum.length < 4) {
         let newExp = {};
         newExp.title = this.state.title
@@ -122,10 +122,12 @@ createObject () { //save button creates new object with current form inputs, pus
         this.setExpArray();
         this.resetExp();
         this.setState({
-            canSave: true
+            saveDisplay: 'changes must be saved',
+            hideButton: false
         })
     } else {
         this.setWorkLimit()
+        this.resetExp()
     }
 }
 
@@ -133,6 +135,18 @@ toggleNewItem () { //toggles form to allow new experience input
     this.setState(prevState => ({
         hideNewItem: !prevState.hideNewItem
       }));
+    if (this.state.saveDisplay === 'changes must be saved') {
+        this.setState({
+            saveDisplay: 'changes must be saved',
+            hideButton: false
+        })
+    } else {
+        this.setState({
+            saveDisplay: '',
+            hideButton: true,
+            workLimit: ''
+        })
+}
 }
 
 setDutyCount() { //counts # duties within exp object (limit 3)
@@ -159,19 +173,6 @@ setExpArray () { //when new work exp obj saved, sets state array to include all 
     })
 }
 
-setCanSave() { //toggle save section
-    this.setState(prevState => ({
-        canSave: !prevState.canSave
-      }));
-      this.setState({saveAfterDelete: false})
-}
-setDeleteSave() { 
-    this.setState({saveAfterDelete: true})
-    this.setState(prevState => ({
-        canSave: !prevState.canSave,
-      }));
-}
-
 checkKeys() { //checks storage for values before using intiial
     if (Object.keys(localStorage).includes(this.props.userId + '_work')) {
         const storage = localStorage.getObject(this.props.userId + '_work')
@@ -181,9 +182,29 @@ checkKeys() { //checks storage for values before using intiial
         return empty;
     }
 }
+showSaveButton() {
+    this.setState({
+        hideButton: false
+    })
+}
+hideSaveButton() {
+    this.setState({
+        hideButton: true
+    })
+}
+setSuccessMessage() {
+    this.setState({
+        saveDisplay: 'changes saved successfully',
+    })
+}
 
 updateFromPreview(array) { //updates state when WorkItem is deleted
-    this.setState({expArray: array})
+    this.expSum = array
+    this.setState({
+        expArray: array,
+        saveDisplay: 'changes must be saved',
+        workLimit: ''
+    })
 }
 
 //functions to save inputs as they are being entered in form
@@ -252,13 +273,16 @@ render() {
                     </button>
                 </section>
                 <section className="save-section-wrap">
-                    {(this.state.expArray.length > 0 && this.state.canSave === true) || this.state.saveAfterDelete === true
+                <p className="save-message">{this.state.saveDisplay}</p>
+                    {!this.state.hideButton
                     ?<SaveSection
-                    display={'you must save the changes on this page'}
+                    display={this.state.saveDisplay}
                     required={this.state.expArray}
                     storageName={this.props.userId + '_work'}
-                    set={this.setCanSave}
+                    set={this.setSuccessMessage}
                     updateParents={this.props.updateComplete}
+                    hideButton={this.state.hideButton}
+                    hide={this.hideSaveButton}
                     />
                     : null}
                 </section>
@@ -371,7 +395,7 @@ render() {
                         : null}
             {/* form ends here */}
             { this.state.expArray.length > 0
-                ? <PreviewDataWork userId={this.props.userId} save={this.setDeleteSave} updateParent={this.updateFromPreview} data={this.state.expArray}/>
+                ? <PreviewDataWork userId={this.props.userId} updateParent={this.updateFromPreview} data={this.state.expArray} show={this.showSaveButton}/>
                 : null }
                     </section>
                 </section>

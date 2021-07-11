@@ -22,15 +22,12 @@ function Create (props) {
         (!checkStorage(props.user.userId + '_contact')  || (localStorage.getObject(props.user.userId + '_contact')[0].tel === 'telephone' || localStorage.getObject(props.user.userId + '_contact')[0].tel == '' ||
         localStorage.getObject(props.user.userId + '_contact')[0].email == 'email' || localStorage.getObject(props.user.userId + '_contact')[0].email === '') )
         ) {
-            console.log('incomplete')
             setCompleted(false)
         } else {
-            console.log('complete')
 
             setCompleted(true)
         }
     }
-    console.log(props)
 
     return (
         <section className="home-build">

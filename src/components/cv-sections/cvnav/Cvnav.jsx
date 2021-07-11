@@ -17,7 +17,6 @@ function Cvnav (props) {
         setCurrPage(page)
     }
 
-    console.log(props.completed)
     return (
         <section className="cvnav">
 

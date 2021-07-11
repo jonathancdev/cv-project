@@ -1,18 +1,7 @@
 import {React, useState} from 'react';
 import './EduItem.css';
 
-
 function EduItem (props) {
-
-    function canDelete() {
-        if (localStorage.getObject(props.userId + '_education')) {
-            if (localStorage.getObject(props.userId + '_education').length > props.index) {
-                if (localStorage.getObject(props.userId + '_education')[props.index].loc === props.object.loc) {
-                    return true
-                }
-            }
-        }
-    }
 
     function handleDelete(e) {
         const target = e.target.parentElement.parentElement.firstChild.innerHTML
@@ -22,7 +11,7 @@ function EduItem (props) {
             const index = eduArray.findIndex(obj => obj.loc === item.loc)
             eduArray.splice(index, 1)
             props.update(eduArray)
-            props.save();
+            props.show()
             }
         })
     }
@@ -37,12 +26,16 @@ function EduItem (props) {
         }
  
     }
-    return (
-<div className="preview-item" id={props.object.title}>
+const x = localStorage.getObject(props.userId + '_education')
+const y = JSON.stringify(x)
+const z = JSON.stringify(props.object)
+console.log(props)
+return (
+    <div className="preview-item" id={props.object.title}>
             <li>
                 <h3>{props.object.degree} at {props.object.loc}</h3>
                 <div className="delete-storage">
-                { canDelete()
+                { y.includes(z)
                 ? <button className="delete-button" onClick={handleDelete}>delete</button>
                 : null }
                 </div>

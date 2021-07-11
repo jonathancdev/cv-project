@@ -10,13 +10,17 @@ class Profile extends Component {
 
         this.state = {
             value: checkStorage(this.props.userId + '_profile') ? localStorage.getItem(this.props.userId + '_profile') : 'click to edit profile',
-            canSave: false,
+            hideButton: true,
+            saveDisplay: '',
             hovered: false
         };
         this.setValue = this.setValue.bind(this)
         this.handleDelete = this.handleDelete.bind(this)
         this.onHoverIn = this.onHoverIn.bind(this)
         this.onHoverOut = this.onHoverOut.bind(this)
+        this.showSaveButton = this.showSaveButton.bind(this)
+        this.hideSaveButton = this.hideSaveButton.bind(this)
+        this.setSuccessMessage = this.setSuccessMessage.bind(this)
 
     }
   onHoverIn() {
@@ -33,28 +37,44 @@ class Profile extends Component {
 componentWillUnmount () {
     this.props.updateComplete()
 }
-
+showSaveButton() {
+    this.setState({
+        hideButton: false
+    })
+}
+hideSaveButton() {
+    this.setState({
+        hideButton: true
+    })
+}
+setSuccessMessage() {
+    this.setState({
+        saveDisplay: 'changes saved successfully',
+    })
+}
+setSaveMessage() {
+    this.setState({
+        saveDisplay: 'changes must be saved',
+    })
+}
 setValue (e) {
       const value = e.target.value;
       this.setState({
          value: value,
-         canSave: this.state.value !== 'click to edit profile' && this.state.value !== localStorage.getItem(this.props.userId + '_profile')
       })
+      this.showSaveButton()
+      this.setSaveMessage()
  }
-setCanSave() {
-    this.setState({
-        canSave: this.state.value !== 'click to edit profile' && this.state.value !== localStorage.getItem(this.props.userId + '_profile')
-    })
-}
+
 handleDelete() {
     removeStorage(this.props.userId + "_profile")
     this.setState({value: 'click to edit profile'})
     this.props.updateComplete()
+    this.showSaveButton()
+    this.setSaveMessage()
 
 }
 render() {
-    console.log(this.state.canSave)
-    console.log(this.state.value)
     return (
         <section className="cv-sec-wrap">
             <section className="profile cv-section">
@@ -72,12 +92,15 @@ render() {
                     </button>
                 </section>
                 <section className="save-section-wrap">
-                    {this.state.canSave
+                <p className="save-message">{this.state.saveDisplay}</p>
+                    { !this.state.hideButton
                     ?<SaveSection
                     display={'you must save the changes on this page'}
                     required={this.state.value} //object or info required before saving
                     storageName={this.props.userId + "_profile"}
                     updateParents={this.props.updateComplete}
+                    set={this.setSuccessMessage}
+                    hide={this.hideSaveButton}
                     />
                     : null}
                 </section>

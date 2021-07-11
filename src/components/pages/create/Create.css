@@ -184,7 +184,8 @@ p {
 .save-section-wrap {
     margin-top: 10px;
     display: flex;
-    justify-content: center;
+
+    align-items: center;
     height: 30px;
     min-width: 500px;
     max-width: 500px;
@@ -235,16 +236,14 @@ p {
 }
 .preview-data li, .preview-data div {
     padding: 1px 0px;
+    display: flex;
+    align-items: center;
 }
 li .preview-item {
     display: flex;
     flex-direction: column;
 }
-.preview-item li {
-    display: flex;
-    align-items: center;
-    
-}
+
 .preview-item h3 {
     font-family: overpass thin;
     font-size: 14px;
