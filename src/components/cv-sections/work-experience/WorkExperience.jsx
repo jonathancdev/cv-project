@@ -67,7 +67,7 @@ class WorkExperience extends Component {
 
 setWorkLimit () {
     this.setState({
-        workLimit: 'use only your most relevant experience! limit of 4 previous jobs'
+        workLimit: 'use only your most relevant experience! limit of 3 previous jobs'
     })
 }
 setDutyLimit () {
@@ -109,7 +109,7 @@ resetExp() { //when new work exp item added, resets values to set up new object
 }
 
 createObject () { //save button creates new object with current form inputs, pushes to expSum
-    if (this.expSum.length < 4) {
+    if (this.expSum.length < 3) {
         let newExp = {};
         newExp.title = this.state.title
         newExp.company = this.state.company
@@ -264,7 +264,7 @@ render() {
                     {this.state.hovered
                         ? <HoverInfo
                             text="Include your work experience in this section. You can add up to
-                                4 items here. There is a limit to 3 duties for each item, so only
+                                3 items here. There is a limit to 3 duties for each item, so only
                                 enter the most important details."
                             >
                         </HoverInfo>
