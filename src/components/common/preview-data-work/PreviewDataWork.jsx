@@ -1,6 +1,6 @@
 import React from 'react';
 import './PreviewDataWork.css';
-import { removeStorage, WorkItem } from '../../common'
+import { WorkItem } from '../../common'
 
 function PreviewDataWork (props) {
     return (

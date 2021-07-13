@@ -1,8 +1,7 @@
-import { React, useState, useEffect, useRef } from 'react';
+import { React } from 'react';
 
 function ViewContact (props) {
 
-    const [state1, setState1] = useState('state');
     const contact = localStorage.getObject(props.userId + '_contact')
     const address = contact[0].address.split(/\r?\n/);
     function outputAddress() {
@@ -10,7 +9,7 @@ function ViewContact (props) {
             return <p>{line}</p>
         })
     }
-    console.log(contact)
+
     return (
         <div className="view-wrapper contact">
             <h3>CONTACT</h3>

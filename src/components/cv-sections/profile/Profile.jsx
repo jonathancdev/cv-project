@@ -49,7 +49,7 @@ hideSaveButton() {
 }
 setSuccessMessage() {
     this.setState({
-        saveDisplay: 'changes saved successfully',
+        saveDisplay: 'changes saved successfully!',
     })
 }
 setSaveMessage() {

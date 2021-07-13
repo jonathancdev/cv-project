@@ -1,8 +1,7 @@
-import { React, useState, useEffect, useRef } from 'react';
+import { React } from 'react';
 
 function ViewProfile (props) {
 
-    const [state1, setState1] = useState('state');
     const profile = localStorage.getItem(props.userId + '_profile')
     return (
         <div className="view-wrapper profile">

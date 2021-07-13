@@ -1,6 +1,5 @@
 import React from 'react';
 import './SkillItem.css';
-import {removeStorage} from '../../common'
 
 function SkillItem (props) {
     function handleDelete(e) {

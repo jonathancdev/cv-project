@@ -1,7 +1,7 @@
 import React, { Component, createRef } from 'react';
 import './WorkExperience.css';
 import InputStd from '../editable-forms/input-std'
-import { MonthDrop, PreviewDataWork, SaveSection, removeStorage, HoverInfo} from '../../common'
+import { MonthDrop, PreviewDataWork, SaveSection, HoverInfo} from '../../common'
 import Duties from '../duties';
 
 class WorkExperience extends Component {
@@ -194,7 +194,7 @@ hideSaveButton() {
 }
 setSuccessMessage() {
     this.setState({
-        saveDisplay: 'changes saved successfully',
+        saveDisplay: 'changes saved successfully!',
     })
 }
 
@@ -290,7 +290,7 @@ render() {
                     <section className="multi-form">
 
                         <div>
-                            <p>add new item</p>
+                            <h5>add new item</h5>
                             <button onClick={this.toggleNewItem} className="add-btn">
                                 {this.state.hideNewItem
                                 ? <i className="fas fa-plus"></i>
@@ -371,7 +371,7 @@ render() {
 
                             <section className="duties-wrap">
                                 <div>
-                                    <p>add job duty</p>
+                                    <h6>add job duty</h6>
                                     <button className="add-btn" onClick={this.newDuty}>
                                         <i className="fas fa-plus"></i>
                                     </button>

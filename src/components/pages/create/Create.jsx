@@ -11,7 +11,7 @@ function Create (props) {
 
     useEffect(() => {
         checkCompleted()
-    }, [])
+    })
 
     function checkCompleted () {
         if ((!checkStorage(props.user.userId + '_avatar') || localStorage.getItem(props.user.userId + '_avatar') === 'enabled' ) ||
@@ -19,8 +19,8 @@ function Create (props) {
         (!checkStorage(props.user.userId + '_work') || localStorage.getObject(props.user.userId + '_work').length < 1) ||
         (!checkStorage(props.user.userId + '_education') || localStorage.getObject(props.user.userId + '_education').length < 1) ||
         (!checkStorage(props.user.userId + '_skills')  || localStorage.getObject(props.user.userId + '_education').length < 1) ||
-        (!checkStorage(props.user.userId + '_contact')  || (localStorage.getObject(props.user.userId + '_contact')[0].tel === 'telephone' || localStorage.getObject(props.user.userId + '_contact')[0].tel == '' ||
-        localStorage.getObject(props.user.userId + '_contact')[0].email == 'email' || localStorage.getObject(props.user.userId + '_contact')[0].email === '') )
+        (!checkStorage(props.user.userId + '_contact')  || (localStorage.getObject(props.user.userId + '_contact')[0].tel === 'telephone' || localStorage.getObject(props.user.userId + '_contact')[0].tel === '' ||
+        localStorage.getObject(props.user.userId + '_contact')[0].email === 'email' || localStorage.getObject(props.user.userId + '_contact')[0].email === '') )
         ) {
             setCompleted(false)
         } else {

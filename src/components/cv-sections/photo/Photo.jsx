@@ -13,19 +13,6 @@ function Photo (props) {
     const avatarDisplay = useRef(null);
     const checkbox = useRef(null)
 
-    useEffect( () => {
-        if (userAvatar === 'disabled') {
-            setNoAvatar(true)
-            checkbox.current.checked = true
-        } else if (userAvatar === 'enabled') {
-            setNoAvatar(false)
-            checkbox.current.checked = false
-        }
-        return () => {
-            props.updateComplete()
-        }
-    }, [])
-
     //checks if items are already in localstorage for init
     const [userAvatar, setUserAvatar] = useState(() => {
         if (checkStorage(props.userId + "_avatar")) {
@@ -43,8 +30,21 @@ function Photo (props) {
         }
     });
 
+    useEffect( () => {
+        if (userAvatar === 'disabled') {
+            setNoAvatar(true)
+            checkbox.current.checked = true
+        } else if (userAvatar === 'enabled') {
+            setNoAvatar(false)
+            checkbox.current.checked = false
+        }
+        return () => {
+            props.updateComplete()
+        }
+    }, [props, userAvatar])
+
     function setSuccessMessage () {
-        setSaveDisplay('changed saved successfully')
+        setSaveDisplay('changes saved successfully!')
     }
     function setSaveMessage () {
         setSaveDisplay('changes must be saved')

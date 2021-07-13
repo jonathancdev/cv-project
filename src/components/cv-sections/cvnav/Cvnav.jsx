@@ -8,11 +8,7 @@ function Cvnav (props) {
     useEffect(() => {
         setFlagIncomplete(false)
     }, [currPage])
-    function handleClick() {
-        if (!props.completed) {
-            setFlagIncomplete(true)
-        }
-    }
+
     function setPage(page) {
         setCurrPage(page)
     }

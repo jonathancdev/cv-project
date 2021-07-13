@@ -1,9 +1,0 @@
-save skills as array/object instead of individual keys
-
-on load, will check for storage or load empty array (checkkeys)
-
-if storage, will preview with delete button for each item
-
-delete() {
-    find index of skill in state array, remove it, and update storage
-}

@@ -4,6 +4,7 @@ import './Print.css';
 import { Link } from 'react-router-dom';
 
 function Print (props) {
+
     useEffect(() => {
         props.hide()
         setTimeout(window.print, 1000)

@@ -15,10 +15,8 @@ class PhotoInput extends Component {
 
      getFile(e) {
          const file = e.target.files[0];
-         console.log(file)
          const reader = new FileReader();
          reader.onload = r => {
-             console.log(r.target.result)
              this.props.updateAvatar(r.target.result)
          }
          reader.readAsDataURL(file);

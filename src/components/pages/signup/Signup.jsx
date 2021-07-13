@@ -1,4 +1,4 @@
-import { React, useState, useRef, useEffect } from 'react';
+import { React, useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import './Signup.css';
 import { InputStd, InputPwd, InputEmail } from '../../cv-sections/'
@@ -15,7 +15,6 @@ function Signup (props) {
     const [userCount, setUserCount] = useState(Object.keys(localStorage).includes("userId0") ? Object.keys(localStorage).filter( item => item.includes('userId')).length : 0 )
     const [emailValid, setEmailValid] = useState(false)
     const [passwordValid, setPasswordValid] = useState(false)
-    const [isDefault, setIsDefault] = useState(false)
 
     const firstNameRef = useRef(null)
     const lastNameRef = useRef(null)

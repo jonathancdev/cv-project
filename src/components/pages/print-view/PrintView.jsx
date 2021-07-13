@@ -1,15 +1,11 @@
-import { React, useState, useEffect, useRef } from 'react';
+import { React, useRef } from 'react';
 import './PrintView.css';
 import { ViewPhoto, ViewProfile, ViewWork, ViewEducation, ViewSkills, ViewContact } from '..'
-import { Link } from 'react-router-dom';
 
 function PrintView (props) {
-    const photo = localStorage.getItem('avatar')
     const user = localStorage.getObject('currentUser')
     const printArea = useRef(null)
-    function printIt () {
-        window.location = "/cv-section/print"
-    }
+
     return (
 
         <section id="print-element" className="print-view view">

@@ -70,8 +70,7 @@ resetExp() {
         degree: "type of degree or certificate",
         desc: "description",
         monthOne: 'month',
-        yearOne: 'year',
-        hideNewItem: true
+        yearOne: 'year'
     })
 }
 createObject () {
@@ -138,7 +137,7 @@ hideSaveButton() {
 }
 setSuccessMessage() {
     this.setState({
-        saveDisplay: 'changes saved successfully',
+        saveDisplay: 'changes saved successfully!',
     })
 }
 setLoc (e) {
@@ -214,7 +213,7 @@ render () {
                 <section className="sec-form-wrap">
                     <section className="multi-form">
                         <div>
-                            <p>add new item</p>
+                            <h5>add new item</h5>
                             <button onClick={this.toggleNewItem} className="add-btn">
                                 {this.state.hideNewItem
                                 ? <i className="fas fa-plus"></i>

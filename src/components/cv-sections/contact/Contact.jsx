@@ -2,7 +2,7 @@ import React, { Component, createRef } from 'react';
 import './Contact.css';
 import InputStd from '../editable-forms/input-std'
 import ProfileForm from '../editable-forms/profile'
-import { TextAreaAuto, SaveSection, checkStorage, removeStorage, HoverInfo } from '../../common'
+import { TextAreaAuto, SaveSection, checkStorage, HoverInfo } from '../../common'
 
 class Contact extends Component {
     constructor(props) {
@@ -62,7 +62,7 @@ class Contact extends Component {
     }
     setSuccessMessage() {
         this.setState({
-            saveDisplay: 'changes saved successfully',
+            saveDisplay: 'changes saved successfully!',
         })
     }
     setSaveMessage() {

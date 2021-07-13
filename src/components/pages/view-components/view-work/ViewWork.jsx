@@ -1,4 +1,4 @@
-import { React, useState, useEffect, useRef } from 'react';
+import { React } from 'react';
 
 function ViewWork (props) {
 
@@ -7,7 +7,6 @@ function ViewWork (props) {
     function createWorkItems() {
         return work.map((obj) => {
             const duties = obj.duties
-            console.log(duties)
 
             return <div className="item-wrap">
 

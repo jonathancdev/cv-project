@@ -11,14 +11,7 @@ class SaveSection extends Component {
         this.handleClick = this.handleClick.bind(this);
         this.propsExist = this.propsExist.bind(this);
     }
-    // componentDidUpdate(prevProps) {
-    //     if (this.props !== prevProps) {
-    //         console.log('different props')
-    //         this.setState({
-    //             display: 'changes must be saved'
-    //         })
-    //     }
-    // }
+
     propsExist() { //save entire array, not to individual keys
         if (this.props.required !== undefined && this.props.required !== [] ) {
             if (Array.isArray(this.props.required)) {

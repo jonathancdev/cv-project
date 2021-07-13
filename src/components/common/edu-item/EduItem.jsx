@@ -1,4 +1,4 @@
-import {React, useState} from 'react';
+import {React} from 'react';
 import './EduItem.css';
 
 function EduItem (props) {
@@ -29,7 +29,7 @@ function EduItem (props) {
 const x = localStorage.getObject(props.userId + '_education')
 const y = JSON.stringify(x)
 const z = JSON.stringify(props.object)
-console.log(props)
+
 return (
     <div className="preview-item" id={props.object.title}>
             <li>

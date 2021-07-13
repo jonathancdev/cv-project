@@ -1,9 +1,8 @@
-import { React, useState, useEffect, useRef } from 'react';
+import { React } from 'react';
 
 function ViewEducation (props) {
 
     const edu = localStorage.getObject(props.userId + '_education')
-    console.log(edu)
 
     function createEduItems() {
         return edu.map((obj) => {

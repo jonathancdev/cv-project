@@ -1,6 +1,6 @@
 import React from 'react';
 import './PreviewDataEdu.css';
-import { removeStorage, EduItem } from '../../common'
+import { EduItem } from '../../common'
 
 function PreviewDataEdu (props) {
     return (

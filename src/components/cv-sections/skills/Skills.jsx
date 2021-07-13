@@ -106,7 +106,7 @@ hideSaveButton() {
 }
 setSuccessMessage() {
     this.setState({
-        saveDisplay: 'changes saved successfully'
+        saveDisplay: 'changes saved successfully!'
     })
 }
 updateFromPreview(array) {
@@ -123,10 +123,6 @@ setSkill(event, index) { //probably don't need array here
     })
 }
 render() {
-    console.log(this.state.skillArray)
-    console.log(this.state.skillLimit)
-    console.log(this.state.saveDisplay)
-
     return (
         <section className="cv-sec-wrap">
             <section className="skills cv-section">
@@ -161,7 +157,7 @@ render() {
                     <section className="multi-form">
 
                                 <div>
-                                    <p>add skill</p>
+                                    <h5>add skill</h5>
                                     <button onClick={this.toggleNewItem} className="add-btn">
                                 {this.state.hideNewSkill
                                 ? <i className="fas fa-plus"></i>

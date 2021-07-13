@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react';
+import React, {useState} from 'react';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
 
@@ -31,11 +31,11 @@ function Navbar (props) {
             }
 
             {props.active
-            ?<a 
+            ?<button 
             onClick={handleFlag}
             className="navlinks">
             sign out
-            </a>
+            </button>
             : null }
             {showFlag ?
             <div className="signout-flag-div">
@@ -43,8 +43,8 @@ function Navbar (props) {
                 <p className="signout-flag">are you sure?</p>
 
                 <div className="yesno">
-                    <Link className="yesnobtn" to='/' onClick={clickYes}><a>yes</a></Link>
-                    <button className="yesnobtn" onClick={clickNo}><a>no</a></button>
+                    <Link className="yesnobtn" to='/' onClick={clickYes}>yes</Link>
+                    <button className="yesnobtn" onClick={clickNo}>no</button>
                 </div>
 
             </div>

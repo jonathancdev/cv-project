@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './PreviewDataSkills2.css';
-import { removeStorage, SkillItem } from '..'
+import { SkillItem } from '..'
 
 function PreviewDataSkills2 (props) {
     return (

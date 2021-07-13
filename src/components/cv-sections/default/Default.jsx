@@ -7,7 +7,7 @@ function Default (props) {
         return () => {
             props.updateComplete()
         }
-    }, [])
+    }, [props])
 
     return (
         <section className="cv-sec-wrap">

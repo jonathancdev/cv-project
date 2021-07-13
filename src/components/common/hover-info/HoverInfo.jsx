@@ -1,6 +1,5 @@
-import React, { useRef, useState } from 'react';
+import React from 'react';
 import './HoverInfo.css';
-import { useOutsideClick, MonthUl } from '..'
 
 function HoverInfo (props) {
     
