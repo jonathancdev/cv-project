@@ -1,11 +1,40 @@
-.header * {
-    font-family: overpass regular;
-    font-size: 18px;
+@media (min-width: 320px) {
+    .header * {
+        font-family: overpass regular;
+        font-size: 18px;
+    }
+    .header {
+        margin-top: -20px;
+        height: 60px;
+        padding: 0 12px;
+        display: flex;
+    }
+    .logo {
+        max-height: 50px;
+    }
+    .logo img {
+        height: 40px;
+    }
 }
-.header {
-    height: 60px;
-    padding: 0 12px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+@media (min-width: 600px) {
+    .header * {
+        font-family: overpass regular;
+        font-size: 18px;
+    }
+    .header {
+        margin-top: 0px;
+        height: 60px;
+        padding: 0 12px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .logo {
+        max-height: 100%;
+        display: block;
+    }
+    .logo img {
+        height: 60px;
+    }
 }

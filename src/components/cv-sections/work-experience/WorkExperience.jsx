@@ -337,36 +337,42 @@ render() {
                             </InputStd>
 
                             <div className="date-div">
-                                <p>from</p>
-                                <MonthDrop 
-                                id="month-one"
-                                value={this.state.monthOne}
-                                setMonth={this.setMonthOne}
-                                />
-                                <div>
-                                    <input 
+                                <div className="monthyear">
+                                    <p>from</p>
+                                    <MonthDrop 
+                                    id="month-one"
+                                    value={this.state.monthOne}
+                                    setMonth={this.setMonthOne}
+                                    />
+                                    <div>
+                                        <input 
+                                            className="rect-date year" 
+                                            placeholder="year"
+                                            onChange={this.setYearOne}
+                                            maxLength='4'
+                                        >
+                                        </input>
+                                    </div>
+                                </div>
+
+                                <div className="monthyear">
+                                    <p>to</p>
+                                    <MonthDrop 
+                                    id="month-two"
+                                    value={this.state.monthTwo}
+                                    setMonth={this.setMonthTwo}
+                                    />
+                                    <div>
+                                        <input 
                                         className="rect-date year" 
                                         placeholder="year"
-                                        onChange={this.setYearOne}
+                                        onChange={this.setYearTwo}
                                         maxLength='4'
-                                    >
-                                    </input>
+                                        >
+                                        </input>
+                                    </div>
                                 </div>
-                                <p>to</p>
-                                <MonthDrop 
-                                id="month-two"
-                                value={this.state.monthTwo}
-                                setMonth={this.setMonthTwo}
-                                />
-                                <div>
-                                    <input 
-                                    className="rect-date year" 
-                                    placeholder="year"
-                                    onChange={this.setYearTwo}
-                                    maxLength='4'
-                                    >
-                                    </input>
-                                </div>
+
                             </div>
 
                             <section className="duties-wrap">

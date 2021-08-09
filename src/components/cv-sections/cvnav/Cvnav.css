@@ -1,61 +1,129 @@
-.cvnav {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: -20px;
-    box-shadow: rgba(17, 17, 26, 0.1) 1px 0px 1px;
-    padding: 0 px;
-    border-radius: 3px;
-}
-.cvnav h6 {
-    font-family: overpass light;
-    font-size: 24px;
-    letter-spacing: 1.5px;
-}
-.cvnav h4 {
-    font-family: overpass light;
-    font-size: 10px;
-    letter-spacing: 0.75px;
-}
-.cvnav h3 {
-    font-family: overpass light;
-    font-size: 20px;
-    letter-spacing: 0.75px;
-    padding: 0;
-}
-.cvnav a {
-    font-size: 18px;
-    color: black;
-    font-family: overpass thin;
-    letter-spacing: 1.5px;
-    padding: 7.5px;
-    text-decoration: none;
-}
+@media (min-width: 320px) {
+    .cvnav {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .navlinks-wrap {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        width: 110%;
+    }
+    .sections-header {
+        font-size: 20px;
+    }
+    .cvnav a {
+        font-size: 11px;
+        margin: 3px;
+        padding: 5px 1px;
+        color: #829CD0;
+        font-family: overpass bold;
+        letter-spacing: 1.5px;
+        text-decoration: none;
+        text-align: center;
+        border-radius: 3px;
+        box-shadow: rgba(0, 0, 0, 0.15) 1.5px 1px 1px;    
+    }
 
-.section-incomplete {
-    color: #bd0000;
+    #view-btn {
+        position: absolute;
+        border-style: none;
+        border-radius: 3px;
+        background-color: #829CD0;
+        color: white;
+        padding: 5px;
+        margin: 350px 10px;
+        width: 100px;
+        height: 25px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-decoration: none;
+    }
+    #view-btn h3 {
+        font-size: 14px;
+        font-family: overpass bold;
+        text-decoration: none;
+    }
+    #view-btn.inactive {
+        background-color: rgb(209, 209, 209);
+        cursor: default;
+        
+    }
 }
-.section-incomplete:visited {
-    color: #bd0000;
-}
-#view-btn {
-    border-style: none;
-    border-radius: 3px;
-    background-color: #829CD0;
-    color: white;
-    padding: 5px;
-    margin: 10px 10px;
-    width: 110px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-#view-btn h3 {
-    font-size: 26px;
-    font-family: overpass bold;
-}
-#view-btn.inactive {
-    background-color: rgb(209, 209, 209);
-    cursor: default;
+@media (min-width: 600px) {
+    .cvnav {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: -20px;
+        box-shadow: rgba(17, 17, 26, 0.1) 1px 0px 1px;
+        padding: 0 px;
+        border-radius: 3px;
+    }
+    .navlinks-wrap {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .cvnav h6 {
+        font-family: overpass light;
+        font-size: 24px;
+        letter-spacing: 1.5px;
+        margin: 0;
+    }
+    .cvnav h4 {
+        font-family: overpass light;
+        font-size: 10px;
+        letter-spacing: 0.75px;
+    }
+    .cvnav h3 {
+        font-family: overpass light;
+        font-size: 20px;
+        letter-spacing: 0.75px;
+        padding: 0;
+    }
+    .cvnav a {
+        font-size: 18px;
+        color: black;
+        font-family: overpass thin;
+        letter-spacing: 1.5px;
+        padding: 7.5px;
+        text-decoration: none;
+        border: none;
+        box-shadow: none;
+    }
     
+    .section-incomplete {
+        color: #bd0000;
+    }
+    .section-incomplete:visited {
+        color: #bd0000;
+    }
+    #view-btn {
+        position: relative;
+        border-style: none;
+        border-radius: 3px;
+        background-color: #829CD0;
+        color: white;
+        padding: 5px;
+        margin: 10px 10px;
+        width: 110px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 40px;
+        
+    }
+    #view-btn h3 {
+        font-size: 20px;
+        font-family: overpass bold;
+    }
+    #view-btn.inactive {
+        background-color: rgb(209, 209, 209);
+        cursor: default;
+        
+    }
 }

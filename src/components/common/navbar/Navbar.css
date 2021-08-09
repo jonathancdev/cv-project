@@ -1,79 +1,178 @@
-.navbar * {
-    text-decoration: none;
-}
-.navbar {
-    display: flex;
-    align-items: center;
-}
-.navbar a {
-    padding: 5px;
-    width: 90px;
-    text-align: center;
-    cursor: pointer;
-}
-.navbar button {
-    padding: 5px;
-    width: 90px;
-    text-align: center;
-    cursor: pointer;
-    border: none;
-    background-color: transparent;
-    text-decoration: none;
-}
-.navbar a:visited {
-    color: black;
-}
-#bluea {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 36px;
-    background: #829CD0;
-    border-radius: 3px;
-    color: white;
-    font-size: 20px;
-    padding: 0 10px;
-    margin: 0 20px;
-}
-.signout-flag-div {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: absolute;
-    margin-left: 242px;
-    margin-top: 80px;
-    max-width: 100px;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
-    border-radius: 3px;
-}
-p.signout-flag, .yesnobtn {
-    font-size: 14px;
-    margin: 0;
-    padding: 0;
-}
+@media (min-width: 320px) {
+    .navbar * {
+        text-decoration: none;
+    }
+    .navbar {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 12px;
+    }
+    .navbar a {
+        margin: 0;
+        padding: 0;
+        width: 75px;
+        text-align: center;
+        cursor: pointer;
+        font-size: 15px;
+        text-decoration: underline;
+    }
+    .navbar button {
+        margin: 0;
+        padding: 0;
+        width: 75px;
+        text-align: center;
+        cursor: pointer;
+        border: none;
+        background-color: transparent;
+        text-decoration: none;
+        font-size: 15px;
+        cursor: pointer;
+        text-decoration: underline;
 
-.yesno {
-    background-color: white;
-    border-style: none;
-    cursor: pointer;
-    margin: 0px;
-    display: flex;
-    justify-content: center;
+    }
+    .navbar a:visited {
+        color: black;
+    }
+    #bluea {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 30px;
+        background: #829CD0;
+        border-radius: 3px;
+        color: white;
+        font-size: 16px;
+        padding: 0 10px;
+        margin: 0 0px 10px 0;
+        font-family: overpass bold;
+        text-decoration: none;
+
+    }
+    .signout-flag-div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: absolute;
+        margin-top: 80px;
+        max-width: 100px;
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+        border-radius: 3px;
+    }
+    p.signout-flag, .yesnobtn {
+        font-size: 14px;
+        margin: 0;
+        padding: 0;
+    }
+    
+    .yesno {
+        background-color: white;
+        border-style: none;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+    }
+    button.yesnobtn, a.yesnobtn {
+        margin: 0;
+        padding: 0;
+        width: 50px;
+        text-decoration: none;
+    }
+    .yesnobtn {
+        font-size: 14px;
+        margin: 0px;
+    }
+    .yesno {
+        padding: 0;
+        margin: 0;
+        max-height: 50px;
+        min-width: 80px;
+        display: flex;
+        justify-content: center;
+    }
 }
-button.yesnobtn, a.yesnobtn {
-    margin: 0;
-    padding: 0;
-    width: 50px;
-}
-.yesnobtn {
-    font-size: 14px;
-    margin: 0px;
-}
-.yesno {
-    padding: 0;
-    margin: 0;
-    max-height: 50px;
-    min-width: 80px;
-    display: flex;
-    justify-content: center;
+@media (min-width: 600px) {
+    .navbar * {
+        text-decoration: none;
+    }
+    .navbar {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-top: 0px;
+    }
+    .navbar a {
+        padding: 5px;
+        width: 90px;
+        text-align: center;
+        cursor: pointer;
+        text-decoration: none;
+    }
+    .navbar button {
+        padding: 5px;
+        width: 90px;
+        text-align: center;
+        cursor: pointer;
+        border: none;
+        background-color: transparent;
+        text-decoration: none;
+    }
+    .navbar a:visited {
+        color: black;
+    }
+    #bluea {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 36px;
+        background: #829CD0;
+        border-radius: 3px;
+        color: white;
+        font-size: 20px;
+        padding: 0 10px;
+        margin: 0 20px;
+    }
+    .signout-flag-div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: absolute;
+        margin-left: 242px;
+        margin-top: 80px;
+        max-width: 100px;
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+        border-radius: 3px;
+    }
+    
+    p.signout-flag, .yesnobtn {
+        font-size: 14px;
+        margin: 0;
+        padding: 0;
+    }
+    
+    .yesno {
+        background-color: white;
+        border-style: none;
+        cursor: pointer;
+        margin: 0px;
+        display: flex;
+        justify-content: center;
+    }
+    button.yesnobtn, a.yesnobtn {
+        margin: 0;
+        padding: 0;
+        width: 50px;
+    }
+    .yesnobtn {
+        font-size: 14px;
+        margin: 0px;
+    }
+    .yesno {
+        padding: 0;
+        margin: 0;
+        max-height: 50px;
+        min-width: 80px;
+        display: flex;
+        justify-content: center;
+    }
 }

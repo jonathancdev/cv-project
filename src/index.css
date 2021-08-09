@@ -41,96 +41,139 @@
   flex-direction: column;
   justify-content: space-between;
   min-height: 600px;
-}
-body {
-  margin: 0;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  min-width: 750px;
-  max-height: 700px;
-}
-input {
-  border-radius: 3px;
-  border-width: 0.5px;
-  background-color: transparent;
-  color: black;
-}
-textarea {
-  border-radius: 3px;
-  border-width: 0.5px;
-  background-color: transparent;
-  color: black;
-}
-textarea:focus {
-  outline: none;
-}
-a {
-  color: black;
-}
-.form-error-wrap {
-  position: absolute;
-  display: flex;
-  justify-content: flex-end;
-  margin-left: 240px;
-  margin-top: -40px;
-  width: 150px;
-  color: #bd0000;
-}
-.form-error {
-  display: none;
-  text-align: center;
-}
-.inactive-link {
-  pointer-events: none;
-}
-.std-form-error-wrap {
-  position: absolute;
-  display: flex;
-  justify-content: flex-end;
-  margin-left: 240px;
-  margin-top: -40px;
-  width: 150px;
-  color: #bd0000;
-}
-.std-form-error {
-  display: flex;
-  text-align: center;
-}
-.error-msg {
-  color: #bd0000;
-  font-size: 10px;
-  font-weight: bold;
-  align-self: center;
-}
+  overflow-x: hidden; 
 
-/* print media query */
-@media print {
-  html, main, .print, .App, #root, .section-wrap {
-    margin: 0;
-    padding: 0;
-  }
-  .print {
-    margin-top: -20px;
+}
+/*MOBILE*/
+@media (min-width: 320px) {
+  html {
+    height: 100vh;
   }
   body {
-    visibility: hidden;
-    margin: 0;
-    padding: 0;
-    box-shadow: none;
+    min-width: 320px;
+    max-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
-  .back-btn {
+  main {
+    margin-top: 30px;
+  }
+  .std-form-error-wrap {
+
+    display: flex;
+    margin-left: 220px;
+    margin-top: -40px;
+    width: 150px;
+    color: #bd0000;
+  }
+  .std-form-error {
+    display: flex;
+    text-align: center;
+  }
+  .error-msg {
+    position: absolute;
+    margin-top: 40px;
+    color: #bd0000;
+    font-size: 10px;
+    font-weight: bold;
+    align-self: center;
+  }
+
+}
+
+
+/*DESKTOP*/
+@media (min-width: 600px) {
+  body {
+    min-width: 750px;
+    max-height: 700px;
+  }
+  main {
+    margin-top: 0px;
+  }
+  input {
+    border-radius: 3px;
+    border-width: 0.5px;
+    background-color: transparent;
+    color: black;
+  }
+  textarea {
+    border-radius: 3px;
+    border-width: 0.5px;
+    background-color: transparent;
+    color: black;
+  }
+  textarea:focus {
+    outline: none;
+  }
+  a {
+    color: black;
+  }
+  .form-error-wrap {
+    position: absolute;
+    display: flex;
+    justify-content: flex-end;
+    margin-left: 240px;
+    margin-top: -40px;
+    width: 150px;
+    color: #bd0000;
+  }
+  .form-error {
     display: none;
+    text-align: center;
   }
-  #print-element {
-    visibility: visible;
-    transform: scale(1.21);
-    transform-origin: 0 0;
-    box-shadow: none;
+  .inactive-link {
+    pointer-events: none;
   }
-  .view .section-wrap {
-    max-height: 850px;
+  .std-form-error-wrap {
+    position: absolute;
+    display: flex;
+    justify-content: flex-end;
+    margin-left: 240px;
+    margin-top: -40px;
+    width: 150px;
+    color: #bd0000;
   }
-  .photo-border {
-    background-color: #829CD0 !important;
+  .std-form-error {
+    display: flex;
+    text-align: center;
+  }
+  .error-msg {
+    color: #bd0000;
+    font-size: 10px;
+    font-weight: bold;
+    align-self: center;
+  }
+
+  /* print media query */
+  @media print {
+    html, main, .print, .App, #root, .section-wrap {
+      margin: 0;
+      padding: 0;
+    }
+    .print {
+      margin-top: -20px;
+    }
+    body {
+      visibility: hidden;
+      margin: 0;
+      padding: 0;
+      box-shadow: none;
+    }
+    .back-btn {
+      display: none;
+    }
+    #print-element {
+      visibility: visible;
+      transform: scale(1.21);
+      transform-origin: 0 0;
+      box-shadow: none;
+    }
+    .view .section-wrap {
+      max-height: 850px;
+    }
+    .photo-border {
+      background-color: #829CD0 !important;
+    }
   }
 }

@@ -1,0 +1,7 @@
+cross-broswer compatibility
+
+problems: 
+
+qustion marks hover and on click?
+errors arent red?
+

@@ -1,8 +1,28 @@
-.footer {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    height: 80px;
-    padding: 0 12px;
-    align-self: flex-end;
+@media (min-width: 320px) {
+    .footer {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        height: 80px;
+        padding: 0 12px;
+        align-self: flex-end;
+    }
+    .footer img {
+        margin-top: -50px;
+        height: 40px
+    }
+}
+@media (min-width: 600px) {
+
+    .footer {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        height: 80px;
+        padding: 0 12px;
+        align-self: flex-end;
+    }
+    .footer img {
+        height: 60px
+    }
 }
