@@ -375,7 +375,7 @@ render() {
 
                             </div>
 
-                            <section className="duties-wrap">
+                            <div className="duties-wrap">
                                 <div>
                                     <h6>add job duty</h6>
                                     <button className="add-btn" onClick={this.newDuty}>
@@ -393,7 +393,7 @@ render() {
                             >
                             </Duties>
                             
-                            </section>
+                            </div>
                             <div className="save-btn-div">
                                 <button className="save-btn" onClick={this.createObject}>save item</button>
                             </div>

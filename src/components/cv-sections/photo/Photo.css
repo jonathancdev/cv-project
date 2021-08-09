@@ -42,7 +42,7 @@
     .no-photo {
         display: flex;
         align-items: center;
-        margin-left: 0px;
+        margin-left: 10px;
     }
     .no-photo input {
         margin-right: 10px;

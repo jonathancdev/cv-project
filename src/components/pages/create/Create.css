@@ -12,10 +12,20 @@
         min-height: 250px;
         display: flex;
         flex-direction: column;
+        margin: 0;
+    }
+    .home-build .section-wrap {
+        min-height: 250px;
+        display: flex;
+        flex-direction: column;
+        min-width: 500px;
+        max-width: 1200px;
+        margin-top: 30px;
     }
     .sidebar {
-        width: 100%;
+        width: 320px;
         height: 75px;
+        margin-left: -10px;
     }
     .cv-sec-wrap {
         border-radius: 3px;
@@ -24,8 +34,10 @@
         min-height: 200px;
         margin-top: 0px;
         padding: 0;
+        margin-left: -25px;
     }
     .cv-section {
+        max-width: 350px;
         max-height: 700px;
         margin-top: 5px;
         display: flex;
@@ -59,7 +71,7 @@
     .sec-form-wrap {
         display: flex;
         align-items: center;
-        max-width: 300px;
+        max-width: 320px;
     }
 
     .help-btn {
@@ -77,7 +89,7 @@
         height: 25px;
         margin: 0;
         padding: 0;
-        font-size: 16px;
+        font-size: 13px;
         text-overflow: ellipsis;
         padding: 2px;
     }
@@ -191,6 +203,7 @@
         padding: 0;
         height: 40px;
     }
+    
     .textarea-std {
         min-width: 288px;
         max-width: 288px;
@@ -269,10 +282,10 @@
 
     .preview-item h3 {
         font-family: overpass thin;
-        font-size: 14px;
+        font-size: 13px;
         padding-top: 0px;
         padding-bottom: 0px;
-        font-weight: normal
+        font-weight: normal;
     }
     .expand-duties {
         display: flex;
@@ -324,6 +337,7 @@
         flex-direction: column;
         min-width: 500px;
         max-width: 1200px;
+        margin-top: 0px;
     }
     h1 {
         font-family: overpass black;
@@ -341,8 +355,10 @@
         min-width: 600px;
         min-height: 200px;
         margin-top: 20px;
+        margin-left: 0px;
     }
     .cv-section {
+        max-width: 100%;
         max-height: 700px;
         margin-top: 5px;
         display: flex;
@@ -557,6 +573,7 @@
         cursor: pointer;
         padding-top: 0px;
         padding-bottom: 0px;
+        margin-left: 0px;
     }
     .preview-data {
         padding: 5px;

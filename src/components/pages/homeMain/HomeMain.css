@@ -30,6 +30,7 @@
 
     .home-main {
         text-align: center;
+        margin-top: 0;
     }
     .cover img {
         height: 280px;

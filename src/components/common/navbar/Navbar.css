@@ -1,4 +1,17 @@
 @media (min-width: 320px) {
+    .mobile-navlinks-wrap {
+        display: flex;
+        align-items: space-evenly;
+        margin-top: -10px;
+        margin-left: -5px;
+    }
+    .mobile-navlinks-wrap p {
+        font-size: 10px;
+        text-align: center;
+        width: 5px;
+        padding-right: 7px;
+        margin-top: 2px;
+    }
     .navbar * {
         text-decoration: none;
     }
@@ -11,25 +24,21 @@
     .navbar a {
         margin: 0;
         padding: 0;
-        width: 75px;
+        width: 60px;
         text-align: center;
         cursor: pointer;
-        font-size: 15px;
-        text-decoration: underline;
+        font-size: 12px;
     }
     .navbar button {
         margin: 0;
         padding: 0;
-        width: 75px;
         text-align: center;
         cursor: pointer;
         border: none;
         background-color: transparent;
         text-decoration: none;
-        font-size: 15px;
+        font-size: 12px;
         cursor: pointer;
-        text-decoration: underline;
-
     }
     .navbar a:visited {
         color: black;
@@ -47,14 +56,14 @@
         margin: 0 0px 10px 0;
         font-family: overpass bold;
         text-decoration: none;
-
+        width: 75px;
     }
     .signout-flag-div {
         display: flex;
         flex-direction: column;
         align-items: center;
         position: absolute;
-        margin-top: 80px;
+        margin-top: 55px;
         max-width: 100px;
         box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
         border-radius: 3px;
@@ -98,8 +107,11 @@
     .navbar {
         display: flex;
         flex-direction: row;
-        align-items: center;
+        align-items: flex-end;
         margin-top: 0px;
+    }
+    .spacer {
+        display: none;
     }
     .navbar a {
         padding: 5px;
@@ -107,6 +119,7 @@
         text-align: center;
         cursor: pointer;
         text-decoration: none;
+        font-size: 18px;
     }
     .navbar button {
         padding: 5px;
@@ -116,6 +129,7 @@
         border: none;
         background-color: transparent;
         text-decoration: none;
+        font-size: 18px;
     }
     .navbar a:visited {
         color: black;
@@ -131,6 +145,7 @@
         font-size: 20px;
         padding: 0 10px;
         margin: 0 20px;
+        width: auto;
     }
     .signout-flag-div {
         display: flex;
@@ -138,10 +153,11 @@
         align-items: center;
         position: absolute;
         margin-left: 242px;
-        margin-top: 80px;
+        margin-top: 100px;
         max-width: 100px;
         box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
         border-radius: 3px;
+        background-color: white;
     }
     
     p.signout-flag, .yesnobtn {

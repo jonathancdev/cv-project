@@ -56,7 +56,7 @@
     -moz-osx-font-smoothing: grayscale;
   }
   main {
-    margin-top: 30px;
+    width: 100%;
   }
   .std-form-error-wrap {
 

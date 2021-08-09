@@ -1,9 +1,31 @@
-.profile .delete-storage button {
-    margin-right: 90px;
+@media(min-width: 320px) {
+    .profile .delete-storage {
+        justify-content: center;
+        margin-left: 150px;
+    }
+    .profile .delete-storage button {
+        margin-right: 90px;
+    }
+    .profile .textarea-div {
+        margin-top: 10px;
+    }
+    .profile .save-section {
+        margin-right: 100px;
+    }
 }
-.profile .textarea-div {
-    margin-top: 10px;
-}
-.profile .save-section {
-    margin-right: 100px;
+
+@media (min-width: 600px) {
+    .profile .delete-storage {
+        justify-content: flex-end;
+        margin-left: 0px;
+    }
+    .profile .delete-storage button {
+        margin-right: 90px;
+    }
+    .profile .textarea-div {
+        margin-top: 10px;
+    }
+    .profile .save-section {
+        margin-right: 100px;
+    }
 }

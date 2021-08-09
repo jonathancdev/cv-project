@@ -1,9 +1,15 @@
+.duties-wrap {
+    display: flex;
+    flex-direction: column !important;
+    justify-content: center;
+}
 .duties-wrap, .duties-wrap div, .duties-wrap i, .duties-wrap button {
     padding: 0;
     margin: 0;
 }
 .duties-wrap div {
     display: flex;
+    flex-direction: column;
     align-items: center;
 }
 

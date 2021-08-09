@@ -5,3 +5,4 @@ problems:
 qustion marks hover and on click?
 errors arent red?
 
+profile/contact delete button position

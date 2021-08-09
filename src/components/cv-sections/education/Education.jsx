@@ -271,7 +271,8 @@ render () {
                                     />
                                 </InputStd>
                                 <div className="date-div">
-                                <p>graduated</p>
+                                    <div className="monthyear">
+                                    <p>graduated</p>
                             <MonthDrop 
                             id="month-one"
                             value={this.state.monthOne}
@@ -284,6 +285,7 @@ render () {
                                         maxLength='4'
                                     >
                                     </input>
+                                    </div>
                                 </div>
                                 <div className="save-btn-div">
                                 <button className="save-btn"onClick={this.createObject}>save item</button>
