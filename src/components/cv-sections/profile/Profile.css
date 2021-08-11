@@ -1,16 +1,10 @@
 @media(min-width: 320px) {
     .profile .delete-storage {
         justify-content: center;
-        margin-left: 150px;
-    }
-    .profile .delete-storage button {
-        margin-right: 90px;
+        margin-left: 250px;
     }
     .profile .textarea-div {
         margin-top: 10px;
-    }
-    .profile .save-section {
-        margin-right: 100px;
     }
 }
 

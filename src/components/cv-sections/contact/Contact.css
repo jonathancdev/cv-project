@@ -1,10 +1,7 @@
 @media (min-width: 320px) {
     .contact .delete-storage {
         justify-content: center;
-        margin-left: 200px;
-    }
-    .contact .save-section {
-        margin: 0px 120px 0px 0px;
+        margin-left: 250px;
     }
     .contact .sec-form-wrap {
         margin-top: 0;
@@ -16,10 +13,6 @@
         padding-bottom: 0;
     }
 
-    
-    .contact .delete-storage button {
-        margin-right: 145px;
-    }
 }
 
 @media (min-width: 600px) {

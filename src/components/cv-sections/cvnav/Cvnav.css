@@ -16,16 +16,19 @@
         font-size: 20px;
     }
     .cvnav a {
+        flex-grow: 1;
+        max-width: 150px;
         font-size: 15px;
         margin: 3px;
         padding: 5px 5px;
         color: #829CD0;
-        font-family: overpass bold;
+        font-family: overpass regular;
         letter-spacing: 1.5px;
         text-decoration: none;
         text-align: center;
         border-radius: 3px;
-        box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;}
+        box-shadow: 0 0.5px 0 0 #ffffff inset, 0 0.45px 1px 0 #B3B3B3;
+    }
 
     #view-btn {
         position: absolute;

@@ -4,5 +4,11 @@ problems:
 
 qustion marks hover and on click?
 errors arent red?
+errors in signup showing initially
+signup page styles
 
-profile/contact delete button position
+view cv button position (below buttons?)
+
+print view
+
+add skill button

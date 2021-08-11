@@ -1,78 +1,162 @@
-.signup{
-    min-width: 750px;
-    min-height: 250px;
-    max-height: 600px;
-    display: flex;
-    justify-content: center;
-  }
-.signup .section-wrap {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-width: 750px;
-    min-height: 250px;
+@media (min-width: 320px) {
+
+    .signup{
+        width: 320px;
+        min-height: 250px;
+        max-height: 600px;
+        display: flex;
+        justify-content: center;
+    }
+    .signup .section-wrap {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-width: 750px;
+        min-height: 250px;
+    }
+    .signup-form-wrap {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .signup h2 {
+        font-family: overpass black;
+        font-size: 24px;
+        margin: 20px 20px 0px -20px;
+    }
+    .signup p {
+        font-family: overpass thin;
+        font-size: 16px;
+    }
+    .signup-form-submit {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .signup-form-submit div {
+        display: flex;
+        align-items: center;
+    }
+    .signup-btn-div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 5px;
+        margin: 10px auto;
+        height: 30px;
+        width: 120px;
+        background-color: #829cd0;
+        border-radius: 3px;
+    }
+    .inactive-div {
+        background-color: rgb(209, 209, 209);
+    }
+    .signup-btn {
+        font-family: overpass black;
+        text-decoration: none;
+        color: white;
+        font-size: 14px;
+    }
+    .tologin {
+        text-decoration: none;
+        color: black;
+        font-size: 14px;
+    }
+    .tologin:visited {
+        text-decoration: none;
+        color: black;
+    }
+    .example-div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .example-div a{
+        border: none;
+        background-color: transparent;
+        color:#829cd0;
+        font-weight: bold;
+        font-size: 16px;
+        text-decoration: none;
+    }
 }
-.signup-form-wrap {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-.signup h2 {
-    font-family: overpass black;
-    font-size: 36px;
-    margin: 20px 20px 0px -20px;
-}
-.signup p {
-    font-family: overpass thin;
-    font-size: 16px;
-}
-.signup-form-submit {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-.signup-form-submit div {
-    display: flex;
-    align-items: center;
-}
-.signup-btn-div {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 5px;
-    margin: 10px auto;
-    height: 30px;
-    width: 120px;
-    background-color: #829cd0;
-    border-radius: 3px;
-}
-.inactive-div {
-    background-color: rgb(209, 209, 209);
-}
-.signup-btn {
-    font-family: overpass black;
-    text-decoration: none;
-    color: white;
-    font-size: 14px;
-}
-.tologin {
-    text-decoration: none;
-    color: black;
-    font-size: 14px;
-}
-.tologin:visited {
-    text-decoration: none;
-    color: black;
-}
-.example-div {
-    display: flex;
-    align-items: center;
-}
-.example-div a{
-    border: none;
-    background-color: transparent;
-    color:#829cd0;
-    font-weight: bold;
-    font-size: 16px;
-    text-decoration: none;
+@media (min-width: 600px) {
+    .signup{
+        min-width: 750px;
+        min-height: 250px;
+        max-height: 600px;
+        display: flex;
+        justify-content: center;
+    }
+    .signup .section-wrap {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-width: 750px;
+        min-height: 250px;
+    }
+    .signup-form-wrap {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .signup h2 {
+        font-family: overpass black;
+        font-size: 36px;
+        margin: 20px 20px 0px -20px;
+    }
+    .signup p {
+        font-family: overpass thin;
+        font-size: 16px;
+    }
+    .signup-form-submit {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .signup-form-submit div {
+        display: flex;
+        align-items: center;
+    }
+    .signup-btn-div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 5px;
+        margin: 10px auto;
+        height: 30px;
+        width: 120px;
+        background-color: #829cd0;
+        border-radius: 3px;
+    }
+    .inactive-div {
+        background-color: rgb(209, 209, 209);
+    }
+    .signup-btn {
+        font-family: overpass black;
+        text-decoration: none;
+        color: white;
+        font-size: 14px;
+    }
+    .tologin {
+        text-decoration: none;
+        color: black;
+        font-size: 14px;
+    }
+    .tologin:visited {
+        text-decoration: none;
+        color: black;
+    }
+    .example-div {
+        display: flex;
+        align-items: center;
+    }
+    .example-div a{
+        border: none;
+        background-color: transparent;
+        color:#829cd0;
+        font-weight: bold;
+        font-size: 16px;
+        text-decoration: none;
+    }
 }

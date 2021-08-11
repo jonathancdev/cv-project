@@ -1,50 +1,103 @@
-.login {
-    min-width: 750px;
-    min-height: 250px;
-    max-height: 600px;
-    display: flex;
-    justify-content: center;
-  }
-.login .section-wrap {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-width: 750px;
-    min-height: 200px;
+@media (min-width: 320px) {
+    .login {
+        width: 320px;
+        min-height: 250px;
+        max-height: 600px;
+        display: flex;
+        justify-content: center;
+    }
+    .login .section-wrap {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-width: 750px;
+        min-height: 200px;
+    }
+    .login h1 {
+        font-family: overpass black;
+        font-size: 24px;
+    }
+    .login h2 {
+        font-family: overpass black;
+        font-size: 24px;
+    }
+    .login p {
+        font-family: overpass thin;
+        font-size: 18px;
+    }
+    .login-form-wrap {
+        display: flex;
+        flex-direction: column;
+    }
+    .login-form-submit {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .login-form-submit div {
+        display: flex;
+        align-items: center;
+    }
+    .login-form-error-wrap {
+        display: flex;
+        justify-content: center;
+        width: 300px;
+        color: #bd0000;
+    }
+    .login-form-error {
+        display: flex;
+        text-align: center;
+    }
 }
-.login h1 {
-    font-family: overpass black;
-    font-size: 48px;
+@media (min-width: 600px) {
+    .login {
+        min-width: 750px;
+        min-height: 250px;
+        max-height: 600px;
+        display: flex;
+        justify-content: center;
+    }
+    .login .section-wrap {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-width: 750px;
+        min-height: 200px;
+    }
+    .login h1 {
+        font-family: overpass black;
+        font-size: 48px;
+    }
+    .login h2 {
+        font-family: overpass black;
+        font-size: 36px;
+        margin: 20px 20px 0px -20px;
+    }
+    .login p {
+        font-family: overpass thin;
+        font-size: 18px;
+    }
+    .login-form-wrap {
+        display: flex;
+        flex-direction: column;
+    }
+    .login-form-submit {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .login-form-submit div {
+        display: flex;
+        align-items: center;
+    }
+    .login-form-error-wrap {
+        display: flex;
+        justify-content: center;
+        width: 300px;
+        color: #bd0000;
+    }
+    .login-form-error {
+        display: flex;
+        text-align: center;
+    }
 }
-.login h2 {
-    font-family: overpass black;
-    font-size: 36px;
-    margin: 20px 20px 0px -20px;
-}
-.login p {
-    font-family: overpass thin;
-    font-size: 18px;
-}
-.login-form-wrap {
-    display: flex;
-    flex-direction: column;
-}
-.login-form-submit {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-.login-form-submit div {
-    display: flex;
-    align-items: center;
-}
-.login-form-error-wrap {
-    display: flex;
-    justify-content: center;
-    width: 300px;
-    color: #bd0000;
-  }
-  .login-form-error {
-    display: flex;
-    text-align: center;
-  }

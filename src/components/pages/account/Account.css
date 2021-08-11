@@ -1,3 +1,87 @@
+@media (min-width: 320px) {
+    .account {
+        width: 320px;
+        max-height: 250px;
+        display: flex;
+        justify-content: center;
+      }
+    .account .section-wrap {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 350px;
+        height: 250px;
+    }
+    .account h1 {
+        font-family: overpass black;
+        font-size: 48px;
+    }
+    .account p {
+        font-family: overpass thin;
+        font-size: 18px;
+    }
+    .account-wrap {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        border-radius: 3px;
+        min-width: 400px;
+        min-height: 225px;
+        margin-top: 0px;
+    }
+    .account-wrap h2 {
+        font-size: 24px;
+        font-family: overpass regular;
+        text-align: center;
+    }
+    .account-wrap p {
+        text-align: center;
+    }
+    .account-options {
+        display: none;
+        justify-content: center;
+    }
+    .account-options a, .account-options a:visited {
+        color: black;
+        font-size: 14px;
+        text-decoration: none;
+    }
+    .account-message {
+        min-height: 60px;
+    }
+    .message-wrap {
+        display: flex;
+        flex-direction: column;
+    }
+    .message-wrap p{
+        display: flex;
+        flex-direction: column;
+        font-size: 14px;
+        text-align: center;
+        color: #bd0000;
+    }
+    .buttons-wrap {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        margin-top: 10px;
+    }
+    .buttons-wrap button{
+        padding: 5px 0px;
+        margin: 3px 10px;
+        width: 110px;
+        border: none;
+        border-radius: 3px;
+        background-color: #829cd0;
+        color: white;
+        font-family: overpass regular;
+        font-size: 14px;
+        cursor: pointer;
+    }
+}
+@media (min-width: 600px) {
+
 .account {
     min-width: 750px;
     min-height: 250px;
@@ -24,7 +108,6 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
     border-radius: 3px;
     min-width: 400px;
     min-height: 225px;
@@ -32,7 +115,6 @@
 }
 .account-wrap h2 {
     font-size: 24px;
-    font-weight: bold;
     font-family: overpass regular;
     text-align: center;
 }
@@ -72,13 +154,11 @@
     padding: 5px 0px;
     margin: 0px 10px;
     width: 110px;
-    border-style: solid;
-    border-width: 0.3px;
     border-radius: 3px;
     background-color: #829cd0;
     color: white;
-    font-family: overpass thin;
+    font-family: overpass regular;
     font-size: 14px;
-    font-weight: bold;
     cursor: pointer;
+}
 }
