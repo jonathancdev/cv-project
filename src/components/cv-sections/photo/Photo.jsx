@@ -72,6 +72,9 @@ function Photo (props) {
         showSaveButton()
         setSaveMessage()
     }
+    function mobileHover() {
+        setHovered(!hovered)
+    }
     function onHoverIn() {
         setHovered(true)
     }
@@ -96,16 +99,16 @@ function Photo (props) {
             <section className="photo cv-section">
                 <section className="cv-header">
                     <h1>Add a photo</h1>
-                    <button onMouseEnter={onHoverIn} onMouseLeave={onHoverOut} className="help-btn">
-                        {hovered
+                    <button onTouchStart={mobileHover} onMouseEnter={onHoverIn} onMouseLeave={onHoverOut} className="help-btn">
+                        <i className="far fa-question-circle"></i>
+                    </button>
+                </section>
+                {hovered
                         ? <HoverInfo
                             text="Upload a high-quality, high-resolution photo. Avoid busy backgrounds! A headshot from the shoulders
                                     up is recommended. You can upload a .png, .jpg, .jpeg, or .gif file."
                             ></HoverInfo>
                         : null }
-                        <i className="far fa-question-circle"></i>
-                    </button>
-                </section>
                 <section className="save-section-wrap">
                 <p className="save-message">{saveDisplay}</p>
                     { !hideButton

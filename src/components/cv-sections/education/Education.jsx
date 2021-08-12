@@ -42,6 +42,7 @@ class Education extends Component {
         this.showSaveButton = this.showSaveButton.bind(this)
         this.hideSaveButton = this.hideSaveButton.bind(this)
         this.setSuccessMessage = this.setSuccessMessage.bind(this)
+        this.mobileHover = this.mobileHover.bind(this)
         this.expSum = this.checkKeys()
 
  }
@@ -49,6 +50,11 @@ setEduLimit () {
     this.setState({
         eduLimit: "that's a lot of education! limit of 3 items here"
     })
+}
+mobileHover() {
+    this.setState(prevState => ({
+        hovered: !prevState.hovered
+      }));
 }
 onHoverIn() {
     this.setState({
@@ -185,17 +191,19 @@ render () {
             <section className="education cv-section">
             <section className="cv-header">
                     <h1>Add your education history</h1>
-                    <button onMouseEnter={this.onHoverIn} onMouseLeave={this.onHoverOut} className="help-btn">
-                    {this.state.hovered
+                    <button onTouchStart={this.mobileHover} onMouseEnter={this.onHoverIn} onMouseLeave={this.onHoverOut} className="help-btn">
+                        <i className="far fa-question-circle"></i>
+                    </button>
+                </section>
+                {this.state.hovered
                         ? <HoverInfo
+                        active={this.state.hovered}
+                        close={this.mobileHover}
                         text="Include your educational background in this section. You can add up to 3 different
                                 items in this section. Use the description box to add detail as needed."
                         >
                     </HoverInfo>
                         : null }
-                        <i className="far fa-question-circle"></i>
-                    </button>
-                </section>
                 <section className="save-section-wrap">
                 <p className="save-message">{this.state.saveDisplay}</p>
                     { !this.state.hideButton

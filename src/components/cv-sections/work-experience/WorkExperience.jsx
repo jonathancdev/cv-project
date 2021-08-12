@@ -61,6 +61,7 @@ class WorkExperience extends Component {
         this.showSaveButton = this.showSaveButton.bind(this)
         this.hideSaveButton = this.hideSaveButton.bind(this)
         this.setSuccessMessage = this.setSuccessMessage.bind(this)
+        this.mobileHover = this.mobileHover.bind(this)
         //set expSum
         this.expSum = this.checkKeys();
  }
@@ -74,6 +75,11 @@ setDutyLimit () {
     this.setState({
         dutyLimit: 'keep it short and sweet! limit of 3 job duties'
     })
+}
+mobileHover() {
+    this.setState(prevState => ({
+        hovered: !prevState.hovered
+      }));
 }
 onHoverIn() {
     this.setState({
@@ -260,8 +266,11 @@ render() {
             <section className="work-experience cv-section">
                 <section className="cv-header">
                         <h1>Add your work experience</h1>
-                        <button onMouseEnter={this.onHoverIn} onMouseLeave={this.onHoverOut} className="help-btn">
-                    {this.state.hovered
+                        <button onTouchStart={this.mobileHover} onMouseEnter={this.onHoverIn} onMouseLeave={this.onHoverOut} className="help-btn">
+                        <i className="far fa-question-circle"></i>
+                    </button>
+                </section>
+                {this.state.hovered
                         ? <HoverInfo
                             text="Include your work experience in this section. You can add up to
                                 3 items here. There is a limit to 3 duties for each item, so only
@@ -269,9 +278,6 @@ render() {
                             >
                         </HoverInfo>
                         : null }
-                        <i className="far fa-question-circle"></i>
-                    </button>
-                </section>
                 <section className="save-section-wrap">
                 <p className="save-message">{this.state.saveDisplay}</p>
                     {!this.state.hideButton

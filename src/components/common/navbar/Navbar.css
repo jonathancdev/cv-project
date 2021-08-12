@@ -2,15 +2,6 @@
     .mobile-navlinks-wrap {
         display: flex;
         align-items: space-evenly;
-        margin-top: -10px;
-        margin-left: -5px;
-    }
-    .mobile-navlinks-wrap p {
-        font-size: 10px;
-        text-align: center;
-        width: 5px;
-        padding-right: 7px;
-        margin-top: 2px;
     }
     .navbar * {
         text-decoration: none;
@@ -23,25 +14,31 @@
     }
     .navbar a {
         margin: 0;
-        padding: 0;
-        width: 60px;
+        padding: 0 3px;
+        min-width: 50px;
         text-align: center;
         cursor: pointer;
-        font-size: 12px;
+        font-size: 13px;
+        color: #829CD0;
+        font-family: overpass black;
     }
+
     .navbar button {
         margin: 0;
-        padding: 0;
+        padding: 0 3px;
         text-align: center;
         cursor: pointer;
         border: none;
         background-color: transparent;
         text-decoration: none;
-        font-size: 12px;
+        font-size: 13px;
+        font-family: overpass black;
         cursor: pointer;
+        min-width: 60px;
+        color: #829CD0;
     }
     .navbar a:visited {
-        color: black;
+        color: #829CD0;
     }
     #bluea {
         display: flex;
@@ -63,10 +60,13 @@
         flex-direction: column;
         align-items: center;
         position: absolute;
-        margin-top: 55px;
+        margin-top: 20px;
+        margin-left: 60px;
         max-width: 100px;
         box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
         border-radius: 3px;
+        background-color: white;
+        z-index: 1;
     }
     p.signout-flag, .yesnobtn {
         font-size: 14px;
@@ -120,6 +120,7 @@
         cursor: pointer;
         text-decoration: none;
         font-size: 18px;
+        font-family: overpass regular;
     }
     .navbar button {
         padding: 5px;
@@ -130,6 +131,8 @@
         background-color: transparent;
         text-decoration: none;
         font-size: 18px;
+        font-family: overpass regular;
+        color: black;
     }
     .navbar a:visited {
         color: black;

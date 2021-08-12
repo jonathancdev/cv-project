@@ -30,11 +30,17 @@ class Skills extends Component {
         this.showSaveButton = this.showSaveButton.bind(this)
         this.hideSaveButton = this.hideSaveButton.bind(this)
         this.setSuccessMessage = this.setSuccessMessage.bind(this)
+        this.mobileHover = this.mobileHover.bind(this)
     }
 setSkillLimit () {
     this.setState({
         skillLimit: "very talented! limit of 8 skills here"
     })
+}
+mobileHover() {
+    this.setState(prevState => ({
+        hovered: !prevState.hovered
+      }));
 }
 onHoverIn() {
         this.setState({
@@ -128,17 +134,17 @@ render() {
             <section className="skills cv-section">
                 <section className="cv-header">
                     <h1>Add your skills</h1>
-                    <button onMouseEnter={this.onHoverIn} onMouseLeave={this.onHoverOut} className="help-btn">
-                    {this.state.hovered
+                    <button onTouchStart={this.mobileHover} onMouseEnter={this.onHoverIn} onMouseLeave={this.onHoverOut} className="help-btn">
+                        <i className="far fa-question-circle"></i>
+                    </button>
+                </section>
+                {this.state.hovered
                         ? <HoverInfo
                         text="Include your skills and qualifications relevant to the positions you are seeking in this section. 
                             There is a limit to 8 items here, but you can group similar skills together."
                         >
                     </HoverInfo>
                         : null }
-                        <i className="far fa-question-circle"></i>
-                    </button>
-                </section>
                 <section className="save-section-wrap">
                     <p className="save-message">{this.state.saveDisplay}</p>
                     { !this.state.hideButton

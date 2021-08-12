@@ -34,8 +34,12 @@ function Cvnav (props) {
                     <Link id="view-btn" to={props.completed ? '/create/view' : '/create/view'} completed={props.completed} onClick={()=>setPage('view')} className={!props.completed ? "inactive cvnavlinks" : "cvnavlinks"} ><h3>view CV</h3></Link>
                 <h4 className="section-incomplete">{flagIncomplete ? 'complete all the sections!' : ''}</h4>
             </>
-            : <>          
-            <h6 className="sections-header">sections</h6>
+            : <>
+            <div id="create-nav-header">
+                <h6 className="sections-header">sections</h6>
+            <Link id="view-btn" to={props.completed ? '/create/view' : '/create/view'} completed={props.completed} onClick={()=>setPage('view')} className={!props.completed ? "inactive cvnavlinks" : "cvnavlinks"}>view CV</Link>
+            </div>
+
                 <div className="navlinks-wrap mobile">
                 <Link to="/create/photo" onClick={()=>setPage('photo')} className='cvnavlinks'>photo</Link>
                 <Link to="/create/profile" onClick={()=>setPage('profile')} className='cvnavlinks'>profile</Link>
@@ -44,8 +48,6 @@ function Cvnav (props) {
                 <Link to="/create/skills" onClick={()=>setPage('skills')} className='cvnavlinks'>skills</Link>
                 <Link to="/create/contact" onClick={()=>setPage('contact')} className='cvnavlinks'>contact</Link>
                 </div>
-
-                <Link id="view-btn" to={props.completed ? '/create/view' : '/create/view'} completed={props.completed} onClick={()=>setPage('view')} className={!props.completed ? "inactive cvnavlinks" : "cvnavlinks"} ><h3>view CV</h3></Link>
             <h4 className="section-incomplete">{flagIncomplete ? 'complete all the sections!' : ''}</h4>
         </>}
 

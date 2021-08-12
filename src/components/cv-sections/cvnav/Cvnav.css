@@ -12,6 +12,11 @@
         justify-content: space-between;
         width: 300px;
     }
+    #create-nav-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
     .sections-header {
         font-size: 20px;
     }
@@ -28,32 +33,29 @@
         text-align: center;
         border-radius: 3px;
         box-shadow: 0 0.5px 0 0 #ffffff inset, 0 0.45px 1px 0 #B3B3B3;
+        z-index: 2;
     }
 
     #view-btn {
-        position: absolute;
+        position: relative;
         border-style: none;
         border-radius: 3px;
         background-color: #829CD0;
         color: white;
         padding: 5px;
-        margin: 650px 10px;
-        width: 100px;
-        height: 25px;
+        max-width: 80px;
+        height: 20px;
         display: flex;
         justify-content: center;
         align-items: center;
         text-decoration: none;
-    }
-    #view-btn h3 {
-        font-size: 14px;
+        box-shadow: none;
         font-family: overpass bold;
-        text-decoration: none;
     }
+
     #view-btn.inactive {
         background-color: rgb(209, 209, 209);
-        cursor: default;
-        
+        cursor: default;   
     }
 }
 @media (min-width: 600px) {
@@ -121,7 +123,7 @@
         justify-content: center;
         align-items: center;
         height: 40px;
-        
+        max-width: 120px;
     }
     #view-btn h3 {
         font-size: 20px;

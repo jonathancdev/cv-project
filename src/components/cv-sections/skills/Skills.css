@@ -3,8 +3,14 @@
         display: flex;
         align-items: center;
     }
+    .skills .form-wrapper .input-std-div {
+        margin-top: 5px;
+    }
     .skills .save-section {
         margin-right: 190px;
+    }
+    .skills .save-btn-div {
+        height: 30px;
     }
 }
 

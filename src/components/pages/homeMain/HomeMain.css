@@ -24,6 +24,13 @@
         color: white;
         font-size: 14px;
     }
+    .home-main h1 {
+        font-size: 28px;
+        text-align: center;
+    }
+    .home-main p {
+        font-size: 14px;
+    }
 }    
 
 @media (min-width: 600px) {

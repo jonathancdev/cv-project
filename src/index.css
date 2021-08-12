@@ -77,6 +77,19 @@
     font-weight: bold;
     align-self: center;
   }
+  .form-error-wrap {
+    position: absolute;
+    display: flex;
+    justify-content: flex-end;
+    margin-left: 60px;
+    margin-top: -18px;
+    width: 150px;
+    color: #bd0000;
+  }
+  .form-error {
+    display: none;
+    text-align: center;
+  }
 
 }
 

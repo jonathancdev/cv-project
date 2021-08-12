@@ -1,21 +1,53 @@
-.hover-box {
-    display: flex;
-    position: absolute;
-    justify-content: flex-start;
-    border-radius: 3px;
-    padding: 15px;
-    height: 75px;
-    width: 275px;
-    margin-left: 305px;
-    margin-top: 110px;
-    background-color: #829cd0;
-    z-index: 1;
+@media (min-width: 320px) {
+    .hover-box {
+        display: flex;
+        position: absolute;
+        justify-content: flex-start;
+        border-radius: 3px;
+        height: 40px;
+        width: 300px;
+        margin-left: 10px;
+        margin-top: 40px;
+        background-color: #829cd0;
+        z-index: 1;
+        transition: opacity 3s linear, z-index 3s ease-out;
+    }
+    .hover-box.close {
+        opacity: 0%;
+        z-index: -999;
+    }
+    .box-text {
+        padding: 0;
+        margin: 0;
+        color: white;
+        font-family: overpass bold;
+        font-size: 10px;
+        text-align: start;
+    }
 }
-.box-text {
-    padding: 0;
-    margin: 0;
-    color: white;
-    font-family: overpass regular;
-    font-size: 14px;
-    text-align: start;
+@media (min-width: 600px) {
+    .hover-box {
+        display: flex;
+        position: absolute;
+        justify-content: flex-start;
+        border-radius: 3px;
+        padding: 15px;
+        height: 75px;
+        width: 275px;
+        margin-left: 305px;
+        margin-top: 110px;
+        background-color: #829cd0;
+        z-index: 1;
+    }
+    .box-text {
+        padding: 0;
+        margin: 0;
+        color: white;
+        font-family: overpass regular;
+        font-size: 14px;
+        text-align: start;
+    }
+    .hover-box.close {
+        opacity: 100%;
+    }
 }

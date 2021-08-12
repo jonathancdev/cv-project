@@ -1,14 +1,2 @@
 cross-broswer compatibility
 
-problems: 
-
-qustion marks hover and on click?
-errors arent red?
-errors in signup showing initially
-signup page styles
-
-view cv button position (below buttons?)
-
-print view
-
-add skill button

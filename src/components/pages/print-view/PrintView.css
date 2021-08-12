@@ -9,5 +9,8 @@
     padding: 0;
     -webkit-print-color-adjust: exact;
 }
+.print a:visited {
+    color: black;
+}
 
 

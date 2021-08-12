@@ -172,6 +172,9 @@ background-color: transparent;
 text-decoration: underline;
 cursor: pointer;
 }
+.print-btn:visited {
+    color: black;
+}
 .view-error {
     text-align: center;
     margin-top: 150px;

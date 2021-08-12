@@ -21,8 +21,11 @@ function Navbar (props) {
     console.log(windowWidth)
     return (
         <section className="navbar">
-            <Link id="bluea" to={props.active ? "/create" : '/signup'} className="navlinks">create cv</Link>
-
+            <>
+            {windowWidth >= 600
+            ? <Link id="bluea" to={props.active ? "/create" : '/signup'} className="navlinks">create CV</Link>
+            : null}
+            </>
             
             {windowWidth > 600
             ? <>
@@ -35,12 +38,18 @@ function Navbar (props) {
 
 
             <div className="mobile-navlinks-wrap">
+
+
+            <>
+            {windowWidth < 600
+            ? <Link id="bluea-mobile" to={props.active ? "/create" : '/signup'} className="navlinks">{props.active ? 'edit CV' : 'create CV'}</Link>
+            : null}
+            </>
+
                 {props.user !== null && props.active
                 ?  <Link to="/account" className="navlinks">{windowWidth >= 600 ? props.user.name + ' ' + props.user.surname[0] + '.' : 'account'}</Link>
                 : <Link to="/login" className="navlinks">sign in</Link>
                 }
-
-                <p className="spacer">|</p>
 
                 {props.active
                 ?<button 
@@ -48,14 +57,7 @@ function Navbar (props) {
                 className="navlinks">
                 sign out
                 </button>
-                :
-                
-
-                    <>
-                    {windowWidth < 600
-                    ? <Link to="/signup" className="navlinks">sign up</Link>
-                    :null}
-                    </>   }
+                : null }
 
 
             </div>
